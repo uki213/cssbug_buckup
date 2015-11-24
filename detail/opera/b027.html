@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ027</div>
+
+<h2>相対配置要素のtopプロパティの%値がpx値で扱われる<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>相対配置した要素に対してtopプロパティを%値で指定すると、その数値はpx単位で配置される。具体的には、 <code>top: 30%;</code> が <code>top: 30px;</code> であるかのように扱われる。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;width:100px; height:150px; border:2px solid red; float:left;&quot;&gt;
+&lt;div style=&quot;position:relative; top:50%; border:2px dashed blue;&quot;&gt;A&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;width:50px; height:75px; border:2px solid maroon; float:left;&quot;&gt;75px&lt;/div&gt;
+&lt;div style=&quot;width:50px; height:50px; border:2px solid green; float:left;&quot;&gt;50px&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:100px; height:150px; border:2px solid red; float:left;">
+<div style="position:relative; top:50%; border:2px dashed blue;">50%?</div>
+</div>
+<div style="width:50px; height:75px; border:2px solid maroon; float:left; margin-left:5px;">75px
+</div>
+<div style="width:50px; height:50px; border:2px solid green; float:left; margin-left:5px;">50px
+</div>
+<div style="clear:left;"><!-- 回り込み解除用 --></div>
+</div>
+<p>高さ150pxのdiv要素内の、上から50%の位置に青いボーダーのdiv要素を配置しています。横にあるものは比較用に置いたdiv要素で、緑のボーダーを持つ要素は高さを（150pxの50%で）75pxに、茶色のボーダーを持つ要素は高さを50pxにしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b027_1.png" alt="Moz1.0.1" width="235" height="168">Moz1.0.1での表示</p>
+<p><img src="img/b027_2.png" alt="Op6" width="237" height="167">Opera6.05での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／</div>
+</body>
+</html>

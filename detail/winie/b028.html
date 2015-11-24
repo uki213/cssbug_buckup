@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ028</div>
+
+<h2>li要素の子孫にリスト要素があるとリストマークが上方にずれる</h2>
+<ul>
+<li>2003-07-10修正。補足を追加。</li>
+<li>2003-07-19修正。補足を修正。</li>
+<li>2004-01-16修正。症状を修正。</li>
+</ul>
+
+<h3>症状</h3>
+<p>li要素の子孫に<del datetime="2004-01-16T00:00:00+09:00">dl要素</del><ins datetime="2004-01-16T00:00:00+09:00">リスト要素（ul, ol, dl）</ins>を置くと、li要素につくリストマークが上方にずれて表示される。また、この状態のli要素に上ボーダーを設定するとリストマークが消える。<ins datetime="2003-07-10T00:00:00+09:00">また、最初のli要素のリストマークも消える。</ins></p>
+
+<h3>例示</h3>
+<pre>&lt;ul&gt;
+&lt;li&gt;&lt;dl&gt;
+&lt;dt&gt;Win95&lt;/dt&gt;&lt;dd&gt;1995年&lt;/dd&gt;
+&lt;/dl&gt;&lt;/li&gt;
+&lt;li&gt;&lt;dl&gt;
+&lt;dt&gt;Win98&lt;/dt&gt;&lt;dd&gt;1998年&lt;/dd&gt;
+&lt;/dl&gt;&lt;/li&gt;
+&lt;li style=&quot;border:1px solid blue;&quot;&gt;&lt;dl&gt;
+&lt;dt&gt;WinMe&lt;/dt&gt;&lt;dd&gt;2000年&lt;/dd&gt;
+&lt;/dl&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul>
+<li><dl>
+<dt>Win95</dt><dd>1995年</dd>
+</dl></li>
+<li><dl>
+<dt>Win98</dt><dd>1998年</dd>
+</dl></li>
+<li style="border:1px solid blue;"><dl>
+<dt>WinMe</dt><dd>2000年</dd>
+</dl></li>
+</ul>
+</div>
+<p>3番目のリストアイテムはボーダーが設定されています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b028_1.png" alt="Moz1.0" width="213" height="157">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b028_2.png" alt="WinIE6.0" width="199" height="206">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p><ins datetime="2003-07-10T00:00:00+09:00">最初のリストアイテムのリストマーカーが消える現象は、以下のいずれかの方法で回避できます。</ins></p>
+<ul>
+<li><del datetime="2004-01-16T00:00:00+09:00">dl要素</del><ins datetime="2004-01-16T00:00:00+09:00">リスト要素</ins>をブロックレベル要素で括る。
+<pre>&lt;ul&gt;
+&lt;li&gt;<em>&lt;div&gt;</em>&lt;dl&gt;
+&lt;dt&gt;Win95&lt;/dt&gt;&lt;dd&gt;1995年&lt;/dd&gt;
+&lt;/dl&gt;<em>&lt;/div&gt;</em>&lt;/li&gt;
+&lt;/ul&gt;</pre>
+</li>
+<li><del datetime="2004-01-16T00:00:00+09:00">dl要素</del><ins datetime="2004-01-16T00:00:00+09:00">リスト要素</ins>の前<del datetime="2003-07-19T00:00:00+09:00">後</del>に何らかの文字を置く。コメントでもよい。<ins datetime="2003-07-19T00:00:00+09:00">（少なくともli要素開始タグと<del datetime="2004-01-16T00:00:00+09:00">dl要素</del><ins datetime="2004-01-16T00:00:00+09:00">リスト要素</ins>開始タグの間に何らかの文字があればバグを回避できます）</ins>
+<pre>&lt;ul&gt;
+&lt;li&gt;<em>&lt;!-- コメント --&gt;</em>&lt;dl&gt;
+&lt;dt&gt;Win95&lt;/dt&gt;&lt;dd&gt;1995年&lt;/dd&gt;
+&lt;/dl&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+</li>
+</ul>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モード問わずバグが発生しています。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ028</div>
+</body>
+</html>

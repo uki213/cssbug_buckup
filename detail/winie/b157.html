@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+#test1 {
+	_color: red;
+}
+#test2 {
+	_font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ157</div>
+
+<h2>識別子の先頭にある「_」を無視する<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>プロパティ名の先頭にアンダーバーを付加したものを指定すると、WinIEは先頭のアンダーバーを無視する。従って、不正な宣言と扱われない。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+#test1 {
+  _color: red;
+}
+#test2 {
+  _font-weight: bold;
+}
+&lt;/style&gt;
+
+&lt;p id=&quot;test1&quot;&gt;赤色ではない&lt;/p&gt;
+&lt;p id=&quot;test2&quot;&gt;ボールドではない&lt;/p&gt;</pre>
+<div class="example">
+<p id="test1">赤色ではない</p>
+<p id="test2">ボールドではない</p>
+</div>
+<p>「_color」や「_font-weight」というプロパティはCSS勧告で定義されていません。従ってどちらの指定も無効であるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b157_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b157_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>この不具合を使用すると、WinIEだけに特定のスタイル指定を適用させることができます。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ157</div>
+</body>
+</html>

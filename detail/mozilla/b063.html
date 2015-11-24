@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+<style type="text/css">
+<!--
+table.sample td {
+	vertical-align: top;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ063</div>
+
+<h2>overflowへの対応が不完全な要素<em>(N7.x)</em></h2>
+
+<h3>症状</h3>
+<p>表のセル要素（th, td）や行グループ要素（thead, tfoot, tbody）など一部の要素では、overflowプロパティへの対応が不完全になっている。例えば、scroll値を指定してもスクロールバーが現れない。</p>
+
+<h3>例示</h3>
+<pre>&lt;table border=&quot;2&quot; style=&quot;width:15em; table-layout:fixed;&quot;&gt;
+&lt;tr&gt;
+&lt;td style=&quot;overflow:visible;&quot;&gt;AAAAAAAAAAAAAAAAAAAA&lt;/td&gt;
+&lt;td style=&quot;overflow:hidden;&quot;&gt;&lt;br&gt;BBBBBBBBBBBBBBBBBBBB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;overflow:scroll;&quot;&gt;CCCCCCCCCCCCCCCCCCCC&lt;/td&gt;
+&lt;td style=&quot;overflow:auto;&quot;&gt;&lt;br&gt;DDDDDDDDDDDDDDDDDDDD&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="2" style="width:15em; table-layout:fixed;" class="sample">
+<tr>
+<td style="overflow:visible;">AAAAAAAAAAAAAAAAAAAA</td>
+<td style="overflow:hidden;"><br>BBBBBBBBBBBBBBBBBBBB</td>
+</tr>
+<tr>
+<td style="overflow:scroll;">CCCCCCCCCCCCCCCCCCCC</td>
+<td style="overflow:auto;"><br>DDDDDDDDDDDDDDDDDDDD</td>
+</tr>
+</table>
+</div>
+<p>表のレイアウトに固定レイアウトを使用すると、セル要素の内容物がボックスをはみ出すことがあります。ここでは、そのような場合にoverflowプロパティの値によって振る舞いがどのように変わるかを示しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b063_1.png" alt="N7.1" width="333" height="109">N7.1での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>セル要素にoverflowプロパティを指定したとき、はみ出した内容物の扱いは概ね以下のようになります。<em>強調されているもの</em>はCSS勧告と異なる実装です。</p>
+<table border="2">
+<tr>
+<th>overflow:</th>
+<th>visible</th>
+<th>hidden</th>
+<th>scroll</th>
+<th>auto</th>
+</tr>
+<tr>
+<th>Netscape7.1</td>
+<td>正常。</td>
+<td>正常。</td>
+<td><em>visibleと同じ。スクロール不能。</em></td>
+<td><em>visibleと同じ。スクロール不能。</em></td>
+</tr>
+<tr>
+<th>WinIE6.0</td>
+<td><em>ボックスを広げる。table要素のボックスをはみ出す部分は表示しない。</em></td>
+<td>正常。</td>
+<td><em>hiddenと同じ。スクロール不能。</em></td>
+<td><em>hiddenと同じ。スクロール不能。</em></td>
+</tr>
+<tr>
+<th>Opera7.11</td>
+<td><em>hiddenと同じ。</em></td>
+<td>正常。</td>
+<td><em>hiddenと同じ。スクロール不能。</em></td>
+<td><em>hiddenと同じ。スクロール不能。</em></td>
+</tr>
+</table>
+<p>※auto値の扱いについては、一般的なブロックボックスでの扱いと異なるかどうかで判断しています。</p>
+
+<h3>修正状況</h3>
+<p>Netscape7.1標準モード、Netscape7.1互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ063</div>
+</body>
+</html>

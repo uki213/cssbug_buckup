@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ062</div>
+
+<h2>fieldset要素の上パディングがボーダー領域の外側に設置される<em>(7.0)</em></h2>
+
+<h3>症状</h3>
+<p>fieldset要素にパディングを設定すると、上パディングがボーダー領域の外側に設置される。</p>
+
+<h3>例示</h3>
+<pre>&lt;form style=&quot;padding:0; border:2px solid blue;&quot;&gt;
+&lt;fieldset style=&quot;margin:0; padding:1em;&quot;&gt;
+&lt;legend style=&quot;margin:0; padding:0;&quot;&gt;フォーム例&lt;/legend&gt;
+&lt;div style=&quot;border:2px solid red;&quot;&gt;
+&lt;input type=&quot;text&quot;&gt;&lt;/div&gt;
+&lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+<div class="example">
+<form action="b062.html" style="padding:0; border:2px solid blue;">
+<fieldset style="margin:0; padding:1em;">
+<legend style="margin:0; padding:0;">フォーム例</legend>
+<div style="border:2px solid red;">
+<input type="text"></div>
+</fieldset>
+</form>
+</div>
+<p>fieldset要素の四方に1emのパディングを設定しています。form要素のパディング、fieldset要素のマージン、legend要素のマージンとパディングはそれぞれ0にしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b062_1.png" alt="N7" width="163" height="108">N7.02での表示（標準モード）</p>
+<p><img src="img/b062_2.png" alt="Op7" width="162" height="106">Opera7.11での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>スクリーンショットでは左パディングが正常に設置されていますが、環境によっては左右パディングがまったく設置されないことがあるようです。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.11標準モード、Opera7.11互換モードで不具合の発生を確認しました。</li>
+<li>Opera6.05でこの不具合は発生しません。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ062</div>
+</body>
+</html>

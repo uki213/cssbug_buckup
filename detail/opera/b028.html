@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ028</div>
+
+<h2>フロートが常に直前のフロートの下辺より下に配置されてしまう<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>フロートが連続して置かれているときフロートの上端は必ず、直前にあるフロートの下端より下に配置される。例えば、右フロートに後続する左フロートが右フロートの下端より下に配置されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;float:left; width:40%; height:1.5em; background:aqua;&quot;&gt;Left1&lt;/div&gt;
+&lt;div style=&quot;float:right; width:40%; height:3em; background:fuchsia;&quot;&gt;Right&lt;/div&gt;
+&lt;div style=&quot;float:left; width:40%; height:1.5em; background:lime;&quot;&gt;Left2&lt;/div&gt;
+&lt;div style=&quot;clear:both;&quot;&gt;Clear&lt;/div&gt;</pre>
+<div class="example">
+<div style="float:left; width:40%; height:1.5em; background:aqua;">Left1</div>
+<div style="float:right; width:40%; height:3em; background:fuchsia;">Right</div>
+<div style="float:left; width:40%; height:1.5em; background:lime;">Left2</div>
+<div style="clear:both;">Clear</div>
+</div>
+<p>左フロート、右フロート、左フロートの順に置かれています。2つ目の左フロートは1つ目の左フロートの直後に配置されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b028_1.png" alt="Moz1.0.1" width="233" height="83">Moz1.0.1での表示</p>
+<p><img src="img/b028_2.png" alt="Op6" width="222" height="105">Opera6.05での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>下にずれて配置されるフロートにclearプロパティを設定すると、このバグを回避できます。このとき、floatプロパティの指定値とclearプロパティの指定値を同じにしてください。</p>
+<pre>&lt;div style=&quot;float:left; width:40%; height:1.5em; background:aqua;&quot;&gt;Left1&lt;/div&gt;
+&lt;div style=&quot;float:right; width:40%; height:3em; background:fuchsia;&quot;&gt;Right&lt;/div&gt;
+&lt;div style=&quot;float:<em>left</em>; width:40%; height:1.5em; background:lime; <em>clear:left;</em>&quot;&gt;Left2&lt;/div&gt;
+&lt;div style=&quot;clear:both;&quot;&gt;Clear&lt;/div&gt;</pre>
+<div class="example">
+<div style="float:left; width:40%; height:1.5em; background:aqua;">Left1</div>
+<div style="float:right; width:40%; height:3em; background:fuchsia;">Right</div>
+<div style="float:left; width:40%; height:1.5em; background:lime; clear:left;">Left2</div>
+<div style="clear:both;">Clear</div>
+</div>
+<p>左フロートまたは右フロートだけを連続して置いたときのバグとして<a href="b043.html" title="折り返されたフロートが常にコンテナブロックの左端に寄せられてしまう">Operaバグ043</a>があります。</p>
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ028</div>
+</body>
+</html>

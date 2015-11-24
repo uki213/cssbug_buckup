@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／</div>
+
+<h2>テーブル内にあるlabel要素内の文字列が消える<em>(N6.1)</em></h2>
+<ul>
+<li>2004-05-31修正。補足を追加。</li>
+</ul>
+
+<h3>症状</h3>
+<p>text-alignプロパティで配置を指定したテーブルセル内にあるlabel要素内の文字列が消えてしまう。右側にずれて表示されることもある。</p>
+
+<h3>例示</h3>
+<pre>&lt;form action=&quot;#&quot;&gt;
+&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;
+&lt;tr style=&quot;text-align:center;&quot;&gt;
+&lt;td&gt;&lt;label for=&quot;in1&quot;&gt;謎の入力欄&lt;/label&gt;&lt;/td&gt;&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;in1&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&quot;text-align:center;&quot;&gt;
+&lt;td&gt;&lt;label for=&quot;in2&quot;&gt;さらに謎の入力欄&lt;/label&gt;&lt;/td&gt;&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;in2&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;form&gt;</pre>
+<div class="example">
+<form action="#">
+<table border="1" width="100%">
+<tr style="text-align:center;">
+<td><label for="in1">謎の入力欄</label></td><td><input type="text" id="in1"></td>
+</tr>
+<tr style="text-align:center;">
+<td><label for="in2">さらに謎の入力欄</label></td><td><input type="text" id="in2"></td>
+</tr>
+</table>
+<form>
+</div>
+<p>表中のセルはすべて内部文字列をセンタリングしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b013_1.png" alt="Moz1.0" width="253" height="90">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b013_2.png" alt="N6.1" width="286" height="88">N6.1での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>表示されない現象とずれて表示される現象は、文字列の長さやウィンドウの幅によってどちらかが発生します。文字列が長く、ウィンドウ幅が狭い場合にずれて表示される確率が高くなるようです。</p>
+<p><ins datetime="2004-05-31T00:00:00+09:00">th要素はデフォルトで <code>text-align:center;</code> と指定されているため、制作者やユーザがtext-alignプロパティを指定しない状態でも不具合が発生します。</ins></p>
+
+<h3>修正状況</h3>
+<p>N6.1では表示されない、またはずれて表示されます。N6.2やMoz1.0では正しく表示されます。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／</div>
+</body>
+</html>

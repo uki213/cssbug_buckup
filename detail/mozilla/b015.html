@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ015</div>
+
+<h2>レンダリングモードによって水平線の高さが変わる<em>(N6.1)</em></h2>
+
+<h3>症状</h3>
+<p>水平線（hr要素）にheightプロパティを指定したとき、標準モードと互換モードとで高さが変わる。具体的には、標準モードでより細い線になる。</p>
+
+<h3>例示</h3>
+<pre>&lt;hr style=&quot;height: 1px; border: 5px solid blue; background: red;&quot;&gt;</pre>
+<div class="example">
+<hr style="height: 1px; border: 5px solid blue; background: red;">
+<iframe src="b015a.html" style="width: 99%; height: 60px;"><a href="b015a.html">互換モードで表示させているページ</a></iframe>
+</div>
+<p>インラインフレーム内に表示されている水平線は、互換モードで表示されています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b015_1.png" alt="WinIE6" width="205" height="97">WinIE6.0での表示</p>
+<p><img src="img/b015_2.png" alt="N6.2" width="221" height="107">N6.2.3での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>標準モードと互換モードとではhr要素のボーダー幅に対する扱いが異なっています。互換モードでは指定された幅のボーダーをレンダリングする（div要素などと同じ方法）のに対し、標準モードでは全体の高さがheightプロパティで指定された値になるように、ボーダーの幅が強制的に狭められています。おそらく、Mozillaの仕様上の差でしょう。</p>
+
+<h3>修正状況</h3>
+<p>N6.2.3およびMoz1.0のいずれでもレンダリングに違いが現れます。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ015</div>
+</body>
+</html>

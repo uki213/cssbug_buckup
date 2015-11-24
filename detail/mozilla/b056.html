@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ056</div>
+
+<h2>collapse状態の表罫線がtable要素の幅を超えて表示される<em>(N7.0)</em></h2>
+
+<h3>症状</h3>
+<p><code>border-collapse: collapse;</code> を指定した表で、表の横罫線が表からはみ出して閲覧領域の幅いっぱいに表示されてしまうことがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;table border=&quot;1&quot; style=&quot;border-collapse:collapse; width:33%;&quot;&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="1" style="border-collapse:collapse; width:33%;">
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+</table>
+</div>
+<p>表の一部（または全部）が閲覧領域の外にある状態でこのページを表示し、スクロールによって表を表示させていくと横の罫線が表からはみ出して見えることがあります。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b056_2.png" alt="N7" width="223" height="196">N7.02での表示（WinXP, 標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>このバグはLinux詳しくは以下のBugzillaの項目を参照してください。</p>
+<ul>
+<li><a href="http://bugzilla.mozilla.org/show_bug.cgi?id=128930">Bugzilla Bug 128930 : border-collapse: border paint -invalidate problem</a></li>
+</ul>
+<p>これはLinux上で特に発生しやすいバグです。また、Windowsの場合はNT系よりも9x系で発生しやすい傾向があるようです。なお、Mozilla1.3でこのバグは修正されています。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>N7.02標準モード、N7.02互換モードで不具合の発生が確認されました。</li>
+<li>Moz1.4rc1標準モード、Moz1.4rc1互換モードでこの不具合は確認されませんでした。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ056</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+<style type="text/css">
+<!--
+a:link {
+	font-style: italic;
+	color: blue;
+}
+a:visited {
+	font-style: normal;
+	color: green;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ024</div>
+
+<h2>:link, :hoverでの指定内容を:visitedの指定が上書きしない<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>:linkや:hoverで指定したスタイルの一部が、:visitedでの指定を無視して引き継がれてしまう。font-weight, font-style, letter-spacingなどで発生する。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+a:link {
+  font-style: italic;
+  color: blue;
+}
+a:visited {
+  font-style: normal;
+  color: green;
+}
+&lt;/style&gt;
+
+&lt;a href=&quot;../opera.html&quot;&gt;Opera目次&lt;/a&gt;</pre>
+<div class="example">
+<a href="../opera.html">Opera目次</a>
+</div>
+<p>未訪リンクは「青色・イタリック」、既訪リンクは「緑色・ノーマル」で表示させています。</p>
+
+<h3>スクリーンショット</h3>
+<p>既訪の状態です。</p>
+<div class="shot">
+<p><img src="img/b024_1.png" alt="WinIE6" width="99" height="30">WinIE6.0での表示</p>
+<p><img src="img/b024_2.png" alt="Op6" width="99" height="32">Opera6.05での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>font-styleでも、「未訪：ノーマル、既訪：イタリック」の組み合わせでは正しく反映されます。このように、同じプロパティでも引き継がれてしまう組み合わせと引き継がれない組み合わせが存在します。</p>
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ024</div>
+</body>
+</html>

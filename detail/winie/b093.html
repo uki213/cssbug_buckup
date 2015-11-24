@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ093</div>
+
+<h2>先行するフロートの上方に後続のフロートが置かれる</h2>
+<p>2003-04-28修正。例示の変更と補足の追加。</p>
+
+<h3>症状</h3>
+<p>CSS2では、フロートは自身より前にあるフロートより上に置かれてはならないと決められている。しかしWinIEでは、フロートを置ける領域がある場合に、自身より前にあるフロートより上に後続のフロートが置かれてしまうことがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;float:left; width:4em;
+  height:4em; background:aqua;&quot;&gt;A&lt;/div&gt;
+&lt;div style=&quot;float:left; width:4em;
+  height:3em; background:lime;&quot;&gt;B&lt;/div&gt;
+&lt;div style=&quot;float:left; clear:left; width:4em;
+  height:3em; background:fuchsia;&quot;&gt;C&lt;/div&gt;
+&lt;div style=&quot;float:left; width:4em;
+  height:4em; background:teal;&quot;&gt;D&lt;/div&gt;
+&lt;div style=&quot;clear:left;&quot;&gt;(Clear)&lt;/div&gt;</pre>
+<div class="example">
+<div style="float:left; width:4em; height:4em; background:aqua;">A</div>
+<div style="float:left; width:4em; height:3em; background:lime;">B</div>
+<div style="float:left; clear:left; width:4em; height:3em; background:fuchsia;">C</div>
+<div style="float:left; width:4em; height:4em; background:teal;">D</div>
+<div style="clear:left;">(Clear)</div>
+</div>
+<p>Cのフロートはclearプロパティにより回り込みが抑制されています。Bのフロートの右にはフロートを置ける領域がありますが、Dのフロートは前にあるCのフロートより上に置かれてはならないため、DのフロートはCのフロートの真横（右）に置かれるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b093_1.png" alt="N7" width="147" height="159">N7.02での表示（標準モード）</p>
+<p><img src="img/b093_2.png" alt="WinIE6" width="214" height="149">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<ins datetime="2003-04-28T00:00:00+09:00">
+<h3>補足</h3>
+<p>このバグは、フロート化したボックスを並べているとき発生します。しかし、フロートでないボックスを途中に挟むとこのバグは発生しません。</p>
+<p>なお、このバグに似た現象がOpera7でも発生しますがOpera7ではこの方法を用いてもバグを完全には回避できません。詳しくは<a href="../opera/b044.html" title="先行するフロートの上方に後続のフロートが置かれる">Operaバグ044</a>を参照してください。</p>
+<pre>&lt;div style=&quot;float:left; width:4em;
+  height:4em; background:aqua;&quot;&gt;A&lt;/div&gt;
+&lt;div style=&quot;<em>float:none; margin-left:4em;</em> width:4em;
+  height:3em; background:lime;&quot;&gt;B&lt;/div&gt;
+&lt;div style=&quot;float:left; clear:left; width:4em;
+  height:3em; background:fuchsia;&quot;&gt;C&lt;/div&gt;
+&lt;div style=&quot;float:left; width:4em; height:4em;
+  background:teal;&quot;&gt;D&lt;/div&gt;</pre>
+<div class="example">
+<div style="float:left; width:4em; height:4em; background:aqua;">A</div>
+<div style="float:none; margin-left:4em; width:4em; height:3em; background:lime;">B</div>
+<div style="float:left; clear:left; width:4em; height:3em; background:fuchsia;">C</div>
+<div style="float:left; width:4em; height:4em; background:teal;">D</div>
+<div style="clear:left;">(Clear)</div>
+</div>
+</ins>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ093</div>
+</body>
+</html>

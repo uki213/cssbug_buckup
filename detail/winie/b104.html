@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ104</div>
+
+<h2>表の行グループ要素に指定したheightプロパティがセル要素に継承する<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>thead, tfoot, tbodyの各要素にheightプロパティを指定すると、内部のth, tdの各要素にその値が継承する。</p>
+
+<h3>例示</h3>
+<pre>&lt;table border=&quot;2&quot; style=&quot;width:6em;&quot;&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;th&gt;1&lt;/th&gt;&lt;th&gt;2&lt;/th&gt;&lt;th&gt;3&lt;/th&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody style=&quot;height:4em; overflow:auto;&quot;&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;7&lt;/td&gt;&lt;td&gt;8&lt;/td&gt;&lt;td&gt;9&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;7&lt;/td&gt;&lt;td&gt;8&lt;/td&gt;&lt;td&gt;9&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="2" style="width:6em;">
+<thead>
+<tr><th>1</th><th>2</th><th>3</th></tr>
+</thead>
+<tbody style="height:4em; overflow:auto;">
+<tr><td>1</td><td>2</td><td>3</td></tr>
+<tr><td>4</td><td>5</td><td>6</td></tr>
+<tr><td>7</td><td>8</td><td>9</td></tr>
+<tr><td>1</td><td>2</td><td>3</td></tr>
+<tr><td>4</td><td>5</td><td>6</td></tr>
+<tr><td>7</td><td>8</td><td>9</td></tr>
+</tbody>
+</table>
+</div>
+<p>tbody要素の高さを4emに設定しています。なお、heightプロパティは継承しないと定められています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b104_1.png" alt="N7" width="113" height="112">N7.02での表示（標準モード）</p>
+<p><img src="img/b104_2.png" alt="WinIE6" width="117" height="196">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ104</div>
+</body>
+</html>

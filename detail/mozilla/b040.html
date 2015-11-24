@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ040</div>
+
+<h2>backgroundプロパティで指定した背景画像が表示されない<em>(N7)</em></h2>
+
+<h3>症状</h3>
+<p>backgroundプロパティで背景画像を指定する際、<del>url()内でパスを <code>' '</code> で囲むと</del>背景画像が表示されない。</p>
+<p><code>' '</code> で囲まない場合にも発生するそうです。（2002-10-31追記）</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;background:#ff0000 url(../img/img01.png) repeat&quot;&gt;&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:200px; height:100px; background:#ff0000 url(../img/img01.png) repeat"></div>
+</div>
+<p>div要素に対し、backgroundプロパティで背景を指定しています。正常であれば、背景に星印の画像が表示されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b040_1.png" alt="WinIE6" width="218" height="115">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Mac版N7.0で発生が確認されたようです。</p>
+
+<h3>報告書き込み</h3>
+<blockquote>body { color: #000000; background: #f5f5f5 url(../images/hoge.jpg) repeat }<br>
+<br>
+102 名前：Name_Not_Found ﾒｪﾙ：sage 投稿日：02/10/20 17:18 ID:???<br>
+&gt;101<br>
+Mac版ネスケ７／IE５.1.6に外部.cssを読み込ませて試したけど、簡略化<br>
+プロパティを認識しない。Win版IEとOperaは持ってないから分からん。<br>
+<br>
+<br>
+body { background-color: #f5f5f5;<br>
+background-image: url(../images/hoge.jpg);<br>
+background-repeat: repeat;}</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ040</div>
+</body>
+</html>

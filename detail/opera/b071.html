@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ071</div>
+
+<h2>インポート元のスタイルシートを認識しないことがある<em>(7.2)</em></h2>
+
+<h3>症状</h3>
+<p>@import規則を用いて多くのスタイルシートをインポートしているとき、それらの@import規則を記述したスタイルシートの指定内容が適用されないことがある。</p>
+
+<h3>補足</h3>
+<p>リロードするとすべてのスタイルシートの指定が適用されることがあるなど、必ず発生する現象ではないようです。</p>
+
+<h3>修正状況</h3>
+<p><a href="http://www.geocities.co.jp/Playtown-Knight/9224/">テストケース</a>について、Opera7.23で不具合の発生を確認しました。</p>
+
+<h3>報告書き込み</h3>
+<blockquote>&nbsp;news.html<br>
+└style.css<br>
+├blogbody.css<br>
+│├title.css<br>
+│└blogarticle.css<br>
+└linkbar.css<br>
+└banner.css<br>
+<br>
+みたいに細切れのシートを、@import文を使いまくってページを制作しています。<br>
+（インデントは、ツリー条の構造をしている、親子関係を表しています）<br>
+WinXPのOpera7.20、Opera7.22で確認しましたが<br>
+@importで読み込んだシートのスタイルは処理するのですが、rootのシートである<br>
+style.cssに書き足したデザインを処理してくれません。<br>
+(@import url(&quot;&quot;);でも@import &quot;&quot;;でも症状は変わらないようです)<br>
+困ったので、試しにテストページを作ったのですが<br>
+こちらは正常に表示されます<br>
+http://www.geocities.co.jp/Playtown-Knight/9224/import_test.html<br>
+<br>
+あとF5でリロードすると、全部処理して意図したとおりに表示されてくれます。<br>
+HDD内でテスト表示させた場合にも正常に表示されています。<br>
+処理に関しては:before,:afterセレクタが付いたモノに関しては、例外的で処理を行ってくれています<br>
+と言う状況で、正直、&quot;この時は処理しない&quot;という規則が見えないで困っていたりします<br>
+<br>
+同じ物を、再現できなかったので、不具合の起こったシートを用意できなくてすいませんが<br>
+何方か、似たような不具合が起こった方は、ご意見を頂けるとありがたいです </blockquote>
+<blockquote>板汚しになってしまいましたね…、すいません<br>
+ちょっと時間かかってしまいましたが、テストケースを作りました<br>
+http://www.geocities.co.jp/Playtown-Knight/9224/<br>
+一応、自分環境のWinXP、Opera7.22では不具合を確認しています。<br>
+http://www.geocities.co.jp/Playtown-Knight/9224/preview.jpg<br>
+<br>
+一応先ほど言いましたがF5リロードすると意図通りに表示されます<br>
+:before, afterの付いた物は何故か処理されます（このテストの中には入っていませんが…）</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ071</div>
+</body>
+</html>

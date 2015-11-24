@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ064</div>
+
+<h2>閲覧領域の幅を超える幅のボックスを中央寄せにするとその左端を表示できない</h2>
+
+<h3>症状</h3>
+<p>閲覧領域の幅より広い幅を持つボックスを中央寄せ（<code>margin: auto;</code>）すると、横スクロールバーが表示される。これを使用して閲覧領域の右にはみ出した部分へスクロールすることはできるが、左にはみ出した部分へはスクロールできない。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;width:1000px; background:aqua; margin:auto;&quot;&gt;
+ボックスの中央揃え&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:1000px; background:aqua; margin:auto;">ボックスの中央揃え</div>
+</div>
+<p>ブラウザのウィンドウを1000pxより小さくしたとき、div要素の左端を表示できるかを確認してください。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b064_1.png" alt="WinIE6" width="168" height="70">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b064_2.png" alt="N7.1" width="129" height="56">N7.1での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>例示ような状態でdiv要素のボックスが左にはみ出すこと自体はCSS2勧告の「margin-leftとmargin-rightの両方にauto値が指定された場合は、左右のマージンを等量にする」という規定に従った実装です。しかし、閲覧領域から右にはみ出した部分はスクロールによって表示できるが左にはみ出した部分はそれができないという点はバグとみなせる可能性があります。この問題と似たような事例がBugzillaに挙げられています。</p>
+<ul>
+<li><a href="http://bugzilla.mozilla.gr.jp/show_bug.cgi?id=3211" title="Bugzilla-jp">Bug 3211 要素をセンタリングするとページの左側が切れて表示される(ウインドウ幅より大きい要素)</a></li>
+</ul>
+<p>閲覧領域をはみ出す可能性のある要素に対して最大幅を指定することで左にはみ出す部分を表示できない問題を回避できます。</p>
+<pre>&lt;div style=&quot;width:1000px; <em>max-width:100%;</em> margin:auto;&quot;&gt;ボックスの中央揃え&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:1000px; max-width:100%; background:aqua; margin:auto;">ボックスの中央揃え</div>
+</div>
+
+<h3>修正状況</h3>
+<p>Moz1.5b、Netscape7.1でこの現象の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ064</div>
+</body>
+</html>

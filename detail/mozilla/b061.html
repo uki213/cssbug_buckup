@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ061</div>
+
+<h2>body要素へのheightプロパティ%値指定が無視される<em>(N7.0/M1.4RC2)</em></h2>
+
+<h3>症状</h3>
+<p>body要素に対してheightプロパティを%値で指定しても無視される。</p>
+
+<h3>例示</h3>
+<p>検証ページ「b061a.html」：</p>
+<pre>&lt;body style=&quot;height:100%; margin:0; padding:0;&quot;&gt;
+&lt;div style=&quot;height:40%; background:aqua;&quot;&gt;
+&lt;a href=&quot;b061.html&quot;&gt;Mozバグ061&lt;/a&gt;へ戻る（height:40%;）
+&lt;/div&gt;
+&lt;div style=&quot;height:60%; background:lime;&quot;&gt;
+&lt;a href=&quot;b061.html&quot;&gt;Mozバグ061&lt;/a&gt;へ戻る（height:60%;）
+&lt;/div&gt;
+&lt;/body&gt;</pre>
+<p><a href="b061a.html">検証ページ</a>では、2つのdiv要素が縦・横とも閲覧領域全体に表示されているはずです。</p>
+<p>※ここでは広告が挿入されるのでレイアウトが変わります。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b061_1.png" alt="WinIE6" width="133" height="190">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b061_2.png" alt="N7" width="132" height="153">N7.02での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>html要素にheightプロパティを指定することでこの現象を回避できます。</p>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+html {
+  <em>height: 100%;</em>
+}
+&lt;/style&gt;</pre>
+<p><del datetime="2003-07-03T00:00:00+09:00">body要素に対してheightプロパティを%値で指定されたとき、WinIEやOperaは初期コンテナブロック（≒閲覧領域）の高さに対する%値を算出します。一方、Mozilla/Netscapeはhtml要素の高さに対する%値を算出します。このときhtml要素の高さを明示していなければ、body要素に対するheightプロパティの%値指定は <code>height:auto;</code> として扱われます。</del></p>
+<p><ins datetime="2003-07-03T00:00:00+09:00">body要素に対してheightプロパティを%値で指定したとき、WinIEおよびOperaには閲覧領域の高さに対する%値を算出します。一方、Mozilla/Netscapeはhtml要素の高さに対する%値を算出します。また、Mozilla/Netscapeはhtml要素に対してheightプロパティを%値で指定したとき、閲覧領域の高さに対する%値を算出します。このような実装の違いから、Mozilla/NetscapeではWinIEで有効な方法でボックスの高さを調節できない現象が発生します。</ins></p>
+<p><ins datetime="2003-07-03T00:00:00+09:00">CSS2の「ユーザエージェントはルート要素のheightプロパティを%値で指定したときは閲覧領域の高さに対する値を算出することがある」という表現から、</ins>WinIEやOperaはbody要素をルート要素にしているのに対し、Mozilla/Netscapeはhtml要素をルート要素にしている<del datetime="2003-07-03T00:00:00+09:00">ためにこのような違いが発生します。</del><ins datetime="2003-07-03T00:00:00+09:00">と考えることができます。ただし、これはheightプロパティの算出という条件下で考えられるものであり、HTML/XHTMLパーサが解釈する木構造上のルート要素とは一致しない可能性があります。</ins></p>
+<p><ins datetime="2003-07-03T00:00:00+09:00">なお、WinIE6, Mozilla, Opera7ともに互換モードではheightプロパティの%値指定についてCSS2の規定と異なる解釈を行っています。body要素の子要素のheightプロパティを%値で指定した場合、親要素のheightプロパティの高さを明示していないときは閲覧領域の高さに対する%値を算出します。</ins></p>
+
+<h3>修正状況</h3>
+<p>N7.02、Moz1.4RC2でこの現象の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ061</div>
+</body>
+</html>

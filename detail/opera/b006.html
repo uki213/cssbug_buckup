@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ006</div>
+
+<h2>overflowプロパティへの対応が不完全<em>(6.0/7.x)</em></h2>
+<ul>
+<li>2003-06-13修正。Opera7の実装状況を補足に追加。</li>
+<li>2003-07-31修正。Opera7の実装状況を補足に追加。</li>
+<li>2003-11-06修正。Opera7で発生するバグを追加し、内容を整理。</li>
+<li>2003-12-25修正。例示と補足を修正。スレ3の546-548で挙げられたバグは症状の3番目です。</li>
+</ul>
+
+<h3>症状</h3>
+<p>overflowプロパティのサポートが不完全であり、閲覧時に問題が発生することがある。</p>
+<ul>
+<li>Opera6はすべての要素においてauto値とscroll値に対応しておらず、それぞれvisible値とhidden値を指定したものとして扱う。ただしbody要素については常にauto値であるものとして扱う。</li>
+<li>Opera7はauto値やscroll値をサポートしているが、html要素については常にauto値であるものとして扱う。また、テーブルセル要素は常にhidden値であるものとして扱う。</li>
+<li>Opera7では、内部にフロートを含みwidthプロパティとheightプロパティがauto値である要素に <code>overflow:auto;</code> を指定したとき、そのボックスからはみ出るフロートが見えなくなる。</li>
+</ul>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;overflow:scroll; width:8em; height:4em; float:left; background:lime;&quot;&gt;
+A&lt;br&gt;B&lt;br&gt;C&lt;br&gt;D&lt;br&gt;E&lt;br&gt;F&lt;br&gt;G&lt;/div&gt;
+&lt;div style=&quot;overflow:auto; width:8em; height:4em; float:left; background:aqua;&quot;&gt;
+1&lt;br&gt;2&lt;br&gt;3&lt;br&gt;4&lt;br&gt;5&lt;br&gt;6&lt;br&gt;7&lt;/div&gt;
+&lt;div style=&quot;overflow:auto; clear:left; border:2px solid blue;&quot;&gt;
+&lt;div style=&quot;float:left; width:5em; background:yellow;&quot;&gt;
+float&lt;br&gt;float&lt;br&gt;float&lt;br&gt;float
+&lt;/div&gt;
+回り込み&lt;br&gt;回り込み&lt;/div&gt;</pre>
+<div class="example">
+<div style="overflow:scroll; width:8em; height:4em; float:left; background:lime;">
+A<br>B<br>C<br>D<br>E<br>F<br>G</div>
+<div style="overflow:auto; width:8em; height:4em; float:left; background:aqua;">
+1<br>2<br>3<br>4<br>5<br>6<br>7</div>
+<div style="overflow:auto; clear:left; border:2px solid blue;">
+<div style="float:left; width:5em; background:yellow;">
+float1<br>float2<br>float3<br>float4
+</div>
+回り込み<br>回り込み</div>
+</div>
+<p>最初のdiv要素はoverflowプロパティにscroll値を指定したとき、次のdiv要素は同じくauto値を指定したとき、最後はフロートを含むdiv要素にauto値を指定したときの例です。</p>
+
+<h3 style="clear:left;">スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b006_1.png" alt="WinIE6">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b006_2.png" alt="Op6">Opera6.06での表示</p>
+<p><img src="img/b006_3.png" alt="Op7.2">Opera7.21での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>スレ3の548で提示されたソースを以下に引用しています。</p>
+<blockquote>&lt;html&gt;<br>
+&lt;head&gt;<br>
+&lt;title&gt;MENU&lt;/title&gt;<br>
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=Shift_JIS&quot;&gt;<br>
+&lt;style type=&quot;text/css&quot;&gt;<br>
+&lt;!--<br>
+body{overflow:auto}<br>
+--&gt;<br>
+&lt;/style&gt;<br>
+&lt;/head&gt;<br>
+<br>
+&lt;body bgcolor=&quot;#F0F0F0&quot; text=&quot;#000000&quot; leftmargin=&quot;0&quot; topmargin=&quot;15&quot; marginwidth=&quot;0&quot; marginheight=&quot;15&quot;&gt;<br>
+&lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;right&quot;&gt;<br>
+&lt;tr&gt;<br>
+&lt;td&gt;<br>
+&lt;p&gt;&lt;img src=&quot;img/menu/title_a.gif&quot; width=&quot;84&quot; height=&quot;20&quot;&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;a href=&quot;main.html&quot;&gt;&lt;img src=&quot;img/menu/top.gif&quot; width=&quot;170&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;a href=&quot;cgi-bin/bbs/thebbs.cgi&quot;&gt;&lt;img src=&quot;img/menu/bbs.gif&quot; width=&quot;170&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;a href=&quot;cgi-bin/imgbbs/index.html&quot;&gt;&lt;img src=&quot;img/menu/bbs_g.gif&quot; width=&quot;170&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;a href=&quot;cgi-bin/chat/index.html&quot;&gt;&lt;img src=&quot;img/menu/chat.gif&quot; width=&quot;170&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;a href=&quot;kikaku/index.html&quot;&gt;&lt;img src=&quot;img/menu/kikaku.gif&quot; width=&quot;170&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/p&gt;<br>
+&lt;p&gt;&lt;a href=&quot;link/index.html&quot;&gt;&lt;img src=&quot;img/menu/link.gif&quot; width=&quot;170&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/p&gt;<br>
+&lt;/td&gt;<br>
+&lt;/tr&gt;<br>
+&lt;/table&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;</blockquote>
+<p>これは、 <code>overflow:auto;</code> を指定しているがwidth, heightは指定していない要素（body要素）の子にフロート（align=&quot;right&quot;を指定したtable要素：floatプロパティを使用していないがフロートのような状態になる）が含まれている状態です。このときOperaでは、table要素のボックスのうちbody要素のボックスからはみ出る部分が表示されません。</p>
+<p><code>overflow:auto;</code> を指定した要素にwidthプロパティまたはheightプロパティを具体的な値で指定するか、clearプロパティを指定した要素をフロートの後方に置くなどして親要素のボックスの高さを充分に大きくすることで不具合を回避することができます。</p>
+
+<h3>修正状況</h3>
+<p>Opera6.06、Opera7.21で不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ006</div>
+</body>
+</html>

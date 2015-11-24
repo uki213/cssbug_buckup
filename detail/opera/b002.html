@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ002</div>
+
+<h2>フォントファミリ指定で1フォントしか認識しない<em>(6.0/7.0)</em></h2>
+<p>2003-06-21修正。例示を修正（「ＭＳ Ｐ明朝」を「'」で括った）。</p>
+
+<h3>症状</h3>
+<p>font-familyプロパティでは複数のフォントを代替フォントとして指定できるが、Operaでは最初に有効なフォント以外は無視する。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;font-family:xxxxx, Arial, 'ＭＳ Ｐ明朝', monospace;&quot;&gt;多彩なFont&lt;/p&gt;</pre>
+<div class="example">
+<p style="font-family:xxxxx, Arial, 'ＭＳ Ｐ明朝', monospace;">多彩なFont</p>
+</div>
+<p>「xxxxx」という名前のフォントが存在しなければ、欧文に「Arial」、和文に「ＭＳ Ｐ明朝」が使用されているはずです（あるいは既定の等幅フォント）。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b002_1.png" alt="N6.1" width="147" height="71">N6.1での表示</p>
+<p><img src="img/b002_2.png" alt="Op6" width="132" height="71">Opera6.04での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.04/7.0でも初めのフォントしか認識されません。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ002</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ003</div>
+
+<h2>text-indentの指定値に左マージンやパディングの値が追加される<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>左にマージンまたはパディングが指定されている要素にtext-indentも指定すると、インデント量がtext-indentでの指定値とマージン・パディングの指定値の和になる。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;text-indent:15px; border:2px solid red;&quot;&gt;
+1行目&lt;br&gt;2行目&lt;/p&gt;
+&lt;p style=&quot;text-indent:15px; margin-left:50px; border:2px solid blue;&quot;&gt;
+1行目&lt;br&gt;2行目&lt;/p&gt;</pre>
+<div class="example">
+<p style="text-indent:15px; border:2px solid red;">1行目<br>2行目</p>
+<p style="text-indent:15px; margin-left:50px; border:2px solid blue;">1行目<br>2行目</p>
+</div>
+<p>両者のtext-indentプロパティの指定値は同じですが、後者のp要素にだけ、左に50pxのマージンがあります。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b003_1.png" alt="WinIE6" width="147" height="159">WinIE6.0での表示</p>
+<p><img src="img/b003_2.png" alt="Op6" width="180" height="156">Opera6.04での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.04でも同様の状態が続いています。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ003</div>
+</body>
+</html>

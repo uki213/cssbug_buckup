@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
+<style type="text/css">
+<!--
+.pr {
+	position: relative;
+	width: 75px;
+	height: 75px;
+	background: yellow;
+}
+.ch {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: 0;
+	padding: 5px;
+	border: 5px solid blue;
+	background: aqua;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ080</div>
+
+<h2>border-boxでbottomの算出が正しくない<em>(7.x)</em></h2>
+
+<h3>症状</h3>
+<p>ボーダー領域やパディング領域の幅が0より大きいボックスのbox-sizingプロパティの値をborder-boxに設定した場合、bottomプロパティの振る舞いが正しくない。ボックスの下辺の位置が、本来あるべき位置よりも内側に置かれてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+.pr {
+  position: relative;
+  width: 75px;
+  height: 75px;
+  background: yellow;
+}
+.ch {
+  position: absolute;
+  left: 0;  right: 0;
+  top: 0;   bottom: 0;
+  margin: 0;
+  padding: 5px;
+  border: 5px solid blue;
+  background: aqua;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;pr&quot;&gt;
+&lt;div class=&quot;ch&quot; style=&quot;box-sizing:content-box;&quot;&gt;C&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class=&quot;pr&quot;&gt;
+&lt;div class=&quot;ch&quot; style=&quot;box-sizing:border-box;&quot;&gt;B&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div class="pr">
+<div class="ch" style="box-sizing:content-box;">C</div>
+</div>
+<hr>
+<div class="pr">
+<div class="ch" style="box-sizing:border-box;">B</div>
+</div>
+</div>
+<p>box-sizingプロパティ（初期値はcontent-box）にそれぞれの値を指定した場合の比較です。すべての場合で親要素の背景（黄色の領域）は見えないはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b080_1.png" alt="Op7.2">Opera7.23標準モード</p>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.23で不具合の発生を確認しました。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ080</div>
+</body>
+</html>

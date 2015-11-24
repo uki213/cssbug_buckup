@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ035</div>
+
+<h2>fieldset要素のボーダーを省略指定で無しにすることができない<em>(7.0)</em></h2>
+
+<h3>症状</h3>
+<p>fieldset要素にデフォルトで設定されているボーダーを無しにするときは、ボーダー幅とボーダースタイルの両方を指定しなければならない。</p>
+
+<h3>例示</h3>
+<pre>&lt;form action=&quot;#&quot;&gt;
+&lt;fieldset style=&quot;border: none;&quot;&gt;
+&lt;legend&gt;フォーム&lt;/legend&gt;
+&lt;p&gt;&lt;input type=&quot;text&quot;&gt;&lt;/p&gt;
+&lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+<div class="example">
+<form action="#">
+<fieldset style="border: none;">
+<legend>フォーム</legend>
+<p><input type="text"></p>
+</fieldset>
+</form>
+</div>
+<p>ボーダースタイルだけを指定し、ボーダー幅の指定を省略しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b035_1.png" alt="Moz1.0.2" width="168" height="91">Moz1.0.2での表示（標準モード）</p>
+<p><img src="img/b035_2.png" alt="Op7" width="190" height="84">Opera7.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>fieldset要素に対してはボーダー幅とボーダースタイルの両方を指定すればこのバグを回避できます。ただし、ボーダースタイルは<em>none以外</em>にする必要があります。</p>
+<pre>&lt;form action=&quot;#&quot;&gt;
+&lt;fieldset style=&quot;<em>border:0 solid;</em>&quot;&gt;
+&lt;legend&gt;Opera7.0でもボーダーが消える（solid）&lt;/legend&gt;
+&lt;p&gt;&lt;input type=&quot;text&quot;&gt;&lt;/p&gt;
+&lt;/fieldset&gt;
+&lt;fieldset style=&quot;<em>border:0 none;</em>&quot;&gt;
+&lt;legend&gt;Opera7.0ではボーダーが消えない（none）&lt;/legend&gt;
+&lt;p&gt;&lt;input type=&quot;text&quot;&gt;&lt;/p&gt;
+&lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+<div class="example">
+<form action="#">
+<fieldset style="border:0 solid;">
+<legend>Opera7.0でもボーダーが消える（solid）</legend>
+<p><input type="text"></p>
+</fieldset>
+<fieldset style="border:0 none;">
+<legend>Opera7.0ではボーダーが消えない（none）</legend>
+<p><input type="text"></p>
+</fieldset>
+</form>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera7.0では標準・互換モードともに不具合の発生が確認されました。Opera6.05では発生しません。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ035</div>
+</body>
+</html>

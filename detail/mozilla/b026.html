@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ026</div>
+
+<h2>存在しない画像をリストマーカーに指定するとリストマーカーが完全に消える<em>(N6.2)</em></h2>
+
+<h3>症状</h3>
+<p>list-style-imageプロパティで存在しない画像ファイルを指定すると、代替表示されるはずのlist-style-typeプロパティで指定するリストマーカーも表示されない。</p>
+
+<h3>例示</h3>
+<pre>&lt;ul style=&quot;list-style-image:url(../img/img02.png);&quot;&gt;
+&lt;li&gt;A&lt;/li&gt;
+&lt;li&gt;B&lt;ul style=&quot;list-style-image:url(none.png); list-style-type:square;&quot;&gt;
+&lt;li&gt;C&lt;/li&gt;
+&lt;li&gt;D&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul style="list-style-image:url(../img/img02.png);">
+<li>A</li>
+<li>B<ul style="list-style-image:url(none.png); list-style-type:square;">
+<li>C</li>
+<li>D</li>
+</ul></li>
+</ul>
+</div>
+<p>親のul要素では存在する画像ファイルを、子のul要素では存在しない画像ファイルをリストマーカーに指定しました。ただし、子のul要素にはsquareもリストマーカーとして指定されています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b026_1.png" alt="WinIE6" width="158" height="138">WinIE6.0での表示</p>
+<p><img src="img/b026_2.png" alt="Moz1.0" width="127" height="123">Moz1.0での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>N6.2.3、Moz1.0では標準・互換モードともにリストマークがまったく表示されない現象が発生します。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ026</div>
+</body>
+</html>

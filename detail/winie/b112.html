@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ112</div>
+
+<h2>select要素ではz-indexやborderなどのプロパティを無視する<em>(5.x/6.0)</em></h2>
+<p>2003-09-03修正。補足を修正。</p>
+
+<h3>症状</h3>
+<p>select要素ではz-indexやborderなど、ほかのフォームコントロール要素で使用可能なプロパティの一部が無視される。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;position:relative;&quot;&gt;
+&lt;form style=&quot;position:relative; z-index:1;&quot;&gt;
+&lt;div&gt;
+&lt;select style=&quot;border:2px solid red; width:10em;&quot;&gt;
+&lt;option&gt;select&lt;/option&gt;
+&lt;/select&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;input style=&quot;border:2px solid red; width:10em;&quot;&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;div style=&quot;position:absolute; z-index:2; left:3em;
+  top:0; width:4em; height:4em; background:aqua;&quot;&gt;div&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example" style="position:relative;">
+<form method="post" action="b112.html" style="position:relative; z-index:1;">
+<div>
+<select style="border:2px solid red; width:10em;">
+<option>select</option>
+</select>
+</div>
+<div>
+<input type="text" value="input" style="border:2px solid red; width:10em;">
+</div>
+</form>
+<div style="position:absolute; z-index:2; left:3em; top:0; width:4em; height:4em; background:aqua;">div</div>
+</div>
+<p>borderプロパティとz-indexプロパティに対する挙動の違いを、select要素とinput要素とで比べています。背景が空色のdiv要素はform要素とその子孫要素であるフォームコントロールを覆うように表示されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b112_1.png" alt="N7" width="159" height="71">N7.02での表示（標準モード）</p>
+<p><img src="img/b112_2.png" alt="WinIE6" width="161" height="92">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>以下に挙げるプロパティなどがこのバグに該当します。</p>
+<ul>
+<li>ボーダー関連のプロパティ</li>
+<li>z-indexプロパティ</li>
+<li>text-alignプロパティ</li>
+<li>line-heightプロパティ</li>
+<li>背景画像関連のプロパティ</li>
+<li>text-indentプロパティ</li>
+<li>letter-spacingプロパティ</li>
+<li><ins datetime="2003-09-03T00:00:00+09:00">スクロールバー関連のプロパティ（WinIE独自拡張のscrollbar-face-colorなど）</ins></li>
+</ul>
+<p>select要素のリストボックスはWindowsのコントロールを表示しているようです。このため、z-indexプロパティをサポートしていないのはWinIEの仕様です。</p>
+
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードでこの現象の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ112</div>
+</body>
+</html>

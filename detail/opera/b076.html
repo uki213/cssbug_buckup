@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ076</div>
+
+<h2>clearを指定した要素ではフロートに対して上マージンを設置する<em>(6.0/7.x)</em></h2>
+
+<h3>症状</h3>
+<p>clearプロパティによってフロートとの隣接を抑制した要素に上マージンを指定すると、フロートの下に指定値分の幅の上マージンを設置する。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;float:left; width:3em; height:3em; margin:0; background:aqua;&quot;&gt;
+Float&lt;/div&gt;
+&lt;div style=&quot;clear:left; margin-top:1em; border:2px solid blue;&quot;&gt;
+Clear&lt;/div&gt;</pre>
+<div class="example">
+<div style="float:left; width:3em; height:3em; margin:0; background:aqua;">Float</div>
+<div style="clear:left; margin-top:1em; border:2px solid blue;">Clear</div>
+</div>
+<p>フロートの高さが3emであるのに対し、後続のdiv要素の上マージンの指定値が1emしかないので、フロートの下端と後続要素のボーダー上端は接するはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b076_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b076_2.png" alt="Op7.2">Opera7.23標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>clearプロパティの「フロートに後続する要素のボックスを先行するフロートに隣接させない」効果は、後続する要素の上マージンの値を調節することで実現しています。従って前出の例示の場合は、後続する要素へ実際に設置するmargin-topの値を3emに変えることでclearプロパティの効果を実現することになります。</p>
+<p>そもそもフロートは通常フローに属していないため、位置指定されていない（<code>position:static;</code> である）ブロックボックスのマージンがフロートのボックスに対して設置されることはないはずです。</p>
+
+<h3>修正状況</h3>
+<p>Opera6.06、Opera7.23の標準モードと互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ076</div>
+</body>
+</html>

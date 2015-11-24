@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+<script type="text/javascript">
+<!--
+function getstyl(id1) {
+	obj = document.getElementById(id1);
+	ipt = document.getElementById('in1');
+	ipt.setAttribute('value', obj.style.position);
+	ipt = document.getElementById('in2');
+	ipt.setAttribute('value', obj.style.left);
+}
+function chgpos(id1) {
+	obj = document.getElementById(id1);
+	if(obj.style.position == 'absolute') {
+		obj.style.position = 'static';
+	} else {
+		obj.style.position = 'absolute';
+	}
+	getstyl('d1');
+}
+function chglef(id1) {
+	obj = document.getElementById(id1);
+	if(navigator.userAgent.match(/Opera/i)) {
+		if(obj.style.left == '0') {		//Opera6ではpx単位が前提
+			obj.style.left = '100';
+		} else {
+			obj.style.left = '0';
+		}
+	} else {
+		if(obj.style.left == '0px') {	//IEやMozはこちら
+			obj.style.left = '100px';
+		} else {
+			obj.style.left = '0px';
+		}
+	}
+	getstyl('d1');
+}
+// -->
+</script>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ021</div>
+
+<h2>positionプロパティをスクリプトから変更できない<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>スクリプトでpositionプロパティを絶対配置から通常配置に切り替えた場合、切り替え後もleft, top, right, bottomの各プロパティの指定値が反映される。</p>
+
+<h3>例示</h3>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt;
+function chgpos(id1) {
+  var obj = document.getElementById(id1);
+    if(obj.style.position == 'absolute') {
+      obj.style.position = 'static';
+    } else {
+      obj.style.position = 'absolute';
+  }
+}
+function chglef(id1) {
+  var obj = document.getElementById(id1);
+  if(navigator.userAgent.match(/Opera/i)) {
+    if(obj.style.left == '0') {  //Opera6ではpx単位が前提
+      obj.style.left = '100';
+    } else {
+      obj.style.left = '0';
+    }
+  } else {
+    if(obj.style.left == '0px') { //IEやMozはこちら
+      obj.style.left = '100px';
+    } else {
+      obj.style.left = '0px';
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;div id=&quot;d1&quot; style=&quot;position:absolute; left:0px; width:2em; height:2em; background:red;&quot;&gt;
+A&lt;/div&gt;
+&lt;form action=&quot;#&quot;&gt;
+&lt;input type=&quot;button&quot; value=&quot;position: absolute ←→ static;&quot; onclick=&quot;chgpos('d1')&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;button&quot; value=&quot;left: 0px; ←→ 100px;&quot; onclick=&quot;chglef('d1')&quot;&gt;&lt;br&gt;
+&lt;/form&gt;</pre>
+<div class="example">
+<div id="d1" style="position:absolute; left:0px; width:2em; height:2em; background:red;">A</div>
+<form action="#">
+<input type="text" value="" id="in1">
+<input type="button" value="position: absolute ←→ static;" onclick="chgpos('d1')"><br>
+<input type="text" value="" id="in2">
+<input type="button" value="left: 0px; ←→ 100px;" onclick="chglef('d1')"><br>
+</form>
+</div>
+<p>上のボタンでpositionプロパティの切り替え、下のボタンでleftプロパティの切り替えを行います。また、各ボタンの左にあるボックスにプロパティの状態が表示されています。ボタンを押してleftプロパティがどのように反映されるかを確認してください。</p>
+
+<h3>補足</h3>
+<p>Opera6では、JavaScriptからstyleオブジェクトのpositionに関するプロパティの値変更に対応していないようです（正確には、値は変更できても表示に反映されない）。</p>
+<p>参考：http://www.opera.com/docs/specs/js/</p>
+
+<h3>修正状況</h3>
+<p>Opera6.05では、positionの切り替えに対応していないようです。Opera7.0ではpositionプロパティをDOMを用いて変更できるようになりました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ021</div>
+</body>
+</html>

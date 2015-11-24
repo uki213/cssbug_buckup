@@ -1,0 +1,11 @@
+@charset "Shift_JIS";
+
+div.sample1:before {
+	content: "“ú–{Œê";
+	color: red;
+}
+
+div.sample2:before {
+	content: "\65E5 \672C \8A9E";
+	color: red;
+}

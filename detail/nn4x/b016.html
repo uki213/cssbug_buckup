@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Netscape Navigator 4.x CSSバグリスト</title>
+</head>
+<body>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ016</div>
+
+<h2>実在しない開始タグがstyle属性を含む開始タグの直後に現れる</h2>
+
+<h3>症状</h3>
+<p>インラインスタイルシートを含む文書のソースを表示させたとき、style属性を含む開始タグの直後に、実際は存在しない、Ttyle属性が含まれる開始タグが現れることがある。さらに、この現象によってスタイルが乱れることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt;
+document.write('スクリプト');
+&lt;/script&gt;
+&lt;div style=&quot;position:relative; background:aqua;&quot;&gt;背景つき要素&lt;/div&gt;</pre>
+<div class="example">
+<script type="text/javascript">
+document.write('スクリプト');
+</script>
+<div style="position:relative; background:aqua;">背景つき要素</div>
+</div>
+<p>文書の読み込みが終了した後に、ブラウザのウィンドウをリサイズしてください。</p>
+
+<h3>スクリーンショット</h3>
+<p>※ウィンドウのサイズを変更した後の状態のスクリーンショットです。</p>
+<div class="shot">
+<p><img src="img/b016_1.png" alt="N7" width="223" height="92">N7.02での表示</p>
+<p><img src="img/b016_2.png" alt="NN4" width="314" height="153">NN4.8での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>以下はバグが発生しているときにNNで表示した前出の例示のソースです（見やすくするために改行を入れています。実際はstyle属性を持つdiv要素開始タグとdiv要素終了タグの間は改行がありません）。Ttyle属性を持つdiv要素開始タグのためにこの文書は終了タグがないdiv要素が存在するものとして扱われ、これがレイアウトを乱す原因になることがあります。</p>
+<pre>スクリプト
+&lt;DIV style=&quot;position:relative; background:aqua;&quot;&gt;
+<em>&lt;DIV Ttyle=&quot;position:relative; background:aqua;&quot;&gt;</em>
+背景つき要素&lt;/DIV&gt;</pre>
+<p>なお、このバグは必ず発生するわけではありません。以下の条件に該当する場合に特に発生しやすいようです。</p>
+<ul>
+<li>文書内でスクリプト（JavaScript）を使用している場合。</li>
+<li>positionプロパティを使用している場合。</li>
+<li>キャッシュを使用して文書を表示する場合。特に、ウィンドウのリサイズやツールバーの折り畳みなどをしたとき。</li>
+</ul>
+
+<h3>修正状況</h3>
+<p>NN4.8で不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ016</div>
+</body>
+</html>

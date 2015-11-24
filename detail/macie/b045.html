@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ045</div>
+
+<h2>16進数エスケープ文字の直後に置いた空白類文字を無視しない<em>(5.0)</em></h2>
+<ul>
+<li>2003-12-25修正。MacIE5.1以降でこの不具合は発生しないようです。</li></ul>
+
+<h3>症状</h3>
+<p>CSS内で16進数表記によるエスケープを行うとき、エスケープ表記の直後にある空白類文字を無視しない。このためにスタイル宣言が無視されることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;\63 olor:blue;&quot;&gt;青色&lt;/p&gt;</pre>
+<div class="example">
+<p style="\63 olor:blue;">青色</p>
+</div>
+<p>「\63」は「c」をエスケープしたものです。また、「\63」の直後にある空白は無視されるのでこれは <code>color:blue;</code> と指定したことになります。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b045_1.png" alt="WinIE6" width="99" height="73">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>エスケープ文字の後に空白を置かないようにするとバグを回避できます。しかし、エスケープした部分とエスケープしていない部分を区別しづらくなるので注意してください。</p>
+<pre>&lt;p style=&quot;<em>\63olor</em>:blue;&quot;&gt;青色&lt;/p&gt;</pre>
+<div class="example">
+<p style="\63olor:blue;">青色</p>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>MacIE5.0で不具合の発生が確認されています。</li>
+<li>MacIE5.1.7（OS9用最新版）、5.2.3（OSX用最新版）でこの不具合は発生しないようです。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ045</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ048</div>
+
+<h2>リストをセンタリングしたときにリストマーカーがセンタリングされない<em>(5.0)</em></h2>
+<p>2003-04-27修正。CSS仕様に従った動作です。</p>
+<p>2003-04-28修正。誤解を招く表現があったので修正。</p>
+
+<h3>症状</h3>
+<p>ul要素またはol要素をmargin-left, margin-rightの各プロパティでセンタリングし、li要素をtext-alignプロパティでセンタリングしたとき、リストマーカーだけが左端に寄せられたままになる。</p>
+
+<h3>例示</h3>
+<pre>&lt;ul style=&quot;margin-left:auto; margin-right:auto; width:50%;&quot;&gt;
+&lt;li style=&quot;text-align:center;&quot;&gt;リスト&lt;/li&gt;
+&lt;li style=&quot;text-align:center;&quot;&gt;リスト&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul style="margin-left:auto; margin-right:auto; width:50%;">
+<li style="text-align:center;">リスト</li>
+<li style="text-align:center;">リスト</li>
+</ul>
+</div>
+<p><a href="b022.html" title="marginプロパティで値を一括指定すると無視される">MacIEバグ022</a>のためにmarginプロパティ<ins datetime="2003-04-28T00:00:00+09:00">を用いた一括指定</ins>でul要素をセンタリングすることはできません。<ins datetime="2003-04-28T00:00:00+09:00">margin-left, margin-rightの各プロパティで個別指定してください。</ins></p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b048_1.png" alt="N7" width="203" height="83">N7.02での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<ins datetime="2003-04-27T00:00:00+09:00">
+<p>CSS2では、list-style-positionプロパティがoutside値である場合（初期値）、リストマーカーはlist-item要素のボックスの外側に置かれると決められています。従ってリストマーカーがtext-alignプロパティによる配置の影響を受けない状態は、バグではないと考えられます。</p>
+<p>リストマーカーもtext-alignプロパティによる配置の影響を受ける実装（WinIEやMozillaなど）については、list-style-positionプロパティが、折り返したlist-item文字列の先頭がリストマーカーの下にくるか否かを設定するものであるという解釈に基づくものであると考えられます（CSS1の規定によればこのように考えることもできそうです）。</p>
+</ins>
+
+<h3>修正状況</h3>
+<p><del datetime="2003-04-27T00:00:00+09:00">MacIE5.0で不具合の発生が確認されています。</del><ins datetime="2003-04-27T00:00:00+09:00">これはCSS仕様に従った動作です。</ins></p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ048</div>
+</body>
+</html>

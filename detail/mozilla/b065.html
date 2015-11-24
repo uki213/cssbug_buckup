@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ065</div>
+
+<h2>等幅フォントで表示した文字列の末尾が欠ける<em>(N7.x)</em></h2>
+
+<h3>症状</h3>
+<p>文字列を等幅フォントで表示したとき、文字列の末尾（複数行に渡る文字列の場合は行末）が表示されないことがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;font:bold 100% 'ＭＳ ゴシック',monospace;&quot;&gt;
+バグ辞典スレッド……&lt;/p&gt;</pre>
+<div class="example">
+<p style="font:bold 100% 'ＭＳ ゴシック',monospace;">バグ辞典スレッドバグ辞典スレッドバグ辞典スレッドバグ辞典スレッドバグ辞典スレッドバグ辞典スレッドバグ辞典スレッドバグ辞典スレッドバグ辞典スレッド</p>
+</div>
+<p>文字列が2行以上に渡って表示される程度にまでウィンドウの幅を狭くするとバグが発生しやすくなります。</p>
+
+<h3>補足</h3>
+<p>このバグはWin9xのみで発生します。詳しくは以下の項目を参照してください。</p>
+<ul>
+<li><a href="http://bugzilla.mozilla.gr.jp/show_bug.cgi?id=395" title="Bugzilla-jp">Bugzilla Bug 395 [Win9x] 太字/ボールド/boldの幅計算が実際より小さくなっている - 太字の文字列を選択したときに右に揺れ動く - 太字の文字列が右端で綺麗に折り返さない - boldで、letter-spacingが0以外の要素のテキストがその次の内容と重なる - 等幅ボールド文字が欠ける</a></li>
+<li><a href="http://bugzilla.mozilla.gr.jp/show_bug.cgi?id=3214" title="Bugzilla-jp">[Win9x] 等幅ボールド文字がある条件で欠ける</a></li>
+</ul>
+<p>なお、このバグはMozilla1.5で修正されるようです。</p>
+
+<h3>修正状況</h3>
+<p>Win9x上のMoz1.4/N7.1でこの不具合が発生するようです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ065</div>
+</body>
+</html>

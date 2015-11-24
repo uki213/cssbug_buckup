@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="content-script-type" content="text/javascript">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../index.html" title="トップページ">
+<title>制作メモ</title>
+</head>
+<body>
+<h1>制作メモ</h1>
+<div class="navi"><a href="../index.html">トップページ</a>／制作メモ</div>
+
+<p>「進捗度」をトップページに移動しました。（2004-03-02）</p>
+
+<h2>制作メモ</h2>
+
+<h3>2004-02-27: <a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/862n">[3-862]</a></h3>
+<blockquote>バグかどうか分からないのですがNN7.1で外部スタイルシートで<br>
+指定した一番目の要素が無視されてしまいます。IE6では問題ないです。<br>
+<br>
+body {<br>
+background:url(background.gif);<br>
+font-size:10pt;<br>
+}<br>
+↑の場合だと背景、文字サイズ共に無視され<br>
+<br>
+body {font-size:10pt;}<br>
+<br>
+body {<br>
+background:url(background04.gif);<br>
+font-size:10pt;<br>
+}<br>
+↑のように最初に適当なのを加えると、どちらも反映されます。</blockquote>
+<p>再現できず。</p>
+
+<h3>2004-02-27: <a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/826n">[3-826]</a></h3>
+<blockquote>JavaScript で table 要素の中に tr ・ td 要素を追加しても IE 6.0 sp1 でだけ<br>
+表示に反映されずにつまっているところです。<br>
+MozillaFirebird 0.6.1、Opera 7.23 ja では無事動作。</blockquote>
+<p>table要素に対してtr要素をappendChildするとこの現象が発生します。しかし、table要素の直下にtr要素を置くことはできません。thead, tbody, tfoot要素に対してtr要素をappendChildしてください。</p>
+
+<hr>
+
+<h3>2004-02-13: <a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/810n">[3-810]</a></h3>
+<blockquote>WinIE6にて。<br>
+<br>
+#id {position:absolute; position:fixed; top:50px; left:0;}<br>
+これはposition:fixed;（未実装）に上書きされてposition:absolute;は無効になる。<br>
+したがってtop:50px;も効かない。<br>
+<br>
+IE独自拡張のCSS関数構文を使って同じ事を指定してみる。<br>
+#id {position:expression('absolute'); position:fixed; top:50px; left:0;}<br>
+これだとposition:absolute;として有効、top:50px;に配置される。<br>
+<br>
+なんかヘンですね。</blockquote>
+<p>上記の例に含まれるダイナミックプロパティは、以下のようなスタイルシートとスクリプトの組み合わせであると考えればよいかと。</p>
+<pre>&lt;style type=&quot;text/css&quot;&gt;#id {position:fixed; top:50px; left:0;}&lt;/style&gt;
+&lt;body onload=&quot;document.getElementById('id').style.position='absolute'&quot;&gt;</pre>
+<p>この場合はMozillaやOperaでも固定配置ではなく絶対配置されます。</p>
+
+<h3>2004-02-13: <a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/809n">[3-809]</a></h3>
+<blockquote>結論だけ言うと、offsetHeightの算出法がStrictモード時に他のUAと違うことが原因。<br>
+ただoffsetHeightはもともときちんと標準化されたプロパティではないので<br>
+バグとみなすには無理があるだろう。</blockquote>
+<p>box-sizingプロパティの値によってbottom (right) プロパティの作用が異なることも原因？</p>
+<pre>&lt;div style=&quot;position:relative; width:100px; height:100px; background:lime;&quot;&gt;
+&lt;div style=&quot;position:absolute; left:0; right:0; top:0; bottom:0;
+  border:10px solid blue;&quot;&gt;C&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;position:relative; width:100px; height:100px; background:aqua;&quot;&gt;
+&lt;div style=&quot;position:absolute; left:0; right:0; top:0; bottom:0;
+  border:10px solid red; <em>box-sizing:border-box; -moz-box-sizing:border-box;</em>&quot;&gt;B&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="position:relative; width:100px; height:100px; background:lime;">
+<div style="position:absolute; left:0; right:0; top:0; bottom:0; border:10px solid blue;" id="a1"><a href="javascript:alert(document.getElementById('a1').offsetHeight)">C</a></div>
+</div>
+<div style="position:relative; width:100px; height:100px; background:aqua;">
+<div style="position:absolute; left:0; right:0; top:0; bottom:0; border:10px solid red; box-sizing:border-box; -moz-box-sizing:border-box;" id="a2"><a href="javascript:alert(document.getElementById('a2').offsetHeight)">B</a></div>
+</div>
+</div>
+<p>Opera標準モードでは、</p>
+<ul>
+<li>絶対配置した要素がcontent-boxのとき、offsetHeight値は100</li>
+<li>絶対配置した要素がborder-boxのとき、offsetHeight値は80</li>
+</ul>
+<p>絶対配置要素のtopプロパティ値を親要素の高さと絶対配置要素の高さの差に更新する作業を繰り返す場合、border-boxでは絶対配置要素の下ボーダー外辺と親要素の内容領域の下辺との間に常に20pxの空間が確保されるため、ボックスの高さは低くなってゆく。結果、内容物は下方に移動する。</p>
+<p>Opera互換モードでは、どちらの値も80になるが20pxの空間は確保しないため、ボックスの高さは変化しない。</p>
+<p>※Mozillaは標準・互換ともにOpera標準モードと同じ。</p>
+
+<h3>2004-02-13: <a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/770n">[3-770]</a></h3>
+<blockquote>#navbar {<br>
+position:fixed; z-index:5;<br>
+bottom:0; left:0;right:0;<br>
+margin-bottom:0;<br>
+}<br>
+&lt;table id=&quot;navbar&quot;&gt;&lt;tr&gt;<br>
+&lt;th&gt;menu&lt;/th&gt;<br>
+&lt;td&gt;<br>
+&lt;a href=&quot;1.htm&quot;&gt;menu1&lt;/a&gt; &lt;a href=&quot;2.htm&quot;&gt;menu2&lt;/a&gt; &lt;a href=&quot;3.htm&quot;&gt;menu3&lt;/a&gt; ……以下略<br>
+&lt;/td&gt;<br>
+&lt;/tr&gt;&lt;/table&gt;<br>
+また、これはtableの問題になるが、上掲のソースで<br>
+#navbar td {text-align:right;}と追加指定して、<br>
+a要素を列べた後ろにaaaaaaa0000000......と半角英数字を長く長く長く書くと、<br>
+その英数字だけが表示されてa要素が消える困った現象が起きる。</blockquote>
+<p>長い1バイト文字列によって表の幅が閲覧領域の幅を超えているために右寄せの文字が見えなくなっていると思います（以下はイメージ図。半透明になっている領域は閲覧領域からはみ出した部分を表す）。</p>
+<ul>
+<li><img src="img/memo01.png" alt="イメージ図"></li>
+</ul>
+<p>固定配置は閲覧領域に対する位置を指定するものであり、閲覧領域からはみ出した部分を表示することはできないのは妥当でしょう。</p>
+
+<h3>2004-02-13: <a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/767n">[3-767]</a></h3>
+<blockquote>■修正済！(1.2で再現しない)<br>
+空白文字のみのテキストノードを正常に取得できない</blockquote>
+<p><a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/">ねこめしにっき</a>では「<a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/2004/02a.html#d05n01-JSDOM-bad">変わりばえの無いトコ</a>」とされているのですが、実際のところはどうなのでしょう？</p>
+
+<h2>以前のメモ</h2>
+<ul>
+<li><a href="memo_log1.html">ログ1</a></li>
+</ul>
+
+<div class="navi"><a href="../index.html">トップページ</a>／制作メモ</div>
+</body>
+</html>

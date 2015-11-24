@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ001</div>
+
+<h2>フォーム関連要素のsize属性とサイズ関連スタイルの適用優先順位が不正<em>(N6)</em></h2>
+
+<h3>症状</h3>
+<p>form要素の子孫要素（input要素など）にsize属性と幅指定のスタイルを同時に指定した場合、本来優先されるべきスタイルシートでの指定でなく、size属性で指定した値が反映される。</p>
+
+<h3>例示</h3>
+<pre>&lt;form action=&quot;#&quot;&gt;&lt;div&gt;
+&lt;input type=&quot;text&quot; name=&quot;a&quot; size=&quot;8&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;text&quot; name=&quot;b&quot; size=&quot;8&quot; style=&quot;width: 10em;&quot;&gt;
+&lt;/div&gt;&lt;/form&gt;</pre>
+<div class="example">
+<form action="#"><div>
+<input type="text" name="a" size="8"><br>
+<input type="text" name="b" size="8" style="width: 10em;">
+</div></form>
+</div>
+<p>2つの入力ボックスはsize属性では同じサイズを指定していますが、後のボックスだけはスタイルシートも用いて幅を定義しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b001_1.png" alt="WinIE6" width="189" height="104">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b001_2.png" alt="N6.2" width="141" height="67">N6.2.2での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>N6.2.2およびMoz1.0ではスタイルシートでの設定が優先されます。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ001</div>
+</body>
+</html>

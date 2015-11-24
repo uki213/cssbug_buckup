@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+p.a:first-letter{
+	color:red;
+}
+p.b:first-letter {
+	color:red;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ055</div>
+
+<h2>擬似要素名称の直後に空白類文字を置かないと擬似要素が認識されない<em>(6.0)</em></h2>
+<ul>
+<li>2003-04-23修正。症状の変更。</li>
+<li>2003-10-09修正。補足の変更。</li>
+</ul>
+
+<h3>症状</h3>
+<p>セレクタに :first-letter などの擬似要素を用いるとき、擬似要素名称の次（中括弧やカンマとの間）に空白類文字を置かないと擬似要素が認識されず、そのセレクタが無視されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+p.a:first-letter{
+  color:red;
+}
+p.b:first-letter {
+  color:red;
+}
+&lt;/style&gt;
+
+&lt;p class=&quot;a&quot;&gt;空白なし&lt;/p&gt;
+&lt;p class=&quot;b&quot;&gt;空白あり&lt;/p&gt;</pre>
+<div class="example">
+<p class="a">空白なし</p>
+<p class="b">空白あり</p>
+</div>
+<p>p要素内にある最初の文字を赤色で表示させる構文です。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b055_1.png" alt="Moz1.0" width="143" height="96">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b055_2.png" alt="WinIE6" width="125" height="108">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>擬似要素を使う使わないに限らず、セレクタと左括弧の間には常に空白類文字を置くように心がけてください。<ins datetime="2003-04-23T00:00:00+09:00">セレクタのグループ内に擬似要素を含める場合は擬似要素名称とカンマの間にも空白類文字を置いてください。</ins></p>
+<pre>h1:first-lette<em>r ,</em> h2:first-letter {
+  ……
+}</pre>
+<p><ins datetime="2003-10-09T00:00:00+09:00">互換モードでは空白類文字を置かなくてもセレクタが機能します。</ins></p>
+
+<h3>修正状況</h3>
+<p>WinIE6.0<del datetime="2003-10-09T00:00:00+09:00">では標準・互換モードともに</del><ins datetime="2003-10-09T00:00:00+09:00">標準モードで</ins>不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ055</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ035</div>
+
+<h2>ボールド体の文字列が前後の文字列と重なる<em>(N6.x/N7.x)</em></h2>
+
+<h3>症状</h3>
+<p>両端揃え（<code>text-align:justify;</code>）またはletter-spacingプロパティに0より大きい値を指定した要素内では以下の条件のいずれかに該当する場合に、ボールド体の文字列が重なる現象が発生する。</p>
+<ul>
+<li>ボールド体の文字列とボールド体でない文字列が隣接しているときに、隣接部分で文字が重なる。</li>
+<li>リンク文字列とリンクに後続する文字列とが重なる（後続する文字列がボールド体の場合でも発生）。</li>
+</ul>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;text-align:justify;&quot;&gt;
+&lt;span style=&quot;font-weight:bold;&quot;&gt;boldboldboldbold&lt;/span&gt;normal&lt;/div&gt;
+&lt;div style=&quot;letter-spacing:2px;&quot;&gt;
+&lt;span style=&quot;font-weight:bold;&quot;&gt;boldboldboldbold&lt;/span&gt;normal&lt;/div&gt;
+&lt;div style=&quot;font-weight:bold;&quot;&gt;→
+&lt;a href=&quot;...&quot;&gt;Mozilla Mozilla&lt;/a&gt;←&lt;/div&gt;
+&lt;div style=&quot;font-weight:bold; text-align:justify;&quot;&gt;→
+&lt;a href=&quot;...&quot;&gt;Mozilla Mozilla&lt;/a&gt;←&lt;/div&gt;
+&lt;div style=&quot;font-weight:bold; letter-spacing:2px;&quot;&gt;→
+&lt;a href=&quot;...&quot;&gt;Mozilla Mozilla&lt;/a&gt;←&lt;/div&gt;</pre>
+<div class="example">
+<div style="text-align:justify;"><span style="font-weight:bold;">boldboldboldbold</span>normal</div>
+<div style="letter-spacing:2px;"><span style="font-weight:bold;">boldboldboldbold</span>normal</div>
+<div style="font-weight:bold;">→<a href="../mozilla.html">Mozilla Mozilla</a>←</div>
+<div style="font-weight:bold; text-align:justify;">→<a href="../mozilla.html">Mozilla Mozilla</a>←</div>
+<div style="font-weight:bold; letter-spacing:2px;">→<a href="../mozilla.html">Mozilla Mozilla</a>←</div>
+</div>
+<p>前から2つはボールド体文字列と後続の文字列とが重なる場合の例、後から2つはリンク文字列と後続の文字列が重なる場合の例です。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b035_1.png" alt="Ns7.1">Netscape7.1標準モード（WindowsXP）</p>
+<p><img src="img/b035_2.png" alt="Ns7.1">Netscape7.1標準モード（WindowsMe）</p>
+</div>
+
+<h3>補足</h3>
+<p>Bugzilla-jpでは以下の項目が該当します。</p>
+<ul>
+<li><a href="http://bugzilla.mozilla.gr.jp/show_bug.cgi?id=395">Bugzilla Bug 395 [Win9x] 太字/ボールド/boldの幅計算が実際より小さくなっている - 太字の文字列を選択したときに右に揺れ動く - 太字の文字列が右端で綺麗に折り返さない - boldで、letter-spacingが0以外の要素のテキストがその次の内容と重なる - 等幅ボールド文字が欠ける</a></li>
+</ul>
+
+<h3>修正状況</h3>
+<ul>
+<li>Netscape7.1をWindows9x/Meで実行したときに不具合の発生を確認しました。</li>
+<li>Netscape7.1（WinNT系）、Mozilla1.5以降（Win9x系/NT系）でこの不具合は発生しません。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ035</div>
+</body>
+</html>

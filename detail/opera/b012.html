@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ012</div>
+
+<h2>list-style-image:none; を無視する<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>ul要素等が入れ子になっている状態で、親要素にlist-style-imageプロパティでリストマーカーに画像を指定すると、子孫要素で <code>list-style-image: none;</code> を指定しても親要素の指定を継承してしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;ul style=&quot;list-style-image:url(../img/img02.png);&quot;&gt;
+&lt;li&gt;A&lt;/li&gt;
+&lt;li&gt;B&lt;ul style=&quot;list-style-image:none;&quot;&gt;
+&lt;li&gt;C&lt;/li&gt;
+&lt;li&gt;D&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul style="list-style-image:url(../img/img02.png);">
+<li>A</li>
+<li>B<ul style="list-style-image:none;">
+<li>C</li>
+<li>D</li>
+</ul></li>
+</ul>
+</div>
+<p>親のul要素内は画像をマーカーに用い、子のul要素内はデフォルトのマーカーを用いるように指定しました。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b012_1.png" alt="WinIE6" width="144" height="133">WinIE6.0での表示</p>
+<p><img src="img/b012_2.png" alt="Op6" width="148" height="156">Opera6.05での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.05ではスタイルシートの指定を無視した継承が行われます。Opera7.0では標準・互換モードともに none を認識します。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ012</div>
+</body>
+</html>

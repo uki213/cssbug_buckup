@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+<style type="text/css">
+<!--
+li.a {
+	position: fixed;
+	width: 10em;
+	left: 30px;
+	top: 10px;
+	border: 2px solid blue;
+}
+a.b:hover {
+	letter-spacing: 1em;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ023</div>
+
+<h2>固定配置されたリストアイテム要素内で文字間隔を変えると要素全体が動く<em>(Moz1.0RC3)</em></h2>
+
+<h3>症状</h3>
+<p>幅を相対単位の値で指定し、かつ固定配置にしたリストアイテム要素（li要素など、 <code>display: list-item;</code> が指定された要素）内で、hover擬似クラスを用いてletter-spacingプロパティの値を変えると、マウス等でポイントした瞬間に要素全体が移動する。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+li.a {
+  position: fixed;
+  width: 10em;
+  left: 30px;
+  top: 10px;
+  border: 2px solid blue;
+}
+a.b:hover {
+  letter-spacing: 1em;
+}
+&lt;/style&gt;
+
+&lt;ul&gt;
+&lt;li class=&quot;a&quot;&gt;&lt;a class=&quot;b&quot; href=&quot;../mozilla.html&quot;&gt;目次ページ&lt;/a&gt;&lt;br&gt;
+&lt;a class=&quot;b&quot; href=&quot;../mozilla.html&quot;&gt;目次ページ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul>
+<li class="a"><a class="b" href="../mozilla.html">目次ページ</a><br>
+<a class="b" href="../mozilla.html">目次ページ</a></li>
+</ul>
+</div>
+<p>ページ左上に固定配置されたli要素内にある2つのリンク上でマウスポインタを何度も行き来させてみてください。</p>
+
+<h3>修正状況</h3>
+<p>Moz1.0では標準・互換モードともに不具合の発生が確認されました。N6.2.3では標準・互換モードともに不具合は発生しませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ023</div>
+</body>
+</html>

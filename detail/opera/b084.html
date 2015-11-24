@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ084</div>
+
+<h2>table要素の上マージンがcaption要素の上に設置される<em>(7.x)</em></h2>
+
+<p>table要素の上マージンが、caption要素のボックスの上に設置される。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;background:aqua;&quot;&gt;前&lt;/div&gt;
+&lt;table style=&quot;margin-top:2em; border:2px solid red;&quot;&gt;
+&lt;caption style=&quot;border:2px solid blue;&quot;&gt;caption&lt;/caption&gt;
+&lt;tr&gt;&lt;td&gt;セル&lt;/td&gt;&lt;td&gt;セル&lt;/td&gt;&lt;td&gt;セル&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div style=&quot;background:aqua;&quot;&gt;後&lt;/div&gt;</pre>
+<div class="example">
+<div style="background:aqua;">前</div>
+<table style="margin-top:2em; border:2px solid red;">
+<caption style="border:2px solid blue;">caption</caption>
+<tr><td>セル</td><td>セル</td><td>セル</td></tr>
+</table>
+<div style="background:aqua;">後</div>
+</div>
+<p>table要素の上マージンはtable要素のボックスの上、caption要素のボックスの下に設置されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b084_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b084_2.png" alt="Op7.5">Opera7.50標準モード</p>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.50の標準モードと互換モードで不具合の発生を確認しました。</li>
+<li>Opera6.06でこの不具合は発生しないようです。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ084</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+a:hover {
+	background: yellow;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ072</div>
+
+<h2>ブロック化したアンカーの範囲が内容物の部分のみになる<em>(5.x/6.0)</em></h2>
+<ul>
+<li>2004-03-12修正。[3-952]の内容を追加。</li>
+</ul>
+
+<h3>症状</h3>
+<p><ins datetime="2004-03-12T00:00:00+09:00">祖先要素でwidthプロパティやheightプロパティの値を具体的な値で明示したとき、</ins>ブロックボックス化したa要素でリンクとして機能する範囲が内容物のある部分のみになる。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;width:10em;&quot;&gt;
+&lt;a href=&quot;../winie.html&quot; style=&quot;display:block;&quot;&gt;width指定&lt;/a&gt;
+&lt;/div&gt;
+&lt;div style=&quot;width:auto;&quot;&gt;
+&lt;a href=&quot;../winie.html&quot; style=&quot;display:block;&quot;&gt;width無指定&lt;/a&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:10em;">
+<a href="../winie.html" style="display:block;">width指定</a>
+</div>
+<div style="width:auto;">
+<a href="../winie.html" style="display:block;">width無指定</a>
+</div>
+</div>
+<p>a要素をブロック化しているので文字列から右に延長した領域でもリンクが機能するはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b072_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b072_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>a要素のwidthプロパティやheightプロパティを明示するとこのバグを回避できますが、<a href="b070.html" title="li要素やli要素の子孫要素の幅が指定されているとリストマークが下方にずれる">WinIEバグ070</a>が発生することがあります。</p>
+<pre>&lt;div style=&quot;width:10em;&quot;&gt;
+&lt;a href=&quot;../winie.html&quot; style=&quot;display:block; <em>width:9em;</em>&quot;&gt;width指定&lt;/a&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:10em;">
+<a href="../winie.html" style="display:block; width:9em;">width指定</a>
+</div>
+</div>
+<p>または、a要素を相対配置してください。ただしIE5.5で不具合が発生することがあります。</p>
+<pre>&lt;div style=&quot;width:10em;&quot;&gt;
+&lt;a href=&quot;../winie.html&quot; style=&quot;display:block; <em>position:relative;</em>&quot;&gt;width指定&lt;/a&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:10em;">
+<a href="../winie.html" style="display:block; position:relative;">width指定</a>
+</div>
+</div>
+<blockquote>ただし、この策にも欠点があり (IE5.5 の場合・・・・IE6.0 では OK)<br>
+white-space: nowrap が指定してあると、ブロック化した a 要素の<br>
+頭が padding 分だけ描画されません。<br>
+どうしても white-space: nowrap を指定したい場合は<br>
+a 要素の親に padding、または border を指定します。</blockquote>
+
+<h3>修正状況</h3>
+<p>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ072</div>
+</body>
+</html>

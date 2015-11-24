@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<style type="text/css">
+<!--
+h1.a {
+	color: blue;
+}
+h2.b {
+	padding-left: 5em;
+}
+-->
+</style>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ021</div>
+
+<h2>h1要素にクラスが設定されているときにh2要素の左パディングが無視される<em>(IE6)</em></h2>
+
+<h3>症状</h3>
+<p>標準モードにおいて、h1要素が何らかのクラスに属しており、何らかのスタイルが設定されている場合または、何らかのクラスが付されたbody要素の子セレクタとしてh1要素が指定され、スタイルが設定されている場合に、同一文書内のh2要素の左パディングが無視される。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+h1.a {
+    color: blue;
+}
+h2.b {
+    padding-left: 5em;
+}
+&lt;/style&gt;
+&lt;h1 class=&quot;a&quot;&gt;A&lt;/h1&gt;
+&lt;h2 class=&quot;b&quot;&gt;B&lt;/h2&gt;</pre>
+<div class="example">
+<h1 class="a">A</h1>
+<h2 class="b">B</h2>
+</div>
+<p>バグの発生を確認できていません。</p>
+
+<h3>報告書き込み</h3>
+<blockquote>Win2000 IE6<br>
+DTDのURI付き（つまり厳密にCSSが解釈されるモード。>>3さんが書いてるやつ。）<br>
+<br>
+んで、<br>
+<br>
+・H1は何らかのクラスに属していており、なんらかのスタイル設定<br>
+　がある。または何らかのクラスのbodyの子要素としてのH1にスタイル<br>
+　がついている。（クラスはあるけど、そのクラスに対するスタイルが<br>
+　特に設定されていないときは問題ない。）<br>
+<br>
+例：H1.hoge　または　.hoge H1<br>
+<br>
+このとき、同一HTML文書内の H2 のpadding-leftが無視されるというのが<br>
+当方で確認できたのですが、同様の方おられます？<br>
+<br>
+H3やH4には影響ないみたいだけど。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ021</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ123</div>
+
+<h2>一部のボーダーはcolorの値を引き継がない<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>border-colorプロパティが未指定の場合、outset, inset, ridge, grooveの各ボーダーの色は当該要素のcolorプロパティの値とは異なる色になってしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;border:2px dashed blue;&quot;&gt;dashed&lt;/div&gt;
+&lt;div style=&quot;border:2px dashed; color:blue;&quot;&gt;dashed&lt;/div&gt;
+&lt;div style=&quot;border:4px ridge blue;&quot;&gt;ridge&lt;/div&gt;
+&lt;div style=&quot;border:4px ridge; color:blue;&quot;&gt;ridge&lt;/div&gt;</pre>
+<div class="example">
+<div style="border:2px dashed blue; margin:1px 0;">dashed</div>
+<div style="border:2px dashed; color:blue; margin:1px 0;">dashed</div>
+<div style="border:4px ridge blue; margin:1px 0;">ridge</div>
+<div style="border:4px ridge; color:blue; margin:1px 0;">ridge</div>
+</div>
+<p>dashedボーダー（バグが発生しない）とridgeボーダー（バグが発生する）について、border-colorプロパティを指定した場合とcolorプロパティから参照させた場合の結果を比較しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b123_1.png" alt="N7.1" width="126" height="116">N7.1での表示（標準モード）</p>
+<p><img src="img/b123_2.png" alt="WinIE6" width="125" height="113">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ123</div>
+</body>
+</html>

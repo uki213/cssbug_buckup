@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
+</head>
+<style type="text/css">
+<!--
+body {
+	position: relative;
+	margin-bottom: 10em;
+	z-index: 0;
+}
+-->
+</style>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ079</div>
+
+<h2>body要素の下マージン領域内で固定配置要素内のリンクが効かない<em>(7.2)</em></h2>
+
+<h3>症状</h3>
+<ul>
+<li>body要素を相対配置（position:relative;）し、z-indexプロパティに具体的な値を指定している。</li>
+<li>任意の要素を固定配置（position:fixed;）し、z-indexプロパティに具体的な値を指定している。</li>
+</ul>
+<p>以上の条件を満たすとき、固定配置した要素がbody要素の下マージン領域内に重なっている状態では固定配置した要素の中にあるリンクが機能しない。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+body {
+  position: relative;
+  margin-bottom: 10em;
+  z-index: 0;
+}
+&lt;/style&gt;
+
+&lt;div style=&quot;position:fixed; bottom:0; left:0; z-index:1;&quot;&gt;
+&lt;a href=&quot;../opera.html&quot;&gt;Opera目次&lt;/a&gt;&lt;/div&gt;</pre>
+<div class="example">
+<div style="position:fixed; bottom:0; left:0; z-index:1; border:2px solid blue;"><a href="../opera.html">Opera目次</a></div>
+</div>
+<p>閲覧領域の左下端にdiv要素が配置されています。ページの末尾までスクロールした状態でdiv要素内のリンクが機能するかを確認してください。</p>
+
+<h3>スクリーンショット</h3>
+<p>※マウスポインタを乗せた状態のスクリーンショットです。なおOperaでは左クリックしてもページ移動しません。</p>
+<div class="shot">
+<p><img src="img/b079_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b079_2.png" alt="Op7.2">Opera7.2標準モード</p>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.23の標準モードと互換モードで不具合の発生を確認しました。</li>
+<li>Opera7.11の標準モードと互換モードでこの不具合は発生しないようです。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ079</div>
+</body>
+</html>

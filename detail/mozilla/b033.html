@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ033</div>
+
+<h2>テーブル内に画像を敷き詰められない<em>(N6.2)</em></h2>
+
+<h3>症状</h3>
+<p>標準モードでは、border, cellpadding, cellspacing の各属性値を0にしたテーブルで画像を敷き詰めようとしても、画像の下部に隙間が空いてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td><img src="../img/img01.png" alt="★" width="48" height="48"></td>
+<td><img src="../img/img01.png" alt="★" width="48" height="48"></td>
+</tr>
+<tr>
+<td><img src="../img/img01.png" alt="★" width="48" height="48"></td>
+<td><img src="../img/img01.png" alt="★" width="48" height="48"></td>
+</tr>
+</table>
+</div>
+<p>表を用い、4つの画像を敷き詰めようとしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b033_1.png" alt="WinIE6" width="114" height="110">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b033_2.png" alt="Moz1.0" width="114" height="119">Moz1.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>通常、画像のボックスの下端はベースラインに揃えられます。そのため、ベースラインの下にはみ出す部分を確保するために隙間が開きます。Mozillaなどの標準モードでは、画像のみで文字がないときでもこの隙間が確保されるため、画像を敷き詰められない現象が発生します（文字がないときでも確保するのが正しい考え方なのですが）。</p>
+<div class="example">
+<table border="2" style="font: 32pt Arial,sans-serif;">
+<tr>
+<td><img src="../img/img01.png" alt="★" width="48" height="48"></td>
+</tr>
+<tr>
+<td>A<img src="../img/img01.png" alt="★" width="48" height="48"></td>
+</tr>
+</table>
+</div>
+<p>対処法は、画像に <code>vertical-align: bottom;</code> を指定することです。</p>
+<pre>&lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot; style=&quot;vertical-align:bottom;&quot;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot; style=&quot;vertical-align:bottom;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot; style=&quot;vertical-align:bottom;&quot;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot; style=&quot;vertical-align:bottom;&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td><img src="../img/img01.png" alt="★" style="vertical-align:bottom;"></td>
+<td><img src="../img/img01.png" alt="★" style="vertical-align:bottom;"></td>
+</tr>
+<tr>
+<td><img src="../img/img01.png" alt="★" style="vertical-align:bottom;"></td>
+<td><img src="../img/img01.png" alt="★" style="vertical-align:bottom;"></td>
+</tr>
+</table>
+</div>
+<p>なお、互換モードおよび準標準モード（Moz1.1/Moz1.0.1/N7以降でHTML4 TransitionalのDOCTYPEを識別子つきで指定した文書に適用）では、vertical-alignを指定しなくても画像が敷き詰められます。</p>
+<p>この問題については、<a href="http://www.mozilla.gr.jp/standards/webtips0018.html">http://www.mozilla.gr.jp/standards/webtips0018.html</a>（<a href="http://www.mozilla.gr.jp/">もじら組</a>）も参照してください。</p>
+
+<h3>修正状況</h3>
+<p>この現象はCSS仕様に準拠しているために発生するものです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ033</div>
+</body>
+</html>

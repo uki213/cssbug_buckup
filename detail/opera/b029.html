@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ029</div>
+
+<h2>全称セレクタにfont-size:inherit;を指定するとクラッシュする<em>(6.05)</em></h2>
+
+<h3>症状</h3>
+<p>全称セレクタ（<code>*</code>）に <code>font-size: inherit;</code> を指定したページを開くとOperaがクラッシュする。</p>
+
+<h3>例示</h3>
+<pre>* {
+  font-size: inherit;
+}</pre>
+<p><a href="b029a.html">検証ページ</a>で上記の指定を行いました（このページには指定していません）。</p>
+
+<h3>補足</h3>
+<p>Opera6.01ではクラッシュしないそうです。</p>
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ029</div>
+</body>
+</html>

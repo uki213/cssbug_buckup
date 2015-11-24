@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+<style type="text/css">
+<!--
+div.a {
+	position: absolute;
+	-moz-box-sizing: border-box;
+	width: 10em;
+	border: 1em solid blue;
+	font-family: monospace;
+}
+div.b {
+	-moz-box-sizing: border-box;
+	width: 10em;
+	border: 1em solid #f5f5f5;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ004</div>
+
+<h2>絶対配置要素内では-moz-box-sizingプロパティが効かない<em>(N6)</em></h2>
+
+<h3>症状</h3>
+<p><code>position: absolute;</code> を指定して絶対配置にしたボックスには-moz-box-sizingプロパティ（<em>Mozilla独自拡張</em>、CSS3のbox-sizingに相当）の指定が無視され、常にCSS2でのルールに基づいた幅や高さの算出が行われる。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+div.a {
+  position: absolute;
+  -moz-box-sizing: border-box;
+  width: 10em;
+  border: 1em solid blue;
+  font-family: monospace;
+}
+&lt;/style&gt;
+&lt;div class=&quot;a&quot;&gt;１２３４５６７８&lt;/div&gt;</pre>
+<div class="example">
+<div class="a">１２３４５６７８</div>
+<div class="b">&nbsp;</div>
+</div>
+<p>ボーダーが左右で2文字分なので、内容領域は8文字分の幅になります。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b004_1.png" alt="Moz1.0" width="167" height="61">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b004_2.png" alt="N6.2" width="182" height="66">N6.2.3での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Moz1.0及びN6.2.3では正しく幅算出が行われます。</p>
+
+<h3>報告書き込み</h3>
+<blockquote>【CSS】 Netscape6<br>
+position:absolute を指定した要素では<br>
+-moz-box-sizing:border-box の指定が無効になります。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ004</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ034</div>
+
+<h2>四方のborder-colorが統一されていない要素でtransparent値が無視される<em>(IE5)</em></h2>
+
+<h3>症状</h3>
+<p>任意の要素で四方のボーダー色を同じにしていないとき（border-colorプロパティで2つ以上の値を指定するときなど）、指定値の中にtransparentが含まれていてもその部分が透明にならない。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;border:5px solid; border-color:blue transparent;&quot;&gt;
+左右ボーダーは透明&lt;/div&gt;</pre>
+<div class="example">
+<div style="border:5px solid; border-color:blue transparent;">左右ボーダーは透明</div>
+</div>
+<p>左右ボーダーだけを透明なボーダーにしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b034_1.png" alt="Moz1.0.2" width="169" height="42">Moz1.0.2での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>この不具合はMacIE5.0で発生するそうです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ034</div>
+</body>
+</html>

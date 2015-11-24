@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ022</div>
+
+<h2>インライン要素に背景画像を指定できない<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>インライン要素（<code>display: inline;</code> を指定した要素を含む）に背景画像を設定しても、表示されない。</p>
+
+<h3>例示</h3>
+<pre>&lt;span style=&quot;background-image:url(../img/img01.png); font-size:48px;&quot;&gt;CSS&lt;/span&gt;</pre>
+<div class="example">
+<span style="background-image:url(../img/img01.png); font-size:48px;">CSS</span>
+</div>
+<p>span要素の背景に星印が描かれた画像を設定しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b022_1.png" alt="Moz1.0.1" width="115" height="72">Moz1.0.1での表示</p>
+<p><img src="img/b022_2.png" alt="Op6" width="109" height="68">Opera6.05での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>この現象は不具合として発生するのではなく、仕様上未サポートのために発生するものと考えられます。</p>
+
+<h3>修正状況</h3>
+<p>Opera6.05ではインライン要素に対して設定した背景画像が表示されません。Opera7.0ではインライン要素にも画像を背景として使用できます。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ022</div>
+</body>
+</html>

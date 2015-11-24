@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ062</div>
+
+<h2>アンカーの要素にcursor:auto;を指定するとI字カーソルが割り当てられる<em>(N7.1/Moz1.4)</em></h2>
+
+<h3>症状</h3>
+<p>cursorプロパティの初期値はautoであるが、Mozilla/Netscapeでhref属性を持つa要素に <code>cursor: auto;</code> を指定すると初期設定のカーソルとは違うカーソルが割り当てられてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;p&gt;&lt;a href=&quot;b062.html&quot; style=&quot;cursor:auto;&quot;&gt;
+アンカー&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;b062.html&quot; style=&quot;cursor:auto;&quot;&gt;
+&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot;&gt;&lt;/a&gt;&lt;/p&gt;</pre>
+<div class="example">
+<p><a href="b062.html" style="cursor:auto;">アンカー</a></p>
+<p><a href="b062.html" style="cursor:auto;"><img src="../img/img01.png" alt="★"></a></p>
+</div>
+<p>アンカー上では <code>cursor: pointer;</code> を指定したときのカーソルと同じカーソル（例えば手の形のカーソル）を使用するはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b062_1.png" alt="WinIE6" width="109" height="139">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b062_2.png" alt="N7.1" width="105" height="131">N7.1での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>Bugzillaでは以下の項目が該当します。</p>
+<ul>
+<li><a href="http://bugzilla.mozilla.org/show_bug.cgi?id=88688" title="mozilla.org Bugzilla">Bugzilla Bug 88688: [ready]'cursor: auto' shows text cursor for links</a></li>
+</ul>
+
+<h3>修正状況</h3>
+<p>N7.1標準モードおよび互換モード、Moz1.4標準モードおよび互換モード、で不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ062</div>
+</body>
+</html>

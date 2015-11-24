@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Safari (KHTML) CSSバグリスト</title>
+</head>
+<body>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ008</div>
+
+<h2>caption要素を含むテーブルではcol/colgroupに対するスタイルが効かない<em>(S1.x)</em></h2>
+<ul>
+<li>2004-03-12修正。[3-939]の内容を追加。</li>
+</ul>
+
+<h3>症状</h3>
+<p>caption要素を含むテーブルでは、col要素<ins datetime="2004-03-12T00:00:00+09:00">やcolgroup要素</ins>に対して指定したスタイルがすべて無視される。</p>
+
+<h3>例示</h3>
+<pre>&lt;table border=&quot;2&quot;&gt;
+&lt;caption&gt;表題&lt;/caption&gt;
+&lt;col style=&quot;width:7em&quot;&gt;
+&lt;col style=&quot;background:lime&quot;&gt;
+&lt;tr&gt;&lt;td&gt;幅7em&lt;/td&gt;&lt;td&gt;黄緑色&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="2">
+<caption>表題</caption>
+<col style="width:7em">
+<col style="background:lime">
+<tr><td>幅7em</td><td>黄緑色</td></tr>
+</table>
+</div>
+<p>1列目のセルには幅を、2列目のセルには背景色を指定しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b008_1.png" alt="WinIE6.0" width="188" height="67">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Safari1.0～1.2でこの不具合が発生するそうです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ008</div>
+</body>
+</html>

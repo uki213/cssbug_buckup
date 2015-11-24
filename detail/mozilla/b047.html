@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+<style type="text/css">
+<!--
+li {
+	border: 2px solid red;
+	margin: 2px;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ047</div>
+
+<h2>絶対配置／固定配置／フロート状態のli要素のリストマーカーが消えない<em>(N7)</em></h2>
+<p>2003-04-23修正。この挙動は仕様通りの動作です。</p>
+
+<h3>症状</h3>
+<p>絶対配置（<code>position: absolute;</code>）／固定配置／フロート状態にした要素はdisplayプロパティが強制的に「block」に設定されるが、li要素にこのような指定を行ってもリストマーカーが消えない。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+li {
+  border: 2px solid red;
+  margin: 2px;
+}
+&lt;/style&gt;
+
+&lt;ul&gt;
+&lt;li style=&quot;position:absolute; width:5em; left:3em; top:1em;&quot;&gt;絶対配置&lt;/li&gt;
+&lt;li style=&quot;position:fixed; width:5em; left:3em; top:3em;&quot;&gt;固定配置&lt;/li&gt;
+&lt;li style=&quot;float:left; width:5em;&quot;&gt;フロート&lt;/li&gt;
+&lt;li style=&quot;clear:left;&quot;&gt;（回り込み抑制）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&quot;display:block; margin-left:40px; list-style-type:circle;&quot;&gt;リスト？&lt;/div&gt;</pre>
+<div class="example">
+<ul>
+<li style="position:absolute; width:5em; left:3em; top:1em;">絶対配置</li>
+<li style="position:fixed; width:5em; left:3em; top:3em;">固定配置</li>
+<li style="float:left; width:5em;">フロート</li>
+<li style="clear:left;">（回り込み抑制）</li>
+</ul>
+<div style="display:block; margin-left:40px; list-style-type:circle;">リスト？</div>
+</div>
+<p>絶対配置と固定配置にしたli要素はページ左上端に配置しています。末尾のdiv要素は、 display:block; を明示した場合にリストマーカーを表示できるかを試しているものです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b047_1.png" alt="Op7" width="173" height="185">Opera7.0での表示（標準モード）</p>
+<p><img src="img/b047_2.png" alt="Moz1.0.2" width="162" height="170">Moz1.0.2での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<ins datetime="2003-04-23T00:00:00+09:00">
+<p>CSS2.1では、displayプロパティがlist-item値の要素はフロート化してもlist-item値のままであると定義されています。このため、リストマーカーが消えないのが正しいことになります。</p>
+</ins>
+
+<del datetime="2003-04-23T00:00:00+09:00">
+<p>冗長な指定になりますが、ブロックタイプであることを明示するかリストマーカーのスタイルを明示すればこのバグを回避できます。</p>
+<pre>&lt;ul&gt;
+&lt;li style=&quot;float:left; width:5em; <em>display:block;</em>&quot;&gt;フロート&lt;/li&gt;
+&lt;li style=&quot;float:left; width:5em; <em>list-style:none;</em>&quot;&gt;フロート&lt;/li&gt;
+&lt;li style=&quot;clear:left;&quot;&gt;（回り込み抑制）&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul>
+<li style="float:left; width:5em; display:block;">フロート</li>
+<li style="float:left; width:5em; list-style:none;">フロート</li>
+<li style="clear:left;">（回り込み抑制）</li>
+</ul>
+</div>
+</del>
+
+<h3>修正状況</h3>
+<p><del datetime="2003-04-23T00:00:00+09:00">Moz1.0.2/1.2.1では標準・互換モードともに不具合の発生が確認されました。</del><ins datetime="2003-04-23T00:00:00+09:00">CSS2.1に準拠した動作です。</ins></p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ047</div>
+</body>
+</html>

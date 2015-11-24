@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+p.ex:first-letter {
+	color: #ff0000;
+}
+li {
+	border: 1px dashed #0000ff;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ080</div>
+
+<h2>擬似要素の後に続くli要素の内容物がボックスを無視して表示される<em>(IE6)</em></h2>
+
+<h3>症状</h3>
+<p>擬似要素を含む要素の直後にul, ol要素が存在するとき、それらのリストアイテムの内容物が親（ul, ol）要素のマージンを無視して表示される。ただし、最初に現れる擬似要素を含む要素に続くリストでは起こらない。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+p.ex:first-letter {
+  color: #ff0000;
+}
+li {
+  border: 1px dashed #0000ff;
+}
+&lt;/style&gt;
+
+&lt;p class=&quot;ex&quot;&gt;最初は赤色&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;リストアイテム&lt;/li&gt;&lt;/ul&gt;
+&lt;p class=&quot;ex&quot;&gt;最初は赤色&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;リストアイテム&lt;/li&gt;&lt;/ul&gt;</pre>
+<div class="example">
+<p class="ex">最初は赤色</p>
+<ul><li>リストアイテム</li></ul>
+<p class="ex">最初は赤色</p>
+<ul><li>リストアイテム</li></ul>
+</div>
+<p>ボーダーを設置して、li要素のボックスの状態がわかるようにしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b080_1.png" alt="Moz1.0.1" width="172" height="176">Moz1.0.1での表示（標準モード）</p>
+<p><img src="img/b080_2.png" alt="WinIE6" width="181" height="186">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>ul, ol要素にボーダーを設定するとこのバグを回避することができます。ただし、border-styleをnoneやhiddenにした場合は回避できません。</p>
+<pre>&lt;p class=&quot;ex&quot;&gt;最初は赤色&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;リストアイテム&lt;/li&gt;&lt;/ul&gt;
+&lt;p class=&quot;ex&quot;&gt;最初は赤色&lt;/p&gt;
+&lt;ul style=&quot;<em>border:1px solid #ff00ff;</em>&quot;&gt;
+&lt;li&gt;リストアイテム&lt;/li&gt;&lt;/ul&gt;</pre>
+<div class="example">
+<p class="ex">最初は赤色</p>
+<ul><li>リストアイテム</li></ul>
+<p class="ex">最初は赤色</p>
+<ul style="border:1px solid #ff00ff;">
+<li>リストアイテム</li></ul>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
+
+<div style="margin-left:-50px;">&nbsp;<!-- このdiv要素はWinIEバグ025対策（body要素の外にあるリストマークを表示させるため）として置かれています --></div>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ080</div>
+</body>
+</html>

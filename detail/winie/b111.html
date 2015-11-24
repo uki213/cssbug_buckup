@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ111</div>
+
+<h2>先頭にフロートがあるリストアイテム要素でリストマーカーが要素内に入り込む<em>(5.x/6.0)</em></h2>
+<ul>
+<li>2003-06-26修正。症状および例示の変更と補足の追加。</li>
+<li>2004-03-12修正。内容を整理。</li>
+</ul>
+
+<h3>症状</h3>
+<p>リストマーカーをボックスの外に置いた（<code>list-style-position:outside;</code>）リストアイテム要素で、内容物の先頭の要素を左フロートにするとリストマーカーがリストアイテム要素のボーダー領域やその内側に入り込む。</p>
+
+<h3>例示</h3>
+<pre>&lt;ul&gt;
+&lt;li style=&quot;border:2px solid red;&quot;&gt;
+&lt;div style=&quot;float:left; width:1em; border:2px solid blue;&quot;&gt;◇&lt;/div&gt;フロート
+&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul>
+<li style="border:2px solid red;">
+<div style="float:left; width:1em; border:2px solid blue;">◇</div>フロート
+</li>
+</ul>
+</div>
+<p>WinIEでは、outside型のリストマーカーはli要素のボーダー領域より外側に置かれるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b111_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b111_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ111</div>
+</body>
+</html>

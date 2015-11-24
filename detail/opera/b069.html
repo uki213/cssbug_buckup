@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet alternate" type="text/css" href="b069.css" title="代替">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ069</div>
+
+<h2>rel=&quot;alternate stylesheet&quot; でなければ代替スタイルシートにならない<em>(7.x)</em></h2>
+
+<h3>症状</h3>
+<p>link要素で代替スタイルシートを指定するとき、rel属性の値を「alternate stylesheet」と指定しなければ代替スタイルシートとして認識されない。つまり、「stylesheet alternate」という値を指定した場合は代替スタイルシートとして扱われない。</p>
+
+<h3>例示</h3>
+<pre>&lt;link rel=&quot;stylesheet alternate&quot; href=&quot;b069.css&quot; title=&quot;代替&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;normal.css&quot; title=&quot;標準&quot;&gt;</pre>
+<p>「b069.css」の内容：</p>
+<pre>h1 {
+  color: blue;
+}</pre>
+<p>b069.cssは代替スタイルシートとして扱われるはずです。しかし、Opera7.21でこの文書を表示すると始めの状態ではb069.cssの内容だけが適用され、normal.cssの内容は適用されません。</p>
+
+<h3>補足</h3>
+<p>固定スタイルシートまたはstyle要素を含む文書は、固定シート・優先シート・代替シート・style要素のすべてを適用した状態で表示されます。一方、固定スタイルシートまたはstyle要素を含まない文書は、文書内で最初に指定したスタイルシートだけを適用した状態で表示されます。</p>
+
+<h3>修正状況</h3>
+<p>Opera7.21標準モード、Opera7.21互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ069</div>
+</body>
+</html>

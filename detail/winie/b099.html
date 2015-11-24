@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+div.fletter:first-letter {
+	color: red;
+}
+div.lmargin {
+	margin-left: 4em;
+	background: aqua;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ099</div>
+
+<h2>擬似要素を含む要素に後続する要素の内容物が左右にはみ出る<em>(5.5/6.0)</em></h2>
+<ul>
+<li>2004-01-27修正。:hoverに関わるバグを追加。</li>
+<li>2004-03-03修正。内容を整理。</li>
+</ul>
+
+<h3>症状</h3>
+<p>任意のブロックレベル要素Eについて以下の条件すべてが当てはまるとき、</p>
+<ul>
+<li>要素Eの前方に擬似要素を含むブロックレベル要素が複数ある。</li>
+<li>要素Eの左（右）マージンの幅と、要素Eより前方で要素Eに最も近い、擬似要素を含まないブロックレベル要素の左（右）マージンの幅が等しい。</li>
+</ul>
+<p>要素Eの内容物が要素Eの左（右）マージン領域にはみ出す。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+div.fletter:first-letter {
+  color: red;
+}
+div.lmargin {
+  margin-left: 4em;
+  background: aqua;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;fletter&quot;&gt;擬似要素&lt;/div&gt;
+&lt;div class=&quot;lmargin&quot;&gt;後続要素&lt;/div&gt;
+&lt;div class=&quot;fletter&quot;&gt;擬似要素&lt;/div&gt;
+&lt;div class=&quot;lmargin&quot;&gt;後続要素&lt;/div&gt;
+&lt;div class=&quot;fletter&quot;&gt;擬似要素&lt;/div&gt;
+&lt;div class=&quot;lmargin&quot;&gt;後続要素&lt;/div&gt;</pre>
+<div class="example">
+<div class="fletter">擬似要素</div>
+<div class="lmargin">後続要素</div>
+<div class="fletter">擬似要素</div>
+<div class="lmargin">後続要素</div>
+<div class="fletter">擬似要素</div>
+<div class="lmargin">後続要素</div>
+</div>
+<p>空色の背景を設定しているdiv要素は幅4emの左マージンを設定しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b099_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b099_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>この不具合のため左右にはみ出している内容物に:hover擬似クラスを指定したリンクが含まれている場合、リンクが:hover状態になるとそのリンクを含む内容物が移動することがあります。以下の例に含まれているリンクにマウスポインタ等を乗せると、それまで左にはみ出していた文字列がdiv要素のボックスに収まるように移動するはずです。</p>
+<div class="example">
+<div class="fletter">擬似要素</div>
+<div class="lmargin">後続要素</div>
+<div class="fletter">擬似要素</div>
+<div class="lmargin"><a href="b099.html">後続要素</a></div>
+</div>
+<p>擬似要素を含む要素のwidthプロパティやheightプロパティの値を明示することで不具合を回避することができます。</p>
+<pre>&lt;div class=&quot;fletter&quot;&gt;擬似要素&lt;/div&gt;
+&lt;div class=&quot;lmargin&quot;&gt;後続要素&lt;/div&gt;
+&lt;div class=&quot;fletter&quot; style=&quot;<em>width:90%;</em>&quot;&gt;擬似要素&lt;/div&gt;
+&lt;div class=&quot;lmargin&quot;&gt;後続要素&lt;/div&gt;
+&lt;div class=&quot;fletter&quot; style=&quot;<em>width:90%;</em>&quot;&gt;擬似要素&lt;/div&gt;
+&lt;div class=&quot;lmargin&quot;&gt;後続要素&lt;/div&gt;</pre>
+<div class="example">
+<div class="fletter">擬似要素</div>
+<div class="lmargin">後続要素</div>
+<div class="fletter" style="width:90%;">擬似要素</div>
+<div class="lmargin">後続要素</div>
+<div class="fletter" style="width:90%;">擬似要素</div>
+<div class="lmargin">後続要素</div>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ099</div>
+</body>
+</html>

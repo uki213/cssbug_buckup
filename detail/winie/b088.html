@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ088</div>
+
+<h2>相対配置した要素へ向かうリンクのジャンプ先が移動前の位置になる<em>(IE6)</em></h2>
+
+<h3>症状</h3>
+<p>リンク目標にした要素（id属性やname属性を設定した要素）を相対配置すると、その要素へ飛ばすリンクが相対配置要素をシフトさせる前の位置へ飛ばすリンクになってしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;position:relative; top:4em; background:aqua;&quot; id=&quot;rela&quot;&gt;
+相対配置&lt;/div&gt;
+&lt;p style=&quot;margin-bottom:3em;&quot;&gt;&lt;a href=&quot;#rela&quot;&gt;リンク&lt;/a&gt;&lt;/p&gt;</pre>
+<div class="example">
+<div style="position:relative; top:4em; background:aqua;" id="rela">相対配置</div>
+<p style="margin-bottom:3em;"><a href="#rela">リンク</a></p>
+</div>
+<p>相対配置したdiv要素へ飛ばすリンクです。本来は閲覧領域の上端にdiv要素が現れるはずです。</p>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードの両方で不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ088</div>
+<div style="height:800px;"><!-- 充分なページ高さを確保 --></div>
+</body>
+</html>

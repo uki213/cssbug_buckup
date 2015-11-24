@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ068</div>
+
+<h2>フロートとフロートに後続するテーブルとが重なる<em>(7.x)</em></h2>
+
+<h3>症状</h3>
+<ul>
+<li>フロートの後方に、テーブル要素を子孫に持ち、自身のclearプロパティがnone値であるブロックレベル要素がある。</li>
+<li>ブロックレベル要素にwidthプロパティが指定されており、その値は内部のテーブルを収めきれないような値である。</li>
+</ul>
+<p>このとき、テーブル自身やその内容物がフロートを避けず、フロートに重なってしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;float:left; width:5em; border:2px solid blue;&quot;&gt;
+フロート&lt;/div&gt;
+&lt;div style=&quot;width:10em; background:aqua;&quot;&gt;
+&lt;table border=&quot;2&quot;&gt;
+&lt;tr&gt;&lt;td&gt;11223344556677&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;</pre>
+<div class="example" style="height:2em;">
+<div style="float:left; width:5em; border:2px solid blue;">フロート</div>
+<div style="width:10em; background:aqua;">
+<table border="2"><tr><td>11223344556677</td></tr></table>
+</div>
+</div>
+<p>フロートに後続するdiv要素の内容物が（内容領域からはみ出さずに）フロートの右に回りこむことができる空間の幅は約4emですが、テーブルの幅はそれを超えています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b068_1.png" alt="N7.1" width="220" height="45">N7.1での表示（標準モード）</p>
+<p><img src="img/b068_2.png" alt="Op7.2" width="178" height="44">Opera7.2での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>Opera7.03の標準・互換モードとOpera7.1以降の互換モードではWinIE6.0互換モードに相当する表示をします（<a href="../winie/b054.html" title="フロートに後続する要素のボックス幅がフロートに合わせて短縮される">WinIEバグ054</a>参照）。フロートに重なる不具合は発生しませんが、これはCSS2勧告に準じていない実装です。</p>
+<p>なお、Opera6.06はNetscape7と同様の結果になります。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.1以降の標準モードで不具合の発生を確認しました。</li>
+<li>Opera7.1以降の互換モードおよびOpera7.03以前でこの不具合は発生しないようです。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ068</div>
+</body>
+</html>

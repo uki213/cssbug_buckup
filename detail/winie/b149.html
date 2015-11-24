@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ149</div>
+
+<h2>フロートを含むボックスのマージンが無視される<em>(5.x/6.0)</em></h2>
+<ul>
+<li>2004-05-17修正。症状を修正。補足に回避法を追加。</li>
+</ul>
+
+<h3>症状</h3>
+<ul>
+<li>（複数の子要素または多くの内容物を含む）<del datetime="2004-05-15T00:00:00+09:00">右</del>フロート</li>
+<li>上記のフロートの直後にclearプロパティで回り込みを抑制したフロートでない要素</li>
+</ul>
+<p>これら全ての要素を子に持つ要素で、左や上のマージンが無視されることがある。</p>
+<p><ins datetime="2004-05-15T00:00:00+09:00">※左フロートでは左マージンが、右フロートでは左マージンと上マージンが無視されます。</ins></p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;margin:1em; background:aqua;&quot;&gt;
+&lt;div style=&quot;float:right; width:50%;&quot;&gt;float&lt;/div&gt;
+&lt;div style=&quot;clear:right;&quot;&gt;clear&lt;/div&gt;</pre>
+</div>
+<div class="example">
+<div style="margin:1em; background:aqua;">
+<div style="float:right; width:50%;">float</div>
+<div style="clear:right;">clear</div>
+</div>
+</div>
+<p>親のdiv要素のボックスの四方に幅1emのマージンが設置されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b149_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b149_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p><ins datetime="2004-05-15T00:00:00+09:00">以下のいずれかの方法を用いることで不具合を回避することができます。</ins></p>
+<ul>
+<li>問題のフロートを含むボックスの上パディングに0より大きい値を指定する。</li>
+<li>問題のフロートを含むボックスのwidthプロパティにauto以外の値を指定する。</li>
+</ul>
+
+<h3>修正状況</h3>
+<ul>
+<li>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ149</div>
+</body>
+</html>

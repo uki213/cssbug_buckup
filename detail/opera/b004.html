@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="b004.css" title="バグ004専用">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ004</div>
+
+<h2>複数メディアが指定された@importを認識しない<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>複数のメディアタイプが指定された@import宣言を認識しないために、スタイルシートがインポートされない。</p>
+
+<h3>例示</h3>
+<p>インポート文：</p>
+<pre>@import &quot;b004a.css&quot; screen,print;</pre>
+<p>インポートしたスタイルシート内の記述：</p>
+<pre>p.sample {
+    color: green;
+    font-weight: bold;
+}</pre>
+<div class="example">
+<p class="sample">複数メディアが指定された@importを認識しない</p>
+</div>
+<p>screenメディアが指定されています。スタイルシートがインポートされていれば、文字列は緑色の太字で表示されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b004_1.png" alt="Moz1.0" width="367" height="65">Moz1.0での表示</p>
+<p><img src="img/b004_2.png" alt="Op6" width="346" height="75">Opera6.05での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>バグのためにインポートされないのではなく、仕様上サポートされていないために起きる現象と考えられます。</p>
+<p>なお、この現象を用いると、Operaに特定のスタイルを反映させないようにすることができる可能性があります。</p>
+
+<h3>修正状況</h3>
+<p>Opera6.05ではスタイルシートがインポートされません。Opera7.0ではインポートされます。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ004</div>
+</body>
+</html>

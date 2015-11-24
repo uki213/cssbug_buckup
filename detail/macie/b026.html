@@ -1,0 +1,43 @@
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ026</div>
+
+<h2>特定の文字数のルビが正しい位置に表示されない<em>(5.x)</em></h2>
+<ul>
+<li>2004-03-07修正。補足に追記。</li>
+</ul>
+
+<h3>症状</h3>
+<p>フォントサイズが14～16pxのとき、ルビベース（rb要素）2文字、ルビ文字（rt要素）3文字の組み合わせのときにルビが正しい位置に表示されない。</p>
+<p><ins datetime="2004-03-07T00:00:00+09:00">※OS10.3上のMacIE5.2では14pxの場合だけこの不具合が発生するそうです。</ins></p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;font-size:16px;&quot;&gt;親&lt;ruby&gt;&lt;rb&gt;要素&lt;/rb&gt;
+&lt;rp&gt;（&lt;/rp&gt;&lt;rt&gt;ようそ&lt;/rt&gt;&lt;rp&gt;）&lt;/rp&gt;&lt;/ruby&gt;と子要素&lt;/p&gt;</pre>
+<div class="example">
+<p style="font-size:16px;">親<ruby><rb>要素</rb><rp>（</rp><rt>ようそ</rt><rp>）</rp></ruby>と子要素</p>
+</div>
+<p>バグが発生するとされている、rb要素2文字とrt要素3文字の組み合わせです。文字サイズを16pxに固定しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b026_1.png" alt="WinIE6" width="147" height="85">WinIE6.0での表示（互換モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>ブラウザのデフォルトフォントサイズを14～16px以外の値に設定しておけば、閲覧者側でバグをある程度回避できます。ページ制作者は、少なくともルビが含まれる要素の文字サイズを14～16pxで固定しないようにしてください。</p>
+
+<h3>修正状況</h3>
+<p>MacIE5.0～5.2で不具合が発生するそうです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ026</div>
+</body>
+</html>

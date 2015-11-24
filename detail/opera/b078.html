@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ078</div>
+
+<h2>実体参照で表記した文字が正しく表示されない</h2>
+
+<h3>症状</h3>
+<p>Unicodeを使用しないと表現できない文字などを実体参照で表記するとき、その文字のデータを含むフォントが存在する環境でも文字が表示されない場合がある。</p>
+
+<h3>例示</h3>
+<pre>&lt;ul&gt;
+&lt;li style=&quot;font-family:'Lucida Sans Unicode',sans-serif;&quot;&gt;Lucida &amp;#32083;&lt;/li&gt;
+&lt;li style=&quot;font-family:'Arial',sans-serif;&quot;&gt;Arial &amp;#32083;&lt;/li&gt;
+&lt;li style=&quot;font-family:'Tahoma',sans-serif;&quot;&gt;Tahoma &amp;#32083;&lt;/li&gt;
+&lt;li style=&quot;font-family:'Times New Roman',sans-serif;&quot;&gt;Times &amp;#32083;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul>
+<li style="font-family:'Lucida Sans Unicode',sans-serif;">Lucida &#32083;</li>
+<li style="font-family:'Arial',sans-serif;">Arial &#32083;</li>
+<li style="font-family:'Tahoma',sans-serif;">Tahoma &#32083;</li>
+<li style="font-family:'Times New Roman',sans-serif;">Times &#32083;</li>
+</ul>
+</div>
+<p>font-familyプロパティで指定した欧文フォントには漢字が含まれていないので、sans-serifフォント（例えば「ＭＳ ゴシック」）で漢字が表示されるはずです。Win98以降に含まれる「ＭＳ ゴシック」は<code>&amp;#32083;</code>で表される文字（糸偏の右に「圭」）のデータを持っているので、該当する文字が表示されるはずです。</p>
+
+<h3>補足</h3>
+<p>UTF-8で記述した文書を、ブラウザのエンコード指定をUTF-8に指定した状態（メニューの［表示］→［エンコード］→［Unicode］→［UTF-8］を選択する）で表示すると実体参照で指定した文字が表示されるようになるそうです。しかし、エンコード指定が［自動選択］の場合はUTF-8で記述した文書であっても実体参照の文字が表示されません。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.23をWin9x環境で実行した場合にこの不具合が発生するそうです。</li>
+</ul>
+
+<h3>報告書き込み</h3>
+<blockquote>このWinIEバグ、Opera7.23（Win98SE）でも起こる場合がある。<br>
+但し文字化けはしない。何も表示されずそこが空白になる。<br>
+BODY{<br>
+font-family:'文字鏡契冲明朝','CX古典ミン-R','癸羊明朝',MingLiu,&quot;ＭＳ 明朝&quot;, 'ヒラギノ明朝 Pro W3',&quot;平成明朝&quot;, Micho, serif;<br>
+}<br>
+.unicode {font-family:/*'Lucida Sans Unicode'*/,'Arial Unicode MS', &quot;ＭＳ 明朝&quot;, &quot;平成明朝&quot;, Micho, serif;}<br>
+&lt;p&gt;&lt;span class=&quot;unicode&quot;&gt;&amp;#32083;&lt;/span&gt;秀実によれば……&lt;/p&gt;<br>
+上記のソースで'文字鏡契冲明朝'をコメント・アウトするとバグは起きなくなる。<br>
+'文字鏡契冲明朝'を持ってないパソコンでもバグは起きないはず。<br>
+つまり特定のフォントを親要素に指定してる場合だけ、.unicodeが上書きできなくなるわけ。<br>
+Opera以外のNetscape7やIE6ではこのバグは起きず、ちゃんと文字が表示された。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ078</div>
+</body>
+</html>

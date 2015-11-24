@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+<style type="text/css">
+<!--
+body {
+	background-image: url('../img/img01.png');
+	background-position: left center;
+	background-repeat: repeat-y;
+	background-attachment: scroll;
+	padding-left: 48px;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ047</div>
+
+<h2>固定していない背景画像がスクロール後に乱れて表示される<em>(7.0)</em></h2>
+
+<h3>症状</h3>
+<p>html要素またはbody要素で固定していない背景画像（<code>background-attachment: scroll;</code>）を表示したページをスクロールすると、スクロールによって現れる部分の背景画像が乱れて表示される。また、スクロールしなければ見えない位置に背景画像がある場合はスクロールしても背景画像が現れない。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+body {
+  background-image: url('../img/img01.png');
+  background-position: left center;
+  background-repeat: repeat-y;
+  background-attachment: scroll;
+  padding-left: 48px;
+}
+&lt;/style&gt;</pre>
+<p>ページ左端に背景画像を表示しています。このページをスクロールしてみてください。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b047_1.png" alt="N7" width="104" height="137">N7.02での表示（標準モード）</p>
+<p><img src="img/b047_2.png" alt="Op7" width="105" height="159">Opera7.10での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<ul>
+<li>background-positionプロパティの値を調節して背景画像の初期位置を上端に近づけると表示の乱れを抑えることができます。逆に初期位置を下端に近づけると表示の乱れがひどくなります。</li>
+<li>html要素、body要素以外の要素（div要素など）では背景画像の初期位置に関わらずこのバグは発生しません。</li>
+</ul>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.01標準モード、Opera7.10互換モードで不具合の発生が確認されました。</li>
+<li>Opera6.06でこの不具合は発生しません。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ047</div>
+</body>
+</html>

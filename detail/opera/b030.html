@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ030</div>
+
+<h2>固定した背景画像がスクロールによって消えてしまう<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>固定配置（<code>background-attachment: fixed;</code>）した背景画像が、ページを表示させた段階で表示されている部分しか表示されない。そのため、ページをスクロールすると背景画像が消えてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;background-attachment: fixed; background-image: url(../img/img01.png);&quot;&gt;
+A&lt;br&gt;A&lt;br&gt;A&lt;br&gt;……&lt;/div&gt;</pre>
+<div class="example">
+<div style="background-attachment: fixed; background-image: url(../img/img01.png);">A<br>A<br>A<br>A<br>A</div>
+</div>
+<p>ウィンドウの高さを大きくするか、フルスクリーンモードに切り替えるなどしてページ上端から例示のdiv要素までを見ることができる状態でページを表示させてからスクロールしてみてください。</p>
+
+<h3>スクリーンショット</h3>
+<p>下方向にスクロールした後の状態です。</p>
+<div class="shot">
+<p><img src="img/b030_1.png" alt="Moz1.0.1" width="96" height="114">Moz1.0.1での表示</p>
+<p><img src="img/b030_2.png" alt="Op6" width="99" height="113">Opera6.05での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ030</div>
+</body>
+</html>

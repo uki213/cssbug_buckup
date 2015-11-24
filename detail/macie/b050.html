@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body style="margin-bottom:0; padding-bottom:0; border-bottom:2px dashed blue;">
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ050</div>
+
+<h2>overflow:auto; を指定した要素の下に空白ができる<em>(5.x)</em></h2>
+
+<h3>症状</h3>
+<p><code>overflow:auto;</code> を指定した要素をbody要素内の最後に置いた場合、内容物から導かれるボックスの高さ（<code>height:auto;</code> を指定したときの高さ）と現在のボックスの高さとの差にあたる大きさの余白がその要素の下部に出現する。</p>
+
+<h3>例示（ソース）</h3>
+<pre>&lt;body style=&quot;margin-bottom:0; padding-bottom:0; border-bottom:2px dashed blue;&quot;&gt;
+
+&lt;div style=&quot;margin:0; overflow:auto; width:10em; height:4em; background:lime;&quot;&gt;
+内容&lt;br&gt;内容……&lt;/div&gt;
+&lt;/body&gt;</pre>
+<p><code>overflow:auto;</code> を指定したdiv要素をこの文書の最後に置いています。この文書の下端に余白は発生しないはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b050_1.png" alt="WinIE6" width="200" height="92">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>MacIE5.1～5.2で不具合が発生するそうです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ050</div>
+
+<h3>例示（実際の表示）</h3>
+<div style="margin:0; overflow:auto; width:10em; height:4em; background:lime;">内容<br>内容<br>内容<br>内容<br>内容<br>内容<br>内容<br>内容<br>内容<br>内容</div>
+</body>
+</html>

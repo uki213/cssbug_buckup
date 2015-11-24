@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ020</div>
+
+<h2>高さが明示されていない要素内ではtopプロパティの%値指定が無効<em>(N6.2)</em></h2>
+
+<h3>症状</h3>
+<p>高さが明示されていない要素の子孫要素を相対配置した場合、topプロパティを%値で指定すると無視される。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;background: teal;&quot;&gt;
+&lt;div style=&quot;position:relative; top:5%; left:5%; width:50px; height:50px; background:aqua;&quot;&gt;
+&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="background: teal;">
+<div style="position:relative; top:5%; left:5%; width:50px; height:50px; background:aqua;"></div>
+</div>
+</div>
+<p>親要素（背景が青緑色）では高さを明示していません。子要素（背景が空色）は通常配置から右下方向に5%移動させようとしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b020_1.png" alt="N6.2" width="158" height="75">N6.2.3での表示（標準モード）</p>
+<p><img src="img/b020_2.png" alt="WinIE6" width="158" height="125">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>親要素の高さが明示されていないとき、値が%単位で指定されたtopプロパティは無視されます。それ以外の単位（pxやemなど）で指定されている場合は解釈されます。</p>
+
+<h3>修正状況</h3>
+<p>N6.2.3、Moz1.0ともに正しい解釈をしています。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ020</div>
+</body>
+</html>

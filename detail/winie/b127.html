@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ127</div>
+
+<h2>実体参照で表記した文字が正しく表示されない<em>(6.0)</em></h2>
+<ul>
+<li>2003-11-23修正。例示を修正。</li>
+<li>2004-02-13修正。例示を修正。</li>
+<li>2004-05-17修正。復帰。</li>
+</ul>
+
+<h3>症状</h3>
+<p>Unicodeを使用しないと表現できない文字などを実体参照で表記するとき、その文字のデータを含むフォントが存在する環境でも文字が表示されない場合がある。</p>
+
+<h3>例示</h3>
+<pre>&lt;ul&gt;
+&lt;li style=&quot;font-family:'Lucida Sans Unicode',sans-serif;&quot;&gt;Lucida &amp;#32083;&lt;/li&gt;
+&lt;li style=&quot;font-family:'Arial',sans-serif;&quot;&gt;Arial &amp;#32083;&lt;/li&gt;
+&lt;li style=&quot;font-family:'Tahoma',sans-serif;&quot;&gt;Tahoma &amp;#32083;&lt;/li&gt;
+&lt;li style=&quot;font-family:'Times New Roman',sans-serif;&quot;&gt;Times &amp;#32083;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul>
+<li style="font-family:'Lucida Sans Unicode',sans-serif;">Lucida &#32083;</li>
+<li style="font-family:'Arial',sans-serif;">Arial &#32083;</li>
+<li style="font-family:'Tahoma',sans-serif;">Tahoma &#32083;</li>
+<li style="font-family:'Times New Roman',sans-serif;">Times &#32083;</li>
+</ul>
+</div>
+<p>font-familyプロパティで指定した欧文フォントには漢字が含まれていないので、sans-serifフォント（例えば「ＭＳ ゴシック」）で漢字が表示されるはずです。Win98以降に含まれる「ＭＳ ゴシック」は<code>&amp;#32083;</code>で表される文字（糸偏の右に「圭」）のデータを持っているので、該当する文字が表示されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b127_1.png" alt="WinIE6.0">WinIE6.0（WindowsXP）</p>
+<p><img src="img/b127_2.png" alt="WinIE6.0">WinIE6.0（WindowsMe）</p>
+</div>
+
+<h3>補足</h3>
+<p>Win98以降に含まれている「ＭＳ （Ｐ）ゴシック」や「ＭＳ （Ｐ）明朝」は、補助漢字（JIS X0212）で定義されている文字のデータを含んでいます。従って、フォントを追加していない状態でもこれらの文字（<code>&amp;#32083;</code>で表される文字もJIS X0212で定義されています）は表示できるはずです。</p>
+<p>font-familyの指定に依存しない不具合である可能性があります。以下の例ではfont-familyの指定はありませんが、特定のサイズでのみ実体参照した文字が化ける場合があるそうです。</p>
+<pre>&lt;ul&gt;
+&lt;li style=&quot;font-size:15px&quot;&gt;&amp;#x25B6;&amp;#x25B7;&amp;#x25BA; 15px&lt;/li&gt;
+&lt;li style=&quot;font-size:16px&quot;&gt;&amp;#x25B6;&amp;#x25B7;&amp;#x25BA; 16px&lt;/li&gt;
+&lt;li style=&quot;font-size:17px&quot;&gt;&amp;#x25B6;&amp;#x25B7;&amp;#x25BA; 17px&lt;/li&gt;
+&lt;li style=&quot;font-size:18px&quot;&gt;&amp;#x25B6;&amp;#x25B7;&amp;#x25BA; 18px&lt;/li&gt;
+&lt;li style=&quot;font-size:19px&quot;&gt;&amp;#x25B6;&amp;#x25B7;&amp;#x25BA; 19px&lt;/li&gt;
+&lt;li style=&quot;font-size:20px&quot;&gt;&amp;#x25B6;&amp;#x25B7;&amp;#x25BA; 20px&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul>
+<li style="font-size:15px">&#x25B6;&#x25B7;&#x25BA; 15px</li>
+<li style="font-size:16px">&#x25B6;&#x25B7;&#x25BA; 16px</li>
+<li style="font-size:17px">&#x25B6;&#x25B7;&#x25BA; 17px</li>
+<li style="font-size:18px">&#x25B6;&#x25B7;&#x25BA; 18px</li>
+<li style="font-size:19px">&#x25B6;&#x25B7;&#x25BA; 19px</li>
+<li style="font-size:20px">&#x25B6;&#x25B7;&#x25BA; 20px</li>
+</ul>
+</div>
+<div class="shot">
+<p><img src="img/b127_3.png" alt="Ns7.1">Netscape7.1</p>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>WinIEをWin9x/Meで実行したときに不具合が発生することがあります。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ127</div>
+</body>
+</html>

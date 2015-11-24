@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ122</div>
+
+<h2>OpenTypeフォントを用いて2バイト文字を表示することができない<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>UnicodeやUTF-8で記述した文書では、OpenTypeフォントで2バイト文字を表示することができない。</p>
+
+<h3>例示</h3>
+<pre>&lt;ul style=&quot;font-family:みかちゃん,sans-serif; font-size:150%;&quot;&gt;
+&lt;li&gt;Alphabet (1byte)&lt;/li&gt;
+&lt;li&gt;日本語（２バイト）&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul style="font-family:みかちゃん,sans-serif; font-size:150%;">
+<li>Alphabet (1byte)</li>
+<li>日本語（２バイト）</li>
+</ul>
+</div>
+<p>この例はOpenType版のみかちゃんフォントをインストールしている環境を想定しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b122_1.png" alt="Op7.2" width="260" height="87">Opera7.21での表示（標準モード）</p>
+<p><img src="img/b122_2.png" alt="WinIE6" width="247" height="102">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>UnicodeやUTF-8以外のコード（Shift_JISなど）で記述した文書でこの不具合は発生しません。また、文書の文字コードに関わらずTrueTypeフォントでこの不具合は発生しません。</p>
+<p>この不具合については、以下の文書も参照してください。</p>
+<ul>
+<li><a href="http://page.freett.com/onlineuser/OTTest/OTTest.html">MSIE6でのOpenTypeフォントによる、日本語レンダリングに関する実験記録</a></li>
+</ul>
+
+<h3>修正状況</h3>
+<p>WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ122</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ001</div>
+
+<h2>ボックスの幅や高さを算出するときにパディングやボーダーのサイズを含めてしまう</h2>
+
+<h3>症状</h3>
+<p>CSS1/CSS2ではボックスの幅を算出するときにパディングやボーダーのサイズは除外される。しかしWinIEではこれらを含めて幅や高さを算出する。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;width:150px; height:20px; padding-left:30px; border:10px solid blue;&quot;&gt;&lt;/div&gt;
+&lt;img src=&quot;../img/img01.png&quot; alt=&quot;比較用画像&quot; width=&quot;200&quot; height=&quot;40&quot;&gt;</pre>
+<div class="example">
+<div style="width: 150px; height: 20px; padding-left: 30px; border: 10px solid blue;"></div>
+<img src="../img/img01.png" alt="比較用画像" width="200" height="40">
+</div>
+<p>上段のdiv要素のボーダー外縁のサイズと下段の画像のサイズが等しくなるように指定しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b001_1.png" alt="Moz1.0" width="216" height="100">Moz1.0（互換モード）</p>
+<p><img src="img/b001_2.png" alt="WinIE6" width="220" height="102">WinIE6.0（互換モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>ボックスサイズの算出時にボーダーまでを含めるという考え方はCSS3で導入される予定です。ただし、現在WinIEは公式的にはCSS3をサポートしていません。</p>
+
+<h3>修正状況</h3>
+<p>WinIE6.0標準モードはCSS2に従ったサイズ算出を行います。IE6互換モードでは従来同様、ボーダーまでを含む算出が行われています。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ001</div>
+</body>
+</html>

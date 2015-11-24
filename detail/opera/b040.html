@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+<style type="text/css">
+<!--
+#sa * {
+	box-sizing: border-box;
+}
+a.und {
+	text-decoration: underline;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ040</div>
+
+<h2>全称セレクタとbox-sizing:border-box;を組み合わせるとリンクの下線が表示されない<em>(7.0)</em></h2>
+<p>2003-03-22更新。原因が分かりました。</p>
+
+<h3>症状</h3>
+<p>全称セレクタ（<code>*</code>）や全称セレクタを含むセレクタ（<code>html *</code> など）に対して <code>box-sizing: border-box;</code> というスタイルを適用させた場合、これらのセレクタにマッチする要素内でリンク文字列にデフォルトで設定されている下線が表示されない。</p>
+
+<h3>例示</h3>
+<pre>a:link    { color: #0000ff; }
+a:visited { color: #006400; }
+a:hover   { background: #ffe4e1; }
+a:active  {  color: #ff4500; }</pre>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+#sa * {
+  box-sizing: border-box;
+}
+&lt;/style&gt;
+
+&lt;p id=&quot;sa&quot;&gt;
+&lt;a href=&quot;../../index.html&quot;&gt;トップページ&lt;/a&gt;
+&lt;/p&gt;</pre>
+<div class="example">
+<p id="sa"><a href="../../index.html">トップページ</a></p>
+</div>
+<p>下線に関するスタイル（text-decorationプロパティ）は指定していません。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b040_1.png" alt="Moz1.0.2" width="138" height="63">Moz1.0.2での表示（標準モード）</p>
+<p><img src="img/b040_2.png" alt="Op7" width="124" height="47">Opera7.03での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>text-decorationプロパティで下線装飾を明示することでこのバグを回避できます。</p>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+<em>a.und {
+  text-decoration: underline;
+}</em>
+&lt;/style&gt;
+
+&lt;p id=&quot;sa&quot;&gt;
+&lt;a <em>class=&quot;und&quot;</em> href=&quot;../../index.html&quot;&gt;トップページ&lt;/a&gt;
+&lt;/p&gt;</pre>
+<div class="example">
+<p id="sa"><a class="und" href="../../index.html">トップページ</a></p>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera7.03では標準・互換モードの両方で不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ040</div>
+</body>
+</html>

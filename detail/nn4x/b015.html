@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Netscape Navigator 4.x CSSバグリスト</title>
+</head>
+<body>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ015</div>
+
+<h2>line-heightの倍率指定で算出値が継承する</h2>
+<ul>
+<li>2004-05-17修正。リンク切れを修正。</li>
+</ul>
+
+<h3>症状</h3>
+<p>line-heightプロパティを倍率指定した場合、子孫要素に継承するのは指定値である。しかしNN4ではこの場合も算出値を継承してしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;line-height:1;&quot;&gt;
+&lt;p style=&quot;font-size:2em;&quot;&gt;1行目&lt;br&gt;2行目&lt;/p&gt;
+&lt;p&gt;1行目&lt;br&gt;2行目&lt;/p&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="line-height:1;">
+<p style="font-size:2em;">1行目<br>2行目</p>
+<p>1行目<br>2行目</p>
+</div>
+</div>
+<p>どちらのp要素でも文字サイズとline-heightプロパティの算出値が同じになるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b015_1.png" alt="N7" width="145" height="190">N7.02での表示</p>
+<p><img src="img/b015_2.png" alt="NN4" width="114" height="100">NN4.8での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>詳細はこちらを参照してください。</p>
+<ul>
+<li><a href="http://dhr.at.infoseek.co.jp/stylebug22.htm" title="スタイルシート（CSS）のトラブル、バグ集">2章:文字などが重なってしまう</a></li>
+</ul>
+
+<h3>修正状況</h3>
+<p>NN4.8で不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ015</div>
+</body>
+</html>

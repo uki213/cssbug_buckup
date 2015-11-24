@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Safari (KHTML) CSSバグリスト</title>
+</head>
+<body>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ003</div>
+
+<h2>名称に日本語文字を含むフォントファミリの指定を無視する<em>(S1.0)</em></h2>
+
+<h3>症状</h3>
+<p>名称に日本語などの多バイト文字が含まれているフォントファミリをfont-familyプロパティに指定しても無視される。フォント名をエスケープしても回避できない。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;font-family:'みかちゃん-P','あくあＰフォント',sans-serif;&quot;&gt;
+フォントファミリ&lt;/p&gt;</pre>
+<div class="example">
+<p style="font-family:'みかちゃん-P','あくあＰフォント',sans-serif;">フォントファミリ</p>
+</div>
+<p>インターネット上で公開されているフォントを指定しています（MacOSXに付属していて名称に日本語が含まれているフォントが分かればそれを指定するのですが……）。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b003_1.png" alt="N7" width="151" height="63">N7.02での表示（フォントは「みかちゃん」です）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Safari1.0でこの不具合が発生するそうです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ003</div>
+</body>
+</html>

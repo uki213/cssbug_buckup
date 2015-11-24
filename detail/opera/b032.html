@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+<style type="text/css">
+<!--
+a.B:before, span.C:before {
+	content: '[';
+}
+a.B:after, span.C:after {
+	content: ']';
+}
+a.BB:before {
+	content: '[';
+}
+span.CC:before {
+	content: '[';
+}
+a.BB:after {
+	content: ']';
+}
+span.CC:after {
+	content: ']';
+}
+-->
+</style>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ032</div>
+
+<h2>擬似要素を含むセレクタをコンマ区切りで複数指定すると無視される<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>擬似要素 :before, :after を含むセレクタをカンマ区切りで複数指定すると、それらに対するスタイル宣言が無視される。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+a.B:before, span.C:before {
+    content: '[';
+}
+a.B:after, span.C:after {
+    content: ']';
+}
+&lt;/style&gt;
+
+&lt;p&gt;&lt;a class=&quot;B&quot;&gt;○&lt;/a&gt;&lt;span class=&quot;C&quot;&gt;△&lt;/span&gt;&lt;/p&gt;</pre>
+<div class="example">
+<p><a name="foo" class="B">○</a><span class="C">△</span></p>
+</div>
+<p>「○」と「△」を角括弧で括らせています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b032_1.png" alt="Moz1.0.1" width="109" height="69">Moz1.0.1での表示</p>
+<p><img src="img/b032_2.png" alt="Op6" width="95" height="71">Opera6.05での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>コンマを使わずに一つ一つ指定すればこのバグを回避できます。</p>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+a.BB:before {
+    content: '[';
+}
+span.CC:before {
+    content: '[';
+}
+a.BB:after {
+    content: ']';
+}
+span.CC:after {
+    content: ']';
+}
+&lt;/style&gt;
+
+&lt;p&gt;&lt;a class=&quot;BB&quot;&gt;○&lt;/a&gt;&lt;span class=&quot;CC&quot;&gt;△&lt;/span&gt;&lt;/p&gt;</pre>
+<div class="example">
+<p><a name="foo" class="BB">○</a><span class="CC">△</span></p>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ032</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
+<script type="text/javascript">
+<!--
+function getValue() {
+	obj = document.getElementById("txt");
+	alert(
+		"nodeValue: " + obj.childNodes.item(0).nodeValue + "\n" +
+		"value: " + obj.value
+	);
+}
+// -->
+</script>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ073</div>
+
+<h2>display:none;状態のtextarea要素のvalueプロパティを取得不能<em>(6.0/7.x)</em></h2>
+
+<h3>症状</h3>
+<p><code>display:none;</code> を指定することでボックスを生成していないtextarea要素に対しては、スクリプト等を用いてDOMのvalueプロパティの値を取得することができない。</p>
+
+<h3>例示</h3>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt;
+function getValue() {
+  obj = document.getElementById(&quot;txt&quot;);
+  alert(
+    &quot;nodeValue: &quot; + obj.childNodes.item(0).nodeValue + &quot;\n&quot; +
+    &quot;value: &quot; + obj.value
+  );
+}
+&lt;/script&gt;
+&lt;form&gt;&lt;div&gt;
+&lt;textarea id=&quot;txt&quot; style=&quot;display:none;&quot;&gt;
+テキストエリアの内容物&lt;/textarea&gt;
+&lt;input type=&quot;button&quot; value=&quot;値を取得&quot; onclick=&quot;getValue()&quot;&gt;
+&lt;/div&gt;&lt;/form&gt;</pre>
+<div class="example">
+<form action="b073.html"><div>
+<textarea id="txt" style="display:none;">テキストエリアの内容物</textarea>
+<input type="button" value="値を取得" onclick="getValue()">
+</div></form>
+</div>
+<p>ボタンを押すとJavascriptを用いて、textarea要素の内容物をnodeValueプロパティで参照した場合の結果とvalueプロパティで参照した場合の結果をアラートで表示します。</p>
+
+<h3>補足</h3>
+<p>例示のスクリプトを実行すると以下のようになります。Opera6はアラートが表示されないので、valueプロパティの参照のみを行うスクリプトで実行した場合の結果を載せています。</p>
+<table border="2" summary="例示のスクリプトを実行した結果の一覧">
+<caption>例示の動作結果</caption>
+<thead>
+<tr><th></th><th>nodeValueプロパティ</th><th>valueプロパティ</th></tr>
+</thead>
+<tbody>
+<tr><th>WinIE6.0</th><td>正しく取得</td><td>正しく取得</td></tr>
+<tr><th>Netscape7.1</th><td>正しく取得</td><td>正しく取得</td></tr>
+<tr><th>Opera7.23</th><td>正しく取得</td><td>正しく取得</td></tr>
+<tr><th>Opera7.11/7.03</th><td>正しく取得</td><td><em>取得不能</em></td></tr>
+<tr><th>Opera6.06</th><td><em>childNodesプロパティが未実装</em></td><td><em>取得不能</em></td></tr>
+</tbody>
+</table>
+<p>textarea要素のボックスが生成されていればvalueプロパティの値を取得することができます。例えば、visibilityプロパティで不可視状態にしただけのtextarea要素でこの不具合は発生しません。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera6.06、Opera7.03、Opera7.11で不具合の発生を確認しました。</li>
+<li>Opera7.23でこの不具合は発生しないようです。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ073</div>
+</body>
+</html>

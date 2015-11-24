@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ046</div>
+
+<h2>改ページ直後の行にtext-indentプロパティが効いてしまう<em>(Moz1.0.2)</em></h2>
+
+<h3>症状</h3>
+<p>印刷時には改ページされた直後の行（各ページの先頭行）が、ボックス内の最初の行でない場合でもtext-indentプロパティの指定に従ってインデントされる。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;text-indent:2em; width:4em; border:2px solid blue;&quot;&gt;インデント……&lt;/p&gt;</pre>
+<p><a href="b046a.html">検証ページ</a>には上の記述があります。検証ページを開き、印刷プレビュー画面に切り替えて、2ページ目の先頭がインデントされているかを確認してください。</p>
+
+<h3>スクリーンショット</h3>
+<p>印刷プレビューで見た2ページ目の先頭部分です。</p>
+<div class="shot">
+<p><img src="img/b046_1.png" alt="Moz1.2.1" width="88" height="104">Moz1.2.1での表示</p>
+<p><img src="img/b046_2.png" alt="Moz1.0.2" width="105" height="96">Moz1.0.2での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Moz1.0.2では標準・互換モードの両方で不具合の発生が確認されました。Moz1.2.1ではでは標準・互換モードの両方でこの不具合は発生しません。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ046</div>
+</body>
+</html>

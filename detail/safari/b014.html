@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<title>Safari (KHTML) CSSバグリスト</title>
+</head>
+<body>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ014</div>
+
+<h2>フロートが先行要素の下辺より上に置かれる</h2>
+
+<h3>症状</h3>
+<p>フロートが先行する要素が生成したボックスの下辺より上部に置かれてしまい、内容物が重なってしまうことがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;form&gt;&lt;dl&gt;
+&lt;dt style=&quot;float:left; clear:left; width:6em;&quot;&gt;Textarea&lt;/dt&gt;
+&lt;dd style=&quot;margin-left:6.5em;&quot;&gt;
+&lt;textarea style=&quot;width:10em; height:4em;&quot;&gt;&lt;/textarea&gt;&lt;/dd&gt;
+&lt;dt style=&quot;float:left; clear:left; width:6em;&quot;&gt;Input&lt;/dt&gt;
+&lt;dd style=&quot;margin-left:6.5em;&quot;&gt;
+&lt;input type=&quot;text&quot; style=&quot;width:10em;&quot;&gt;&lt;/dd&gt;
+&lt;/dl&gt;&lt;/form&gt;</pre>
+<div class="example">
+<form action="b014.html">
+<dl>
+<dt style="float:left; clear:left; width:6em;">Textarea</dt>
+<dd style="margin-left:6.5em;"><textarea style="width:10em; height:4em;"></textarea></dd>
+<dt style="float:left; clear:left; width:6em;">Input</dt>
+<dd style="margin-left:6.5em;"><input type="text" style="width:10em;"></dd>
+</dl>
+</form>
+</div>
+<p>Safariではinput要素の入力ボックスがtextarea要素の入力ボックスに重なるそうです。</p>
+
+<h3>報告書き込み</h3>
+<blockquote>dt{<br>
+width : 8em;<br>
+float : left;<br>
+clear : left;<br>
+}<br>
+dd {margin-left:8.5em;}<br>
+&lt;dl&gt;<br>
+&lt;dt&gt;name&lt;/dt&gt;<br>
+&lt;dd&gt;&lt;input&gt;&lt;/dd&gt;<br>
+&lt;dt&gt;message&lt;/dt&gt;<br>
+&lt;dd&gt;&lt;textarea&gt;&lt;/textarea&gt;&lt;/dd&gt;<br>
+&lt;dt&gt;password&lt;/dt&gt;<br>
+&lt;dd&gt;&lt;input&gt;&lt;/dd&gt;<br>
+&lt;/dl&gt;<br>
+とやると、Mac+Safariでpassword入力欄がtextareaに重なるらしい。<br>
+詳しいソースは質問スレッドの507。<br>
+&gt;textareaだけrow属性のため他より高さがあるんだよね。<br>
+&gt;たぶんSafariはこのバグと同じ解釈なのでは。<br>
+&gt;<br>
+&gt;先行するフロートの上方に後続のフロートが置かれる<br>
+&gt;http://cssbug.at.infoseek.co.jp/detail/winie/b093.html<br>
+&gt;http://cssbug.at.infoseek.co.jp/detail/opera/b044.html</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ014</div>
+</body>
+</html>

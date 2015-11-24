@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+<style type="text/css">
+<!--
+div.example li {
+	border: none;
+}
+li#color {
+	border: 3px solid blue;
+	color: blue;
+}
+li#nocolor {
+	border: 3px solid;
+	color: red;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ056</div>
+
+<h2>色指定のないborderによる値の上書きができない<em>(5.1)</em></h2>
+<ul>
+<li>2004-05-17修正。症状と例示の変更。</li>
+</ul>
+
+<h3>症状</h3>
+<p>一旦指定された<del datetime="2004-05-15xT00:00:00+09:00">ボーダースタイル</del><ins datetime="2004-05-15T00:00:00+09:00"> <code>border:none;</code> </ins>の指定を、ボーダー色の指定を省略したborderプロパティを用いて上書きすることができない。</p>
+<p><ins datetime="2004-05-15T00:00:00+09:00">※none以外のボーダースタイルは上書きできるそうです。</ins></p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+li {
+  border: none;
+}
+li#color {
+  border: 3px solid blue;
+  color: blue;
+}
+li#nocolor {
+  border: 3px solid;
+  color: red;
+}
+&lt;/style&gt;
+
+&lt;ul&gt;
+&lt;li id=&quot;color&quot;&gt;色指定あり&lt;/li&gt;
+&lt;li id=&quot;nocolor&quot;&gt;色指定<del datetime="2004-05-15T00:00:00+09:00">あり</del><ins datetime="2004-05-15T00:00:00+09:00">なし</ins>&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul>
+<li id="color">色指定あり</li>
+<li id="nocolor">色指定なし</li>
+</ul>
+</div>
+<p>1番目のli要素は色指定のあるborderプロパティ、2番目のli要素は色指定のないborderプロパティを使用しています。MacIEでは2番目のli要素にボーダーが設置されないそうです。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>MacIE5.1でこの不具合が発生するそうです。</li>
+</ul>
+
+<h3>報告書き込み</h3>
+<blockquote>IE5.1:mac でのバグ報告。ある要素に border: none; を宣言して、<br>
+後に “色の値を省略して” borderプロパティを上書き指定すると、<br>
+「none」が上書きされない。つまり、ボーダーが描画されない。<br>
+<br>
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&gt;<br>
+&lt;style type=&quot;text/css&quot;&gt;<br>
+p, ol { margin: 0 0 0 40px; padding: 0; }<br>
+li { border: none; color: gray; }<br>
+li.test1 { border: solid !important; }<br>
+li.test2 { border: solid thick !important; }<br>
+li.test3 { border: solid red !important;}<br>
+li.test4 { border: solid thick blue !important; }<br>
+li.test5 { border: solid 5em transparent !important; }<br>
+&lt;/style&gt;<br>
+&lt;title&gt;テスト&lt;/title&gt;<br>
+&lt;p style=&quot;border: solid 1px black&quot;&gt;style=border: solid 1px black;&lt;/p&gt;<br>
+&lt;ol&gt;<br>
+&lt;li class=&quot;test1&quot;&gt;border: solid !important;&lt;/li&gt;<br>
+&lt;li class=&quot;test2&quot;&gt;border: solid thick !important;&lt;/li&gt;<br>
+&lt;li class=&quot;test3&quot;&gt;border: solid red !important;&lt;/li&gt;<br>
+&lt;li class=&quot;test4&quot;&gt;border: solid thick blue !important;&lt;/li&gt;<br>
+&lt;li class=&quot;test5&quot;&gt;border: solid 5em transparent !important;&lt;/li&gt;<br>
+&lt;/ol&gt;<br>
+&lt;p style=&quot;border: solid 1px black&quot;&gt;style=border: solid 1px black;&lt;/p&gt;<br>
+<br>
+この例の場合、1項目と2項目のボーダーが描画されない。<br>
+<br>
+1項目は border: solid medium gray; として解釈される筈。<br>
+2項目は border: solid thick gray; として解釈される筈。<br>
+<br>
+色の値を明示している3～5項目は正常に解釈される。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ056</div>
+</body>
+</html>

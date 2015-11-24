@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ042</div>
+
+<h2>互換モードではhr要素に指定したclearプロパティが無視される<em>(N7)</em></h2>
+<ul>
+<li>2003-05-03修正。バグの回避法を追加。</li>
+<li>2003-05-20修正。回避法のためにWinIEでバグが発生する点について追加。</li>
+</ul>
+
+<h3>症状</h3>
+<p>互換モードではhr要素にclearプロパティを指定しても無視されてしまい、フロートの横に回り込んでしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;float:left; width:100px; height:20px; background:blue; margin:1px;&quot;&gt;&lt;/div&gt;
+&lt;hr style=&quot;clear:both;&quot;&gt;
+&lt;div style=&quot;float:left; width:100px; height:20px; background:red; margin:1px;&quot;&gt;&lt;/div&gt;</pre>
+<div class="example">
+<div style="float:left; width:100px; height:20px; background:blue; margin:1px;"></div>
+<hr style="clear:both;">
+<div style="float:left; width:100px; height:20px; background:red; margin:1px;"></div>
+<div style="background:transparent; clear:both;">&nbsp;<!-- ここ以降の回りこみを抑制 --></div>
+</div>
+<p>hr要素がフロートの横に回りこまないようにclearプロパティを設定しています。なお、このページは互換モードで表示させています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b042_1.png" alt="IE6" width="182" height="99">WinIE6.0での表示（互換モード）</p>
+<p><img src="img/b042_2.png" alt="Moz1.0.1" width="237" height="76">Moz1.0.1での表示（互換モード）</p>
+</div>
+
+<h3>補足</h3>
+<ul>
+<li>
+<p>hr要素に対して <code>display: block;</code> を指定することでこのバグを回避できます。<ins datetime="2003-05-20T00:00:00+09:00">ただし、この指定のために<a href="../winie/b105.html" title="hr要素に指定した下マージンが親要素の下マージンとして反映される">WinIEで別のバグ</a>が発生することがあります。</ins></p>
+<pre>&lt;div style=&quot;float:left; width:100px; height:20px; background:blue; margin:1px;&quot;&gt;&lt;/div&gt;
+&lt;hr style=&quot;clear:both; <em>display:block;</em>&quot;&gt;
+&lt;div style=&quot;float:left; width:100px; height:20px; background:red; margin:1px;&quot;&gt;&lt;/div&gt;</pre>
+<div class="example">
+<div style="float:left; width:100px; height:20px; background:blue; margin:1px;"></div>
+<hr style="clear:both; display:block;">
+<div style="float:left; width:100px; height:20px; background:red; margin:1px;"></div>
+<div style="background:transparent; clear:both;">&nbsp;<!-- ここ以降の回りこみを抑制 --></div>
+</div>
+</li>
+<li>
+<p>Bugzilla-jpの関連項目です。</p>
+<ul>
+<li><a href="http://bugzilla.mozilla.gr.jp/show_bug.cgi?id=1726">DOCTYPE宣言によって水平線（hr）へのclear指定が効かなくなる</a></li>
+</ul>
+</li>
+<li>
+<p>互換モードでhr要素はインライン要素として扱われているのでclearプロパティの指定は無効になります。一方、標準モードでhr要素はブロック要素として扱われます。以下の理由からこのような違いが設定されているそうです。</p>
+<ul>
+<li>WinIEやNN4.xなどではhr要素をブロック要素として扱っている。また、hr要素の罫線はボーダーである。</li>
+<li>フロートの後にclearプロパティがnone値のブロック要素があるとき、この要素のボーダーはフロートが存在しないものと考えて設置しなければならない。</li>
+<li>しかし、慣習としてhr要素の罫線（＝ボーダー）はフロートを避けるように表示されてきた。hr要素がブロック要素であるのなら、このような振る舞いはCSS2の規定に違反していることになる。</li>
+<li>このため実験として、互換モードではhr要素をインライン要素にした。インライン要素であれば罫線がフロートを避けるのはCSS2に準拠した振る舞いになる。</li>
+</ul>
+<p>このような経緯から、互換モードではhr要素に対して以下のようなスタイルがデフォルトで設定されています（「resource:///res/quirk.css」から抜粋）。これにより互換モードでhr要素は、前後に（br要素相当の）改行が置かれたインライン要素として扱われます。</p>
+<pre>hr {
+  display: inline;
+  -moz-box-sizing: border-box;
+  margin: 0 0.1% 0 0.1%; /* Mmm! Hack-on-a-hack for bug 81776 */
+  font-size: -moz-initial !important;
+}
+hr:before {
+  white-space: pre;
+  content: &quot;\A&quot;;
+}
+hr:after {
+  white-space: pre;
+  content: &quot;\A&quot;;
+}</pre>
+<p>詳しくは<a href="http://bugzilla.mozilla.org/show_bug.cgi?id=18754" title="[FLOAT] problems with HRs around floats">Mozilla.org Bugzilla Bug 18754</a>を参照してください。</p>
+</li>
+</ul>
+
+<h3>修正状況</h3>
+<p>Moz1.0.1/1.2.1の互換モードで不具合の発生が確認されました。標準モードではclearプロパティの指定どおりに表示します。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ042</div>
+</body>
+</html>

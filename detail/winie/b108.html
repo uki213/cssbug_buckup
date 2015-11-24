@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="優先">
+<link rel="alternate stylesheet" type="text/css" href="b108.css" title="代替">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ108</div>
+
+<h2>代替スタイルシート内の指定をprintメディアに反映しない<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>スタイルシート切り替えスクリプトなどを使用して代替スタイルシートを適用すると、画面上では代替スタイルシートが適用されるが印刷プレビューや実際の印刷物上ではスタイルシートが適用されていない状態で出力されてしまう。</p>
+
+<h3>例示</h3>
+<p>代替スタイルシート「b018.css」：</p>
+<pre>body {
+  color: #0000ff;
+}</pre>
+<div class="example">
+<script type="text/javascript">
+<!--
+function ChangeStyle(styleTitle)
+{
+  var sheets = document.styleSheets;
+  if (sheets)
+  {
+    for (var i = 0; i < sheets.length; i++)
+    {
+      if (styleTitle && (sheets[i].title == styleTitle || sheets[i].title == ""))
+        sheets[i].disabled = false;
+      else
+        sheets[i].disabled = true;
+    }
+  }
+}
+
+function DoChange()
+{
+  var selector = document.StyleChangeForm.Selector;
+  var styleTitle = selector.options[selector.selectedIndex].value;
+  ChangeStyle(styleTitle);
+  return false;
+}
+
+var sheets = document.styleSheets;
+if (sheets)
+{
+  document.writeln('<form name="StyleChangeForm" id="StyleChangeForm" action="documentobject-1" onsubmit="return DoChange();">');
+  document.writeln('<fieldset>');
+  document.writeln('<legend>スタイル変更:</legend>');
+  document.writeln('<select name="Selector">');
+  document.writeln('<option selected value="">(スタイルシートオフ)</option>');
+  for (var i = 0; i < sheets.length; i++)
+    document.writeln('<option value="' + sheets[i].title + '">' + sheets[i].title + '</option>');
+  document.writeln('</select>');
+  document.writeln('<input type="submit" value="ちぇんじ" />');
+  document.writeln('</fieldset>');
+  document.writeln('</form>');
+}
+else
+{
+  document.writeln('<p>[残念ながら、この環境ではこの方法で切り替ることができないみたいです]</p>');
+}
+-->
+</script>
+</div>
+<p>ドロップダウンリストから「代替」を選択し、ボタンを押してスタイルシートを適用してください。文字列が青色で表示されますので、そのままの状態で印刷プレビューの状態を確認してください。</p>
+<p>※この切り替えスクリプトは「<a href="http://www.xinada.ne.jp/~handa/tech/CSS/StyleChange/documentobject-1">CSS:#4:スクリプトでdocument.styleSheetsを操作</a>（<a href="http://www.xinada.ne.jp/~handa/tech/">極H&amp;A的技術研究所</a>）」で公開しているものです。少なくともWinIE6.0、Mozilla1.3.1で動作することを確認しました。</p>
+
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ108</div>
+</body>
+</html>

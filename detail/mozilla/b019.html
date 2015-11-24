@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+<style type="text/css">
+<!--
+a:hover {
+	background: lime;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ019</div>
+
+<h2>親要素をはみ出すように配置した要素内のリンクやフォームが機能しない<em>(N6.x/N7.x)</em></h2>
+<ul>
+<li>2003-12-11修正。新たなバグ報告の内容を追加し、全体を整理。</li>
+</ul>
+
+<h3>症状</h3>
+<p>親要素を相対配置に、子要素を絶対配置にして、子要素のボックスが親要素のボックスをはみ出すように配置したとき、子要素内のリンクやフォームコントロールが機能しなくなる場合がある。</p>
+<ul>
+<li>Netscape6/7：親要素がインライン要素のとき、子要素内のリンクやフォームは機能しない。</li>
+<li>Netscape6：子要素のleft, topプロパティに負の値を指定して親要素のボックスからはみ出させたとき、子要素内のリンクやフォームは機能しない。</li>
+</ul>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;position:relative; top:1em; background:aqua;&quot;&gt;親
+&lt;div style=&quot;position:absolute; top:-1em; background:yellow;&quot;&gt;
+&lt;a href=&quot;b019.html&quot;&gt;N6で使用不能&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;span style=&quot;position:relative; top:1em; background:aqua;&quot;&gt;親
+&lt;span style=&quot;position:absolute; top:1em; background:yellow;&quot;&gt;
+&lt;a href=&quot;b019.html&quot;&gt;N6/N7で使用不能&lt;/a&gt;
+&lt;/span&gt;&lt;/span&gt;</pre>
+<div class="example" style="padding-bottom:2.5em;">
+<div style="position:relative; top:1em; background:aqua;">親
+<div style="position:absolute; top:-1em; background:yellow;">
+<a href="b019.html">N6で使用不能</a>
+</div></div>
+<span style="position:relative; top:1em; background:aqua;">親
+<span style="position:absolute; top:1em; background:yellow;">
+<a href="b019.html">N6/N7で使用不能</a>
+</span></span>
+</div>
+<p>2つのリンクがあります。前者はtopプロパティに負の値を指定した場合の例、後者は祖先に相対配置されたインライン要素が存在する場合です。リンクが機能するかを確認してください（:hover擬似クラスで背景色を変えています）。</p>
+
+<h3>スクリーンショット</h3>
+<p>リンク文字列にマウスポインタを乗せたときの反応です。</p>
+<div class="shot">
+<p><img src="img/b019_1.png" alt="WinIE6">WinIE6.0標準モード</p>
+<p><img src="img/b019_2.png" alt="Ns7.1">Netscape7.1標準モード</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Netscape6.2.3、Netscape7.1で不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ019</div>
+</body>
+</html>

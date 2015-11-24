@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Netscape Navigator 4.x CSSバグリスト</title>
+</head>
+<body>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ024</div>
+
+<h2>clearでフロートへの隣接を禁止した要素がフロートに重なる</h2>
+
+<h3>症状</h3>
+<p>複数のフロートを横に並べているとき、それらの直後にclearプロパティで先行フロートとの隣接を禁止した要素を置くと、その要素のボックスが先行フロートに重なることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;float:left; width:3em; border:2px solid red;&quot;&gt;フ1&lt;br&gt;フ1&lt;/div&gt;
+&lt;div style=&quot;float:left; width:3em; border:2px solid blue;&quot;&gt;フ2&lt;/div&gt;
+&lt;div style=&quot;clear:left; background:aqua;&quot;&gt;clear&lt;/div&gt;</pre>
+<div class="example">
+<div style="float:left; width:3em; border:2px solid red;">フ1<br>フ1</div>
+<div style="float:left; width:3em; border:2px solid blue;">フ2</div>
+<div style="clear:left; background:aqua;">clear</div>
+</div>
+<p>clearプロパティを指定したdiv要素は、前にある2つのフロートよりも下に置かれるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b024_1.png" alt="N7.1" width="133" height="75">N7.1での表示</p>
+<p><img src="img/b024_2.png" alt="NN4.8" width="130" height="65">NN4.8での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>Netscape4は複数のフロートを並べたときに、clearプロパティを「最初のフロート（複数の左フロートが並ぶ場合は左端に置かれるフロート）を除いて最も高さが大きいフロート」にあわせて作用させているようです。従って、最初のフロートの高さの値が最も大きくならないようにすることで重なりを回避することができます。</p>
+<p>以下は、2番目のフロートを最も高くする例です。</p>
+<pre>&lt;div style=&quot;float:left; width:3em;&quot;&gt;フ1&lt;br&gt;フ1&lt;/div&gt;
+&lt;div style=&quot;float:left; width:3em;&quot;&gt;フ2&lt;br&gt;フ2&lt;br&gt;フ2&lt;/div&gt;
+&lt;div style=&quot;float:left; width:3em;&quot;&gt;フ3&lt;/div&gt;
+&lt;div style=&quot;clear:left;&quot;&gt;clear&lt;/div&gt;</pre>
+<div class="example">
+<div style="float:left; width:3em; border:2px solid red;">フ1<br>フ1</div>
+<div style="float:left; width:3em; border:2px solid blue;">フ2<br>フ2<br>フ2</div>
+<div style="float:left; width:3em; border:2px solid green;">フ3</div>
+<div style="clear:left; background:aqua;">clear</div>
+</div>
+
+<h3>修正状況</h3>
+<p>NN4.8で不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ024</div>
+</body>
+</html>

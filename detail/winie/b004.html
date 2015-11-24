@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+p.a {
+	font-size: 1.5em;
+}
+p.a:first-letter {
+	font-size: 1.5em;
+}
+p.b:first-letter {
+	font-size: 1.5em;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ004</div>
+
+<h2>:first-letter擬似要素が親要素のフォントサイズを継承しない場合がある<em>(IE5.5)</em></h2>
+
+<h3>症状</h3>
+<p>:first-letter擬似要素に相対単位（pxを除く）を用いてフォントサイズを指定すると、親要素のフォントサイズを反映しない。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+p.a {
+  font-size: 1.5em;
+}
+p.a:first-letter {
+  font-size: 1.5em;
+}
+p.b:first-letter {
+  font-size: 1.5em;
+}
+&lt;/style&gt;
+&lt;p class=&quot;a&quot;&gt;CSS&lt;/p&gt;
+&lt;p class=&quot;b&quot; style=&quot;font-size: 1.5em;&quot;&gt;CSS&lt;/p&gt;</pre>
+<div class="example">
+<p class="a">CSS</p>
+<p class="b" style="font-size: 1.5em;">CSS</p>
+</div>
+<p>class属性がaのp要素では、style要素内で要素本体のスタイルと擬似要素のスタイルを設定しています。class属性がbのp要素では、要素本体のスタイルだけをstyle属性で設定しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b004_1.png" alt="Moz1.0" width="136" height="161">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b004_2.png" alt="WinIE6" width="122" height="135">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>WinIE6では、要素本体のスタイルと擬似要素のスタイルの両方をstyle要素や外部スタイルシートで指定すればバグを回避できます。</p>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では正しく継承されます。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ004</div>
+</body>
+</html>

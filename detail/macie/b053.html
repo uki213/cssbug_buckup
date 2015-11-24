@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ053</div>
+
+<h2>マージン領域に自身の背景が表示される<em>(5.1)</em></h2>
+<ul>
+<li>2004-03-07修正。例示が不適切であることを追記。</li>
+</ul>
+
+<h3>症状</h3>
+<p>ある要素に設定した背景が、その要素のマージン領域にまで表示されることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;background:lime;&quot;&gt;
+&lt;div style=&quot;margin-top:3em;&quot;&gt;
+&lt;div style=&quot;position:relative; top:-3em;
+  width:6em; height:4em; background:yellow;&quot;&gt;相対配置&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="background:lime;">
+<div style="margin-top:3em;">
+<div style="position:relative; top:-3em; width:6em; height:4em; background:yellow;">相対配置</div>
+</div>
+</div>
+</div>
+<p>相対配置したdiv要素（背景が黄色）は祖先のdiv要素（背景が黄緑色）の内容領域からはみ出させています。バグが発生している場合、相対配置したdiv要素のボックス上辺まで黄緑色で塗りつぶされるそうです。</p>
+<p><ins datetime="2004-03-07T00:00:00+09:00">※この例示は<a href="b023.html" title="相対配置要素の位置指定に負の値を使用できない">MacIEバグ023</a>のため、期待する結果（Netscape7.1のスクリーンショットを参照）にはなりません。</ins></p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b053_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>考えられる原因：</p>
+<ul>
+<li>親子関係にある要素間でマージンが相殺されている。</li>
+<li>上記要素の子孫要素が相対配置などで祖先要素の内容領域からはみ出ている。</li>
+</ul>
+
+<h3>修正状況</h3>
+<ul>
+<li>MacIE5.1で不具合が発生するそうです。</li>
+</ul>
+
+<h3>報告書き込み</h3>
+<blockquote>該当ページは<br>
+div.a<br>
+　h2　span.a　/h2<br>
+　div.b<br>
+　　div.c<br>
+　　　h3　span.b　/h3<br>
+　　　本文<br>
+　　/div.c<br>
+　/div.b<br>
+　div.d<br>
+　コメント<br>
+　/div.d<br>
+/div.a<br>
+<br>
+というような構造です。<br>
+スタイルシートでdiv.aの定義にbackground-colorとbackground-imageが設定されています。（ほかにもたくさん細々）<br>
+で、見た目上、h2の部分を除いたdiv.bとdiv.dが一続きの囲みで囲まれるようにしてあり、背景の塗りと右の枠線に、div.aのbackground-colorとbackground-imageが適応されています。<br>
+ところがMac IEで見ると、h2の部分にもdiv.aの背景の塗りと右枠線が出ているのです。</blockquote>
+<blockquote>h2{<br>
+margin:100px 0px 0px 0px;<br>
+padding:0px;<br>
+background-image:url(&quot;ｈｔｔｐほげほげ&quot;);<br>
+background-repeat:no-repeat;<br>
+background-position:top right;<br>
+font-sixe:x-small;<br>
+}<br>
+<br>
+div.a{<br>
+margin-right:10%;<br>
+background-color:#333388;<br>
+background-image:url(&quot;ｈｔｔｐもこもこ&quot;);<br>
+background-repeat:repeat-y;<br>
+background-position:right;<br>
+}<br>
+span.a{<br>
+position:relative;<br>
+z-index:1;<br>
+top:-100px;<br>
+left:-14px;<br>
+display:block;<br>
+padding-top:50px;<br>
+padding-left:60px;<br>
+width:490px;<br>
+height:110px;<br>
+background-image:url(&quot;ｈｔｔｐのこのこ&quot;);<br>
+background-repeat:no-repeat;<br>
+background-position:top left;<br>
+cursor:hand;<br>
+font-family:&quot;System&quot;, monospace;<br>
+font-size:x-large;<br>
+}</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ053</div>
+</body>
+</html>

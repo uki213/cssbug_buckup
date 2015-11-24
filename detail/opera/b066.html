@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ066</div>
+
+<h2>インラインフレームにz-indexが効かない<em>(6.0/7.0)</em></h2>
+
+<h3>症状</h3>
+<p>インラインフレームであるiframe要素にz-indexプロパティを指定しても無視され、常に最前面に表示されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;position:absolute; left:0; top:0; width:150px;
+  height:100px; background:aqua; z-index:2;&quot;&gt;2&lt;/div&gt;
+&lt;iframe src=&quot;b065.html&quot; style=&quot;position:absolute; left:20px;
+  top:20px; width:150px; height:100px; z-index:1;&quot;&gt;iframe&lt;/iframe&gt;</pre>
+<div class="example" style="position:relative; height:130px">
+<div style="position:absolute; left:0; top:0; width:150px; height:100px; background:aqua; z-index:2;">2</div>
+<iframe src="b065.html" style="position:absolute; left:20px; top:20px; width:150px; height:100px; z-index:1;">iframe</iframe>
+</div>
+<p>空色の背景のdiv要素のz-indexが2、iframe要素のz-indexが1なので、インラインフレームはdiv要素の後ろ側に置かれるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b066_1.png" alt="N7.1" width="184" height="143">N7.1での表示（標準モード）</p>
+<p><img src="img/b066_2.png" alt="Op7.1" width="180" height="143">Opera7.11での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.06、Opera7.03、Opera7.11で不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ066</div>
+</body>
+</html>

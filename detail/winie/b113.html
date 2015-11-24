@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ113</div>
+
+<h2>インライン要素に挟まれているフロートが下にずれて置かれる<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>ソース中でインライン要素の間にある要素をフロートにしたとき、フロートが本来置かれるべき位置から下方にずれた位置に置かれる。このためフロートは、フロートの直前の行に含まれる内容の後に置かれてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;width:14em;&quot;&gt;
+&lt;span style=&quot;color:red;&quot;&gt;フロートの前にあるインライン要素です。&lt;/span&gt;
+&lt;span style=&quot;float:left; width:5em; border:1px dashed blue;&quot;&gt;フロート&lt;/span&gt;
+&lt;span style=&quot;color:green;&quot;&gt;フロートの後にあるインライン要素です。&lt;/span&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:14em;">
+<span style="color:red;">フロートの前にあるインライン要素です。</span>
+<span style="float:left; width:5em; border:1px dashed blue;">フロート</span>
+<span style="color:green;">フロートの後にあるインライン要素です。</span>
+</div>
+</div>
+<p>前景色が赤色のspan要素と、前景色が緑色のspan要素の間にあるspan要素をフロートにしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b113_1.png" alt="Op7" width="233" height="90">Opera7.11での表示（標準モード）</p>
+<p><img src="img/b113_2.png" alt="WinIE6" width="233" height="70">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>リストアイテム要素に <code>list-style-position: inside;</code> を指定したリストアイテム要素内の先頭にあるフロートでこのバグは発生しません（<a href="b111.html" title="先頭にフロートがあるリストアイテム要素でリストマーカーが要素内に入り込む">WinIEバグ111参照</a>）。ただし、WinIEはこの場合のリストマーカーをインライン要素として扱っていない可能性もあります。</p>
+
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ113</div>
+</body>
+</html>

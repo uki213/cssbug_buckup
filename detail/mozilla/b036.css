@@ -1,0 +1,123 @@
+body {
+	margin: 2% 3% 15%;
+	background: #f5f5f5;
+	color: #000000;
+}
+
+a:link {
+	color: #0000ff;
+}
+
+a:visited {
+	color: #006400;
+}
+
+a:hover {
+	background: #ffe4e1;
+}
+
+a:active {
+	color: #ff4500;
+}
+
+h1 {
+	margin: 1em -3%;
+	border-width: 4px 0;
+	border-style: ridge;
+	border-color: #ff0000;
+	background: #ffd700;
+	color: #000066;
+	font-size: 1.3em;
+	text-align: center;
+}
+
+h2 {
+	border: 3px ridge #32cd32;
+	padding: 2px;
+	background: #f0f8ff;
+	color: #000000;
+	font-size: 1em;
+}
+
+h3 {
+	border-width: 0 0 2px 0;
+	border-style: solid;
+	border-color: #1e90ff;
+	color: #000000;
+	font-size: 1em;
+	font-weight: normal;
+	font-style: italic;
+}
+
+p {
+	text-indent: 1em;
+}
+
+em {
+	color: #ff0000;
+	font-style: normal;
+}
+
+code {
+	color: #0000cd;
+}
+
+pre {
+	border: 1px solid #666666;
+	padding: 1px;
+	background: #dcdcdc;
+	color: #000000;
+	white-space: pre;
+}
+
+div.example {
+	border: 2px groove #808080;
+	padding: 2px;
+}
+
+div.shot {
+	border: 2px groove #808080;
+	padding: 2px;
+	background: #dcdcdc;
+}
+
+div.shot p {
+	margin: 2px;
+	text-indent: 0;
+}
+
+div.shot img {
+	margin-right: 1em;
+}
+
+blockquote {
+	border: 1px solid #666666;
+	padding: 1px;
+	background: #dcdcdc;
+	color: #000000;
+}
+
+/* ナビゲーション */
+
+div.navi {
+	padding: 1px;
+	border-top: 1px dashed #000000;
+	border-bottom: 1px dashed #000000;
+	background: #fffafa;
+	color: #000000;
+	font-size: 0.85em;
+}
+
+div.navi:before {
+	content: "Navigation:";
+	margin-right: 1em;
+	color: #808080;
+	font-size: 0.9em;
+	font-style: italic;
+}
+
+/* バグ036用 */
+
+p.hid {
+	display: none;
+}

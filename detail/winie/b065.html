@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+.aaa {
+	background-image: url(../img/img01.png);
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    background-position: center;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ065</div>
+
+<h2>body要素以外で背景画像を固定できない<em>(IE6)</em></h2>
+
+<h3>症状</h3>
+<p>body要素以外の要素で <code>background-attachment: fixed;</code> による背景画像の固定を行っても、背景画像はページスクロールに合わせて動いてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+.aaa {
+  background-image: url(../img/img01.png);
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+  background-position: center;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;aaa&quot;&gt;
+&lt;p&gt;A&lt;/p&gt;&lt;p&gt;B&lt;/p&gt;&lt;p&gt;C&lt;/p&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div class="aaa">
+<p>A</p>
+<p>B</p>
+<p>C</p>
+</div>
+</div>
+<p>固定した背景画像を、中央部に横一列に並べています。</p>
+
+<h3>スクリーンショット</h3>
+<p>スクロール前後の表示を縦に並べています。</p>
+<div class="shot">
+<p><img src="img/b065_1.png" alt="N7" width="198" height="138">N7.0での表示（標準モード）</p>
+<p><img src="img/b065_2.png" alt="WinIE6" width="170" height="147">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>background-attachmentプロパティの指定は、'fixed' を 'scroll' が指定されたものとして扱ってもよいとされているので、仕様に反した実装ではありません。</p>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに背景画像がスクロールに合わせて移動します。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ065</div>
+</body>
+</html>

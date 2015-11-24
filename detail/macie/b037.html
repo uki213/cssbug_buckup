@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ037</div>
+
+<h2>vertical-alignプロパティとinheritを指定したプロパティの組み合わせでクラッシュ<em>(5.x)</em></h2>
+
+<h3>症状</h3>
+<p>inherit以外の正当な値を指定したvertical-alignプロパティとinherit値を指定した任意のプロパティを単一のセレクタブロック内で指定すると、このセレクタにマッチする要素を含む文書を読み込んだときにMacIEがクラッシュする。ただし、MacOSX版（Carbon）のMacIEのみで発生する。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+p {
+  vertical-align: baseline;
+  text-align: inherit;
+}
+&lt;/style&gt;
+
+&lt;p&gt;このページでは……&lt;/p&gt;</pre>
+<p><a href="b037a.html">このソースを含む文書</a>を作成してあります。</p>
+
+<h3>補足</h3>
+<p>異なるブロックで個別に指定した場合、このバグは発生しません。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>MacOSX版のMacIE5.1～5.2で不具合の発生が確認されています。</li>
+<li>Classic版のMacIE5.0以降でこの不具合は発生しません。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ037</div>
+</body>
+</html>

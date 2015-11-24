@@ -1,0 +1,566 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal2">
+<link rel="content" href="../index.html" title="トップページ">
+<title>hr要素へのスタイル指定</title>
+</head>
+<body>
+<h1>hr要素へのスタイル指定</h1>
+<div class="navi"><a href="../index.html">トップページ</a>／（関連文書）／hr要素へのスタイル指定</div>
+<p>ここではhr要素に対してCSSを設定した場合の、ユーザエージェントによる解釈の違いをまとめています。仕様なのかバグなのか分かりませんが、hr要素に指定したスタイルシートの解釈は他の要素に指定したものと比べてかなり特殊なものになっています。</p>
+
+<ul>
+<li>「ボーダーのプロパティ」、「colorプロパティ」、「background-colorプロパティ」にSafariの情報を追加。（2004-01-16）</li>
+<li>「マージンのプロパティ（auto値）」を追加。（2003-05-20）</li>
+<li>「ボーダーのプロパティ」に追加。（2003-05-26）</li>
+<li>関連バグへのリンクを追加。（2003-06-07）</li>
+</ul>
+
+<h2>マージンのプロパティ</h2>
+<div class="source">
+<code>&lt;div style=&quot;margin:0; background:aqua;&quot;&gt;↓上マージン&lt;/div&gt;<br>
+&lt;hr style=&quot;margin-top:2em;&quot;&gt;<br>
+&lt;div style=&quot;margin:0; background:lime;&quot;&gt;↓下マージン&lt;/div&gt;<br>
+&lt;hr style=&quot;margin-bottom:2em;&quot;&gt;<br>
+&lt;div style=&quot;margin:0; background:aqua;&quot;&gt;↓左マージン&lt;/div&gt;<br>
+&lt;hr style=&quot;margin-left:20%; width:auto;&quot;&gt;<br>
+&lt;div style=&quot;margin:0; background:lime;&quot;&gt;↓右マージン&lt;/div&gt;<br>
+&lt;hr style=&quot;margin-right:20%;&quot;&gt;<br>
+&lt;div style=&quot;margin:0; background:aqua;&quot;&gt;↓全マージンを0&lt;/div&gt;<br>
+&lt;hr style=&quot;margin:0; width:auto;&quot;&gt;<br>
+&lt;div style=&quot;background:lime;&quot;&gt;↑&lt;/div&gt;</code>
+</div>
+<div class="example">
+<div style="margin:0; background:aqua;">↓上マージン</div>
+<hr style="margin-top:2em;">
+<div style="margin:0; background:lime;">↓下マージン</div>
+<hr style="margin-bottom:2em;">
+<div style="margin:0; background:aqua;">↓左マージン</div>
+<hr style="margin-left:20%; width:auto;">
+<div style="margin:0; background:lime;">↓右マージン</div>
+<hr style="margin-right:20%; width:auto;">
+<div style="margin:0; background:aqua;">↓全マージンを0</div>
+<hr style="margin:0;">
+<div style="background:lime;">↑</div>
+</div>
+
+<dl>
+<dt>WinIE6標準</dt>
+<dd><ul>
+<li>上下マージンで0を指定しても前後の要素との間に空間ができる。</li>
+<li>左右マージンを指定したときに罫線全体が消えてしまうことがある（Win9x上で発生しやすい？）。</li>
+</ul></dd>
+<dt>WinIE6互換</dt>
+<dd><ul>
+<li>上下マージンで0を指定しても前後の要素との間に空間ができる。</li>
+<li>左右マージンを指定したときに罫線全体が消えてしまうことがある（Win9x上で発生しやすい？）。</li>
+</ul></dd>
+<dt>Gecko標準</dt>
+<dd><ul>
+<li>上下マージンで0を指定しても前後の要素との間に空間ができる。</li>
+<li>左マージンを設定すると、罫線がコンテナブロックから右方にはみ出てしまう。 width:auto; を明示しても幅が調節されない。</li>
+<li>右マージンの指定が無視される。</li>
+</ul></dd>
+<dt>Gecko互換</dt>
+<dd><ul>
+<li>上下マージンで0を指定しても前後の要素との間に空間ができる。</li>
+</ul></dd>
+<dt>Opera6</dt>
+<dd><ul>
+<li>左右マージンの指定が無視される。</li>
+<li>表示拡大率（メニューの［表示→ズームメニュー］）の値によっては罫線全体が消える。</li>
+</ul></dd>
+<dt>Opera7標準</dt>
+<dd><ul>
+<li>左マージンが罫線の右に設置される。</li>
+<li>表示拡大率（メニューの［表示→ズームメニュー］）の値によっては罫線全体が消える。</li>
+</ul></dd>
+<dt>Opera7互換</dt>
+<dd><ul>
+<li>左マージンが罫線の右に設置される。</li>
+<li>表示拡大率（メニューの［表示→ズームメニュー］）の値によっては罫線全体が消える。</li>
+</ul></dd>
+<dt>NN4.8</dt>
+<dd><ul>
+<li>上下マージンで0を指定しても前後の要素との間に空間ができる。</li>
+<li>左右マージンを設定したときに罫線自体が消えてしまう場合がある。</li>
+</ul></dd>
+</dl>
+
+<h2>マージンのプロパティ（auto値）</h2>
+<div class="source">
+<code>&lt;hr style=&quot;width:50%; margin:1em 0 1em auto;&quot;&gt;<br>
+&lt;hr style=&quot;width:50%; margin:1em auto;&quot;&gt;<br>
+&lt;hr style=&quot;width:50%; margin:1em auto 1em 0;&quot;&gt;</code>
+</div>
+<div class="example">
+<hr style="width:50%; margin:1em 0 1em auto;">
+<hr style="width:50%; margin:1em auto;">
+<hr style="width:50%; margin:1em auto 1em 0;">
+</div>
+<dl>
+<dt>WinIE6標準</dt>
+<dd><ul>
+<li>左揃えと中央揃えは可能。</li>
+<li>右揃えができない。右揃え指定をすると罫線は中央揃えされてしまう。</li>
+</ul></dd>
+<dt>WinIE6互換</dt>
+<dd><ul>
+<li>全て中央揃えになる。</li>
+</ul></dd>
+<dt>Gecko標準</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>Gecko互換</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>Opera6</dt>
+<dd><ul>
+<li>全て中央揃えになる。</li>
+</ul></dd>
+<dt>Opera7標準</dt>
+<dd><ul>
+<li>全て中央揃えになる。</li>
+</ul></dd>
+<dt>Opera7互換</dt>
+<dd><ul>
+<li>全て中央揃えになる。</li>
+</ul></dd>
+<dt>NN4.8</dt>
+<dd><ul>
+<li>全て左揃えになる。</li>
+</ul></dd>
+</dl>
+
+<h2>ボーダーのプロパティ</h2>
+<div class="source">
+<code>&lt;hr style=&quot;border:5px ridge red;&quot;&gt;<br>
+&lt;hr style=&quot;border:5px ridge red; width:200px; height:15px;&quot;&gt;<br>
+&lt;hr style=&quot;border-top:30px dashed blue; border-bottom:2px dotted red;&quot;&gt;<br>
+&lt;hr style=&quot;border-top:30px dashed blue; border-bottom:2px dotted red; height:33px;&quot;&gt;</code>
+</div>
+<div class="example">
+<hr style="border:5px solid red;">
+<hr style="border:5px solid red; width:200px; height:15px;">
+<hr style="border-top:30px dashed blue; border-bottom:2px dotted red;">
+<hr style="border-top:30px dashed blue; border-bottom:2px dotted red; height:33px;">
+</div>
+<dl>
+<dt>WinIE6標準</dt>
+<dd><ul>
+<li>罫線の外側にボーダーが設置される。ただし、罫線の幅が小さい場合はボーダーが罫線自体であるかのように表示される。</li>
+<li>個別指定でボーダーの幅を指定しても無視される。ただし、heightプロパティで上下ボーダーの幅の合計値以上の値を指定すればこのバグは回避できる。</li>
+</ul></dd>
+<dt>WinIE6互換</dt>
+<dd><ul>
+<li>罫線の外側にボーダーが設置される。ただし、罫線の幅が小さい場合はボーダーが罫線自体であるかのように表示される。</li>
+<li>個別指定でボーダーの幅を指定しても無視される。ただし、heightプロパティで上下ボーダーの幅の合計値以上の値を指定すればこのバグは回避できる。</li>
+</ul></dd>
+<dt>Gecko標準</dt>
+<dd><ul>
+<li>ボーダー幅がマージンとして反映される。ただし、heightプロパティで上下ボーダーの幅の合計値以上の値を指定すればこのバグは回避できる。</li>
+<li>ボーダーを個別指定したときに、hr要素の幅が非常に短くなることがある（<a href="../detail/mozilla/b054.html" title="hr要素のボーダーが正しく設定されない">Mozバグ054</a>）。</li>
+</ul></dd>
+<dt>Gecko互換</dt>
+<dd><ul>
+<li>ボーダー幅がマージンとして反映される。ただし、heightプロパティで上下ボーダーの幅の合計値以上の値を指定すればこのバグは回避できる。</li>
+<li>ボーダーを個別指定したときに、hr要素の幅が非常に短くなることがある（<a href="../detail/mozilla/b054.html" title="hr要素のボーダーが正しく設定されない">Mozバグ054</a>）。</li>
+</ul></dd>
+<dt>Opera6</dt>
+<dd><ul>
+<li>border-widthプロパティの指定が無視され、常に幅1pxのボーダーが上下左右すべてに設置される。</li>
+</ul></dd>
+<dt>Opera7標準</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>Opera7互換</dt>
+<dd><ul>
+<li>上ボーダーの指定幅が下ボーダーの幅として、下ボーダーの指定値が上ボーダーの幅として反映される。ただし、heightプロパティで上下ボーダーの幅の合計値以上の値を指定すればこのバグは回避できる。</li>
+</ul></dd>
+<dt>NN4.8</dt>
+<dd><ul>
+<li>ボーダーが要素を囲まず、罫線の下に設置される。</li>
+</ul></dd>
+<dt>Safari1.0</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+</dl>
+
+<h2>パディングのプロパティ</h2>
+<div class="source">
+<code>&lt;div style=&quot;margin:0; background:aqua;&quot;&gt;↓上パディング&lt;/div&gt;<br>
+&lt;hr style=&quot;padding-top:2em;&quot;&gt;<br>
+&lt;div style=&quot;margin:0; background:lime;&quot;&gt;↓下パディング&lt;/div&gt;<br>
+&lt;hr style=&quot;padding-bottom:2em;&quot;&gt;<br>
+&lt;div style=&quot;margin:0; background:aqua;&quot;&gt;↓左パディング&lt;/div&gt;<br>
+&lt;hr style=&quot;padding-left:20%;&quot;&gt;<br>
+&lt;div style=&quot;margin:0; background:lime;&quot;&gt;↓右パディング&lt;/div&gt;<br>
+&lt;hr style=&quot;padding-right:20%;&quot;&gt;<br>
+&lt;div style=&quot;margin:0; background:aqua;&quot;&gt;↓全パディングを0&lt;/div&gt;<br>
+&lt;hr style=&quot;padding:0;&quot;&gt;<br>
+&lt;div style=&quot;margin:0; background:aqua;&quot;&gt;↓&lt;/div&gt;<br>
+&lt;hr style=&quot;padding-top:1em; border:3px solid red; height:8px;&quot;&gt;<br>
+&lt;div style=&quot;background:lime;&quot;&gt;↑&lt;/div&gt;</code>
+</div>
+<div class="example">
+<div style="margin:0; background:aqua;">↓上パディング</div>
+<hr style="padding-top:2em;">
+<div style="margin:0; background:lime;">↓下パディング</div>
+<hr style="padding-bottom:2em;">
+<div style="margin:0; background:aqua;">↓左パディング</div>
+<hr style="padding-left:20%;">
+<div style="margin:0; background:lime;">↓右パディング</div>
+<hr style="padding-right:20%;">
+<div style="margin:0; background:aqua;">↓全パディングを0</div>
+<hr style="padding:0;">
+<div style="margin:0; background:aqua;">↓</div>
+<hr style="padding-top:1em; border:3px solid red; height:8px;">
+<div style="background:lime;">↑</div>
+</div>
+<dl>
+<dt>WinIE6標準</dt>
+<dd><ul>
+<li>すべてのパディング指定が無視される。</li>
+</ul></dd>
+<dt>WinIE6互換</dt>
+<dd><ul>
+<li>すべてのパディング指定が無視される。</li>
+</ul></dd>
+<dt>Gecko標準</dt>
+<dd><ul>
+<li>上下パディングがボーダーの外側に設置される。また、上下の片方のパディングだけを指定した場合でもパディングが上下に分かれて設置される。</li>
+<li>左右パディングの指定が無視される。</li>
+</ul></dd>
+<dt>Gecko互換</dt>
+<dd><ul>
+<li>ボーダーが指定されていないとき、上下パディングがボーダーの外側に設置される。</li>
+<li>左右パディングの指定が無視される。</li>
+</ul></dd>
+<dt>Opera6</dt>
+<dd><ul>
+<li>上下パディングは罫線枠の内側に設定されるが、左右パディングの指定が無視される。</li>
+</ul></dd>
+<dt>Opera7標準</dt>
+<dd><ul>
+<li>上下パディングは罫線枠の内側に設定されるが、左右パディングの指定が無視される。</li>
+</ul></dd>
+<dt>Opera7互換</dt>
+<dd><ul>
+<li>すべてのパディング指定が無視される。</li>
+</ul></dd>
+<dt>NN4.8</dt>
+<dd><ul>
+<li>ボーダーとともにパディングを設定すると、罫線の下に設置されるボーダーの中にパディングが設置されてしまう。</li>
+</ul></dd>
+</dl>
+
+<h2>widthプロパティ</h2>
+<div class="source">
+<code>&lt;hr style=&quot;width:50%;&quot; align=&quot;left&quot;&gt;<br>
+&lt;div style=&quot;width:50%; background:aqua;&quot;&gt;幅50％&lt;/div&gt;<br>
+&lt;hr style=&quot;width:50%; margin-right:50%;&quot; align=&quot;left&quot;&gt;<br>
+&lt;div style=&quot;width:50%; margin-right:50%; background:aqua;&quot;&gt;幅50％&lt;/div&gt;<br>
+&lt;hr style=&quot;border-width:1px 50px; border-style:solid; border-color:red; width:100px;&quot;&gt;<br>
+&lt;hr style=&quot;border-width:1px 50px; border-style:solid; border-color:red; width:150px;&quot;&gt;</code>
+</div>
+<div class="example">
+<hr style="width:50%;" align="left">
+<div style="width:50%; background:aqua;">幅50％</div>
+<hr style="width:50%; margin-right:50%;" align="left">
+<div style="width:50%; margin-right:50%; background:aqua;">幅50％</div>
+<hr style="border-width:1px 50px; border-style:solid; border-color:red; width:100px;">
+<hr style="border-width:1px 50px; border-style:solid; border-color:red; width:150px;">
+</div>
+<dl>
+<dt>WinIE6標準</dt>
+<dd><ul>
+<li>widthプロパティとマージンのプロパティの両方を指定する場合、widthプロパティを％単位で指定するとコンテナブロックの幅から横方向マージンの幅を差し引いた値に対する％値が算出されてしまう。</li>
+<li>widthプロパティで指定する値はボーダー領域までを含めた値になる。</li>
+</ul></dd>
+<dt>WinIE6互換</dt>
+<dd><ul>
+<li>widthプロパティとマージンのプロパティの両方を指定する場合、widthプロパティを％単位で指定するとコンテナブロックの幅から横方向マージンの幅を差し引いた値に対する％値が算出されてしまう（この振る舞いはほかのブロック要素でも発生する）。</li>
+<li>widthプロパティで指定する値はボーダー領域までを含めた値になる（この振る舞いはほかのブロック要素でも発生する）。</li>
+</ul></dd>
+<dt>MacIE</dt>
+<dd><ul>
+<li>指定した幅より長い罫線になってしまう（<a href="../detail/macie/b011.html" title="hr要素でwidthプロパティの指定値が正しく反映されない">MacIEバグ011</a>）。</li>
+</ul></dd>
+<dt>Gecko標準</dt>
+<dd><ul>
+<li>widthプロパティで指定する値はボーダー領域までを含めた値になる。</li>
+</ul></dd>
+<dt>Gecko互換</dt>
+<dd><ul>
+<li>ボーダーを指定すると幅の算出値がwidthプロパティの指定値より小さくなる。</li>
+<li>white-spaceプロパティでnowrap値を指定した要素内にあるhr要素のwidthプロパティの値算出が正しくない（<a href="../detail/mozilla/b053.html" title="折り返しを抑制した要素内にあるhr要素の幅が正しく算出されない">Mozバグ053</a>）。</li>
+</ul></dd>
+<dt>Opera6</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>Opera7標準</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>Opera7互換</dt>
+<dd><ul>
+<li>widthプロパティとマージンのプロパティの両方を指定する場合、widthプロパティを％単位で指定するとコンテナブロックの幅から横方向マージンの幅を差し引いた値に対する％値が算出されてしまう（この振る舞いはほかのブロック要素でも発生する）。</li>
+<li>widthプロパティで指定する値はボーダー領域までを含めた値になる（この振る舞いはほかのブロック要素でも発生する）。</li>
+</ul></dd>
+<dt>NN4.8</dt>
+<dd><ul>
+<li>ボーダーとともに幅を指定すると、罫線自体の幅と罫線の下に設置されるボーダー内の幅の両方を指定することになる。</li>
+</ul></dd>
+</dl>
+
+<h2>heightプロパティ</h2>
+<div class="source">
+<code>&lt;hr style=&quot;height:10px;&quot;&gt;<br>
+&lt;hr style=&quot;border-width:5px 0; border-style:solid; border-color:red; height:10px;&quot;&gt;<br>
+&lt;hr style=&quot;border-width:5px 0; border-style:solid; border-color:red; height:15px;&quot;&gt;</code>
+</div>
+<div class="example">
+<hr style="height:10px;">
+<hr style="border-width:5px 0; border-style:solid; border-color:red; height:10px;">
+<hr style="border-width:5px 0; border-style:solid; border-color:red; height:15px;">
+</div>
+<dl>
+<dt>WinIE6標準</dt>
+<dd><ul>
+<li>heightプロパティで指定する値はボーダー領域までを含めた値になる。</li>
+</ul></dd>
+<dt>WinIE6互換</dt>
+<dd><ul>
+<li>heightプロパティで指定する値はボーダー領域までを含めた値になる（この振る舞いはほかのブロック要素でも発生する）。</li>
+</ul></dd>
+<dt>Gecko標準</dt>
+<dd><ul>
+<li>heightプロパティで指定する値はボーダー領域までを含めた値になる。</li>
+</ul></dd>
+<dt>Gecko互換</dt>
+<dd><ul>
+<li>heightプロパティで指定する値はボーダー領域までを含めた値になる。ただし、上下ボーダーの間に少なくとも1pxの空間ができる。</li>
+</ul></dd>
+<dt>Opera6</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>Opera7標準</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>Opera7互換</dt>
+<dd><ul>
+<li>heightプロパティで指定する値はボーダー領域までを含めた値になる（この振る舞いはほかのブロック要素でも発生する）。</li>
+</ul></dd>
+<dt>NN4.8</dt>
+<dd><ul>
+<li>heightプロパティの指定が無視される。</li>
+</ul></dd>
+</dl>
+
+<h2>colorプロパティ</h2>
+<div class="source">
+<code>&lt;hr style=&quot;color:red;&quot;&gt;<br>
+&lt;hr style=&quot;color:red; height:10px;&quot;&gt;<br>
+&lt;hr style=&quot;color:red; background-color:aqua; height:10px;&quot;&gt;</code>
+</div>
+<div class="example">
+<hr style="color:red;">
+<hr style="color:red; height:10px;">
+<hr style="color:red; background-color:aqua; height:10px;">
+</div>
+<dl>
+<dt>WinIE6標準</dt>
+<dd><ul>
+<li>罫線全体の色を指定することができる。</li>
+<li>背景色とともに指定した場合は罫線全体が前景色で塗りつぶされる。</li>
+</ul></dd>
+<dt>WinIE6互換</dt>
+<dd><ul>
+<li>罫線全体の色を指定することができる。</li>
+<li>背景色とともに指定した場合は罫線全体が前景色で塗りつぶされる。</li>
+</ul></dd>
+<dt>Gecko標準</dt>
+<dd><ul>
+<li>罫線の枠（ボーダー部）の色を指定することができる。ただし、Moz1.0.2では枠も含めて罫線の色に影響を与えない。</li>
+</ul></dd>
+<dt>Gecko互換</dt>
+<dd><ul>
+<li>罫線の枠（ボーダー部）の色を指定することができる。ただし、Moz1.0.2では枠も含めて罫線の色に影響を与えない。</li>
+</ul></dd>
+<dt>Opera6</dt>
+<dd><ul>
+<li>罫線の色に影響を与えない。</li>
+</ul></dd>
+<dt>Opera7標準</dt>
+<dd><ul>
+<li>罫線の色に影響を与えない。</li>
+</ul></dd>
+<dt>Opera7互換</dt>
+<dd><ul>
+<li>罫線の色に影響を与えない。</li>
+</ul></dd>
+<dt>NN4.8</dt>
+<dd><ul>
+<li>罫線の色に影響を与えない。</li>
+</ul></dd>
+<dt>Safari1.0</dt>
+<dd><ul>
+<li>罫線の色に影響を与えない。</li>
+</ul></dd>
+</dl>
+
+<h2>background-colorプロパティ</h2>
+<div class="source">
+<code>&lt;hr style=&quot;background-color:red;&quot;&gt;<br>
+&lt;hr style=&quot;background-color:red; height:10px;&quot;&gt;<br>
+&lt;hr style=&quot;color:red; background-color:aqua; height:10px;&quot;&gt;</code>
+</div>
+<div class="example">
+<hr style="background-color:red;">
+<hr style="background-color:red; height:10px;">
+<hr style="color:red; background-color:aqua; height:10px;">
+</div>
+<dl>
+<dt>WinIE6標準</dt>
+<dd><ul>
+<li>罫線の内側の色を指定することができる。</li>
+<li>前景色とともに指定した場合は罫線全体が前景色で塗りつぶされる。</li>
+</ul></dd>
+<dt>WinIE6互換</dt>
+<dd><ul>
+<li>罫線全体の色を指定することができる。</li>
+<li>背景色とともに指定した場合は罫線全体が前景色で塗りつぶされる。</li>
+</ul></dd>
+<dt>Gecko標準</dt>
+<dd><ul>
+<li>罫線の内側の色を指定することができる。</li>
+</ul></dd>
+<dt>Gecko互換</dt>
+<dd><ul>
+<li>罫線の内側の色を指定することができる。</li>
+</ul></dd>
+<dt>Opera6</dt>
+<dd><ul>
+<li>罫線の内側の色を指定することができる。</li>
+</ul></dd>
+<dt>Opera7標準</dt>
+<dd><ul>
+<li>罫線の内側の色を指定することができる。</li>
+</ul></dd>
+<dt>Opera7互換</dt>
+<dd><ul>
+<li>罫線の内側の色を指定することができる。</li>
+</ul></dd>
+<dt>NN4.8</dt>
+<dd><ul>
+<li>罫線の色に影響を与えない。</li>
+</ul></dd>
+<dt>Safari1.0</dt>
+<dd><ul>
+<li>罫線の内側の色を指定することができる。</li>
+</ul></dd>
+</dl>
+
+<h2>text-alignプロパティ</h2>
+<div class="source">
+<code>&lt;hr style=&quot;width:50%; text-align:left;&quot;&gt;<br>
+&lt;hr style=&quot;width:50%; text-align:center;&quot;&gt;<br>
+&lt;hr style=&quot;width:50%; text-align:right;&quot;&gt;</code>
+</div>
+<div class="example">
+<hr style="width:50%; text-align:left;">
+<hr style="width:50%; text-align:center;">
+<hr style="width:50%; text-align:right;">
+</div>
+<dl>
+<dt>WinIE6標準</dt>
+<dd><ul>
+<li>text-alignプロパティは罫線の位置に影響を与えない。</li>
+</ul></dd>
+<dt>WinIE6互換</dt>
+<dd><ul>
+<li>text-alignプロパティで罫線の水平方向の位置を指定することができる。</li>
+</ul></dd>
+<dt>Gecko標準</dt>
+<dd><ul>
+<li>text-alignプロパティは罫線の位置に影響を与えない。</li>
+</ul></dd>
+<dt>Gecko互換</dt>
+<dd><ul>
+<li>text-alignプロパティは罫線の位置に影響を与えない。</li>
+</ul></dd>
+<dt>Opera6</dt>
+<dd><ul>
+<li>text-alignプロパティで罫線の水平方向の位置を指定することができる。</li>
+</ul></dd>
+<dt>Opera7標準</dt>
+<dd><ul>
+<li>text-alignプロパティで罫線の水平方向の位置を指定することができる。</li>
+</ul></dd>
+<dt>Opera7互換</dt>
+<dd><ul>
+<li>text-alignプロパティで罫線の水平方向の位置を指定することができる。</li>
+</ul></dd>
+<dt>NN4.8</dt>
+<dd><ul>
+<li>text-alignプロパティは罫線の位置に影響を与えない。</li>
+</ul></dd>
+</dl>
+
+<h2>clearプロパティ</h2>
+<div class="source">
+<code>&lt;div style=&quot;float:left; width:40%; background:aqua;&quot;&gt;フロート&lt;/div&gt;<br>
+&lt;hr style=&quot;clear:left;&quot;&gt;</code>
+</div>
+<div class="example">
+<div style="float:left; width:40%; background:aqua;">フロート</div>
+<hr style="clear:left;">
+</div>
+<dl>
+<dt>WinIE6標準</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>WinIE6互換</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>Gecko標準</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>Gecko互換</dt>
+<dd><ul>
+<li>clearプロパティでフロートの左右への回り込みを抑制できない。hr要素はclearプロパティの指定に関係なくフロートの左右へ回り込む（<a href="../detail/mozilla/b042.html" title="互換モードではhr要素に指定したclearプロパティが無視される">Mozバグ042</a>）。</li>
+</ul></dd>
+<dt>Opera6</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>Opera7標準</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>Opera7互換</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+<dt>NN4.8</dt>
+<dd><ul>
+<li>問題なし。</li>
+</ul></dd>
+</dl>
+
+<div class="navi"><a href="../index.html">トップページ</a>／（関連文書）／hr要素へのスタイル指定</div>
+</body>
+</html>

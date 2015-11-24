@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ003</div>
+
+<h2>閲覧領域からはみ出す要素がない状態でもスクロールバーが表示されることがある</h2>
+
+<h3>症状</h3>
+<p>ブラウザの閲覧領域からはみ出している要素がないにもかかわらず、スクロールバーが表示される場合がある。</p>
+
+<h3>例示</h3>
+<div class="example">
+<div style="width:99%; border:7px solid blue;">A</div>
+</div>
+<p>閲覧領域をはみ出ないように調整しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b003_1.png" alt="Moz1.0" width="401" height="75">Moz1.0（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>「Working with CSS - CSS Hints for Internet Explorer 5」内に、この現象と考えられるバグの解説があります。<a href="http://developer.apple.com/internet/css/ie5cssbugs.html#hiddenmargins">こちら</a>を参照してください。（非公式ですが）日本語に訳したものは<a href="http://cgi2.html.ne.jp/~n_1_2_3/ie5cssbugsj.html#margin-hiddenmargins">こちら</a>です。</p>
+
+<h3>修正状況</h3>
+<p>MacIE5.xで発生する模様。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ003</div>
+</body>
+</html>

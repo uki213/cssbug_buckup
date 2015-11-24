@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ051</div>
+
+<h2>text-alignを指定した要素内で文字列とリンクが機能する位置とがずれる<em>(5.x)</em></h2>
+<ul>
+<li>2004-02-27修正。症状を変更。</li>
+</ul>
+
+<h3>症状</h3>
+<p><ins datetime="2004-02-27T00:00:00+09:00">text-alignプロパティの値がleft以外である要素内にリンクを設置しているとき、実際にa要素の内容物がある位置と、text-alignプロパティがデフォルト値のときにa要素の内容物が表示されるであろう位置の両方がリンクとして機能する。</ins></p>
+<p><del datetime="2004-02-27T00:00:00+09:00">text-alignプロパティを指定した要素内にリンクを設置しているとき、a要素の内容物がある位置とリンクとして機能する（例えばマウスポインタの形状が変化する）位置とがずれてしまうことがある。</del></p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;text-align:right; border:2px solid blue;&quot;&gt;
+&lt;a href=&quot;../macie.html&quot;&gt;MacIEバグリスト&lt;/a&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="text-align:right; border:2px solid blue;">
+<a href="../macie.html">MacIEバグリスト</a>
+</div>
+</div>
+<p>div要素の内容物は右寄せにしています。a要素のリンクは文字列のある部分で反応するべきですが、MacIEではtext-alignプロパティを指定していないときに表示されるであろう位置でリンクが反応することがあるそうです。この例では、div要素内の左端部でリンクが機能することになるはずです。</p>
+
+<h3>補足</h3>
+<p>テーブルセル要素では、widthプロパティに「99%」を指定したセル要素を隣に置くことで不具合を回避することができるそうです。</p>
+<pre>&lt;table&gt;
+<em>&lt;td style=&quot;width:99%;&quot;&gt;&lt;/td&gt;</em>
+&lt;td style=&quot;width:1%; text-align:right; white-space:nowrap;&quot;&gt;
+&lt;a href=&quot;../macie.html&quot;&gt;MacIEバグリスト&lt;/a&gt;
+&lt;/td&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table>
+<td style="width:99%;"></td>
+<td style="width:1%; text-align:right; white-space:nowrap;">
+<a href="../macie.html">MacIEバグリスト</a>
+</td>
+</table>
+</div>
+<p>text-alignプロパティの値がleftの要素内でこの不具合は発生しません。以下の例のように祖先要素のtext-alignプロパティの値がleft以外であっても同様です。</p>
+<pre>&lt;div style=&quot;text-align:center;&quot;&gt;
+&lt;a href=&quot;foo&quot;&gt;バグあり&lt;/a&gt;
+&lt;div style=&quot;text-align:left;&quot;&gt;
+&lt;a href=&quot;bar&quot;&gt;バグなし&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<h3>修正状況</h3>
+<p>MacIE5.1、MacIE5.2でこの不具合が発生するそうです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ051</div>
+</body>
+</html>

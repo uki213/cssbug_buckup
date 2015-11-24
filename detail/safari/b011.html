@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<title>Safari (KHTML) CSSバグリスト</title>
+</head>
+<body>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ011</div>
+
+<h2>一部のフォントでボールド表示ができない<em>(S1.0)</em></h2>
+
+<h3>症状</h3>
+<p>font-weightプロパティでボールド表示をさせる指定を行っても、日本語文字はボールドにならずに通常時と同じ太さで表示されてしまう。ただし、標準フォントの指定次第でボールドになる場合もある。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;font-weight:bold;&quot;&gt;ABCDE日本語&lt;/p&gt;</pre>
+<div class="example">
+<p style="font-weight:bold;">ABCDE日本語</p>
+</div>
+<p>1バイト英字の部分はボールドで表示されるが日本語の部分はボールド表示にならないそうです。</p>
+
+<h3>補足</h3>
+<p>Safariの環境設定で標準フォントを何にしているかによって結果が異なるようです。</p>
+<ul>
+<li>日本語の部分がボールドにならないフォントの例
+<ul>
+<li>Times（Safariの初期設定）</li>
+<li>Osaka</li>
+<li>太ゴB101（モリサワNewCID）</li>
+</ul></li>
+<li>日本語の部分がボールドになるフォントの例
+<ul>
+<li>ヒラギノフォント</li>
+<li>新ゴ（モリサワNewCID）</li>
+<li>小塚フォント</li>
+</ul></li>
+</ul>
+
+<h3>修正状況</h3>
+<p>Safari1.0でこの現象が発生するそうです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ011</div>
+</body>
+</html>

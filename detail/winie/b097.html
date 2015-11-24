@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ097</div>
+
+<h2>サイズの大きいフロートの上に空白領域が発生する<em>(5.0)</em></h2>
+<ul>
+<li>2003-04-19修正。症状を修正。</li>
+<li>2004-03-07修正。症状を修正。</li>
+</ul>
+
+<h3>症状</h3>
+<ul>
+<li>widthプロパティまたはheightプロパティを明示した、フロートではない要素</li>
+<li>上の条件を満たす要素を子に持つ要素</li>
+</ul>
+<p>上記のいずれかの条件を満たす要素の後方に高さが大きいフロートを置くと、フロートが本来置かれるべき位置より下にずれてしまうことがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+.top {
+  width: 100%;
+  background: #00ffff;
+}
+.float1 {
+  float: right;
+  width: 49%;
+  height: 300px;
+  background: #ff00ff;
+}
+.float2 {
+  float: left;
+  width: 49%;
+  height: 400px;
+  background: #00ff00;
+}
+.float3 {
+  float: right;
+  width: 49%;
+  height: 200px;
+  background: #ffff00;
+}
+.bottom {
+  clear: both;
+  background: #ff0000;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;top&quot;&gt;上&lt;/div&gt;
+&lt;div class=&quot;float1&quot;&gt;右上フロート&lt;/div&gt;
+&lt;div class=&quot;float2&quot;&gt;左フロート&lt;/div&gt;
+&lt;div class=&quot;float3&quot;&gt;右下フロート&lt;/div&gt;
+&lt;div class=&quot;bottom&quot;&gt;下&lt;/div&gt;</pre>
+<p>最上段に幅を指定したdiv要素、その下に左フロート1つと右フロート2つを段組み状に並べ、最下段に回り込みを抑制したdiv要素を置いています。上記のソースの表示結果を<a href="b097a.html">検証ページ</a>で見ることができます。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b097_1.png" alt="N7" width="128" height="250">N7.02での表示</p>
+<p><img src="img/b097_2.png" alt="WinIE5" width="80" height="250">WinIE5.01での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>バグの原因になっている要素（上記の例示では <code>&lt;div class=&quot;top&quot;&gt;&lt;/div&gt;</code>）widthプロパティやheightプロパティを指定しないことで不具合を回避することができますが、以下の書き込みにあるように回避できない場合もあるようです。</p>
+<blockquote>&gt;&gt;930-934のバグには発展形も。<br>
+b097には「幅や高さを指定した要素の下に」とあるが、「要素の中」でもなるらしい。<br>
+&nbsp;http://pc2.2ch.net/test/read.cgi/hp/1050086156/23-39<br>
+また幅や高さを指定しなくてもなる場合もあるとのこと。<br>
+#uewaku { background-color: #333000; color: #b7a800; }<br>
+#migiue { float:right; width:50%;&nbsp;text-align: right;}<br>
+#hidariue {height: 41px;}<br>
+&lt;div id=&quot;uewaku&quot;&gt;<br>
+&lt;div id=&quot;migiue&quot;&gt;<br>
+&lt;div class=&quot;annai&quot;&gt;&lt;a href=&quot;..&lt;/div&gt;<br>
+&lt;div id=&quot;hidariue&quot;&gt;<br>
+&lt;a href=&quot;index.html&quot; class=&quot;kirikae&quot;&gt;&lt;img src=&quot;.画像.gif&quot; alt=&quot;画像&quot; width=&quot;100&quot; height=&quot;40&quot; class=&quot;画像&quot; /&gt;&lt;/a&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;<br>
+&gt;#uewakuにwidthもheightもないのに、もう訳がわかりません。<br>
+&gt;もちろんIE5意外ではきちんと表示されます。</blockquote>
+<p>「要素の中でもなるらしい」という発生条件もあるようですが再現できていません（上記の書き込みにある例はdiv要素の終了タグが1つ欠落している）。</p>
+
+<h3>修正状況</h3>
+<p>WinIE5.5以降でこの不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ097</div>
+</body>
+</html>

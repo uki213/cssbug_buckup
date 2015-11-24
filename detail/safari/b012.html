@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<title>Safari (KHTML) CSSバグリスト</title>
+</head>
+<body>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ012</div>
+
+<h2>先に指定した代替スタイルシートを固定スタイルシートとして扱う<em>(1.0)</em></h2>
+
+<h3>症状</h3>
+<p>link要素で外部スタイルシートを指定する際に代替スタイルシートの指定を固定・優先スタイルシートの指定より先に行うと、代替スタイルシートが固定スタイルシートであるかのように扱われてしまうことがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;head&gt;
+&lt;link rel=&quot;alternate stylesheet&quot; type=&quot;text/css&quot; href=&quot;……&quot; title=&quot;……&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;……&quot;&gt;
+&lt;/head&gt;</pre>
+<p>このように代替→固定（優先）の順にスタイルシートを指定すると、まれに代替スタイルシート内のスタイル指定が初めから適用されてしまうことがあるそうです。</p>
+
+<h3>修正状況</h3>
+<p>Safari（v85.6 OS10.2）で不具合が発生するそうです。</p>
+
+<h3>報告書き込み</h3>
+<blockquote>safari<br>
+link要素にtype属性を指定した上で外部CSSを読み込んだ場合、<br>
+先頭に記述したlink要素を固定スタイルシートとして認識する。<br>
+<br>
+&lt;link rel=&quot;ALTERNATE STYLESHEET&quot; type=&quot;text/css&quot; href=&quot;daitai.css&quot; title=&quot;代替スタイル&quot;&gt;<br>
+&lt;link rel=&quot;STYLESHEET&quot; type=&quot;text/css&quot; href=&quot;kotei.css&quot;&gt;<br>
+とすると、kotei.cssとdaitai.cssの両方が読み込まれる。<br>
+<br>
+&lt;link rel=&quot;ALTERNATE STYLESHEET&quot; type=&quot;text/css&quot; href=&quot;daitai.css&quot; title=&quot;代替スタイル&quot;&gt;<br>
+&lt;link rel=&quot;STYLESHEET&quot; type=&quot;text/css&quot; href=&quot;yusen.css&quot; title=&quot;優先スタイル&quot;&gt;<br>
+とすると、daitai.cssのみが読み込まれる。</blockquote>
+<blockquote>Safari(v85.6 OS10.2)については、<br>
+「代替スタイルシートを、優先・固定スタイルより先に記すと、<br>
+代替が固定として認識されることが<strong>ありうる</strong>」<br>
+でした。<br>
+代替の後ろに記述するのが優先なら確率1/2くらい、固定なら1/3~5くらい。<br>
+同じソースをリロードする度に、表示が変わるけど、法則と原因は不明。<br>
+昨日はtype属性を消してみたり、記述順を変えたり、いろいろな条件を試していて、<br>
+偶然、type属性を記述した時にのみ、症状が出ていた様子。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ012</div>
+</body>
+</html>

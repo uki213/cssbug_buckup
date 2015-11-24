@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ039</div>
+
+<h2>マージンに負数が指定された要素でボーダーがずれてゆく<em>(IE6)</em></h2>
+
+<h3>症状</h3>
+<p>垂直方向のマージンに負の値が指定された要素を含む、要素のボーダーや背景が本来の位置と外れた場所に表示される。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;border:2px solid red;&quot;&gt;&lt;div style=&quot;margin:-1px;&quot;&gt;A&lt;/div&gt;&lt;/div&gt;
+&lt;div style=&quot;border:2px solid blue;&quot;&gt;&lt;div style=&quot;margin:-1px;&quot;&gt;B&lt;/div&gt;&lt;/div&gt;
+&lt;div style=&quot;border:2px solid green;&quot;&gt;&lt;div style=&quot;margin:-1px;&quot;&gt;C&lt;/div&gt;&lt;/div&gt;
+&lt;div style=&quot;border:2px solid maroon;&quot;&gt;&lt;div style=&quot;margin:-1px;&quot;&gt;D&lt;/div&gt;&lt;/div&gt;
+&lt;div style=&quot;border:2px solid navy;&quot;&gt;&lt;div style=&quot;margin:-1px;&quot;&gt;E&lt;/div&gt;&lt;/div&gt;</pre>
+<div class="example">
+<div style="border:2px solid red;"><div style="margin:-1px;">A</div></div>
+<div style="border:2px solid blue;"><div style="margin:-1px;">B</div></div>
+<div style="border:2px solid green;"><div style="margin:-1px;">C</div></div>
+<div style="border:2px solid maroon;"><div style="margin:-1px;">D</div></div>
+<div style="border:2px solid navy;"><div style="margin:-1px;">E</div></div>
+</div>
+<p>それぞれのdiv要素のボックスは上部が1pxずつ重なって表示されます。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b039_1.png" alt="Moz1.0" width="205" height="117">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b039_2.png" alt="WinIE6" width="205" height="137">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともにボーダーのずれが発生します。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ039</div>
+</body>
+</html>

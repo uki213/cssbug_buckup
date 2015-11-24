@@ -1,0 +1,5 @@
+@media projection {
+	div.prj {
+		border: 2px dashed blue;
+	}
+}

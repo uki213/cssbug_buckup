@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+a:hover {
+	background: aqua;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ102</div>
+
+<h2>アンカーを:hover状態にすると親ブロックの高さが変化する<em>(5.5/6.0)</em></h2>
+<p>2003-05-14再作成。</p>
+
+<h3>症状</h3>
+<p>以下の条件群のいずれかに該当するとき、アンカーにマウスポインタ等を乗せて:hover状態にすると内側から3番目のボックスの高さが増加したり減少したりする。</p>
+<ul>
+<li>条件群1
+<ul>
+<li>3重以上の入れ子ブロックになっている。</li>
+<li>一番内側のブロックに含まれたa要素に:hover疑似クラスで背景を設定している。</li>
+<li>最も内側のブロックに任意の上下マージンを設定している。</li>
+<li>内側から2番目のブロックに背景とボーダーを設定している。</li>
+<li>内側から3番目のブロックに任意の幅を設定している。</li>
+</ul>
+</li>
+<li>条件群2
+<ul>
+<li>3重以上の入れ子ブロックになっており、最も内側のブロックが複数存在する。</li>
+<li>一番内側のブロックに含まれたa要素に:hover疑似クラスで背景を設定している。</li>
+<li>内側から2番目のブロックに任意の上下マージンを設定している。</li>
+<li>内側から2番目のブロックまたはそれより内側にある要素に背景を設定している。</li>
+<li>内側から3番目のブロックに任意の幅を設定している。</li>
+</ul>
+</li>
+</ul>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+a:hover {
+  background: aqua;
+}
+&lt;/style&gt;
+
+&lt;div style=&quot;width:50%; border:2px solid red;&quot;&gt;
+&lt;div style=&quot;background:yellow; border:2px dashed green;&quot;&gt;
+&lt;div style=&quot;margin:1em 0;&quot;&gt;
+&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div style=&quot;width:50%; border:2px solid blue;&quot;&gt;
+&lt;div style=&quot;margin:1em 0;&quot;&gt;
+&lt;div&gt;&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
+&lt;span style=&quot;background:yellow;&quot;&gt;Inline&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
+&lt;span style=&quot;background:yellow;&quot;&gt;Inline&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:50%; border:2px solid red;">
+<div style="background:yellow; border:2px dashed green;">
+<div style="margin:1em 0;">
+<a href="../winie.html">WinIEバグ</a>
+</div></div></div>
+<div style="width:50%; border:2px solid blue;">
+<div style="margin:1em 0;">
+<div><a href="../winie.html">WinIEバグ</a>
+<span style="background:yellow;">Inline</span></div>
+<div><a href="../winie.html">WinIEバグ</a>
+<span style="background:yellow;">Inline</span></div>
+</div></div>
+</div>
+<p>2つの例を置いています。前者は条件群1の例、後者は条件群2の例です。アンカーをポイントして動作を確かめてください。</p>
+
+<h3>スクリーンショット</h3>
+<p>※マウスポインタを載せた後のスクリーンショットです。なお、マウスポインタを載せる前のWinIE6.0での表示はN7.02のスクリーンショットと同じ状態でした。</p>
+<div class="shot">
+<p><img src="img/b102_1.png" alt="N7" width="158" height="145">N7.02での表示（標準モード）</p>
+<p><img src="img/b102_2.png" alt="WinIE6" width="162" height="144">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>バグの回避法がいくつか分かっています。</p>
+<ul>
+<li>内側から3番目のブロックで幅を指定しない。（条件群1と条件群2の両方に有効）</li>
+<li>最も内側のブロックの内部かつa要素より後ろにブロック要素を置く。（条件群1と条件群2の両方に有効。ただし、条件群2の場合はブロック要素自身またはその子孫要素に背景を指定してはならない）
+<pre>&lt;div style=&quot;width:50%; border:2px solid red;&quot;&gt;
+&lt;div style=&quot;background:yellow; border:2px dashed green;&quot;&gt;
+&lt;div style=&quot;margin:1em 0;&quot;&gt;
+&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
+<em>&lt;div&gt;ブロック要素&lt;/div&gt;</em>
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</pre>
+</li>
+<li>背景をなしにする。（条件群1と条件群2の両方に有効）</li>
+<li>一番内側のブロックのマージン量と内側から2番目のブロックのマージン量を同じにする。（条件群1と条件群2の両方に有効）
+<pre>&lt;div style=&quot;width:50%; border:2px solid red;&quot;&gt;
+&lt;div style=&quot;<em>margin:1em 0;</em> background:yellow; border:2px dashed green;&quot;&gt;
+&lt;div style=&quot;<em>margin:1em 0;</em>&quot;&gt;
+&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</pre>
+</li>
+<li>内側から2番目のブロックにボーダーを設置しない。（条件群1に有効）</li>
+<li>内側から2番目のブロックにボーダーを設置する。（条件群2に有効）</li>
+</ul>
+<p>ただし、場合によっては別のバグ（<a href="b103.html" title="アンカーを:hover状態にすると後続するフロートの一部が消える">WinIEバグ103</a>）が発生するので注意してください。</p>
+
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ102</div>
+</body>
+</html>

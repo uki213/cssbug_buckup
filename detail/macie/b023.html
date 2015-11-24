@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+<style type="text/css">
+<!--
+div#a {
+	border-left: 3px solid red;
+}
+div#b {
+	border-width: 3px 3px 3px 0;
+	border-style: solid;
+	border-color: blue;
+	background: aqua;
+	width: 100px;
+	float: left;
+	position: relative;
+	left: -3px;
+}
+div#c {
+	margin-left: 120px;
+}
+div#d {
+	border-width: 3px 3px 3px 0;
+	border-style: solid;
+	border-color: blue;
+	background: aqua;
+	width: 100px;
+	float: left;
+	margin-left: -3px;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ023</div>
+
+<h2>相対配置要素の位置指定に負の値を使用できない<em>(5.x)</em></h2>
+
+<h3>症状</h3>
+<p>相対配置を行う場合の位置指定プロパティ（left, right, top, bottom）に負の値を指定すると無視されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+div#a {
+  border-left: 3px solid red;
+}
+div#b {
+  border-width: 3px 3px 3px 0;
+  border-style: solid;
+  border-color: blue;
+  background: aqua;
+  width: 100px;
+  float: left;
+  position: relative;
+  left: -3px;
+}
+div#c {
+  margin-left: 120px;
+}
+&lt;/style&gt;
+
+&lt;div id=&quot;a&quot;&gt;
+&lt;div id=&quot;b&quot;&gt;B&lt;/div&gt;
+&lt;div id=&quot;c&quot;&gt;C&lt;br&gt;C&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div id="a">
+<div id="b">B</div>
+<div id="c">C<br>C</div>
+</div>
+</div>
+<p>id属性にbが指定されたdiv要素は、id属性にaが指定されたdiv要素の左ボーダーを隠すように、相対配置で左へ3px移動させています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b023_1.png" alt="WinIE6" width="181" height="53">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>マージンに負の値を指定することでこのバグを回避できます。ただし、WinIEでは指定値以上のマージンがとられてしまうようです。</p>
+<pre>div#d {
+  border-width: 3px 3px 3px 0;
+  border-style: solid;
+  border-color: blue;
+  background: aqua;
+  width: 100px;
+  float: left;
+  <em>margin-left: -3px;</em>
+}
+&lt;div id=&quot;a&quot;&gt;
+&lt;div id=&quot;d&quot;&gt;D&lt;/div&gt;
+&lt;div id=&quot;c&quot;&gt;C&lt;br&gt;C&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div id="a">
+<div id="d">D</div>
+<div id="c">C<br>C</div>
+</div>
+</div>
+<p>※id=a, id=c のdiv要素のスタイルは前出の例での指定と同じです。</p>
+
+<h3>修正状況</h3>
+<p>MacIE5で不具合の発生が確認されたようです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ023</div>
+</body>
+</html>

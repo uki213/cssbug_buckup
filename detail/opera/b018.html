@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ018</div>
+
+<h2>backgroundプロパティで位置の値を2つ指定しないと位置指定が無視される<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>backgroundプロパティでpositionの値を1つしか指定しない場合、位置指定が無視されて初期値が使用される。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;background:url('../img/img01.png') bottom no-repeat; border:2px solid red;&quot;&gt;
+A&lt;br&gt;B&lt;br&gt;C&lt;br&gt;D&lt;/p&gt;</pre>
+<div class="example">
+<p style="background:url('../img/img01.png') bottom no-repeat; border:2px solid red;">A<br>B<br>C<br>D</p>
+</div>
+<p>p要素の背景に画像を、ボックスの下辺中央に繰り返しなしで配置しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b018_1.png" alt="Moz1.0.1" width="289" height="94">Moz1.0.1での表示</p>
+<p><img src="img/b018_2.png" alt="Op6" width="257" height="96">Opera6.05での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>background-positionプロパティに同様の指定をした場合は正しく表示されます。</p>
+<pre>&lt;p style=&quot;background-image:url('../img/img01.png'); background-repeat:no-repeat;
+<em>background-position:bottom;</em> border:2px solid red;&quot;&gt;
+A&lt;br&gt;B&lt;br&gt;C&lt;br&gt;D&lt;/p&gt;</pre>
+<div class="example">
+<p style="background-image:url('../img/img01.png'); background-repeat:no-repeat; background-position:bottom; border:2px solid red;">A<br>B<br>C<br>D</p>
+</div>
+
+<p>繰り返し指定を先に指定するとこのバグを回避できます。したがって、指定の順序によってバグが発生したりしなかったりするようです（仕様上は順不同）。（2002-10-12追記）</p>
+<pre>&lt;p style=&quot;background:url('../img/img01.png') <em>no-repeat bottom</em>; border:2px solid red;&quot;&gt;
+A&lt;br&gt;B&lt;br&gt;C&lt;br&gt;D&lt;/p&gt;</pre>
+<div class="example">
+<p style="background:url('../img/img01.png') no-repeat bottom; border:2px solid red;">A<br>B<br>C<br>D</p>
+</div>
+
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ018</div>
+</body>
+</html>

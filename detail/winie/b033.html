@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ033</div>
+
+<h2>font-familyを指定した要素で文字化けする<em>(5.x/6.0)</em></h2>
+<ul>
+<li>2003-05-30修正。WinIEバグ034の内容と統合。</li>
+<li>2004-02-27修正。WinIEバグ127の内容と統合。</li>
+<li>2004-03-03修正。全面的に修正。</li>
+</ul>
+
+<h3>症状</h3>
+<p>font-familyプロパティの指定値が［欧文フォントと総称ファミリ］または［総称ファミリのみ］である要素では、日本語などの2バイト文字が「□」や「・」に化けることがある。実体参照を用いて指定した文字だけで同様の文字化けを起きることもある。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;font-family:'News Gothic MT',sans-serif;&quot;&gt;CSSでデザイン&lt;/p&gt;</pre>
+<div class="example">
+<p style="font-family:'News Gothic MT',sans-serif;">CSSでデザイン</p>
+</div>
+<p>sans-serif総称ファミリに割り当てられるフォントは、例えば「ＭＳ Ｐゴシック」や「MS UI Gothic」が適切と考えられます。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b033_1.png" alt="Ns7.0">Netscape7.02標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>font-familyプロパティには複数の値（フォント名）を指定することができますが、WinIEはその中で最初に有効なフォントしか文字の表示に用いません。そのフォントで表示できない文字は（font-familyプロパティの指定を無視して）デフォルトのフォントで表示します。</p>
+<pre>&lt;div style=&quot;font:120% Arial,'ＭＳ 明朝',serif;&quot;&gt;
+ABC123あいう漢字&lt;/div&gt;</pre>
+<div class="example">
+<div style="font:120% Arial,'ＭＳ 明朝',serif;">ABC123あいう漢字</div>
+</div>
+<p>上記の例は欧文をArial、和文をＭＳ 明朝で表示させようとしていますが、Arialフォントが有効な環境のWinIEでは和文文字がゴシック体で表示されてしまうはずです。従って、この不具合を確実に回避するためには、日本語文字を含むフォントをfont-familyプロパティで始めに指定する必要があります。</p>
+<p>従って、例えば以下のようなスタイルを指定した場合は、</p>
+<pre>font-family: 'Lucida Sans Unicode', 'Arial Unicode MS',
+  &quot;ＭＳ 明朝&quot;, &quot;平成明朝&quot;, Micho, serif;</pre>
+<p>font-familyプロパティでLucida Sans Unicodeフォントが最初に指定されており、かつこのフォントがシステムにインストール済みであることが不具合発生の原因になると思われます（Arial Unicode MSおよびそれ以降のフォント指定の有無は無関係）。</p>
+<p>以下に挙げるマイクロソフト サポート技術情報も参照してください。</p>
+<ul>
+<li><a href="http://support.microsoft.com/default.aspx?scid=kb;ja;417057">[IE5]sans-serif を指定した HTML ファイルを表示すると文字化け</a></li>
+</ul>
+
+<h3>修正状況</h3>
+<p>Win9x系のWinIE5.xや6.0で不具合が発生するようですが、環境によって差があります。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ033</div>
+</body>
+</html>

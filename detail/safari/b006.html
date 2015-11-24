@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Safari (KHTML) CSSバグリスト</title>
+<script type="text/javascript">
+<!--
+function nodes() {
+	var obj1 = document.getElementById('samplenode');
+	var obj2 = document.getElementById('nlist');
+	for (i = 0; i < obj1.childNodes.length; i++) {
+		var obj3 = document.createElement('li');
+		obj3.appendChild(document.createTextNode(obj1.childNodes[i].nodeName));
+		obj2.appendChild(obj3);
+	}
+}
+// -->
+</script>
+</head>
+<body onload="nodes()">
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ006</div>
+
+<h2>空白文字のみのテキストノードを正常に取得できない<em>(S1.0)</em></h2>
+
+<h3>症状</h3>
+<p>空白文字（1バイトスペースと改行文字）だけで構成されるテキストノードを一部しか取得できない。</p>
+
+<h3>例示</h3>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt;
+function nodes() {
+  var obj1 = document.getElementById('samplenode');
+  var obj2 = document.getElementById('nlist');
+  for (i = 0; i &lt; obj1.childNodes.length; i++) {
+    var obj3 = document.createElement('li');
+    obj3.appendChild(document.createTextNode(obj1.childNodes[i].nodeName));
+    obj2.appendChild(obj3);
+  }
+}
+&lt;/script&gt;
+
+&lt;ul id=&quot;samplenode&quot;&gt;
+&lt;li&gt;リスト1&lt;/li&gt;
+&lt;li&gt;リスト2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol id=&quot;nlist&quot;&gt;&lt;/ol&gt;</pre>
+<div class="example">
+<ul id="samplenode">
+<li>リスト1</li>
+<li>リスト2</li>
+</ul>
+<ol id="nlist"></ol>
+</div>
+<p>ul要素の子ノードの一覧を、ul要素の次にあるol要素に出力しています。</p>
+
+<h3>出力結果</h3>
+<p>N7.02での結果：</p>
+<blockquote>
+<ol>
+<li>#text</li>
+<li>LI</li>
+<li>#text</li>
+<li>LI</li>
+<li>#text</li>
+</ol>
+</blockquote>
+
+<h3>補足</h3>
+<p>このバグについては以下の文書を参照してください。</p>
+<ul>
+<li><a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/tmp/safari/only_space_textnode.html" title="ねこめしにっき">Safari における空白文字のみのテキストノードの扱い</a>（<a href="http://www.remus.dti.ne.jp/~a-satomi/">娘娘飯店しるきぃうぇぶ</a>）</li>
+</ul>
+
+<h3>修正状況</h3>
+<p>Safari1.0でこの不具合が発生するそうです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ006</div>
+</body>
+</html>

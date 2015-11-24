@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+ol a:link {
+	font-weight: bold;
+}
+ol a:visited {
+	font-weight: bold;
+}
+ol a.nb {
+	font-weight: normal;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ101</div>
+
+<h2>:visited擬似クラスの宣言が詳細度を無視してカスケード処理される<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>同じ詳細度で擬似クラスへのスタイル宣言と通常のセレクタへのスタイル宣言が存在するとき、これらの出現順序を無視して:visited擬似クラスに指定したスタイル宣言が優先して適用される。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+ol a:link {
+  font-weight: bold;
+}
+ol a:visited {
+  font-weight: bold;
+}
+ol a.nb {
+  font-weight: normal;
+}
+&lt;/style&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;b000.html&quot;&gt;未訪問1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;b101.html&quot;&gt;訪問済1&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;b000.html&quot; class=&quot;nb&quot;&gt;未訪問2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;b101.html&quot; class=&quot;nb&quot;&gt;訪問済2&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</pre>
+
+<div class="example">
+<ol>
+<li><a href="b000.html">未訪問1</a></li>
+<li><a href="b101.html">訪問済1</a></li>
+</ol>
+<ol>
+<li><a href="b000.html" class="nb">未訪問2</a></li>
+<li><a href="b101.html" class="nb">訪問済2</a></li>
+</ol>
+</div>
+<p>各リストの1つ目のアイテム内のリンクは未アクセス、2つ目のアイテム内のリンクはアクセス済みの状態を想定しています。class属性に「nb」が指定されたa要素内の文字列は標準の太さで表示されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b101_1.png" alt="N7" width="123" height="138">N7.02での表示（標準モード）</p>
+<p><img src="img/b101_2.png" alt="WinIE6" width="123" height="142">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ101</div>
+</body>
+</html>

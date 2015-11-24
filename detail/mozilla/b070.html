@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ070</div>
+
+<h2>子にブロックレベル要素を含むins, del要素もインライン要素になる<em>(N7.x)</em></h2>
+
+<h3>症状</h3>
+<p>ins要素とdel要素は、子要素の状態によってブロックレベル要素にもインライン要素にもなりえるが、mozillaではdisplayプロパティで明示しない限りこれらの要素は常にインライン要素として扱われる。</p>
+
+<h3>例示</h3>
+<pre>&lt;ins style=&quot;border:2px solid red;&quot;&gt;&lt;p&gt;ブロック挿入&lt;/p&gt;&lt;/ins&gt;
+&lt;p&gt;&lt;ins style=&quot;border:2px solid blue;&quot;&gt;インライン挿入&lt;/ins&gt;&lt;/p&gt;</pre>
+<div class="example">
+<ins style="border:2px solid red;"><p>ブロック挿入</p></ins>
+<p><ins style="border:2px solid blue;">インライン挿入</ins></p>
+</div>
+<p>前者のins要素はブロック要素として、後者のins要素はインライン要素として扱われるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b070_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>ins, del要素に対してdisplayプロパティを明示することでこの不具合を回避することができます。</p>
+<pre>&lt;ins style=&quot;border:2px solid red; <em>display:block;</em>&quot;&gt;&lt;p&gt;ブロック挿入&lt;/p&gt;&lt;/ins&gt;
+&lt;p&gt;&lt;ins style=&quot;border:2px solid blue;&quot;&gt;インライン挿入&lt;/ins&gt;&lt;/p&gt;</pre>
+<div class="example">
+<ins style="border:2px solid red; display:block;"><p>ブロック挿入</p></ins>
+<p><ins style="border:2px solid blue;">インライン挿入</ins></p>
+</div>
+
+<h3>修正状況</h3>
+
+<h3>報告書き込み</h3>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ070</div>
+</body>
+</html>

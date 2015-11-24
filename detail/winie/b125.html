@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ125</div>
+
+<h2>clearを指定したボックスの内側上部に隙間が空く<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>clearプロパティによりフロートの後方へ置かれることを強制したボックスに上ボーダーを設置すると、そのボックスの上部に隙間が空くことがある。</p>
+<ul>
+<li>clearプロパティを指定した要素の直前にフロートが存在しない場合、隙間は空かない。</li>
+<li>clearプロパティを指定した要素の直前にフロートが存在する場合、上パディングに相当する位置に幅が1pxの隙間が空く。</li>
+<li>clearプロパティを指定した要素の前方にフロートが1つだけ存在する場合、WinIE6.0互換モードとWinIE5.xでは、上パディング相当の隙間に加えて上マージンに相当する位置に、幅が約16pxの隙間が空く。</li>
+</ul>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;float:left; width:90%; background:silver;
+  margin:0;&quot;&gt;↓&lt;/div&gt;
+&lt;div style=&quot;clear:left; background:aqua; border:1px solid silver;
+  margin:0; padding:0;&quot;&gt;
+&lt;div style=&quot;background:silver; margin:0;&quot;&gt;↑&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="float:left; width:90%; background:silver; margin:0;">↓</div>
+<div style="clear:left; background:aqua; border:1px solid silver; margin:0; padding:0;">
+<div style="background:silver; margin:0;">↑</div>
+</div>
+</div>
+<p>「↓」と「↑」の間に隙間はできない（ボーダーや背景色の銀色で塗りつぶされている）はずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b125_1.png" alt="N7.1">N7.1での表示（標準モード）</p>
+<p><img src="img/b125_2.png" alt="WinIE6">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>clearプロパティを指定する要素に、widthまたはheightプロパティを具体的な値で指定することでこの不具合を回避できます。ただし、親要素にパディングやボーダーが設定されているときにこの方法を採ると隙間が広がってしまうこともあります。以下の例では、親にボーダーとパディングを設定したdiv要素があります。</p>
+<pre>&lt;div style=&quot;float:left; width:90%; background:silver;&quot;&gt;↓&lt;/div&gt;
+&lt;div style=&quot;clear:left; <em>width:90%;</em> background:aqua; border:1px solid silver;&quot;&gt;
+&lt;div style=&quot;background:silver;&quot;&gt;↑&lt;/div&gt;</pre>
+</div>
+<div class="example">
+<div style="float:left; width:90%; background:silver;">↓</div>
+<div style="clear:left; width:90%; background:aqua; border:1px solid silver;">
+<div style="background:silver;">↑</div>
+</div>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ125</div>
+</body>
+</html>

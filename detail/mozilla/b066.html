@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ066</div>
+
+<h2>overflow:auto/scroll;を指定した要素内で閲覧領域の外にあるリンクが機能しない<em>(N7.0)</em></h2>
+
+<h3>症状</h3>
+<ul>
+<li>内部にリンクを含む要素のoverflowプロパティにauto値またはscroll値を指定している。</li>
+<li>始めに文書を表示したときその要素内にあるリンクが閲覧領域の外にある（a要素を見るためにスクロールが必要）。</li>
+</ul>
+<p>このとき閲覧領域の外にあるリンクがhref属性で指定した場所に移動せず、overflowプロパティにauto値またはscroll値を指定した要素の始端部に移動してしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;border:2px solid blue;&quot;&gt;
+&lt;a href=&quot;b066.html&quot;&gt;Mozバグ066へ移動&lt;/a&gt;
+&lt;/div&gt;
+&lt;div style=&quot;overflow:auto; height:100px;
+  padding-top:1000px; border:2px solid red;&quot;&gt;
+&lt;a href=&quot;../mozilla.html&quot;&gt;Mozバグ目次へ移動&lt;/a&gt;
+&lt;/div&gt;</pre>
+<p>上記のソースを<a href="b066a.html">検証ページ</a>で使用しています。後方のリンク「Mozillaバグ目次へ移動」はスクロールしなければ表示できないとき、そのリンクが機能するかを確認してください。</p>
+
+<h3>補足</h3>
+<p>リンクが始めから閲覧領域内に表示されている場合にこの不具合は発生しません。また、overflowプロパティがvislble値またはhidden値のときもこの不具合は発生しません。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>Netscape7.02で不具合の発生を確認しました。</li>
+<li>Netscape6.2.3、Netscape7.1でこの不具合は発生しないようです。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ066</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Netscape Navigator 4.x CSSバグリスト</title>
+</head>
+<body>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ004</div>
+
+<h2>特定の条件下では、フレーズ要素を使用したページを表示できない</h2>
+
+<h3>症状</h3>
+<p>外部スタイルシートを読み込んでいるページ内で、ボーダーを設定した要素の子孫にabbr、acronym、del、dfn、ins、qなどの要素が含まれている場合、ブラウザがクラッシュする。</p>
+
+<h3>例示</h3>
+<p>外部スタイルシート：</p>
+<pre>h1 {
+  border: 3px solid blue;
+}</pre>
+<p>HTML文書：</p>
+<pre>&lt;h1&gt;Windows版&lt;abbr title=&quot;Netscape Navigator&quot;&gt;NN&lt;/abbr&gt;のすべて&lt;/h1&gt;</pre>
+<p>※このページでクラッシュさせないために実演は行っていません。</p>
+
+<h3>修正状況</h3>
+<p>NN4.78ではクラッシュしないようです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ004</div>
+</body>
+</html>

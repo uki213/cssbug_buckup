@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ143</div>
+
+<h2>インライン要素のrepeat-x背景画像が1行目にしか表示されない<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>インライン要素に対して <code>background-repeat:repeat-x;</code> を指定すると、背景画像はインライン要素の1行目にあたる部分にしか表示されない。</p>
+
+<h3>例示</h3>
+<pre>&lt;div&gt;
+&lt;span style=&quot;background-repeat:repeat-x;
+  background-image:url(img02.png); font-size:200%;&quot;&gt;
+1行目&lt;br&gt;
+2行目&lt;br&gt;
+3行目&lt;/span&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div><span style="background-repeat:repeat-x; background-image:url(../img/img02.png); font-size:200%;">1行目<br>2行目<br>3行目</span></div>
+</div>
+<p>span要素内はすべての行の上端に、横方向のみ繰り返しで背景画像が表示されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b143_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b143_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ143</div>
+</body>
+</html>

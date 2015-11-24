@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<script type="text/javascript">
+<!--
+function create() {
+	var obj = document.createElement('iframe');
+	alert(obj.nodeName);
+}
+//-->
+</script>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ015</div>
+
+<h2>DOMでiframe要素を生成しようとするとobject要素が生成される<em>(IE5)</em></h2>
+
+<h3>症状</h3>
+<p>DOMのcreateElementメソッドを用いてiframe要素を生成しようとすると、object要素が生成されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt;
+function create() {
+    var obj = document.createElement('iframe');
+    alert(obj.nodeName);
+}
+&lt;/script&gt;
+
+&lt;a href=&quot;javascript:create()&quot;&gt;iframe要素生成&lt;/a&gt;</pre>
+<div class="example">
+<a href="javascript:create()">iframe要素生成</a>
+</div>
+<p>createElementメソッドでiframe要素を生成し、その要素オブジェクトのnodeNameプロパティをアラートで表示します。</p>
+
+<h3>補足</h3>
+<p>例示はIE5での動作を確認していません。</p>
+
+<h3>修正状況</h3>
+<p>WinIE6.0ではnodeNameプロパティが「iframe」でした。</p>
+
+<h3>報告書き込み</h3>
+<blockquote>【Win-IE5】<br>
+document.createElementメソッドでiframe要素を生成しようとすると、<br>
+代わりにobject要素が生成されてしまう。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ015</div>
+</body>
+</html>

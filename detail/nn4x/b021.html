@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Netscape Navigator 4.x CSSバグリスト</title>
+</head>
+<body>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ021</div>
+
+<h2>style属性でスタイルを設定するとimg要素の位置がずれる</h2>
+
+<h3>症状</h3>
+<ul>
+<li>style属性でスタイルを指定した要素の子要素に、style属性でスタイルを指定したimg要素があるとき
+<pre title="例">&lt;X style=&quot;???&quot;&gt;
+&lt;Y style=&quot;???&quot;&gt;&lt;/Y&gt;
+&lt;img style=&quot;???&quot;&gt;
+&lt;/X&gt;</pre></li>
+<li>style属性でスタイルを指定した要素の後方に、style属性でスタイルを指定したimg要素があるとき
+<pre title="例">&lt;X style=&quot;???&quot;&gt;&lt;/X&gt;
+&lt;Y style=&quot;???&quot;&gt;&lt;/Y&gt;
+&lt;img style=&quot;???&quot;&gt;</pre></li>
+</ul>
+<p>このいずれかの条件を満たすとき、（前出の例で表すと）img要素がX要素の直前に置かれる。また、X要素に指定したスタイルはすべて無視される。</p>
+<p>さらに、X要素開始タグとimg要素開始タグの中間にstyle属性でスタイルを指定した要素（Y要素）があるとき、Y要素に指定したスタイルも無視されることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;p&gt;画&lt;strong style=&quot;color:blue;&quot;&gt;像&lt;/strong&gt;→
+&lt;img src=&quot;../img/img02.png&quot; alt=&quot;■&quot; style=&quot;margin:0;&quot;&gt;
+←画像&lt;/p&gt;</pre>
+<div class="example">
+<p>画<strong style="color:blue;">像</strong>→
+<img src="../img/img02.png" alt="■" style="margin:0;">
+←画像</p>
+</div>
+<p>strong要素とimg要素にstyle属性でスタイルを設定しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b021_1.png" alt="N7" width="159" height="63">N7.1での表示</p>
+<p><img src="img/b021_2.png" alt="NN4" width="153" height="39">NN4.8での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>このバグが発生しているとき、親要素のマージンやパディングの指定が正しく反映されない状態になることがあります。</p>
+<p>style属性を使用せず、style要素や外部スタイルシートを使用することでこのバグを回避できます。</p>
+
+<h3>修正状況</h3>
+<p>NN4.8で不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ021</div>
+</body>
+</html>

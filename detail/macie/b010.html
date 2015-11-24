@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+<style type="text/css">
+<!--
+del {
+	color: fuchsia;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ010</div>
+
+<h2>a要素全体の文字色に内包子要素の文字色が反映される<em>(IE5)</em></h2>
+
+<h3>症状</h3>
+<p>互換モードでは、a要素の子孫要素で前景色を設定しているとき、その前景色がa要素全体に反映されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+del {
+  color: fuchsia;
+}
+&lt;/style&gt;
+
+&lt;p&gt;&lt;a href=&quot;../macie.html&quot;&gt;AB&lt;del&gt;CD&lt;/del&gt;EF&lt;/a&gt;&lt;/p&gt;</pre>
+<div class="example">
+<p><a href="../macie.html">AB<del>CD</del>EF</a></p>
+</div>
+<p>del要素内のみ、前景色をピンク色にしています。</p>
+<p>※このページは互換モードで表示させています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b010_1.png" alt="WinIE6" width="113" height="73">WinIE6.0での表示（互換モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>MacIE5互換モードでは不具合の発生が確認されました。標準モードでは当該要素にのみ、前景色が反映されます。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ010</div>
+</body>
+</html>

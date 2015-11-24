@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ005</div>
+
+<h2>leftプロパティが指定された要素ではrightプロパティが無視される<em>(6.0)</em></h2>
+<p><em>2002-10-14修正。</em></p>
+
+<h3>症状</h3>
+<p>ポジショニングされた要素でleftプロパティを指定すると、rightプロパティの指定値は無視されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div class=&quot;example&quot;&gt;
+&lt;div style=&quot;position:relative; width:100px; height:100px; background:aqua;&quot;&gt;A
+&lt;div style=&quot;position:absolute; left:10px; top:10px;
+    right:10px; bottom:10px; background:green;&quot;&gt;B&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="position:relative; width:100px; height:100px; background:aqua;">A
+<div style="position:absolute; left:10px; top:10px; right:10px; bottom:10px; background:green;">B</div>
+</div>
+</div>
+<p>子要素（B）のボックス端は親要素（A）のボックス端から上下左右それぞれ10px内側の位置にあるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b005_1.png" alt="Moz1.0" width="116" height="116">Moz1.0での表示</p>
+<p><img src="img/b005_2.png" alt="Op6" width="115" height="116">Opera6.05での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>leftプロパティを指定せずにrightプロパティのみを指定した場合はrightプロパティの指定値が有効になります。ただし、widthプロパティを同時に指定しなければなりません。</p>
+<pre>&lt;div style=&quot;position:relative; width:100px; height:100px; background:aqua;&quot;&gt;A
+&lt;div style=&quot;position:absolute; <em>right:10px; width:1em;</em> background:green;&quot;&gt;B&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="position:relative; width:100px; height:100px; background:aqua;">A
+<div style="position:absolute; right:10px; width:1em; background:green;">B</div>
+</div>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ005</div>
+</body>
+</html>

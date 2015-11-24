@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ136</div>
+
+<h2>背景を指定したフォーム部品で視覚スタイルが無効になる<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>input要素やtextarea要素に背景を指定すると、WindowsXP以降で実装された視覚スタイルによる装飾が無効になりクラシックスタイルの装飾（Win2000/9xと同じ装飾）になってしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;form&gt;
+&lt;ul&gt;&lt;li&gt;
+&lt;input type=&quot;text&quot; style=&quot;width:10em;&quot; value=&quot;背景なし&quot;&gt;
+&lt;/li&gt;&lt;li&gt;
+&lt;input type=&quot;text&quot; style=&quot;width:10em; background:silver;&quot; value=&quot;背景あり&quot;&gt;
+&lt;/li&gt;&lt;/ul&gt;
+&lt;/form&gt;</pre>
+<div class="example">
+<form action="b136.html">
+<ul>
+<li><input type="text" style="width:10em;" value="背景なし"></li>
+<li><input type="text" style="width:10em; background:silver;" value="背景あり"></li>
+</ul>
+</form>
+</div>
+<p>2つの入力ボックスを設置しています。前者は背景指定なし、後者は背景指定ありの場合です。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b136_1.png" alt="WinIE6">WinIE6.0標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>この不具合は入力ボックス（input, textarea）、チェックボックス（input）、ラジオボタン（input）、押しボタン（input, button）の各フォーム部品とfieldset要素のデフォルトのボーダーで発生します。セレクトボックスでは発生しないようです。</p>
+
+<h3>修正状況</h3>
+<p>WinIE6.0（WindowsXP）で不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ136</div>
+</body>
+</html>

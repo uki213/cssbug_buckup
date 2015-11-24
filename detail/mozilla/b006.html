@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+<script type="text/javascript">
+<!--
+function disp() {
+	var obj = document.getElementById('f1');
+	if (obj.style.display != 'none') {
+		obj.style.display = 'none';
+	} else {
+		obj.style.display = 'block';
+	}
+}
+//-->
+</script>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ006</div>
+
+<h2>スクリプトでiframeを参照すると履歴が余分に追加される<em>(N6)</em></h2>
+
+<h3>症状</h3>
+<p>iframe要素またはiframe要素を子に持つ要素をJavaScriptで参照すると、現在表示しているページがブラウザの閲覧履歴に追加される。特に、ブロック表示系プロパティ（overflow, displayなど）を操作した場合に発生しやすい。</p>
+
+<h3>例示</h3>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt;
+function disp() {
+  var obj = document.getElementById('f1');
+  if (obj.style.display != 'none') {
+    obj.style.display = 'none';
+  } else {
+    obj.style.display = 'block';
+  }
+}
+&lt;/script&gt;
+
+&lt;div id=&quot;f1&quot;&gt;
+&lt;iframe src=&quot;b006a.html&quot; width=&quot;200&quot; height=&quot;100&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;form action=&quot;#&quot;&gt;
+&lt;input type=&quot;button&quot; value=&quot;displayプロパティ変更&quot; onclick=&quot;disp()&quot;&gt;
+&lt;/form&gt;</pre>
+<div class="example">
+<div id="f1">
+<iframe src="b006a.html" width="200" height="100">インラインフレーム関連のバグの例示</iframe>
+</div>
+<form action="#">
+<input type="button" value="displayプロパティ変更" onclick="disp()">
+</form>
+</div>
+<p>ボタンを押すことで、インラインフレームを含んでいるdiv要素の表示形態を「表示しない←→ブロック」のように切り替えることができます。</p>
+
+<h3>スクリーンショット</h3>
+<p>各画像の上段は「displayプロパティ変更」ボタンを押す前、下段は同ボタンを5回押した後のセッション履歴のリストです。</p>
+<div class="shot">
+<p><img src="img/b006_1.png" alt="Moz1.0" width="289" height="122">Moz1.0での結果</p>
+<p><img src="img/b006_2.png" alt="N6.2" width="284" height="143">N6.2.3での結果</p>
+</div>
+
+<h3>修正状況</h3>
+<p>N6.2.3では履歴が追加される現象が発生しています。Moz1.0では修正されています。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ006</div>
+</body>
+</html>

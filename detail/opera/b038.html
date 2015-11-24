@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ038</div>
+
+<h2>h4要素以外の見出し要素でfont-sizeを算出する際に親要素の値を参照しない<em>(7.0)</em></h2>
+
+<h3>症状</h3>
+<p>見出し要素（h1, h2, h3, h4, h5, h6）でfont-sizeプロパティが指定されていない場合、親要素のfont-sizeの値ではなくbodyまたはhtml要素のfont-sizeの値に対する相対値が算出されてしまう。ただし、h4要素だけは親要素のfont-sizeの値を継承する。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;font-size:2em; border:1px solid red;&quot;&gt;
+&lt;h4 style=&quot;margin:0;&quot;&gt;h4&lt;/h4&gt;
+&lt;h5 style=&quot;margin:0;&quot;&gt;h5&lt;/h5&gt;
+&lt;h6 style=&quot;margin:0;&quot;&gt;h6&lt;/h5&gt;
+&lt;/div&gt;
+&lt;div style=&quot;border:1px solid blue;&quot;&gt;
+&lt;h4 style=&quot;margin:0;&quot;&gt;h4&lt;/h4&gt;
+&lt;h5 style=&quot;margin:0;&quot;&gt;h5&lt;/h5&gt;
+&lt;h6 style=&quot;margin:0;&quot;&gt;h6&lt;/h5&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="font-size:2em; border:2px solid red;">
+<h4 style="margin:0;">h4</h4>
+<h5 style="margin:0;">h5</h5>
+<h6 style="margin:0;">h6</h5>
+</div>
+<div style="border:2px solid blue;">
+<h4 style="margin:0;">h4</h4>
+<h5 style="margin:0;">h5</h5>
+<h6 style="margin:0;">h6</h5>
+</div>
+</div>
+<p>上のh4, h5, h6要素は親要素のfont-sizeを指定した場合、下のh4, h5, h6要素は親要素のfont-sizeを指定しない場合の例です。なお、上下に間延びしてしまうのでh4～h6要素のマージンを0にしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b038_1.png" alt="Moz1.0.2" width="146" height="160">Moz1.0.2での表示（標準モード）</p>
+<p><img src="img/b038_2.png" alt="Op7" width="114" height="119">Opera7.02での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>見出し要素でfont-sizeプロパティを指定することでこのバグを回避できます。</p>
+<pre>&lt;div style=&quot;font-size:2em;&quot;&gt;
+&lt;h4 style=&quot;margin:0; <em>font-size:1em;</em>&quot;&gt;h4&lt;/h4&gt;
+&lt;h5 style=&quot;margin:0; <em>font-size:0.8em;</em>&quot;&gt;h5&lt;/h5&gt;
+&lt;h6 style=&quot;margin:0; <em>font-size:0.7em;</em>&quot;&gt;h6&lt;/h5&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="font-size:2em;">
+<h4 style="margin:0; font-size:1em;">h4</h4>
+<h5 style="margin:0; font-size:0.8em;">h5</h5>
+<h6 style="margin:0; font-size:0.7em;">h6</h5>
+</div>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera7.02では標準・互換モードともに不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ038</div>
+</body>
+</html>

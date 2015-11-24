@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ092</div>
+
+<h2>line-heightで算出した行高を超える部分が表示されない<em>(5.x/6.0)</em></h2>
+<ul>
+<li>2003-06-06修正。症状を変更。（旧タイトル：テーブルセルから上下にはみ出す部分が表示されない）</li>
+</ul>
+
+<h3>症状</h3>
+<p><del datetime="2003-06-05T00:00:00+09:00">line-heightプロパティで小さい値を指定するなどしてテーブルセルの高さを低くしたとき、セルのボックスをはみ出す部分が表示されない。</del></p>
+<p><ins datetime="2003-06-05T00:00:00+09:00">line-heightプロパティに小さい値を指定することで行高を低くしているとき、行高の算出値の範囲を超える部分が表示されず、文字が欠けてしまう。</ins></p>
+
+<h3>例示</h3>
+<pre>&lt;table border=&quot;1&quot;&gt;
+&lt;tr style=&quot;font:2em Arial,sans-serif; line-height:0.5;&quot;&gt;
+&lt;td&gt;ijqgvylT&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="1">
+<tr style="font:2em Arial,sans-serif; line-height:0.5;">
+<td>ijqgvylT</td></tr>
+</table>
+</div>
+<p>tr要素は行高さを文字高さの半分にしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b092_1.png" alt="Moz1.3" width="136" height="40">Moz1.3での表示（標準モード）</p>
+<p><img src="img/b092_2.png" alt="WinIE6" width="135" height="38">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>widthプロパティで幅を指定した要素の場合、行高の範囲を超える部分が上下両方とも消えます。</p>
+<pre>&lt;p style=&quot;line-height:0.5em; font-size:2em; width:5em; background:aqua;&quot;&gt;
+AgTj&lt;/p&gt;
+&lt;p style=&quot;line-height:0.5em; font-size:2em; background:lime;&quot;&gt;
+AgTj&lt;/p&gt;</pre>
+<div class="example">
+<p style="line-height:0.5em; font-size:2em; width:5em; background:aqua;">AgTj</p>
+<p style="line-height:0.5em; font-size:2em; background:lime;">AgTj</p>
+</div>
+<p>td要素など一部の要素を除き、widthプロパティを指定しないことでこのバグを回避できます。ただし、WinIE6.0標準モードでは下にはみ出る部分だけが表示されないために完全には回避できないことがあります。</p>
+
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ092</div>
+</body>
+</html>

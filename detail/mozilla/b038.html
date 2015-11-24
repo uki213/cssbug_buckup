@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ038</div>
+
+<h2>z-indexに負の値を指定した要素が消えてしまう</h2>
+
+<h3>症状</h3>
+<p>z-indexプロパティが指定された要素を祖先に持たない要素のz-indexプロパティに負の値を指定すると、その要素が描画されない。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;position:relative; background:lime; z-index:1;&quot;&gt;z-index: 1;&lt;/div&gt;
+&lt;div style=&quot;position:relative; background:aqua; z-index:-1;&quot;&gt;z-index: -1;&lt;/div&gt;</pre>
+<div class="example">
+<div style="position:relative; background:lime; z-index:1;">z-index: 1;</div>
+<div style="position:relative; background:aqua; z-index:-1;">z-index: -1;</div>
+</div>
+<p>正の値と負の値を指定した状態の比較です。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b038_1.png" alt="WinIE6" width="148" height="52">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b038_2.png" alt="Moz1.0.1" width="128" height="54">Moz1.0.1での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>Moz/N6/N7のこのような挙動は、仕様上正しいものです。</p>
+<p>祖先にz-indexが指定された要素を持たない要素は、ルート要素（html要素）が生成したZ軸を用いて上下関係を決めます。また、この軸上でのルート要素のz-indexの初期値は0です。そのため、z-indexに負の値を指定した要素はhtml要素の下に回ってしまい、見えなくなってしまいます。</p>
+<p>これに対処するには、祖先にz-indexプロパティが指定された要素を置くことです。z-indexプロパティが指定された要素は子孫要素のために、自分を基準にしたZ軸を生成します。このZ軸はルート要素が生成したZ軸とは干渉しないので、z-indexプロパティに負の値を設定しても表示されるようになります。</p>
+
+<pre>&lt;div style=&quot;position:absolute; z-index:-1; background:navy;&quot;&gt;A&lt;/div&gt;
+&lt;div style=&quot;position:absolute; z-index:0; background:maroon;&quot;&gt;B&lt;/div&gt;
+&lt;div style=&quot;position:absolute; z-index:1; background:purple;&quot;&gt;C
+&lt;div style=&quot;position:absolute; z-index:-1; background:red;&quot;&gt;D&lt;/div&gt;
+&lt;div style=&quot;position:absolute; z-index:0; background:yellow;&quot;&gt;E&lt;/div&gt;
+&lt;div style=&quot;position:absolute; z-index:1; background:aqua;&quot;&gt;F&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div style="position:relative; height:130px; border:3px double green;">
+<div style="position:absolute; width:75px; height:75px; left:0px; top:0px; z-index:-1; background:navy;">A</div>
+<div style="position:absolute; width:75px; height:75px; left:10px; top:10px; z-index:0; background:maroon;">B</div>
+<div style="position:absolute; width:75px; height:75px; left:20px; top:20px; z-index:1; background:purple;">C
+<div style="position:absolute; width:75px; height:75px; left:10px; top:10px; z-index:-1; background:red;">D</div>
+<div style="position:absolute; width:75px; height:75px; left:20px; top:20px; z-index:0; background:yellow;">E</div>
+<div style="position:absolute; width:75px; height:75px; left:30px; top:30px; z-index:1; background:aqua;">F</div>
+</div>
+</div>
+<p>div要素Cの子要素であるD, E, Fの各div要素は、div要素Cが生成したZ軸上で上下関係を決めます。このZ軸ではdiv要素Cが0になるので、それよりz-indexの値が低いdiv要素Dはdiv要素Cより下層に配置されます。ただし、div要素Cが属するZ軸でより下層にある要素（ここではhtml要素も含まれる）よりは上層に配置されます。</p>
+<p>一方、祖先にz-indexを指定した要素を持たないdiv要素Aは、ルート要素（html要素）が生成したZ軸上で上下関係を決めます。その結果、div要素Aはルート要素よりも下層に回ってしまうために見えなくなります。</p>
+<p><img src="img/b038_3.png" alt="Z軸" width="256" height="144"></p>
+<p>具体的な対処法は、スタイルシートに以下の記述を加えることです。</p>
+<pre>body {
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}</pre>
+
+<h3>修正状況</h3>
+<p>Moz1.0.1/N7ではCSS仕様に沿った実装をしています。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ038</div>
+</body>
+</html>

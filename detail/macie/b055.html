@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ055</div>
+
+<h2>行グループ要素の背景が設置される場所が違う<em>(5.x)</em></h2>
+
+<h3>症状</h3>
+<p>tfoot要素に指定した背景とtbody要素に指定した背景とが入れ替わってしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;table border=&quot;2&quot;&gt;
+&lt;thead style=&quot;background:red;&quot;&gt;
+&lt;tr&gt;&lt;td&gt;赤&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tfoot style=&quot;background:lime;&quot;&gt;
+&lt;tr&gt;&lt;td&gt;緑&lt;/td&gt;&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;tbody style=&quot;background:yellow;&quot;&gt;
+&lt;tr&gt;&lt;td&gt;黄&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;</pre>
+<div class="example">
+<table border="2" style="width:5em;">
+<thead style="background:red;">
+<tr><td>赤</td></tr>
+</thead>
+<tfoot style="background:lime;">
+<tr><td>緑</td></tr>
+</tfoot>
+<tbody style="background:yellow;">
+<tr><td>黄</td></tr>
+</tbody>
+</table>
+</div>
+<p>3つの行の背景は上から順に赤、黄、黄緑になるはずです。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>MacIE5で不具合が発生するそうです。</li>
+</ul>
+
+<h3>報告書き込み</h3>
+<blockquote>tbody要素とtfoot要素の背景を塗る場所を間違える。（MacIE5.x）<br>
+<br>
+tfoot、tbodyの順に背景が塗られてしまう。<br>
+<br>
+&lt;table&gt;<br>
+&lt;thead&gt;&lt;tr&gt;&lt;th&gt;thead&lt;/th&gt;&lt;th&gt;thead&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;<br>
+&lt;tfoot style=&quot;background:red&quot;&gt;&lt;tr&gt;&lt;td&gt;tfoot赤&lt;/td&gt;&lt;td&gt;tfoot赤&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;<br>
+&lt;tbody style=&quot;background:blue&quot;&gt;&lt;tr&gt;&lt;td&gt;tbody青&lt;/td&gt;&lt;td&gt;tbody青&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;<br>
+&lt;/table&gt;</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ055</div>
+</body>
+</html>

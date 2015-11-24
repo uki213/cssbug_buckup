@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
+<title>Netscape Navigator 4.x CSSバグリスト</title>
+</head>
+<body>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ026</div>
+
+<h2>特定のスタイルを指定すると省略した終了タグが正しい位置に補われない</h2>
+
+<h3>症状</h3>
+<p>ある要素のマージンに任意の値、border-styleプロパティにnone値を指定したとき、その要素の内部に終了タグを省略した要素を置くと、省略した終了タグが正しい位置に補われずレイアウトを崩す原因になる。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;margin:1px; border:none;&quot;&gt;&lt;p&gt;段落&lt;/div&gt;</pre>
+<div class="example">
+<div style="margin:1px; border:none;"><p>段落</div>
+</div>
+<p>div要素にマージンと <code>border:none;</code> を指定し、子に終了タグを省略したp要素を置いています。</p>
+
+<h3>スクリーンショット</h3>
+<p>※本来は例示だけを囲むはずのボーダーが、NN4.8では文書末までを囲むように表示されています。</p>
+<div class="shot">
+<p><img src="img/b026_1.png" alt="Ns7.1">Netscape7.1での表示</p>
+<p><img src="img/b026_2.png" alt="NN4.8">NN4.8での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>NN4.8で不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ026</div>
+</body>
+</html>

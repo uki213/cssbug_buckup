@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ085</div>
+
+<h2>テキスト入力フォームの幅が文字入力時に変化する<em>(5.5/6.0)</em></h2>
+<ul>
+<li>2003-12-10修正。内容を整理。</li>
+</ul>
+
+<h3>症状</h3>
+<p>&lt;input type=&quot;text&quot;&gt;、&lt;input type=&quot;password&quot;&gt;およびtextarea要素が以下の条件を満たすとき、入力領域に何らかの文字を入力した時にその幅が広がる。</p>
+<ul>
+<li>input, textarea要素のwidthプロパティを%単位の値で指定している。</li>
+<li>（input要素のみ）line-heightプロパティにnormal, inherit以外の値を指定している。</li>
+<li>input, textarea要素の祖先要素に左マージンや左パディングを指定したものがある（body要素を除く）。</li>
+</ul>
+<p></p>
+
+<h3>例示</h3>
+<pre>&lt;form&gt;
+&lt;div style=&quot;margin-left:3em;&quot;&gt;
+&lt;input type=&quot;text&quot; style=&quot;width:30%; line-height:1;&quot;&gt;
+&lt;/div&gt;
+&lt;div style=&quot;margin-left:3em;&quot;&gt;
+&lt;textarea style=&quot;width:30%; height:3em;&quot;&gt;&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;/form&gt;</pre>
+<div class="example">
+<form action="b085.html">
+<div style="margin-left:3em;">
+<input type="text" style="width:30%; line-height:1;">
+</div>
+<div style="margin-left:3em;">
+<textarea style="width:30%; height:3em;"></textarea>
+</div>
+</form>
+</div>
+<p>入力領域に何か文字を入力してください。</p>
+
+<h3>スクリーンショット</h3>
+<p>input要素の入力領域に文字を入力した後の状態です。</p>
+<div class="shot">
+<p><img src="img/b085_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b085_2.png" alt="WinIE6">WinIE6.0標準モード</p>
+</div>
+
+<h3>補足</h3>
+<ul>
+<li>祖先要素の左マージンや左パディングの値が大きいほど、またinputおよびtextarea要素自身のwidthプロパティの値が大きいほど、入力領域の幅が広がる量も大きくなるようです。</li>
+<li>WinIE5.0以前では文書を表示した段階で既に幅が広がった状態（5.5以降で文字を入力した後の状態と同じ）になります。</li>
+<li>参考資料：<a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/2003/11b.html#d20n04s01">文字を打つとビロンと伸びるフォームアイテム</a>（<a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/">ねこめしにっき</a>）</li>
+</ul>
+
+<h3>修正状況</h3>
+<p>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ085</div>
+</body>
+</html>

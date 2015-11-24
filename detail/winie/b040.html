@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ040</div>
+
+<h2>親要素のtext-decorationの効果を子要素で解除できる<em>(5.x/6.0)</em></h2>
+<p>2003-05-09修正。症状を変更。</p>
+
+<h3>症状</h3>
+<p><del datetime="2003-05-09T00:00:00+09:00">a要素（リンク文字列）にデフォルトで設定されている下線を、</del>子孫要素で <code>text-decoration: none;</code> を指定すると<ins datetime="2003-05-09T00:00:00+09:00">親要素のtext-decorationプロパティで設定した装飾を</ins>解除できる。</p>
+
+<h3>例示</h3>
+<pre>&lt;p&gt;&lt;a href=&quot;../winie.html&quot;&gt;下線
+&lt;em style=&quot;text-decoration:none;&quot;&gt;装飾&lt;/em&gt;を行う&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot;text-decoration:underline;&quot;&gt;下線
+&lt;em style=&quot;text-decoration:none;&quot;&gt;装飾&lt;/em&gt;を行う&lt;/p&gt;</pre>
+<div class="example">
+<p><a href="../winie.html">下線<em style="text-decoration:none;">装飾</em>を行う</a></p>
+<p style="text-decoration:underline;">下線<em style="text-decoration:none;">装飾</em>を行う</p>
+</div>
+<p>前者はa要素にデフォルトで設定されている下線を、後者はp要素に指定した下線を、それぞれem要素で解除しようとしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b040_1.png" alt="Moz1.0" width="151" height="98">Moz1.0での表示</p>
+<p><img src="img/b040_2.png" alt="WinIE6" width="157" height="111">WinIE6.0での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>CSSでは、text-decorationプロパティで指定された内容は継承されないが、子孫要素のブロックはすべて同じ装飾を施されるべきと規定されています。</p>
+<p><ins datetime="2003-05-09T00:00:00+09:00">WinIE5.5/6.0ではa要素にデフォルトで設定されている下線をこの方法で解除することができます。WinIE5.0では加えてins要素とu要素の下線、del要素・s要素・strike要素の打ち消し線も解除できます。</ins></p>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では、標準・互換モードともに、リンク文字列にデフォルトで指定された下線装飾を解除できます。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ040</div>
+</body>
+</html>

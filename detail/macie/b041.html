@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ041</div>
+
+<h2>フロート化したh1要素に続くdiv要素が回り込んで表示される<em>(5.x)</em></h2>
+
+<h3>症状</h3>
+<p>h1要素をフロートにしているとき、h1要素の直後にあるdiv要素ボックスの幅がフロートに重ならないように縮小される（置換ブロック要素のようになる）。</p>
+
+<h3>例示</h3>
+<pre>&lt;h1 style=&quot;float:left; width:3em; margin:0;&quot;&gt;H1&lt;/h1&gt;
+&lt;div style=&quot;border:2px solid blue;&quot;&gt;
+ブロック&lt;br&gt;ブロック&lt;br&gt;ブロック&lt;/div&gt;</pre>
+<div class="example">
+<h1 style="float:left; width:3em; margin:0;">H1</h1>
+<div style="border:2px solid blue;">ブロック<br>ブロック<br>ブロック</div>
+</div>
+<p>div要素のボックスサイズ算出時にフロートは影響を与えないはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b041_1.png" alt="N7" width="140" height="76">N7.02での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>h1要素の後にある要素がdiv要素でない場合はバグが発生しません。</p>
+<pre>&lt;h1 style=&quot;float:left; width:3em; margin:0;&quot;&gt;H1&lt;/h1&gt;
+<em>&lt;h2&gt;h2-1&lt;/h2&gt;&lt;h2-2&gt;h2&lt;/h2&gt;</em></pre>
+<div class="example">
+<h1 style="float:left; width:3em; margin:0;">H1</h1>
+<h2>h2-1</h2><h2>h2-2</h2>
+</div>
+<p>このバグの例とスクリーンショットを<a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/tmp/niaou_float_div/test.html" title="ねこめしにっき">にゃおりんぱげ最小構成てすと</a>で見ることができます。</p>
+
+<h3>修正状況</h3>
+<p>MacIE5.1～5.2で不具合の発生が確認されています。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ041</div>
+</body>
+</html>

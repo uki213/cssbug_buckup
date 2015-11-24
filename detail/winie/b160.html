@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+p.test {
+	background: yellow;
+}
+p.test2 {
+	position: relative;
+	z-index: 0;
+	background: yellow;
+}
+p.test a {
+	position: relative;
+	z-index: -1;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ160</div>
+
+<h2>z-indexを負の数にしたリンクを選択できない<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>ポジショニングした祖先要素を持たないa要素のz-indexプロパティに負の値を指定すると、そのリンクをマウスなどのクリックによって辿ることができなくなる。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+p.test {
+  background: yellow;
+}
+p.test a {
+  position: relative;
+  z-index: -1;
+}
+&lt;/style&gt;
+
+&lt;p class=&quot;test&quot;&gt;→&lt;a href=&quot;&quot;&gt;WinIE目次&lt;/a&gt;←&lt;/p&gt;</pre>
+<div class="example">
+<p class="test">→<a href="../winie.html">WinIE目次</a>←</p>
+</div>
+<p>2つの矢印の間にa要素がありますが、z-indexプロパティの指定のためp要素の背景の裏に隠れています。リンクが機能するかを確認してください。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b160_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b160_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>祖先要素をポジショニングすることで、この不具合を回避することができます。</p>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+p.test2 {
+<em>  position: relative;
+  z-index: 0;</em>
+  background: yellow;
+}
+p.test a {
+  position: relative;
+  z-index: -1;
+}
+&lt;/style&gt;
+
+&lt;p class=&quot;test2&quot;&gt;→&lt;a href=&quot;&quot;&gt;WinIE目次&lt;/a&gt;←&lt;/p&gt;</pre>
+<div class="example">
+<p class="test2">→<a href="../winie.html">WinIE目次</a>←</p>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>WinIE6.0の標準モードで不具合の発生を確認しました。</li>
+<li>WinIE6.0の互換モードでこの不具合は発生しないようです。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ160</div>
+</body>
+</html>

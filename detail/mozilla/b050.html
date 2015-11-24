@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+<style type="text/css">
+<!--
+a.sa:hover {
+	position: relative;
+	left: 1px;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ050</div>
+
+<h2>:hover状態で配置を行うと当該要素と周囲のレイアウトが大きく乱れる<em>(N6/N7)</em></h2>
+
+<h3>症状</h3>
+<p>:hover擬似クラスに対してpositionプロパティによる相対／絶対配置のスタイル指定を行うと、擬似クラスにマッチしたときにマッチした要素やその周囲の文字列などのレイアウトが乱れてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+a.sa:hover {
+  position: relative;
+  left: 1px;
+}
+&lt;/style&gt;
+
+&lt;p&gt;&lt;span&gt;:hover状態……◇&lt;a class=&quot;sa&quot; href=&quot;…&quot;&gt;リンク1リンク&lt;/a&gt;
+……◇&lt;a class=&quot;sa&quot; href=&quot;…&quot;&gt;リンク4リンク&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;</pre>
+<div class="example">
+<p><span>:hover状態で配置を行うと当該要素と周囲のレイアウトが大きく乱れる◇<a class="sa" href="../../index.html">リンク1リンク</a>◇<a class="sa" href="../../index.html">リンク2リンク</a>◇<a class="sa" href="../../index.html">リンク3リンク</a>◇<a class="sa" href="../../index.html">リンク4リンク</a></span></p>
+</div>
+<p>:hover擬似クラスで相対配置を行っています。リンク文字列にマウスポインタ等を乗せてください。なお、文章が2行に渡って表示されている状態でバグが発生しやすいようです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b050_1.png" alt="WinIE6" width="171" height="87">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b050_2.png" alt="N6.2" width="170" height="74">N6.2.2での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>このバグは、親要素がインライン要素の場合に発生しやすくなるようです。上の例示の場合はspan要素を取り除いて、a要素をp要素の子要素にするとバグを回避できます。</p>
+
+<h3>修正状況</h3>
+<p>N6.2.2/Moz1.0.2/Moz1.3では標準・互換モードともに不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ050</div>
+</body>
+</html>

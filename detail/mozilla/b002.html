@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ002</div>
+
+<h2>フォーム関連要素のフォントサイズを%値で指定するとボックスサイズが不安定になる<em>(N6)</em></h2>
+
+<h3>症状</h3>
+<p>form要素の子孫要素（input要素など）のフォントサイズを%値で指定すると、入力ボックスなどのサイズが不安定になる。</p>
+
+<h3>例示</h3>
+<pre>&lt;form action=&quot;#&quot;&gt;&lt;div&gt;
+&lt;input type=&quot;text&quot; name=&quot;a&quot; size=&quot;16&quot; style=&quot;font-size: 1.25em;&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;text&quot; name=&quot;b&quot; size=&quot;16&quot; style=&quot;font-size: 125%;&quot;&gt;
+&lt;/div&gt;&lt;/form&gt;</pre>
+<div class="example">
+<form action="#"><div>
+<input type="text" name="a" size="16" style="font-size: 1.25em;"><br>
+<input type="text" name="b" size="16" style="font-size: 125%;">
+</div></form>
+</div>
+<p>前者のボックスは文字サイズ1.25em、後者は文字サイズ125%に設定しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b002_1.png" alt="WinIE6" width="181" height="119">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b002_2.png" alt="N6.2" width="171" height="77">N6.2.2での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>上記の例示では、ボックスのサイズをsize属性で指定しています。スタイルシートのwidthプロパティを用いればボックスサイズをそろえることができます。</p>
+
+<h3>修正状況</h3>
+<p>N6.2.2およびMoz1.0ではsize属性と併用しているときにボックスサイズの不一致が発生します。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ002</div>
+</body>
+</html>

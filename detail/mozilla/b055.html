@@ -1,0 +1,75 @@
+
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ055</div>
+
+<h2>アンカーを:hover状態にするとbody要素などのサイズが変化する<em>(N7.0)</em></h2>
+<ul>
+<li>2003-06-10修正。検証ページを変更。</li>
+</ul>
+
+<h3>症状</h3>
+<p>body要素やhtml要素にoverflowプロパティなどを指定しており、かつ:hover擬似クラスに何らかのスタイル（特に背景色やボーダーなど）を指定しているとき、アンカーが:hover状態になるたびにbody要素のサイズやhtml要素のサイズなどが変化することがある。また場合によってはリンクが機能しなくなることもある。</p>
+
+<h3>例示</h3>
+<p>検証ページ（b055a.html）：</p>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+html {
+  overflow: auto;
+}
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+a:hover {
+  background: aqua;
+}
+div.menu {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 150px;
+}
+div.menu a {
+  display: block;
+  width: 145px;
+}
+div.menu a:hover {
+  border: 1px solid red;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;menu&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#id&quot;&gt;link&lt;/a&gt;&lt;/li&gt;……
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;ul id=&quot;xx&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;#id&quot;&gt;link&lt;/a&gt;&lt;/li&gt;……
+&lt;li&gt;&lt;a href=&quot;#id&quot;&gt;&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot;&gt;&lt;/a&gt;&lt;/li&gt;……
+&lt;/ul&gt;</pre>
+<p><a href="b055a.html">検証ページ</a>を開き、画面右側にあるアンカーの上にマウスポインタ等を何度か乗せてください。</p>
+
+<h3>補足</h3>
+<p>前出の例では、html要素にheightプロパティで具体的な値を指定することでバグを回避できます。または、:hover擬似クラスで背景やボーダーを指定しないことで回避できる場合もあります。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>N7.02標準モード、N7.02互換モードで不具合の発生が確認されました。</li>
+<li>Moz1.4rc1では不具合の発生頻度は下がっているようです。ただしこのページの例示では、:hover状態になった瞬間にスクロールバーが出現し、右側にあるブロックが左に動く現象が発生します。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ055</div>
+</body>
+</html>

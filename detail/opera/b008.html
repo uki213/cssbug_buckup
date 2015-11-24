@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+<style type="text/css">
+<!--
+td strong {
+	white-space: nowrap;
+}
+td.a strong {
+	white-space; nowrap;
+	white-space: -pre-wrap;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ008</div>
+
+<h2>表セル内要素への折り返し禁止指定がセル自体に作用する<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>テーブルセル（th, td）要素の子孫要素に <code>white-space: nowrap;</code> を指定しているとき、その要素だけでなくセル内全体が折り返されずに表示されることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+td strong {
+  white-space: nowrap;
+}
+&lt;/style&gt;
+
+&lt;table border=&quot;2&quot; width=&quot;50%&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;強調する&lt;/strong&gt;／……／&lt;strong&gt;強調する&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="2" width="50%">
+<tr>
+<td><strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong></td>
+</tr>
+</table>
+</div>
+<p>strong要素内（「強調する」という文字列）の途中で折り返されないようにしています。よって、「／」の前後で折り返しが行われるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b008_1.png" alt="WinIE6" width="328" height="120">WinIE6.0での表示</p>
+<p><img src="img/b008_2.png" alt="Op6" width="330" height="92">Opera6.05での表示</p>
+</div>
+
+<h3>補足</h3>
+<p><code>white-space: nowrap;</code> を指定するときに <code>white-space:-pre-wrap;</code>（<em>Opera独自拡張</em>）も同時に指定するとテーブルが横に伸びる現象を回避できます。ただし、 <code>white-space: nowrap;</code> による折り返し禁止指定は無効になります。</p>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+td strong {
+  white-space; nowrap;
+  <em>white-space: -pre-wrap;</em>
+}
+&lt;/style&gt;
+
+&lt;table border=&quot;2&quot; width=&quot;50%&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;a&quot;&gt;&lt;strong&gt;強調する&lt;/strong&gt;／……／&lt;strong&gt;強調する&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="2" width="50%">
+<tr>
+<td class="a"><strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong></td>
+</tr>
+</table>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ008</div>
+</body>
+</html>

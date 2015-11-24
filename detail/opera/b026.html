@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ026</div>
+
+<h2>幅を明示していないフロートが折り返されない<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>幅が明示されていないフロートを連続して配置すると親要素の幅を無視して回り込み、横一列に並んでしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;width:300px; border:3px double blue;&quot;&gt;
+&lt;div style=&quot;float:left; background:aqua;&quot;&gt;フロート1&lt;/div&gt;
+&lt;div style=&quot;float:left; background:lime;&quot;&gt;フロート2&lt;/div&gt;
+……
+&lt;div style=&quot;float:left; background:lime;&quot;&gt;フロート8&lt;/div&gt;
+&lt;div style=&quot;clear:left; background:yellow;&quot;&gt;非フロート&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:300px; border:3px double blue;">
+<div style="float:left; background:aqua;">フロート1</div>
+<div style="float:left; background:lime;">フロート2</div>
+<div style="float:left; background:aqua;">フロート3</div>
+<div style="float:left; background:lime;">フロート4</div>
+<div style="float:left; background:aqua;">フロート5</div>
+<div style="float:left; background:lime;">フロート6</div>
+<div style="float:left; background:aqua;">フロート7</div>
+<div style="float:left; background:lime;">フロート8</div>
+<div style="clear:left; background:yellow;">非フロート</div>
+</div>
+</div>
+<p>親要素の幅を制限し、その内部に幅を明示しないフロートを配置しています。本来は、親要素をはみ出さないように折り返されるはずです。</p>
+<p>※CSS仕様では、このフロート指定は誤っています。フロートには、必ず幅を明示してください。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b026_1.png" alt="Moz1.0.1" width="322" height="77">Moz1.0.1での表示</p>
+<p><img src="img/b026_2.png" alt="Op6" width="494" height="59">Opera6.05での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>幅を明示したフロートの場合は正しく折り返されます。</p>
+<pre>&lt;div style=&quot;width:300px; border:3px double blue;&quot;&gt;
+&lt;div style=&quot;float:left; background:aqua; <em>width:5em</em>;&quot;&gt;フロート1&lt;/div&gt;
+&lt;div style=&quot;float:left; background:lime; <em>width:5em</em>;&quot;&gt;フロート2&lt;/div&gt;
+……
+&lt;div style=&quot;float:left; background:lime; <em>width:5em</em>;&quot;&gt;フロート8&lt;/div&gt;
+&lt;div style=&quot;clear:left; background:yellow;&quot;&gt;非フロート&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:300px; border:3px double blue;">
+<div style="float:left; background:aqua; width:5em;">フロート1</div>
+<div style="float:left; background:lime; width:5em;">フロート2</div>
+<div style="float:left; background:aqua; width:5em;">フロート3</div>
+<div style="float:left; background:lime; width:5em;">フロート4</div>
+<div style="float:left; background:aqua; width:5em;">フロート5</div>
+<div style="float:left; background:lime; width:5em;">フロート6</div>
+<div style="float:left; background:aqua; width:5em;">フロート7</div>
+<div style="float:left; background:lime; width:5em;">フロート8</div>
+<div style="clear:left; background:yellow;">非フロート</div>
+</div>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ026</div>
+</body>
+</html>

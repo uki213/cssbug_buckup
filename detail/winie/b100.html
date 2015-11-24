@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+li.f {
+	font-size: 0;
+	line-height: 0;
+	vertical-align: bottom;
+	list-style-type: none;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ100</div>
+
+<h2>行の高さを正しく算出しない<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>文字列が存在しない行の高さを算出するとき、line-heightプロパティの値やベースラインより下の部分（ディセンダ）の高さを無視する。しかし、li要素の最後の行ではディセンダの高さを無視しない。従って、行の高さの算出が統一されていないことになる。</p>
+
+<h3>例示</h3>
+<pre>&lt;ul style=&quot;margin:0; padding:0;&quot;&gt;
+&lt;li style=&quot;margin:0; padding:0; list-style:none;&quot;&gt;
+&lt;img src=&quot;../img/img02.png&quot; alt=&quot;■&quot;&gt;&lt;/li&gt;
+&lt;li style=&quot;margin:0; padding:0; list-style:none;&quot;&gt;
+&lt;img src=&quot;../img/img02.png&quot; alt=&quot;■&quot;&gt;&lt;/li&gt;
+&lt;li style=&quot;margin:0; padding:0; list-style:none;&quot;&gt;
+&lt;img src=&quot;../img/img02.png&quot; alt=&quot;■&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;div style=&quot;margin:0; padding:0;&quot;&gt;
+&lt;img src=&quot;../img/img02.png&quot; alt=&quot;■&quot;&gt;&lt;/div&gt;
+&lt;div style=&quot;margin:0; padding:0;&quot;&gt;
+&lt;img src=&quot;../img/img02.png&quot; alt=&quot;■&quot;&gt;&lt;/div&gt;
+&lt;div style=&quot;margin:0; padding:0;&quot;&gt;
+&lt;img src=&quot;../img/img02.png&quot; alt=&quot;■&quot;&gt;&lt;/div&gt;</pre>
+<div class="example">
+<ul style="margin:0; padding:0;">
+<li style="margin:0; padding:0; list-style:none;"><img src="../img/img02.png" alt="■"></li>
+<li style="margin:0; padding:0; list-style:none;"><img src="../img/img02.png" alt="■"></li>
+<li style="margin:0; padding:0; list-style:none;"><img src="../img/img02.png" alt="■"></li>
+</ul>
+<hr>
+<div style="margin:0; padding:0;"><img src="../img/img02.png" alt="■"></div>
+<div style="margin:0; padding:0;"><img src="../img/img02.png" alt="■"></div>
+<div style="margin:0; padding:0;"><img src="../img/img02.png" alt="■"></div>
+</div>
+<p>li要素とdiv要素に同じスタイルを設定しています。</p>
+
+<h3>スクリーンショット</h3>
+<p>※Netscape7.02は厳格な標準モード（Almost Standards Modeではない）で表示させた場合のスクリーンショットです。</p>
+<div class="shot">
+<p><img src="img/b100_1.png" alt="N7" width="68" height="149">N7.02での表示（標準モード）</p>
+<p><img src="img/b100_2.png" alt="WinIE6" width="55" height="138">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>WinIEでリスト要素を用いて上下に画像を敷き詰めたい場合はline-height、vertical-align、font-sizeの各プロパティを設定する必要があります。ただし、WinIE5.0/5.5ではこのスタイルを適用しても隙間が発生します。</p>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+li.f {
+<em>  font-size: 0;
+  line-height: 0;
+  vertical-align: bottom;</em>
+  list-style-type: none;
+}
+&lt;/style&gt;
+
+&lt;ul style=&quot;margin:0; padding:0;&quot;&gt;
+&lt;li class=&quot;f&quot;&gt;&lt;img src=&quot;../img/img02.png&quot; alt=&quot;■&quot;&gt;&lt;/li&gt;
+&lt;li class=&quot;f&quot;&gt;&lt;img src=&quot;../img/img02.png&quot; alt=&quot;■&quot;&gt;&lt;/li&gt;
+&lt;li class=&quot;f&quot;&gt;&lt;img src=&quot;../img/img02.png&quot; alt=&quot;■&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul style="margin:0; padding:0;">
+<li class="f"><img src="../img/img02.png" alt="■"></li>
+<li class="f"><img src="../img/img02.png" alt="■"></li>
+<li class="f"><img src="../img/img02.png" alt="■"></li>
+</ul>
+</div>
+<p>ちなみに、このような方法を採らなくても敷き詰められる方が間違った実装です。詳しくはこちらを参照してください。</p>
+<ul>
+<li><a href="http://www.mozilla.gr.jp/standards/webtips0018.html" title="Web標準普及プロジェクト">table内に画像を隙間無く敷き詰めるには注意が必要です #1 - Web標準普及プロジェクト</a></li>
+<li><a href="http://www.mozilla.gr.jp/standards/webtips0025.html" title="Web標準普及プロジェクト">table内に画像を隙間無く敷き詰めるには注意が必要です #2 - Web標準普及プロジェクト</a></li>
+<li><a href="http://www.mozilla.gr.jp/standards/webtips0026.html" title="Web標準普及プロジェクト">table内に画像を隙間無く敷き詰めるには注意が必要です #3 - Web標準普及プロジェクト</a></li>
+</ul>
+
+<h3>修正状況</h3>
+<p>WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ100</div>
+</body>
+</html>

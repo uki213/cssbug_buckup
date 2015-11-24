@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+<style type="text/css">
+<!--
+.sample { 
+	border: 3px solid blue;
+	background-color: aqua;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ049</div>
+
+<h2>特定のテーブルに指定したボーダー色が別のテーブルにも適用される<em>(5.x)</em></h2>
+
+<h3>症状</h3>
+<p>クラスセレクタなどを使用して特定のテーブルにボーダー色を設定しているとき、この色指定がセレクタにマッチしない別のテーブルのボーダーに反映される。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+.sample { 
+  border: 3px solid blue;
+  background-color: aqua;
+}
+&lt;/style&gt;
+
+&lt;table border=&quot;3&quot; class=&quot;sample&quot;&gt;
+&lt;tr&gt;&lt;td&gt;スタイル有&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table border=&quot;3&quot;&gt;
+&lt;tr&gt;&lt;td&gt;スタイル無&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="3" class="sample">
+<tr><td>スタイル有</td></tr>
+</table>
+<table border="3">
+<tr><td>スタイル無</td></tr>
+</table>
+</div>
+<p>2つ目のtable要素のボーダー色はユーザエージェントのデフォルト設定に依存するはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b049_1.png" alt="WinIE6">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>MacIE5.1～5.2でこの不具合が発生するそうです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ049</div>
+</body>
+</html>

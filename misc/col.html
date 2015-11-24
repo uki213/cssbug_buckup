@@ -1,0 +1,375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="content-script-type" content="text/javascript">
+<link rel="stylesheet" type="text/css" href="normal.css">
+<link rel="contents" href="../index.html" title="トップページ">
+<title>col/colgroup要素へのスタイル指定</title>
+<style type="text/css">
+<!--
+table.bordertest td {
+	width: 3em;
+	height: 3em;
+	border: 1px solid lime;
+}
+-->
+</style>
+</head>
+<body>
+<h1>col/colgroup要素へのスタイル指定</h1>
+<div class="navi"><a href="../index.html">トップページ</a>／（関連文書）／col/colgroup要素へのスタイル指定</div>
+<p>ここではcol要素やcolgroup要素に対してCSSを設定した場合の、ユーザエージェントによる解釈の違いをまとめています。</p>
+<ul>
+<li>visibilityプロパティの項を更新。Mozilla1.7betaの情報を追加。（2004-03-24）</li>
+</ul>
+<p>注意：Windows版Mozilla1.7betaでvisibilityプロパティの項にある例示を閲覧すると<em>Mozillaがクラッシュします</em>。3月20日以降のnightlyビルドではクラッシュしません。</p>
+
+<h2>はじめに</h2>
+<p>(X)HTMLにおいて表のセル要素は行要素の子孫です。従ってスタイルシートの各プロパティの値は列要素ではなく行要素から継承します。ただしCSS2では <a href="#border">border</a>, <a href="#background">background</a>, <a href="#width">width</a>, <a href="#visibility">visibility</a> の4種類のプロパティに限りcol要素やcolgroup要素への適用を可としています。</p>
+
+<div class="source">
+<code>&lt;table border=&quot;2&quot;&gt;<br>
+&lt;colgroup style=&quot;width:10em; text-align:center;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup&gt;&lt;col style=&quot;width:10em; color:blue;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;tr&gt;&lt;td&gt;中央揃えではない&lt;/td&gt;&lt;td&gt;青色ではない&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;/table&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<colgroup style="width:10em; text-align:center;"></colgroup>
+<colgroup><col style="width:10em; color:blue;"></colgroup>
+<tr><td>中央揃えではない</td><td>青色ではない</td></tr>
+</table>
+</div>
+
+<dl>
+<dt>WinIE5.x/6.0</dt>
+<dd><ul>
+<li>col/colgroup要素から継承するはずのないプロパティが継承する。</li>
+</ul></dd>
+<dt>Netscape4.x</dt>
+<dd><ul>
+<li>col/colgroup要素を無視する。すべてのスタイルが反映されない。</li>
+</ul></dd>
+</dl>
+
+<h2>captionがある表</h2>
+<div class="source">
+<code>&lt;table border=&quot;2&quot;&gt;<br>
+&lt;caption&gt;題&lt;/caption&gt;<br>
+&lt;colgroup style=&quot;width:10em;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup&gt;&lt;col style=&quot;background:yellow;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;tr&gt;&lt;td&gt;幅が10em&lt;/td&gt;&lt;td&gt;背景が黄色&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;/table&gt;<br>
+&lt;table border=&quot;2&quot;&gt;<br>
+&lt;!-- 題なし --&gt;<br>
+&lt;colgroup style=&quot;width:10em;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup&gt;&lt;col style=&quot;background:yellow;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;tr&gt;&lt;td&gt;幅が10em&lt;/td&gt;&lt;td&gt;背景が黄色&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;/table&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<caption>題</caption>
+<colgroup style="width:10em;"><col></colgroup>
+<colgroup><col style="background:yellow;"></colgroup>
+<tr><td>幅が10em</td><td>背景が黄色</td></tr>
+</table>
+<table border="2">
+<!-- 題なし -->
+<colgroup style="width:10em;"><col></colgroup>
+<colgroup><col style="background:yellow;"></colgroup>
+<tr><td>幅が10em</td><td>背景が黄色</td></tr>
+</table>
+</div>
+
+<dl>
+<dt>Safari1.x, Konqueror3.1.3</dt>
+<dd><ul>
+<li>caption要素がある表ではcol/colgroup要素に指定したスタイルがすべて無視される。</li>
+</ul></dd>
+</dl>
+
+<h2 name="border">borderプロパティ</h2>
+<div class="source">
+<code>&lt;style type=&quot;text/css&quot;&gt;<br>
+td {<br>
+&nbsp;&nbsp;border: 1px solid lime;<br>
+}<br>
+&lt;/style&gt;<br>
+<br>
+&lt;table style=&quot;border-collapse:collapse; border:2px solid blue;&quot;&gt;<br>
+&lt;colgroup&gt;&lt;col&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup style=&quot;border:4px solid red;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup&gt;&lt;col&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup style=&quot;border:4px solid green;&quot;&gt;&lt;col&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup&gt;&lt;col&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup&gt;&lt;col style=&quot;border:4px solid fuchsia;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup style=&quot;border:4px solid red;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup style=&quot;border:4px solid green;&quot;&gt;&lt;col&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup&gt;&lt;col style=&quot;border:4px solid fuchsia;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;tr&gt;&lt;td&gt;(1)&lt;/td&gt;&lt;td&gt;(2)&lt;/td&gt;&lt;td&gt;(3)&lt;/td&gt;&lt;td&gt;(4)&lt;/td&gt;&lt;td&gt;(5)&lt;/td&gt;&lt;td&gt;(6)&lt;/td&gt;<br>
+&lt;td&gt;(7)&lt;/td&gt;&lt;td&gt;(8)&lt;/td&gt;&lt;td&gt;(9)&lt;/td&gt;&lt;td&gt;(10)&lt;/td&gt;&lt;td&gt;(11)&lt;/td&gt;&lt;td&gt;(12)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code>
+</div>
+<div class="example">
+<table style="border-collapse:collapse; border:2px solid blue;" class="bordertest">
+<colgroup><col></colgroup>
+<colgroup style="border:4px solid red;"></colgroup>
+<colgroup><col></colgroup>
+<colgroup style="border:4px solid green;"><col></colgroup>
+<colgroup><col></colgroup>
+<colgroup><col style="border:4px solid fuchsia;"></colgroup>
+<colgroup></colgroup>
+<colgroup style="border:4px solid red;"></colgroup>
+<colgroup></colgroup>
+<colgroup style="border:4px solid green;"><col></colgroup>
+<colgroup></colgroup>
+<colgroup><col style="border:4px solid fuchsia;"></colgroup>
+<tr><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td><td>(5)</td><td>(6)</td><td>(7)</td><td>(8)</td><td>(9)</td><td>(10)</td><td>(11)</td><td>(12)</td></tr>
+</table>
+</div>
+<dl>
+<dt>WinIE5.x/6.0, Konqueror3.1.3</dt>
+<dd><ul>
+<li>未対応。table要素とtd要素のボーダーだけを枠に使用する。</li>
+</ul></dd>
+<dt>Netscape7.1、Mozilla1.7beta</dt>
+<dd><ul>
+<li>問題なし。正常にボーダーを設置している。</li>
+</ul></dd>
+<dt>Opera6.06</dt>
+<dd><ul>
+<li>col要素を含まないcolgroup要素を無視し、無視した分だけ列が前に詰まる。赤色のボーダーは設置されず、(3)(6)の列が緑色のボーダー、(5)(7)の列がピンク色のボーダーになる。</li>
+<li>col要素を含むcolgroup要素にプロパティを指定すると左右の縦枠が設置されない。(3)(6)の列の左右の枠は緑色ではない。</li>
+</ul></dd>
+<dt>Opera7.23</dt>
+<dd><ul>
+<li>col要素を含むcolgroup要素にプロパティを指定すると列の右枠が設置されない。(4)(10)の列の右枠はtd要素のボーダーになる。</li>
+</ul></dd>
+</dl>
+
+<h2 name="background">backgroundプロパティ</h2>
+<div class="source">
+<code>&lt;col style=&quot;background:yellow;&quot;&gt;<br>
+&lt;col style=&quot;background:yellow;&quot;&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<col style="background:yellow;">
+<col style="background:yellow;">
+<tr><td>(1)</td><td>黄色</td></tr>
+</table>
+</div>
+<div class="source">
+<code>&lt;col span=&quot;2&quot; style=&quot;background:yellow;&quot;&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<col span="2" style="background:yellow;">
+<tr><td>(2)</td><td>黄色</td></tr>
+</table>
+</div>
+<div class="source">
+<code>&lt;colgroup style=&quot;background:yellow;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup style=&quot;background:yellow;&quot;&gt;&lt;/colgroup&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<colgroup style="background:yellow;"></colgroup>
+<colgroup style="background:yellow;"></colgroup>
+<tr><td>(3)</td><td>黄色</td></tr>
+</table>
+</div>
+<div class="source">
+<code>&lt;colgroup span=&quot;2&quot; style=&quot;background:yellow;&quot;&gt;&lt;/colgroup&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<colgroup span="2" style="background:yellow;"></colgroup>
+<tr><td>(4)</td><td>黄色</td></tr>
+</table>
+</div>
+<div class="source">
+<code>&lt;colgroup style=&quot;background:yellow;&quot;&gt;&lt;col&gt;&lt;col&gt;&lt;/colgroup&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<colgroup style="background:yellow;"><col><col></colgroup>
+<tr><td>(5)</td><td>黄色</td></tr>
+</table>
+</div>
+<div class="source">
+<code>&lt;colgroup style=&quot;background:yellow;&quot;&gt;&lt;col span=&quot;2&quot;&gt;&lt;/colgroup&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<colgroup style="background:yellow;"><col span="2"></colgroup>
+<tr><td>(6)</td><td>黄色</td></tr>
+</table>
+</div>
+<dl>
+<dt>WinIE5.x/6.0, Opera7.23、Mozilla1.7beta標準モード</dt>
+<dd><ul>
+<li>問題なし。(1)から(6)ですべての列の背景が黄色になる。</li>
+</ul></dd>
+<dt>Opera6.06, Netscape7.1、Mozilla1.7互換モード</dt>
+<dd><ul>
+<li>未対応。(1)から(6)ですべての列の背景が透過のまま。</li>
+</ul></dd>
+<dt>Konqueror3.1.3</dt>
+<dd><ul>
+<li>col要素を含まずspan属性を省いたcolgroup要素での指定を無視する。(3)ですべての列の背景が透過のまま。</li>
+</ul></dd>
+</dl>
+
+<h2 name="width">widthプロパティ</h2>
+<div class="source">
+<code>&lt;col style=&quot;width:10em;&quot;&gt;<br>
+&lt;col style=&quot;width:10em;&quot;&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<col style="width:10em;">
+<col style="width:10em;">
+<tr><td>(1)</td><td>10em</td></tr>
+</table>
+</div>
+<div class="source">
+<code>&lt;col span=&quot;2&quot; style=&quot;width:10em;&quot;&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<col span="2" style="width:10em;">
+<tr><td>(2)</td><td>10em</td></tr>
+</table>
+</div>
+<div class="source">
+<code>&lt;colgroup style=&quot;width:10em;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup style=&quot;width:10em;&quot;&gt;&lt;/colgroup&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<colgroup style="width:10em;"></colgroup>
+<colgroup style="width:10em;"></colgroup>
+<tr><td>(3)</td><td>10em</td></tr>
+</table>
+</div>
+<div class="source">
+<code>&lt;colgroup span=&quot;2&quot; style=&quot;width:10em;&quot;&gt;&lt;/colgroup&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<colgroup span="2" style="width:10em;"></colgroup>
+<tr><td>(4)</td><td>10em</td></tr>
+</table>
+</div>
+<div class="source">
+<code>&lt;colgroup style=&quot;width:10em;&quot;&gt;&lt;col&gt;&lt;col&gt;&lt;/colgroup&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<colgroup style="width:10em;"><col><col></colgroup>
+<tr><td>(5)</td><td>10em</td></tr>
+</table>
+</div>
+<div class="source">
+<code>&lt;colgroup style=&quot;width:10em;&quot;&gt;&lt;col span=&quot;2&quot;&gt;&lt;/colgroup&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<colgroup style="width:10em;"><col span="2"></colgroup>
+<tr><td>(6)</td><td>10em</td></tr>
+</table>
+</div>
+<div class="source">
+<code>&lt;colgroup style=&quot;width:10em;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup style=&quot;width:10em;&quot;&gt;&lt;col&gt;&lt;col&gt;&lt;/colgroup&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<colgroup style="width:10em;"></colgroup>
+<colgroup style="width:5em;"><col><col></colgroup>
+<tr><td>(7)</td><td>5em</td><td>5em</td></tr>
+</table>
+</div>
+<dl>
+<dt>WinIE5.x/6.0, Netscape7.1、Mozilla1.7beta</dt>
+<dd><ul>
+<li>問題なし。(1)から(7)のすべての列の幅が指定値どおりになる。</li>
+</ul></dd>
+<dt>Opera6.06</dt>
+<dd><ul>
+<li>col要素のspan属性を無視する。(2)は1列目しか幅が指定値どおりにならず、2列目以降はauto値相当の幅になる。</li>
+<li>colgroup要素での指定を無視する。(3)から(7)はすべての列がauto値相当の幅になる。</li>
+</ul></dd>
+<dt>Opera7.23</dt>
+<dd><ul>
+<li>colgroup要素でスタイル、子のcol要素でスタイルを適用する列を指定する方法が無視される。(5)と(6)はすべての列がauto値相当の幅になる。(7)は1列目しか幅が指定値どおりにならない。</li>
+</ul></dd>
+<dt>MacIE5.x</dt>
+<dd><ul>
+<li>colgroup要素での指定を無視する。(3)から(7)はすべての列がauto値相当の幅になるはず。</li>
+</ul></dd>
+<dt>Safari1.2, Konqueror3.1.3</dt>
+<dd><ul>
+<li>span属性を含むcol/colgroup要素での指定を無視する。(2)(4)(6)はすべての列がauto値相当の幅になる。</li>
+<li>col要素を含まないcolgroup要素を無視する。(3)はすべての列がauto値相当の幅になる。(7)は1列目と2列目の幅が5em、3列目がauto値相当の幅になる。</li>
+</ul></dd>
+</dl>
+
+<hr>
+<p><em>Mozilla1.7betaでここから先を閲覧しないで下さい。Mozillaがクラッシュします！</em></p>
+<hr>
+
+<h2 name="visibility">visibilityプロパティ</h2>
+<div class="source">
+<code>&lt;table border=&quot;2&quot;&gt;<br>
+&lt;colgroup&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup style=&quot;visibility:collapse;&quot;&gt;&lt;/colgroup&gt;<br>
+&lt;colgroup&gt;&lt;/colgroup&gt;<br>
+&lt;tr&gt;&lt;td&gt;見える&lt;/td&gt;&lt;td&gt;見えない&lt;/td&gt;&lt;td&gt;見える&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;/table&gt;<br>
+&lt;table border=&quot;2&quot;&gt;<br>
+&lt;col&gt;<br>
+&lt;col style=&quot;visibility:collapse;&quot;&gt;<br>
+&lt;col&gt;<br>
+&lt;tr&gt;&lt;td&gt;見える&lt;/td&gt;&lt;td&gt;見えない&lt;/td&gt;&lt;td&gt;見える&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;/table&gt;</code>
+</div>
+<div class="example">
+<table border="2">
+<colgroup></colgroup>
+<colgroup style="visibility:collapse;"></colgroup>
+<colgroup></colgroup>
+<tr><td>見える</td><td>見えない</td><td>見える</td></tr>
+</table>
+<table border="2">
+<col>
+<col style="visibility:collapse;">
+<col>
+<tr><td>見える</td><td>見えない</td><td>見える</td></tr>
+</table>
+</div>
+<dl>
+<dt>Netscape7.1</dt>
+<dd><ul>
+<li><del datetime="2004-03-24T00:00:00+09:00">問題なし。</del>2列目は表示されない。<ins datetime="2004-03-24T00:00:00+09:00">ただし、ページの上端を表示した状態で閲覧領域内に見えない表に限る。従って、ページの先頭に近い位置にある表ではこのプロパティが効かない場合がある。</ins></li>
+</ul></dd>
+<dt>WinIE5.x/6.0, Opera6.06/7.23, Konqueror3.1.3</dt>
+<dd><ul>
+<li>未対応。2列目は表示される。</li>
+</ul></dd>
+<dt>Mozilla1.7beta</dt>
+<dd>col/colgroup要素に <code>visibility:collapse;</code> を指定した表を描画する時点でクラッシュする。</dd>
+</dl>
+
+<div class="navi"><a href="../index.html">トップページ</a>／（関連文書）／col/colgroup要素へのスタイル指定</div>
+</body>
+</html>

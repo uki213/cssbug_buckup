@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+<style type="text/css">
+<!--
+html {
+	scrollbar-face-color: lime;
+}
+body {
+	scrollbar-face-color: aqua;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ049</div>
+
+<h2>閲覧領域のスクロールバーのスタイルをbody要素で指定しなければならない<em>(7.0)</em></h2>
+
+<h3>症状</h3>
+<p>スクロールバーのスタイルに関するプロパティ（<em>WinIE独自拡張</em>）で閲覧領域のスクロールバーのスタイルを指定するときは、body要素にこれらのプロパティを指定しなければならない。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+html {
+  scrollbar-face-color: lime;
+}
+body {
+  scrollbar-face-color: aqua;
+}
+&lt;/style&gt;</pre>
+<p>html要素のスクロールバーを黄緑色に、body要素のスクロールバーを空色にしています。閲覧領域のスクロールバーがどの要素に対応しているかを確かめてください。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b049_1.png" alt="WinIE6" width="26" height="126">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b049_2.png" alt="Op7" width="23" height="133">Opera7.10での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<ul>
+<li>Opera7では、設定ファイル（opera6.ini）の [User Prefs] 以下に <code>Enable Scrollbar Colors=1</code> と書き加えることでスクロールバー関連のプロパティが有効になります（初期状態では無効になっています）。</li>
+<li>WinIE6.0互換モードとWinIE5.5ではOpera7同様、body要素に宣言したスタイルが閲覧領域のスクロールバーに反映されます。従って、ここではWinIE6.0標準モードとの差をバグとして扱っています。</li>
+</ul>
+
+<h3>修正状況</h3>
+<p>Opera7.10標準モード、Opera7.10互換モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ049</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<style type="text/css">
+<!--
+td strong {
+	white-space: nowrap;
+}
+-->
+</style>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ029</div>
+
+<h2>インライン要素への折り返し禁止指定が当該要素の外のブロックに作用する<em>(N7.0)</em></h2>
+<p>2003-03-31修正。このバグはテーブルセル要素以外でも発生します。</p>
+
+<h3>症状</h3>
+<p><del datetime="2003-03-31T00:00:00+09:00">テーブルセル（th, td）要素の子孫</del><ins datetime="2003-03-31T00:00:00+09:00">任意のインライン</ins>要素に white-space: nowrap; を指定しているとき、その要素だけでなく<del datetime="2003-03-31T00:00:00+09:00">セル内全体が</del>折り返されずに表示されることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+td strong {
+  white-space: nowrap;
+}
+&lt;/style&gt;
+
+&lt;table border=&quot;2&quot; width=&quot;50%&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;強調する&lt;/strong&gt;／……／&lt;strong&gt;強調する&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="2" width="50%">
+<tr>
+<td><strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong>／<strong>強調する</strong></td>
+</tr>
+</table>
+</div>
+<p>文字列「強調する」は折り返さず、「／」の前後だけで折り返されることを想定しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b029_1.png" alt="WinIE6" width="192" height="81">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b029_2.png" alt="Moz1.0" width="268" height="45">Moz1.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>折り返しが行われるべき場所に空白類文字を挿入するとこのバグを回避できます。</p>
+<pre>&lt;table border=&quot;2&quot; width=&quot;50%&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;強調する&lt;/strong&gt;<em>／ </em>&lt;strong&gt;強調する&lt;/strong&gt;……&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="2" width="50%">
+<tr>
+<td><strong>強調する</strong>／ <strong>強調する</strong>／ <strong>強調する</strong>／ <strong>強調する</strong>／ <strong>強調する</strong>／ <strong>強調する</strong></td>
+</tr>
+</table>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>N6.2：標準・互換モードともに不具合は発生しません。</li>
+<li>Moz1.0/N7.0：標準・互換モードともに不具合が発生します。</li>
+<li>Moz1.0.2/Moz1.3：標準・互換モードともに不具合は発生しません。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ029</div>
+</body>
+</html>

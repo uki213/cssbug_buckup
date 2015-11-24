@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="b009.css" title="検証用">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ019</div>
+
+<h2>スタイルシート切り替え機能を用いても文字色が切り替わらない<em>(N6)</em></h2>
+
+<h3>症状</h3>
+<p>メニューのスタイルシート切り替え機能（N6では［表示＞スタイルシートを使用］）でスタイルシートを切り替えても、文字色は既定のスタイルシートでの色が使われる。</p>
+
+<h3>例示</h3>
+<p>スタイルシート（一部）：</p>
+<pre>body {
+    margin: 2% 3% 15%;
+    background: #f5f5f5;
+    color: #000080;
+}</pre>
+<p>このページではbody要素の文字色を紺色にしています。メニューで［表示＞スタイルシートを使用＞なし］を選択してスタイルシートを使わずに表示させてください。</p>
+
+<h3>スクリーンショット</h3>
+<p>［表示＞スタイルシートを使用＞なし］を選択した後の表示です。</p>
+<div class="shot">
+<p><img src="img/b009_1.png" alt="Moz1.0" width="255" height="155">Moz1.0での表示</p>
+<p><img src="img/b009_2.png" alt="N6.2" width="264" height="164">N6.2.3での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Moz1.0ではブラウザのデフォルトの色指定（メニュー［編集＞設定＞表示＞配色］）が適用されます。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ019</div>
+</body>
+</html>

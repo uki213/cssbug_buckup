@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="stylesheet" type="text/css" href="b054.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ054</div>
+
+<h2>同じtitle属性値を指定した外部スタイルシートの一部が反映されない<em>(7.1)</em></h2>
+<p>2003-11-07修正。Opera7.2でバグが解消しました。</p>
+
+<h3>症状</h3>
+<p>同一のtitle属性値を指定した、外部スタイルシートを指定するlink要素が複数あるページで、最初のlink要素で指定した外部スタイルシートしか反映されないことがある。</p>
+
+<h3>例示</h3>
+<p>外部スタイルシート「b054.css」：</p>
+<pre>p.sample {
+  color: red;
+  font-weight: bold;
+}</pre>
+<p>この文書「b054.html」：</p>
+<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;normal.css&quot; title=&quot;標準&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;b054.css&quot; title=&quot;標準&quot;&gt;
+
+&lt;p class=&quot;sample&quot;&gt;赤色でボールド&lt;/p&gt;</pre>
+<div class="example">
+<p class="sample">赤色でボールド</p>
+</div>
+<p>同じtitle属性値を指定したlink要素で指定した外部スタイルシートである「normal.css」と「b054.css」に含まれる指定は全て反映され、前出の段落内の文字列が赤色でボールド体になるはずです。</p>
+
+<h3>補足</h3>
+<p>発生条件は分かっていませんが、全ての外部スタイルシートが正しく反映される場合もあります。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.11で不具合の発生を確認しました（7.10β1以降で発生するようです）。</li>
+<li>Opera6.06、Opera7.03、Opera7.21でこの不具合は発生しないようです。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ054</div>
+</body>
+</html>

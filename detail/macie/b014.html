@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ013</div>
+
+<h2>letter-spacingを指定した要素内の表示が崩れる<em>(IE4)</em></h2>
+
+<h3>症状</h3>
+<p>自動折り返しが行われる量の内容物（長い文章など）を持つ要素に対してletter-spacingプロパティを指定すると、表示が崩れる。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;letter-spacing:0.2em;&quot;&gt;MacIEは……あります。&lt;/p&gt;</pre>
+<div class="example">
+<p style="letter-spacing:0.2em;">MacIEは、DOCTYPEの記述によってCSSのレンダリングが変わります。W3C勧告に準拠した「標準モード」と従来のIEのレンダリングを継承した「互換モード」の2種類のモードがあります。MacIEは、DOCTYPEの記述によってCSSのレンダリングが変わります。W3C勧告に準拠した「標準モード」と従来のIEのレンダリングを継承した「互換モード」の2種類のモードがあります。</p>
+</div>
+<p>文字間隔を0.2emにしています。折り返されていない場合はウィンドウ幅を狭めてください。</p>
+
+<h3>スクリーンショット</h3>
+<p>キャプチャ後に縮小しています。</p>
+<div class="shot">
+<p><img src="img/b014_1.png" alt="WinIE6" width="400" height="77">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>letter-spaceプロパティを含むスタイル指定を@mediaで括るとMacIEはその指定を認識しないので、バグの発生を回避できます。</p>
+<pre><em>@media</em> screen, print {
+  p {
+    letter-spacing: 0.2em;
+  }
+}</pre>
+<p>このバグは要素内に多バイト文字が含まれている場合に発生するもので、内容物が1バイト文字だけの場合は発生しないようです。（2002-12-02追記）</p>
+
+<h3>修正状況</h3>
+<p>MacIE4～5に渡って発生する模様。</p>
+
+<h3>報告書き込み</h3>
+<blockquote>【MacIE4～5】（有名だが登録されてないので一応ここに書き込む）<br>
+自動折返しされる長さを持った要素にletter-spacingを適用すべからず。<br>
+表示が崩れます。<br>
+対処法としては、<br>
+@media screen,print {<br>
+p{letter-spacing:0.2em;}<br>
+}<br>
+と@mediaで括ってやるとMacIEは認識しない。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ013</div>
+</body>
+</html>

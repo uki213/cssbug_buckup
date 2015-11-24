@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ096</div>
+
+<h2>幅や高さを指定した要素内にあるフロートの下マージンが無視される<em>(IE6)</em></h2>
+
+<h3>症状</h3>
+<p>WinIEは幅や高さを指定した要素はボックスサイズの算出時に内部のフロートを除外しなくなる（<a href="b053.html" title="幅や高さを指定した要素ではボックスサイズの算出時にフロートを除外しない">WinIEバグ053</a>）が、このときフロートの下マージンが無視されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;width:10em; border:2px solid red;&quot;&gt;
+&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot; 
+  style=&quot;float:left; margin:1em;&quot;&gt;
+文字列&lt;/div&gt;
+&lt;div style=&quot;width:10em; border:2px solid blue;&quot;&gt;
+文字列&lt;br&gt;文字列&lt;br&gt;文字列&lt;br&gt;文字列&lt;br&gt;文字列&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:10em; border:2px solid red;">
+<img src="../img/img01.png" alt="★" style="float:left; margin:1em;">
+文字列</div>
+<div style="width:10em; border:2px solid blue;">文字列<br>文字列<br>文字列<br>文字列<br>文字列</div>
+</div>
+<p>フロート化した画像に幅1emのマージンを置いています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b096_1.png" alt="Moz1.0.2" width="176" height="137">Moz1.0.2での表示（標準モード）</p>
+<p><img src="img/b096_2.png" alt="WinIE6" width="174" height="174">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>WinIE6.0で右フロートを使用した場合は下マージンが設置されます。ただし、マージンが内容領域内に含まれるように親要素の高さが広がります。なお、WinIE5.5以前では左右のフロートでこのような状態になります。</p>
+<pre>&lt;div style=&quot;width:10em; text-align:right; border:2px solid red;&quot;&gt;
+&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot; style=&quot;float:right; margin:1em;&quot;&gt;
+文字列&lt;/div&gt;
+&lt;div style=&quot;width:10em; text-align:right; border:2px solid blue;&quot;&gt;
+文字列&lt;br&gt;文字列&lt;br&gt;文字列&lt;br&gt;文字列&lt;br&gt;文字列&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:10em; text-align:right; border:2px solid red;">
+<img src="../img/img01.png" alt="★" style="float:right; margin:1em;">
+文字列</div>
+<div style="width:10em; text-align:right; border:2px solid blue;">文字列<br>文字列<br>文字列<br>文字列<br>文字列</div>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードの両方で不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ096</div>
+</body>
+</html>

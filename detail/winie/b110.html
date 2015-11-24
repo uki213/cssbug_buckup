@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ110</div>
+
+<h2>アンカーを:hover状態にするとbody要素のサイズが縮む<em>(6.0)</em></h2>
+<p>2003-07-06修正。症状を変更。</p>
+
+<h3>症状</h3>
+<p>html要素とbody要素にoverflowプロパティなどを指定し、かつ:hover擬似クラスに対して背景色を指定しているとき、アンカーが:hover状態になる度にbody要素の幅<ins datetime="2003-07-06T00:00:00+09:00">や高さ</ins>が縮む。</p>
+
+<h3>例示</h3>
+<p>検証ページ（b110a.html）：</p>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+html {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+a:hover {
+  background-color: #00ffff;
+}
+&lt;/style&gt;
+
+&lt;p&gt;&lt;a href=&quot;b110.html&quot;&gt;WinIEバグ110&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;b110.html&quot;&gt;WinIEバグ110&lt;/a&gt;&lt;/p&gt;
+……</pre>
+<p>これはhtml要素のスクロールバーを消し、その代わりにbody要素にスクロールバーを設置するスタイルです。<a href="b110a.html">検証ページ</a>を開き、アンカーの上にマウスポインタ等を何度か乗せてください。</p>
+
+<h3>補足</h3>
+<p>a:link擬似クラスやa:visited擬似クラスに指定する背景と、a:hover擬似クラスに指定する背景を同じものにすることでバグを回避できます。</p>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+html {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+<em>a:link, a:visited {
+  background-color: #00ffff;
+}</em>
+a:hover {
+  background-color: #00ffff;
+}
+&lt;/style&gt;
+
+&lt;p&gt;&lt;a href=&quot;b110.html&quot;&gt;WinIEバグ110&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;b110.html&quot;&gt;WinIEバグ110&lt;/a&gt;&lt;/p&gt;
+……</pre>
+
+<h3>修正状況</h3>
+<ul>
+<li>WinIE6.0標準モードで不具合の発生が確認されました。</li>
+<li>WinIE5.5、WinIE6.0互換モードでこの不具合は発生しません。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ110</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ077</div>
+
+<h2>固定レイアウト表で%値指定の列幅が100%を超えられない</h2>
+
+<h3>症状</h3>
+<p>固定レイアウト表（<code>table-layout:fixed;</code>）で列の幅を%単位の値で指定する場合、指定値の合計が100%を超える場合でも、表全体の幅は表要素のwidthプロパティの値が適用されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;table border=&quot;2&quot; style=&quot;table-layout:fixed; width:200px;&quot;&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width:200px;&quot;&gt;200px&lt;/td&gt;
+&lt;td style=&quot;width:100px;&quot;&gt;100px&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table border=&quot;2&quot; style=&quot;table-layout:fixed; width:200px;&quot;&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width:100%;&quot;&gt;100%&lt;/td&gt;
+&lt;td style=&quot;width:50%;&quot;&gt;50%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="2" style="table-layout:fixed; width:200px;">
+<tr>
+<td style="width:200px;">200px</td>
+<td style="width:100px;">100px</td>
+</tr>
+</table>
+<table border="2" style="table-layout:fixed; width:200px;">
+<tr>
+<td style="width:100%;">100%</td>
+<td style="width:50%;">50%</td>
+</tr>
+</table>
+</div>
+<p>どちらの表も1列目の幅が200px、2列目の幅が100pxになるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b077_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>%単位の値で指定した列幅の合計値が100%を超える場合、表全体の幅はtable要素のwidthプロパティの値を用い、各列の幅は各々の指定値に比例するように分配されます。上記の例では1列目の幅が100(%)、2列目の幅が50(%)なので 100:50 → 2:1 となり、1列目は約133px、2列目は約67pxが最終的な幅になります。</p>
+<p>※本来は、枠線の幅やセルとセルの間の距離も計算しなければなりません。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>Netscape7.1の標準モードと互換モードで不具合の発生を確認しました。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ077</div>
+</body>
+</html>

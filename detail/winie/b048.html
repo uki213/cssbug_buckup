@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ048</div>
+
+<h2>em単位で指定した値が文字サイズ変更後に正しく反映されない<em>(IE6)</em></h2>
+<p>2003-10-01修正。補足を追加。</p>
+
+<h3>症状</h3>
+<p>メニューの［表示→文字のサイズ］で文字サイズを変更すると、変更後にem単位で指定されたマージンなどが変更後の文字高さを正しく反映していない。</p>
+
+<h3>例示</h3>
+<p><a href="b048a.html">こちらのページ</a>に例があります。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b048_1.png" alt="Moz1.0-100％" width="175" height="153">Moz1.0で文字サイズ100％での表示</p>
+<p><img src="img/b048_2.png" alt="Moz1.0-75％" width="122" height="109">Moz1.0で文字サイズ75％での表示</p>
+<p><img src="img/b048_3.png" alt="WinIE6.0-中" width="168" height="137">WinIE6.0で文字サイズ「中」での表示</p>
+<p><img src="img/b048_4.png" alt="WinIE6.0-最小" width="86" height="80">WinIE6.0で文字サイズ「最小」での表示</p>
+</div>
+
+<h3>補足</h3>
+<p><ins datetime="2003-10-01T00:00:00+09:00">font-sizeプロパティをem単位やex単位で指定した要素がネスト状態にあるとき、文字サイズを変更すると文字の大きさがばらばらになることがあります。例えば以下の例では文字サイズが「中」以外の場合、4つの文字のフォントサイズがすべて異なります。</ins></p>
+<pre>&lt;p&gt;A
+&lt;span style=&quot;font-size:1em;&quot;&gt;B
+&lt;span style=&quot;font-size:1em;&quot;&gt;C
+&lt;span style=&quot;font-size:1em;&quot;&gt;D
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</pre>
+<div class="example">
+<p>A<span style="font-size:1em;">B<span style="font-size:1em;">C<span style="font-size:1em;">D</span></span></span></p>
+</div>
+<p><ins datetime="2003-10-01T00:00:00+09:00">文字サイズが「中」の場合のフォントサイズは A=B=C=D ですが、「大」や「最大」でのフォントサイズは A&lt;B&lt;C&lt;D に、「小」や「最小」では A&gt;B&gt;C&gt;D になってしまいます。</ins></p>
+<p><ins datetime="2003-10-01T00:00:00+09:00">なお、祖先要素でfont-sizeプロパティを%値や絶対単位の値で指定することで不具合を回避できます。</ins></p>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ048</div>
+</body>
+</html>

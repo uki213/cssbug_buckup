@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ062</div>
+
+<h2>rightプロパティが親要素のボックスを基準にした配置を行わない<em>(IE5.5)</em></h2>
+
+<h3>症状</h3>
+<p>ポジショニングした要素の子孫要素を絶対配置するとき、rightプロパティは指定した値どおりの配置をしない。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;position:relative; border:2px solid red;&quot;&gt;A
+&lt;div style=&quot;position:absolute; right:0px; top:0px; background:lime;&quot;&gt;B&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="position:relative; border:2px solid red;">A
+<div style="position:absolute; right:0px; top:0px; background:lime;">B</div>
+</div>
+</div>
+<p>Bのdiv要素はAのdiv要素から右から0px、上から0pxの位置に配置されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b062_1.png" alt="Moz1.0" width="84" height="49">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b062_2.png" alt="WinIE6" width="76" height="42">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>問題が起きる要素の親要素で幅を指定（widthプロパティ）すればこの不具合を回避できます。</p>
+<pre>&lt;div style=&quot;position:relative; border:2px solid red; <em>width:100%;</em>&quot;&gt;A
+&lt;div style=&quot;position:absolute; right:0px; top:0px; background:lime;&quot;&gt;B&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="position:relative; border:2px solid red; width:100%;">A
+<div style="position:absolute; right:0px; top:0px; background:lime;">B</div>
+</div>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ062</div>
+</body>
+</html>

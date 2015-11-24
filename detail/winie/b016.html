@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head><meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<script type="text/javascript">
+<!--
+function nodes1() {
+	var obj1 = document.getElementsByTagName('head');
+	var obj2 = obj1.item(0).childNodes.item(0);
+	alert(obj2.nodeName);
+}
+function nodes2() {
+	var obj = document.getElementsByTagName('title').item(0);
+	alert(obj.text);
+	alert(obj.childNodes.length);
+}
+//-->
+</script>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ016</div>
+
+<h2>head要素のchildNodes.item(0)が必ずtitle要素になる<em>(IE5.5)</em></h2>
+
+<h3>症状</h3>
+<p>DOMによりhead要素の <code>childNodes.item(0)</code> を参照すると、文書中での記述にかかわらずtitle要素になっている。また、title要素のtextプロパティに適切な値がある場合でもchildNodes.lengthプロパティを参照すると必ず0が返る。</p>
+
+<h3>例示</h3>
+<pre>&lt;head&gt;&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=Shift_JIS&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;normal.css&quot; title=&quot;Normal&quot;&gt;
+&lt;link rel=&quot;start&quot; href=&quot;../../index.html&quot; title=&quot;トップページ&quot;&gt;
+&lt;link rel=&quot;contents&quot; href=&quot;../winie.html&quot; title=&quot;WinIE目次&quot;&gt;
+&lt;link rev=&quot;made&quot; href=&quot;mailto:cssbug@lycos.jp&quot;&gt;
+&lt;title&gt;Internet Explorer (Windows) CSSバグリスト&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+function nodes1() {
+    var obj1 = document.getElementsByTagName('head');
+    var obj2 = obj1.item(0).childNodes.item(0);
+    alert(obj2.nodeName);
+}
+function nodes2() {
+    var obj = document.getElementsByTagName('title').item(0);
+    alert(obj.text);
+    alert(obj.childNodes.length);
+}
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;p&gt;&lt;a href=&quot;javascript:nodes1()&quot;&gt;head要素参照&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;javascript:nodes2()&quot;&gt;title要素参照&lt;/a&gt;&lt;/p&gt;</pre>
+<div class="example">
+<p><a href="javascript:nodes1()">head要素参照</a></p>
+<p><a href="javascript:nodes2()">title要素参照</a></p>
+</div>
+<p>「head要素参照」で、head要素内の0番目の子ノードのnodeNameプロパティの値を表示します。「title要素参照」で、title要素のtextプロパティの値とchildNodes.lengthプロパティの参照値を表示します。</p>
+
+<h3>実行結果</h3>
+<table border="2" summary="例示スクリプトの実行結果">
+<thead>
+<tr><th>UA</th><th>nodeName</th><th>text</th><th>childNodes.length</th></tr>
+</thead>
+<tbody>
+<tr><th>Moz1.0</th><td>META</td><td>Internet Explorer (Windows) CSSバグリスト</td><td>1</td></tr>
+<tr><th>WinIE6.0</th><td>TITLE</td><td>Internet Explorer (Windows) CSSバグリスト</td><td>0</td></tr>
+</tbody>
+</table>
+
+<h3>修正状況</h3>
+<p>WinIE6.0でも同様の結果になります。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ016</div>
+</body>
+</html>

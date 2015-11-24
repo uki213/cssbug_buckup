@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ154</div>
+
+<h2>リストマーカーの番号が途中から振られる<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>順序つきのリストマーカーを設定しているリストアイテム要素は、同じ階層にあるdisplayプロパティの値がlist-itemでないブロックレベル要素もカウントの対象にする。このため、途中の番号が飛んでしまったかのように表示されることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;ol&gt;&lt;li&gt;1番&lt;/li&gt;&lt;/ol&gt;
+&lt;div style=&quot;margin-left:40px; display:list-item;
+  list-style-type:decimal;&quot;&gt;1番&lt;/div&gt;
+&lt;br&gt;
+&lt;div style=&quot;margin-left:40px; display:list-item;
+  list-style-type:decimal;&quot;&gt;2番&lt;/div&gt;
+&lt;p&gt;ブロック&lt;/p&gt;
+&lt;div style=&quot;margin-left:40px; display:list-item;
+  list-style-type:decimal;&quot;&gt;3番&lt;/div&gt;</pre>
+<div class="example">
+<ol><li>1番</li></ol>
+<div style="margin-left:40px; display:list-item; list-style-type:decimal;">1番</div>
+<br>
+<div style="margin-left:40px; display:list-item; list-style-type:decimal;">2番</div>
+<p>ブロック</p>
+<div style="margin-left:40px; display:list-item; list-style-type:decimal;">3番</div>
+</div>
+<p>displayプロパティにlist-item値を指定したdiv要素のリストマーカーの数値は、br要素やp要素を除外して数えるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b154_1.png" alt="Op7.5">Opera7.50標準モード</p>
+<p><img src="img/b154_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>リストごとにリストアイテム要素をブロックレベル要素で括ることでこの不具合を回避することができます。</p>
+<pre>&lt;ol&gt;&lt;li&gt;1番&lt;/li&gt;&lt;/ol&gt;
+<em>&lt;div&gt;</em>
+&lt;div style=&quot;display:list-item;&quot;&gt;1番&lt;/div&gt;
+&lt;div style=&quot;display:list-item;&quot;&gt;2番&lt;/div&gt;
+<em>&lt;/div&gt;</em>
+&lt;p&gt;ブロック&lt;/p&gt;
+<em>&lt;div&gt;</em>
+&lt;div style=&quot;display:list-item;&quot;&gt;3番&lt;/div&gt;
+<em>&lt;/div&gt;</em></pre>
+<div class="example">
+<ol><li>1番</li></ol>
+<div>
+<div style="margin-left:40px; display:list-item; list-style-type:decimal;">1番</div>
+<div style="margin-left:40px; display:list-item; list-style-type:decimal;">2番</div>
+</div>
+<p>ブロック</p>
+<div>
+<div style="margin-left:40px; display:list-item; list-style-type:decimal;">3番</div>
+</div>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ154</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Netscape Navigator 4.x CSSバグリスト</title>
+<style type="text/css">
+<!--
+.sample1 {
+	border: 0 none;
+}
+.sample2 {
+	color: #f5f5f5;
+	border: 0;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ022</div>
+
+<h2>画像アンカーのボーダーを消去できない</h2>
+
+<h3>症状</h3>
+<p>アンカー内にimg要素を含めると画像の周りにボーダーが表示されるが、これをボーダーのプロパティを用いて無くすことができない。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+.sample1 {
+  border: 0 none;
+}
+&lt;/style&gt;
+
+&lt;p&gt;&lt;a href=&quot;b022.html&quot;&gt;
+&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot; class=&quot;sample1&quot;&gt;
+&lt;/a&gt;&lt;/p&gt;</pre>
+<div class="example">
+<p><a href="b022.html">
+<img src="../img/img01.png" alt="★" class="sample1">
+</a></p>
+</div>
+<p>borderプロパティを用いてimg要素のボーダーを表示させないようにしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b022_1.png" alt="N7.1" width="89" height="96">N7.1での表示</p>
+<p><img src="img/b022_2.png" alt="NN4.8" width="92" height="73">NN4.8での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>このバグを回避したい場合は、img要素に対しcolorプロパティで親要素の背景色と同じ色を指定してください。ボーダーが背景に溶け込みます。</p>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+.sample2 {
+  <em>color: #f5f5f5;</em>
+  border: 0;
+}
+&lt;/style&gt;
+
+&lt;p&gt;&lt;a href=&quot;b022.html&quot;&gt;
+&lt;img src=&quot;../img/img01.png&quot; alt=&quot;★&quot; class=&quot;sample2&quot;&gt;
+&lt;/a&gt;&lt;/p&gt;</pre>
+<div class="example">
+<p><a href="b022.html">
+<img src="../img/img01.png" alt="★" class="sample2">
+</a></p>
+</div>
+
+<h3>修正状況</h3>
+<p>NN4.8で不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ022</div>
+</body>
+</html>

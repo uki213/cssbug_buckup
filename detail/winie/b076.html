@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ076</div>
+
+<h2>br要素があるときに縦方向マージンを少なく解釈する<em>(IE6)</em></h2>
+
+<h3>症状</h3>
+<p>親要素内で、包含している最後のブロックレベル要素の直後にbr要素を置くと、親要素の縦方向マージンが指定値よりも少なく解釈される。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;margin:2em; border:2px solid red;&quot;&gt;
+&lt;p style=&quot;border:2px solid green;&quot;&gt;A&lt;/p&gt;
+&lt;br&gt;
+&lt;/div&gt;
+&lt;div style=&quot;border:2px solid blue;&quot;&gt;B&lt;/div&gt;</pre>
+<div class="example">
+<div style="margin:2em; border:2px solid red;">
+<p style="border:2px dotted green;">A</p>
+<br>
+</div>
+<div style="border:2px dashed blue;">B</div>
+</div>
+<p>赤い実線ボーダーのdiv要素は四方に2文字分のマージンを設定しています。従って、上下左右のボーダーの周りに同じサイズの空間ができるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b076_1.png" alt="Moz1.0.1" width="206" height="180">Moz1.0.1での表示（標準モード）</p>
+<p><img src="img/b076_2.png" alt="WinIE6" width="190" height="152">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ076</div>
+</body>
+</html>

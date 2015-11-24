@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="alternate stylesheet" type="text/css" href="b014a.css" title="charset無">
+<link rel="alternate stylesheet" type="text/css" href="b014b.css" title="charset有">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ014</div>
+
+<h2>外部スタイルシートで2バイト文字が無視される<em>(N6.1)</em></h2>
+
+<h3>症状</h3>
+<p>外部スタイルシートで2バイト文字を使用する場合は、@charset宣言で文字コードを明示しなければ指定内容が無視されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;normal.css&quot; title=&quot;標準&quot;&gt;
+&lt;link rel=&quot;alternate stylesheet&quot; type=&quot;text/css&quot; href=&quot;b014a.css&quot; title=&quot;charset無&quot;&gt;
+&lt;link rel=&quot;alternate stylesheet&quot; type=&quot;text/css&quot; href=&quot;b014b.css&quot; title=&quot;charset有&quot;&gt;</pre>
+<p>代替スタイルシート「b014a.css」</p>
+<pre>body {
+    font-family: 'ＭＳ 明朝', 'Osaka－等幅', sans-serif;
+}</pre>
+<p>代替スタイルシート「b014b.css」</p>
+<pre>@charset "Shift_JIS";
+body {
+    font-family: 'ＭＳ 明朝', 'Osaka－等幅', sans-serif;
+}</pre>
+<p>スタイルシート切り替え（メニューバーの「表示」内にあります）で、適用するスタイルシートを切り替えてください。</p>
+
+<h3>スクリーンショット</h3>
+<p>「charset無」（b014a.css）に切り替えたときの表示です。</p>
+<div class="shot">
+<p><img src="img/b014_1.png" alt="Moz1.0" width="205" height="91">Moz1.0での表示</p>
+<p><img src="img/b014_2.png" alt="N6.2" width="176" height="111">N6.2.3での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>N6.2.3では名前に2バイト文字が使われているフォントが無視されました。Moz1.0では文字コード無指定でも2バイト文字を認識しています。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ014</div>
+</body>
+</html>

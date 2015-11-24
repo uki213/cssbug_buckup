@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ048</div>
+
+<h2>背景に指定したアニメーションGIF画像への対応が不完全<em>(6.0/7.0)</em></h2>
+
+<h3>症状</h3>
+<ul>
+<li>Opera6および7ではGIFアニメーション画像を背景画像に指定すると、アニメーションせずに1コマ目の画像を表示したままになる。ただしOpera7ではアニメーションが再生される場合もある。</li>
+<li>Opera6では透過GIFアニメーション画像を背景画像に指定しても当該要素の背景色が透過しない。</li>
+</ul>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;background:url('../img/img03.gif') lime;&quot;&gt;
+透過GIF&lt;/div&gt;
+&lt;div style=&quot;background:url('../img/img04.gif') aqua;&quot;&gt;
+透過GIFアニメ&lt;/div&gt;</pre>
+<div class="example">
+<div style="background:url('../img/img03.gif') lime;">透過GIF</div>
+<div style="background:url('../img/img04.gif') aqua;">透過GIFアニメ</div>
+</div>
+<p>アニメーションしない透過GIF画像とアニメーションする透過GIF画像の比較です。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b048_1.png" alt="N7" width="154" height="53">N7.02での表示</p>
+<p><img src="img/b048_2.png" alt="Op6" width="153" height="53">Opera6.06での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>Opera6.06では背景に透過GIFアニメーション画像を設定するとbody要素の背景が透過します。ただし、body要素の背景に透過GIFアニメーション画像を設定すると透過部分は黒色になります。</p>
+
+<h3>修正状況</h3>
+<p>Opera6.06、Opera7.10標準モード、Opera7.10互換モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ048</div>
+</body>
+</html>

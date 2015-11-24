@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ087</div>
+
+<h2>幅や高さを指定した要素の子孫要素でデフォルト指定のマージンが消える<em>(7.x)</em></h2>
+
+<h3>症状</h3>
+<p>widthプロパティやheightプロパティにauto以外の値を指定した要素の子孫に、デフォルトでマージンがある要素（p, blockquote, ulなど）があるとき、デフォルトのマージンが消えることがある。</p>
+
+<h3>例示</h3>
+<div class="example">
+<div style="width:50%; padding:2px; background:blue;">
+<p style="background:aqua;">p要素</p>
+</div>
+<div style="width:50%; padding:2px; background:red;">
+<ul style="background:yellow;"><li>ul要素</li></ul>
+</div>
+</div>
+<p>p要素とul要素でマージンの設置状態を確認しています。p要素やul要素のボックスの上下に1emずつ、青色や赤色の領域が設置されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b087_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b087_2.png" alt="Op7.5">Opera7.51標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>制作者や閲覧者がスタイルシートを用いて指定したマージンは正しく設置されます。</p>
+<pre>&lt;div style=&quot;width:50%; padding:2px; background:blue;&quot;&gt;
+&lt;p style=&quot;background:aqua; <em>margin:1em 0;</em>&quot;&gt;p要素&lt;/p&gt;
+&lt;/div&gt;
+&lt;div style=&quot;width:50%; padding:2px; background:red;&quot;&gt;
+&lt;ul style=&quot;background:yellow; <em>margin:1em 0 1em 40px;</em>&quot;&gt;
+&lt;li&gt;ul要素&lt;/li&gt;&lt;/ul&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="width:50%; padding:2px; background:blue;">
+<p style="background:aqua; margin:1em 0;">p要素</p>
+</div>
+<div style="width:50%; padding:2px; background:red;">
+<ul style="background:yellow; margin:1em 0 1em 40px;"><li>ul要素</li></ul>
+</div>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.51の標準モードと互換モードで不具合の発生を確認しました。</li>
+<li>Opera6.06でこの不具合は発生しないようです。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ087</div>
+</body>
+</html>

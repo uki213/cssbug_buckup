@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ007</div>
+
+<h2>POSTを指定したにも関わらずGETメソッドで空のデータを送る<em>(N6)</em></h2>
+
+<h3>症状</h3>
+<p>target属性に「_blank」を指定したフォームでPOSTメソッドでデータを送信するように設定した場合、POSTメソッドで正しいデータを送信した後に、GETメソッドで空のデータを送信する。</p>
+
+<h3>例示</h3>
+<pre>&lt;form method=&quot;POST&quot; action=&quot;test.cgi&quot; target=&quot;_blank&quot;&gt;
+&lt;p&gt;&lt;input type=&quot;text&quot; value=&quot;Input&quot; name=&quot;a&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;input type=&quot;submit&quot; value=&quot;Submit&quot; name=&quot;b&quot;&gt;&lt;/p&gt;
+&lt;/form&gt;</pre>
+<p>充分な検証を行えていないかもしれません。</p>
+
+<h3>実行結果</h3>
+<table border="2" summary="CGIスクリプトの実行結果">
+<thead>
+<tr><th>UA</th><th>標準入力</th><th>REQUEST_METHOD</th><th>QUERY_STRING</th></tr>
+</thead>
+<tbody>
+<tr><th>WinIE6.0</th><td>a=Input&b=Submit</td><td>POST</td><td>（データなし）</td></tr>
+<tr><th>N6.2.3</th><td>a=Input&b=Submit</td><td>POST</td><td>（データなし）</td></tr>
+<tr><th>Moz1.0</th><td>a=Input&b=Submit</td><td>POST</td><td>（データなし）</td></tr>
+</tbody>
+</table>
+
+<h3>修正状況</h3>
+<p>標準入力と環境変数を調べたところ、WinIE6.0、N6.2.3、Moz1.0ではすべて同じ結果になりました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ007</div>
+</body>
+</html>

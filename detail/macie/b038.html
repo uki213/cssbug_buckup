@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+<style type="text/css">
+<!--
+a:hover {
+	background: aqua;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ038</div>
+
+<h2>固定配置ボックス内のアンカーに対するマウスオーバー効果が効かない<em>(5.x)</em></h2>
+
+<h3>症状</h3>
+<p>アンカー自体またはアンカーを含む要素を固定配置ボックス（<code>position: fixed;</code>）にすると、:hover擬似クラスや通常のマウスオーバー効果（マウスポインタの変化、ツールチップ(title属性)の表示、ステータスバーへのリンク先URI表示）が消失する。また、MacIE5.0ではマウスクリックでリンクをたどることができなくなる場合がある（補足参照）。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+a:hover {
+  background: aqua;
+}
+&lt;/style&gt;
+
+&lt;div style=&quot;position:fixed; left:5px; top:5px;&quot;&gt;
+&lt;a href=&quot;../macie.html&quot; title=&quot;MacIEバグリスト&quot;&gt;MacIE目次&lt;/a&gt;
+&lt;/div&gt;</pre>
+<div style="position:fixed; left:5px; top:5px;">
+<a href="../macie.html" title="MacIEバグリスト">MacIE目次</a>
+</div>
+<p>アンカーにマウスポインタ等を乗せて:hover擬似クラスなどの効果が現れるか確認してください。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b037_1.png" alt="N7" width="140" height="56">N7.02での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>MacIE5.0ではマウス操作でリンクをたどることが困難になる場合があります。この現象はMacIE5.1以降では発生しません。</p>
+<ul>
+<li>アンカーを含む要素を固定配置した場合は、ページをスクロールするとマウスクリックが効かなくなります。スクロールバーが上端にある状態でのみマウスクリックに反応します</li>
+<li>アンカー自体を固定配置した場合は、固定配置前の位置と配置後の位置とで表示位置が重なる部分でのみマウスクリックに反応します。</li>
+</ul>
+<p>詳しくは<a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/2001/09a2.html#day06num08" title="ねこめしにっき">飛べない fixed</a>を参照してください。</p>
+
+<h3>修正状況</h3>
+<p>MacIE5.0以降で不具合の発生が確認されています。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ038</div>
+</body>
+</html>

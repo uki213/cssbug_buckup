@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Netscape Navigator 4.x CSSバグリスト</title>
+</head>
+<body>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ010</div>
+
+<h2>背景やボーダーがブロック全体に表示されない</h2>
+<ul>
+<li>2003-04-27修正。補足を修正。</li>
+<li>2003-07-31修正。補足を修正。</li>
+</ul>
+
+<h3>症状</h3>
+<p>ブロック要素に指定した背景やボーダーが、要素の内容物に対応した部分にしか表示されない。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;background:aqua; border:2px solid blue;&quot;&gt;CSS&lt;/p&gt;</pre>
+<div class="example">
+<p style="background:aqua; border:2px solid blue;">CSS</p>
+</div>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b010_1.png" alt="WinIE6" width="275" height="80">WinIE6.0での表示</p>
+<p><img src="img/b010_2.png" alt="NN4" width="271" height="57">NN4.78での表示</p>
+</div>
+
+<h3>補足</h3>
+<p><del datetime="2003-04-27T00:00:00+09:00">マージンを指定することでこの不具合を回避できます。</del><ins datetime="2003-04-27T00:00:00+09:00">ボーダーのプロパティ、マージンのプロパティを両方指定することでこのバグを回避できます。</ins>ただし、<del datetime="2003-07-31T00:00:00+09:00">colorプロパティが無効になるバグが発生するため、文字色がデフォルトのままになります</del><ins datetime="2003-07-31T00:00:00+09:00">フォント関連のプロパティや前景色の指定が無視され、これらは全てデフォルト値になります（<a href="b012.html" title="ボーダーとマージンを設定した要素内のフォント指定が無視される">NNバグ012</a>参照）</ins>。なお、ボーダーの内部が背景色で完全に塗りつぶされない現象は回避できません。</p>
+<p><ins datetime="2003-04-26T00:00:00+09:00">マージンやボーダーが必要ない場合でも必ずプロパティを指定してください。マージンを必要としない場合は幅を0に、ボーダーを必要としない場合はborder-styleでnone値を指定してください。</ins></p>
+<pre>&lt;p style=&quot;<em>margin-left:0; background:aqua; border:2px solid blue;</em> color:green;&quot;&gt;CSS&lt;/p&gt;</pre>
+<div class="example">
+<p style="margin-left:0; background:aqua; border:2px solid blue; color:green;">CSS</p>
+</div>
+
+<h3>修正状況</h3>
+<p>NN4.78では不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ010</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+<style type="text/css">
+<!--
+tbody.a span.b {
+	font-size: 2em;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ024</div>
+
+<h2>tbodyをセレクタに使用した場合にスタイル指定が無視されることがある<em>(N6)</em></h2>
+
+<h3>症状</h3>
+<p>子孫セレクタなどにtbodyをクラスセレクタとして使用した場合、そのブロックのスタイル指定が無視されることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+tbody.a span.b {
+    font-size: 2em;
+}
+&lt;/style&gt;
+
+&lt;table border=&quot;2&quot;&gt;
+&lt;tbody class=&quot;a&quot;&gt;
+&lt;tr&gt;&lt;td&gt;A&lt;span class=&quot;b&quot;&gt;B&lt;/span&gt;C&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="2">
+<tbody class="a">
+<tr><td>A<span class="b">B</span>C</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b011_1.png" alt="N6.2" width="114" height="69">N6.2.3での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>外部スタイルシートで同様のことを行ってもスタイルが適用されました。</p>
+
+<h3>修正状況</h3>
+<p>Moz1.0やN6.2.3ではスタイルが適用されています。</p>
+
+<h3>報告書き込み</h3>
+<blockquote>N6で、<br>
+&lt;table&gt;<br>
+&lt;tbody class=&quot;foo&quot;&gt;<br>
+&lt;td&gt;&lt;em class=&quot;bar&quot;&gt;<br>
+とHTMLで記述して、外部CSSファイルで<br>
+tbody.foo em.bar{...<br>
+と定義しても、classなしのtd emとしてレンダリングされる。<br>
+tbody.foo td em.bar{...<br>
+td em.bar{...<br>
+などと記述しても一緒。<br>
+IE5.5では意図通りにレンダリングされるが、<br>
+W3C的にどちらが正しいのかは不明。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ024</div>
+</body>
+</html>

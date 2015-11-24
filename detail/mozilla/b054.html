@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ054</div>
+
+<h2>hr要素のボーダーが正しく設定されない<em>(N7.0/Moz1.4b)</em></h2>
+
+<h3>症状</h3>
+<p>hr要素にボーダーを指定するとき、指定内容によってはボーダーが表示されずhr要素が点のようになることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;hr style=&quot;border-top:2px dashed red; border-bottom:2px dotted red;&quot;&gt;</pre>
+<div class="example">
+<hr style="border-top:2px dashed red; border-bottom:2px dotted red;">
+</div>
+<p>hr要素を赤い破線で表示させようとしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b054_1.png" alt="WinIE6" width="109" height="28">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b054_2.png" alt="N7" width="109" height="31">N7.02での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>hr要素にheightプロパティを指定するとバグを回避できます。heightプロパティには上ボーダーの幅と下ボーダーの幅の合計値と同じかより大きい値を指定してください。</p>
+<pre>&lt;hr style=&quot;border-top:2px dashed red;
+  border-bottom:2px dotted red; <em>height:4px;</em>&quot;&gt;</pre>
+<div class="example">
+<hr style="border-top:2px dashed red; border-bottom:2px dotted red; height:4px;">
+</div>
+<p>または、ボーダーの指定方法を変えることでバグを回避できることもあります。なお、同じような症状のバグがありますが（<a href="b053.html" title="折り返しを抑制した要素内にあるhr要素の幅が正しく算出されない">Mozバグ053</a>）、このバグとは回避法が異なります。hr要素に <code>display:block;</code> を指定してもこのバグは回避できません。</p>
+
+<h3>修正状況</h3>
+<p>N7.02およびMoz1.4betaの標準モードおよび互換モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ054</div>
+</body>
+</html>

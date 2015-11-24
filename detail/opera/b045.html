@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ045</div>
+
+<h2>border-colorの既定値とtransparent値がCSS仕様と異なる色になる<em>(6.0/7.0)</em></h2>
+
+<h3>症状</h3>
+<p>Opera6では、ボーダーの色の既定値は要素の前景色（colorプロパティの値）ではなく、常に#000000になる。また、ボーダー色にtransparent値を指定した場合も透明にならず、常に#000000になる。</p>
+<p>Opera7では、四方のボーダー色を同じにしていないとき（border-colorプロパティで2つ以上の値を指定するときなど）、指定値の中にtransparentが含まれていると要素の前景色と同じ色のボーダーが表示されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;border:5px solid; color:blue;&quot;&gt;
+青色ボーダー&lt;/div&gt;
+&lt;div style=&quot;border:5px solid; border-color:red transparent; color:green;&quot;&gt;
+透明ボーダー&lt;/div&gt;</pre>
+<div class="example">
+<div style="border:5px solid; color:blue;">青色ボーダー</div>
+<div style="border:5px solid; border-color:red transparent; color:green;">透明ボーダー</div>
+</div>
+<p>2つのdiv要素は前者に前景色と同じ色のボーダー、後者は左右に透明なボーダーが表示されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b045_1.png" alt="Moz1.0.2" width="124" height="71">Moz1.0.2での表示（標準モード）</p>
+<p><img src="img/b045_2.png" alt="Op6" width="124" height="72">Opera6.06での表示</p>
+<p><img src="img/b045_3.png" alt="Op7" width="123" height="65">Opera7.03での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.06、Opera7.03の標準・互換モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ045</div>
+</body>
+</html>

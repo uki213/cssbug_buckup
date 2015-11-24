@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+@import url('b117a.css');
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ117</div>
+
+<h2>@importのネストを3階層より深くできない<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>@importキーワードでインポートされるスタイルシート内で@importキーワードを用いて他のスタイルシートをインポートする操作を繰り返すとき、3階層より深い位置にあるスタイルシートはインポートされない（4回目以降の@importは無視される）。</p>
+
+<h3>例示</h3>
+<ul>
+<li>b117.html
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+@import url('b117a.css');
+&lt;/style&gt;
+
+&lt;p class=&quot;sample&quot;&gt;スタイル&lt;/p&gt;</pre>
+</li>
+<li>b117a.css
+<pre>@import url('b117b.css');
+.sample {
+  color: red;
+}</pre>
+</li>
+<li>b117b.css
+<pre>@import url('b117c.css');
+.sample {
+  background-color: yellow;
+}</pre>
+</li>
+<li>b117c.css
+<pre>@import url('b117d.css');
+.sample {
+  border: 2px dashed blue;
+}</pre>
+</li>
+<li>b117d.css
+<pre>.sample {
+  font-style: italic;
+}</pre>
+</li>
+</ul>
+<div class="example">
+<p class="sample">スタイル</p>
+</div>
+<p>@importキーワードを用いて「前景色・背景色・ボーダー・イタリック」の各スタイルを適用させています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b117_1.png" alt="N7.1" width="103" height="67">N7.1での表示（標準モード）</p>
+<p><img src="img/b117_2.png" alt="WinIE6" width="103" height="72">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>CSS2勧告では@importキーワードのネスト数に関する規定がないため、ここではこの現象をバグではなくWinIEの仕様上の限界と考えています。</p>
+
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードでこの現象が発生します。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ117</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ049</div>
+
+<h2>letter-spacingを設定したボックスでborder-widthが無視される<em>(N7)</em></h2>
+
+<h3>症状</h3>
+<p>letter-spacingプロパティで何らかの値を指定したボックスで、border-widthプロパティの指定値が無視されてしまうことがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;letter-spacing:0.2em; border-width:5px;
+  border-style:dashed; border-color:blue;&quot;&gt;letter-spacing&lt;/p&gt;</pre>
+<div class="example">
+<p style="letter-spacing:0.2em; border-width:5px; border-style:dashed; border-color:blue;">letter-spacing</p>
+</div>
+<p>p要素は文字間隔を0.2emにし、さらに幅10pxの破線ボーダーを設置しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b049_1.png" alt="Moz1.0.2" width="190" height="74">Moz1.0.2での表示（標準モード）</p>
+</div>
+
+<h3>報告書き込み</h3>
+<blockquote>bodyに letter-spacing : 0.2em を適用してみました。<br>
+するとbox内のテキストの表示が、所々はみ出してしまいます。<br>
+はみ出すブラウザはMacIE5です。<br>
+WinIE6は大丈夫でした。NN7.02も大丈夫です。<br>
+これを回避するのにbodyではなく直接boxのスタイルに<br>
+letter-spacing : 0.2emを適用しました。<br>
+するとNN7.02ではboxの border-width が無効になってしまいます。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ049</div>
+</body>
+</html>

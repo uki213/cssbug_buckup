@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+<style type="text/css">
+<!--
+a:visited:hover {
+	background: lime;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ010</div>
+
+<h2>擬似セレクタを二重指定しても始めのセレクタしか認識しない<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>擬似セレクタを二重指定しても、始めのセレクタしか認識しない。例えば <code>a:link:active</code> や <code>a:link:hover</code> は <code>a:link</code> と扱われる。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+a:visited:hover {
+  background: lime;
+}
+--&gt;
+&lt;/style&gt;
+
+&lt;p&gt;&lt;a href=&quot;../opera.html&quot;&gt;目次へ戻る&lt;/a&gt;&lt;/p&gt;</pre>
+</style>
+<div class="example">
+<p><a href="../opera.html">目次へ戻る</a></p>
+</div>
+<p>既訪リンクにマウスポインタ等を重ねた場合に背景を黄緑色に変えています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b010_1.png" alt="Moz1.0" width="130" height="87">Moz1.0での表示</p>
+<p><img src="img/b010_2.png" alt="Op6" width="146" height="95">Opera6.05での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ010</div>
+</body>
+</html>

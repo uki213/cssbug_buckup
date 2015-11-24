@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+li {
+	border: 2px solid red;
+	margin: 2px;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ106</div>
+
+<h2>絶対配置／フロート状態のリストアイテム要素のリストマーカーが消える<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>リストアイテム要素（<code>display: list-item;</code> を指定した要素）を絶対配置したり、フロートにしたりするとdisplayプロパティがblock値に変更され、リストマーカーが消えてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+li {
+  border: 2px solid red;
+  margin: 2px;
+}
+&lt;/style&gt;
+
+&lt;ul&gt;
+&lt;li style=&quot;position:absolute; width:5em; left:3em; top:1em;&quot;&gt;絶対配置&lt;/li&gt;
+&lt;li style=&quot;position:fixed; width:5em; left:3em; top:2em;&quot;&gt;固定配置&lt;/li&gt;
+&lt;li style=&quot;float:left; width:5em;&quot;&gt;フロート&lt;/li&gt;
+&lt;li style=&quot;clear:left;&quot;&gt;（回り込み抑制）&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul>
+<li style="position:absolute; width:5em; left:3em; top:1em;">絶対配置</li>
+<li style="position:fixed; width:5em; left:3em; top:2em;">固定配置</li><!-- ←未対応 -->
+<li style="float:left; width:5em;">フロート</li>
+<li style="clear:left;">（回り込み抑制）</li>
+</ul>
+</div>
+<p>全てのリストアイテムにはリストマーカーが表示されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b106_1.png" alt="N7" width="156" height="129">N7.02での表示（標準モード）</p>
+<p><img src="img/b106_2.png" alt="WinIE6" width="160" height="142">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ106</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Safari (KHTML) CSSバグリスト</title>
+</head>
+<body>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ009</div>
+
+<h2>固定レイアウトテーブルでセル幅の%値指定時に算出値が不正確<em>(S1.0)</em></h2>
+
+<h3>症状</h3>
+<p>固定レイアウトテーブル（<code>table-layout:fixed;</code>）内で列幅を指定するとき、指定値に具体的な値・%単位の値・auto値を混在させると、%単位の値の算出値が本来算出されるべき値より小さくなることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;table border=&quot;2&quot; style=&quot;width:50%; table-layout:fixed&quot;&gt;
+&lt;tr&gt;
+&lt;td style=&quot;background:aqua; width:5em;&quot;&gt;5em&lt;/td&gt;
+&lt;td style=&quot;background:lime; width:auto;&quot;&gt;auto&lt;/td&gt;
+&lt;td style=&quot;background:fuchsia; width:50%;&quot;&gt;50%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="2" style="width:50%; table-layout:fixed">
+<tr>
+<td style="background:aqua; width:5em;">5em</td>
+<td style="background:lime; width:auto;">auto</td>
+<td style="background:fuchsia; width:50%;">50%</td>
+</tr>
+</table>
+</div>
+<p>左から3列目にあるセルの幅がテーブルの幅の半分になるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b009_1.png" alt="N7.1" width="358" height="45">N7.1での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>自動レイアウトテーブル（<code>table-layout:auto;</code>）でこの不具合は発生しないそうです。また、固定レイアウトテーブルでも列幅の指定に単位が混在しなければ（%単位の値だけを使用する場合や、具体的な値とauto値だけを使用する場合など）不具合が発生しないそうです。</p>
+
+<h3>修正状況</h3>
+<p>Safari1.0でこの不具合が発生するそうです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ009</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／</div>
+
+<h2>幅と高さが明示されていない要素へのoverflow:hidden;指定が完全に反映されない</h2>
+
+<h3>症状</h3>
+<p>幅も高さも明示されていない相対配置要素に <code>overflow: hidden;</code> を指定しても、絶対配置された子孫要素に対してその指定が効かない。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;position:relative; overflow:hidden; border:2px solid red;&quot;&gt;A
+&lt;div style=&quot;position:absolute; border:2px dashed blue; top:0em; left:1em;&quot;&gt;B&lt;br&gt;C&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="position:relative; overflow:hidden; border:2px solid red;">A
+<div style="position:absolute; border:2px dashed blue; top:0em; left:1em;">B<br>C</div>
+</div>
+</div>
+<p>親要素をはみ出す部分は表示しないようにしています。親div要素の高さが1行分に対し子div要素の高さは2行分なので、子div要素の下側は隠れてしまうはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b068_1.png" alt="Moz1.0.1" width="76" height="49">Moz1.0.1での表示（標準モード）</p>
+<p><img src="img/b068_2.png" alt="WinIE6" width="81" height="52">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>親要素で幅か高さの少なくとも一方を明示すれば、このバグを回避できます。ただし、autoやinheritでは回避できません。</p>
+<pre>&lt;div style=&quot;position:relative; <em>width:99%;</em> overflow:hidden; border:2px solid red;&quot;&gt;A
+&lt;div style=&quot;position:absolute; border:2px dashed blue; top:0em; left:1em;&quot;&gt;B&lt;br&gt;C&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div style="position:relative; width:99%; overflow:hidden; border:2px solid red;">A
+<div style="position:absolute; border:2px dashed blue; top:0em; left:1em;">B<br>C</div>
+</div>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換の両モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／</div>
+</body>
+</html>

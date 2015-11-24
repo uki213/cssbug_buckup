@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+a:hover {
+	background: red;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ145</div>
+
+<h2>:hover状態になると親要素のボックス幅が広がる<em>(5.0)</em></h2>
+
+<h3>症状</h3>
+<p>:hover擬似クラスに何らかの指定をしたスタイルシートを使用する文書では、リンクが:hover状態になると親要素のボックスの幅が広がることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+a:hover {
+  background: red;
+}
+&lt;/style&gt;
+
+&lt;div style=&quot;position:absolute; bottom:0;&quot;&gt;
+&lt;a href=&quot;../winie.html&quot;&gt;WinIE目次&lt;/a&gt;
+&lt;/div&gt;</pre>
+<div class="example" style="height:3em; position:relative;">
+<table border="2" style="position:absolute; bottom:0;">
+<tr>
+<td><a href="../winie.html">WinIE目次</a></td>
+</tr>
+</table>
+</div>
+<p>リンク文字列にマウスポインタ等を乗せるとテーブルの幅が広がるようです。</p>
+
+<h3>報告書き込み</h3>
+<blockquote>【IE5.01/Win98SE】<br>
+a:hoverをセレクタにすると { }の中に/*コメント・アウト*/以外の<br>
+如何なる文字列を書き込んでも、それが無視すべきものであっても反応する。<br>
+<br>
+例）<br>
+リンク要素の親要素に{position:absolute;bottom:0;}だけ指定してある。<br>
+a:hover { 12345 }みたいに何ら意味のない記述であっても<br>
+リンクにマウス・カーソルを乗せると親tableの幅が変化して横スクロールが発生することがある。<br>
+でも空白を無くしてa:hover {12345}なら変化しなかった。<br>
+A:hover {color:red; }はバグ起らず、指定の変化のみ。<br>
+A:hover {col0or:red; }だと、無視すべきなのに、やはり変化あり。<br>
+A:hover {background:red; }ではやはり幅も変化。<br>
+シート内にはこれ以外何もスタイル指定してない。<br>
+謎だ。</blockquote>
+
+<blockquote>未確認バグ（&gt;&gt;819）<br>
+:hover状態になると親要素のボックス幅が広がる(5.0)<br>
+http://cssbug.at.infoseek.co.jp/detail/winie/b145.html<br>
+<br>
+これが起ったのは、リンク・アンカーが連続して列べてある場合でした。<br>
+↓ここの例示みたいな。<br>
+http://cssbug.at.infoseek.co.jp/detail/macie/b029.html<br>
+<br>
+但し他にもHTML側の再現条件があるのかもしれません。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ145</div>
+</body>
+</html>

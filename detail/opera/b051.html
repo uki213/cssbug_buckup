@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+<style type="text/css">
+<!--
+.sample {
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ051</div>
+
+<h2>CDATA型属性値先頭の空白類文字を無視しない<em>(6.0/7.0)</em></h2>
+
+<h3>症状</h3>
+<p>ユーザエージェントは、CDATA型の値を持つ属性（class, alt, name, valueなど）の属性値の先頭または末尾にある空白文字は無視してよいとされている。しかし、Operaは先頭の空白文字を無視せず、空白のある値と空白のない値を別の値として扱ってしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+.sample {
+  font-weight: bold;
+}
+&lt;/style&gt;
+
+&lt;ul&gt;
+&lt;li class=&quot; sample&quot;&gt;先頭空白あり&lt;/li&gt;
+&lt;li class=&quot;sample &quot;&gt;末尾空白あり&lt;/li&gt;
+&lt;li class=&quot; sample &quot;&gt;先頭末尾空白あり&lt;/li&gt;
+&lt;li class=&quot;sample&quot;&gt;空白なし&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul>
+<li class=" sample">先頭空白あり</li>
+<li class="sample ">末尾空白あり</li>
+<li class=" sample ">先頭末尾空白あり</li>
+<li class="sample">空白なし</li>
+</ul>
+</div>
+<p>空白文字を無視するのであれば、4つのリストアイテムの文字列はボールド体で表示されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b051_1.png" alt="N7" width="200" height="123">N7.02での表示（標準モード）</p>
+<p><img src="img/b051_2.png" alt="Op7" width="188" height="118">Opera7.11での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>HTML4.01仕様書では空白文字を「無視してもよい」としています。「無視しなければならない」とされていない以上、Operaの実装は厳密にはバグではないといえるかもしれません。</p>
+<p>このバグを利用してブラウザ振り分けを行える可能性がありますが、仕様書は<em>先頭あるいは末尾に空白文字のある属性値を宣言することを避けるべきである</em>と定めています。</p>
+
+<h3>修正状況</h3>
+<p>Opera6.06、Opera7.11標準モード、Opera7.11互換モードで不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ051</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="stylesheet" type="text/css" href="b121.css">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ121</div>
+
+<h2>特定のコメントより後のスタイル宣言が無視される<em>(5.x/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>HTML文書で用いている文字コードと外部スタイルシートで用いている文字コードが異なっているとき、外部スタイルシート内で特定の文字をコメントにすると、それより後の部分のスタイル宣言が無視される。</p>
+
+<h3>例示</h3>
+<p>外部スタイルシート「b121.css」：</p>
+<pre>p.sa1 {
+  color: red;
+}
+
+/* 定 */
+
+p.sa2 {
+  color: blue;
+}
+</pre>
+<p>この文書「b121.html」：</p>
+<pre>&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;b121.css&quot;&gt;
+
+&lt;p class=&quot;sa1&quot;&gt;コメントの前&lt;/p&gt;
+&lt;p class=&quot;sa2&quot;&gt;コメントの後&lt;/p&gt;</pre>
+<div class="example">
+<p class="sa1">コメントの前</p>
+<p class="sa2">コメントの後</p>
+</div>
+<p>バグを発生させるコメントのひとつである <code>/* 定 */</code> を使用しています。この例示では2つ目のp要素の前景色が青色になるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b121_1.png" alt="N7.1" width="135" height="96">N7.1での表示（標準モード）</p>
+<p><img src="img/b121_2.png" alt="WinIE6" width="137" height="105">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>例示のバグはWinIEが、Shift_JISコードで記述された外部スタイルシートをUTF-8で記述されたものと誤認していることが原因と考えられます。これによりコメントの終わりを示す <code>*/</code> が化けてしまうとスタイルシートの終端までをコメントと認識されてしまいます。</p>
+<p>UTF-8の場合、コメント文字列の終端に、Shift_JISコードの16進表記で下から2桁目が「E」や「F」になる文字が置かれたときにこの現象が発生しやすいようです。例えば「も（0x82E0）」、「状（0x8FF3）」、「定（0x92E8）」など多くの文字が該当します。</p>
+<p>文字コードの誤認がバグの原因なので、外部スタイルシートで@charset宣言を用いて正しい文字コードを明示すればこのバグを回避できます。</p>
+
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0でこの現象の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ121</div>
+</body>
+</html>

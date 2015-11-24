@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ124</div>
+
+<h2>終了タグを省略したoption要素に続くoptgroup要素を無視する<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>終了タグを省略したoption要素の直後にoptgroup要素があるとき、そのoptgroup要素は無視される。</p>
+
+<h3>例示</h3>
+<pre>&lt;form&gt;
+&lt;div&gt;&lt;select&gt;
+&lt;option&gt;終了タグあり&lt;/option&gt;
+&lt;optgroup label=&quot;A&quot;&gt;
+&lt;option&gt;A-1&lt;/option&gt;
+&lt;option&gt;A-2&lt;/option&gt;
+&lt;/optgroup&gt;
+&lt;option&gt;B&lt;/option&gt;
+&lt;/select&gt;
+&lt;select&gt;
+&lt;option&gt;終了タグなし
+&lt;optgroup label=&quot;A&quot;&gt;
+&lt;option&gt;A-1
+&lt;option&gt;A-2
+&lt;/optgroup&gt;
+&lt;option&gt;B
+&lt;/select&gt;&lt;/div&gt;
+&lt;/form&gt;</pre>
+<div class="example">
+<form action="b124.html">
+<div><select>
+<option>終了タグあり</option>
+<optgroup label="A">
+<option>A-1</option>
+<option>A-2</option>
+</optgroup>
+<option>B</option>
+</select>
+<select>
+<option>終了タグなし
+<optgroup label="A">
+<option>A-1
+<option>A-2
+</optgroup>
+<option>B
+</select></div>
+</form>
+</div>
+<p>同じ構成のselect要素を、option要素の終了タグを置いた場合と省略した場合で比較しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b124_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b124_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ124</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ042</div>
+
+<h2>テーブルセルから上下にはみ出す部分が表示されない<em>(7.0)</em></h2>
+
+<h3>症状</h3>
+<p>line-heightプロパティで小さい値を指定するなどしてテーブルセルの高さを低くしたとき、セルのボックスをはみ出す部分が表示されない。</p>
+
+<h3>例示</h3>
+<pre>&lt;table border=&quot;1&quot;&gt;
+&lt;tr style=&quot;font:2em Arial,sans-serif; line-height:0.5;&quot;&gt;
+&lt;td&gt;ijqgvylT&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="1">
+<tr style="font:2em Arial,sans-serif; line-height:0.5;">
+<td>ijqgvylT</td></tr>
+</table>
+</div>
+<p>tr要素は行高さを文字高さの半分にしています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b042_1.png" alt="Moz1.3" width="135" height="42">Moz1.3での表示（標準モード）</p>
+<p><img src="img/b042_2.png" alt="O7" width="135" height="42">Opera7.03での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera7.03では標準・互換モードの両方で不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ042</div>
+</body>
+</html>

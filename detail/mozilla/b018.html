@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+<style type="text/css">
+<!--
+div#parent {
+	float: left;
+	position: relative;
+	width: 100px;
+	height: 100px;
+	background:aqua;
+}
+div#child {
+	position: absolute;
+	left:30px;
+	top:20px;
+	width:50px;
+	height:50px;
+	background:teal;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ018</div>
+
+<h2>フロート配置要素の子要素を絶対配置にすると親要素を無視した配置になる<em>(N6.1)</em></h2>
+
+<h3>症状</h3>
+<p>位置指定された要素をフロートにした場合、その子要素を絶対配置にしても親要素を無視し、初期コンテナブロックを基準にした配置になる。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+div#parent {
+    float: left;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background:aqua;
+}
+div#child {
+    position: absolute;
+    left:30px;
+    top:20px;
+    width:50px;
+    height:50px;
+    background:teal;
+}
+&lt;/style&gt;
+&lt;div id=&quot;parent&quot;&gt;親
+&lt;div id=&quot;child&quot;&gt;子&lt;/div&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div id="parent">親<div id="child">子</div></div>
+</div>
+<p style="clear:left;">親要素（背景が空色）はフロート、子要素（背景が青緑色）は絶対配置です。</p>
+
+<h3>スクリーンショット</h3>
+<p>症状欄、例示欄の一部などを略した状態です。</p>
+<div class="shot">
+<p><img src="img/b018_1.png" alt="WinIE6" width="195" height="180">WinIE6.0での表示</p>
+<p><img src="img/b018_2.png" alt="N6.1" width="151" height="176">N6.1での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>N6.2.3、Moz1.0では標準・互換モードともに同様の状態になります。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ018</div>
+</body>
+</html>

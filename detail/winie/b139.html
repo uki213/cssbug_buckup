@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ139</div>
+
+<h2>vertical-align:middle;の状態では置換インライン要素だけの行の高さ算出が不正<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>vertical-alignプロパティがbaseline値のとき、置換インライン要素のみを含む行の高さは最も高さが大きい置換インライン要素の高さと同じになる。</p>
+
+<h3>例示</h3>
+<div class="example">
+<ul>
+<li>top
+<div style="font-size:200%; border:2px solid blue;"><img src="../img/img02.png" alt="■" style="vertical-align:top;"></div></li>
+<li>middle
+<div style="font-size:200%; border:2px solid blue;"><img src="../img/img02.png" alt="■" style="vertical-align:middle;"></div></li>
+<li>baseline
+<div style="font-size:200%; border:2px solid blue;"><img src="../img/img02.png" alt="■" style="vertical-align:baseline;"></div></li>
+<li>bottom
+<div style="font-size:200%; border:2px solid blue;"><img src="../img/img02.png" alt="■" style="vertical-align:bottom;"></div></li>
+</ul>
+</div>
+<p>img要素にvertical-alignプロパティを指定した場合の比較です。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b139_1.png" alt="Ns7.1">Netscape7.1標準（Full Standards）モード</p>
+<p><img src="img/b139_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0標準モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ139</div>
+</body>
+</html>

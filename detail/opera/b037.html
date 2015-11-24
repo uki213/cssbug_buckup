@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+<style type="text/css">
+<!--
+-->
+</style>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ037</div>
+
+<h2>リストマーカーのサイズがli要素の子孫ブロック要素の文字サイズを継承する<em>(7.0)</em></h2>
+
+<h3>症状</h3>
+<p>li要素開始タグの直後に子要素の開始タグが置かれている場合に、li要素のリストマーカーのサイズが子要素のfont-sizeプロパティの値を反映した値になる。ただし、これは子孫要素がブロック要素であり、リストマーカーがグリフタイプの場合に発生する。</p>
+
+<h3>例示</h3>
+<pre>&lt;ul&gt;
+&lt;li&gt;&lt;div style=&quot;font-size:2em;&quot;&gt;div1&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span style=&quot;font-size:2em;&quot;&gt;span&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;div&gt;&lt;div style=&quot;font-size:2em;&quot;&gt;div2&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li style=&quot;font-size:2em;&quot;&gt;li&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul>
+<li><div style="font-size:1.5em;">div1</div></li>
+<li><span style="font-size:1.5em;">span</span></li>
+<li><div><div style="font-size:1.5em;">div2</div></div></li>
+<li style="font-size:1.5em;">li</li>
+</ul>
+</div>
+<p>1番目のリストアイテムは子要素がブロック要素の場合、2番目は子要素がインライン要素の場合、3番目はli要素、子要素、孫要素の開始タグが連続している場合、4番目はli要素の文字サイズを指定した場合です。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b037_1.png" alt="Moz1.0.2" width="138" height="163">Moz1.0.2での表示（標準モード）</p>
+<p><img src="img/b037_2.png" alt="Op7" width="137" height="146">Opera7.02での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>li要素と子要素の間に別のボックス（匿名ボックスを含む）がある場合、この現象は発生しません。</p>
+<pre>&lt;ul&gt;
+&lt;li&gt;<em>!</em>&lt;div style=&quot;font-size:1.5em;&quot;&gt;div1&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul>
+<li>!<div style="font-size:1.5em;">div1</div></li>
+</ul>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera7.02では標準・互換モードともに不具合の発生が確認されました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ037</div>
+</body>
+</html>

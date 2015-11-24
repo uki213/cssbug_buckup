@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ070</div>
+
+<h2>閲覧領域のサイズを初期コンテナブロックのサイズとして扱う</h2>
+
+<h3>症状</h3>
+<p>初期コンテナブロックのサイズは閲覧領域のサイズより小さくならない。このため内容物の量が少ない文書を表示したとき、初期コンテナブロックに対して絶対配置する要素は、閲覧領域に対して配置されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;div style=&quot;position:absolute; bottom:0; right:0; background:lime;&quot;&gt;
+右下&lt;/div&gt;</pre>
+<div style="position:absolute; bottom:0; right:0; background:aqua;">右下</div>
+<p>このdiv要素は、文書全体の右下部に配置されるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<p>内容物が少ないときのスクリーンショットです。内側のボーダー（青）はbody要素に、外側のボーダー（赤）はhtml要素に設定したものです。</p>
+<div class="shot">
+<p><img src="img/b070_1.png" alt="Op7.2">Opera7.22標準モード</p>
+</div>
+
+<h3>補足</h3>
+
+<h3>修正状況</h3>
+<p>Opera7.22で不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ070</div>
+</body>
+</html>

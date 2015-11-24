@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<style type="text/css">
+<!--
+#test1 > #test2 {
+	color: red;
+}
+-->
+</style>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ156</div>
+
+<h2>セレクタ指定で「#」より前の部分を無視する<em>(5.0)</em></h2>
+
+<h3>症状</h3>
+<p>WinIE5.0が対応していないセレクタ（&gt;, + など）の直後にidセレクタがある場合、idセレクタより前の部分は無視される。この結果、単一のidセレクタに対してスタイルを適用させる宣言として扱われる。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+#test1 &gt; #test2 {
+  color: red;
+}
+&lt;/style&gt;
+
+&lt;div id=&quot;test1&quot;&gt;test1&lt;/div&gt;
+&lt;div id=&quot;test2&quot;&gt;test2&lt;/div&gt;</pre>
+
+<div class="example">
+<div id="test1">test1</div>
+<div id="test2">test2</div>
+</div>
+<p>「&gt;」は子供要素であることをを指定するためのセレクタです。#test2は#test1の子要素ではないのでstyle要素内の指定は適用されないはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b156_1.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+<p><img src="img/b156_2.png" alt="WinIE5.0">WinIE5.01</p>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>WinIE5.01で不具合の発生を確認しました。</li>
+<li>WinIE5.5、WinIE6.0でこの不具合は発生しないようです。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ156</div>
+</body>
+</html>

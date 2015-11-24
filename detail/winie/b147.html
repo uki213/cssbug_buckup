@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+p.f {
+	float: left;
+	clear: left;
+	width: 5em;
+	margin: 0;
+	border: 2px solid red;
+	text-indent: 0;
+}
+div {
+	margin: 0;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ147</div>
+
+<h2>clearを指定したフロートの上下に空行ができる<em>(5.x/6.0)</em></h2>
+<ul>
+<li>2004-03-07修正。回避法を追加。</li>
+</ul>
+
+<h3>症状</h3>
+<p>ブロックレベル要素の子要素にclearプロパティを用いて回り込みを抑制したフロートがあるとき、ブロックレベル要素の上下に空行が発生する場合がある。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+p.f {
+  float: left;
+  clear: left;
+  width: 5em;
+  margin: 0;
+  border: 2px solid red;
+}
+div {
+  margin: 0;
+}
+&lt;/style&gt;
+
+&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;
+&lt;div&gt;&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;&lt;/div&gt;
+&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;</pre>
+<div>
+<p class="f">フロート</p>
+<div><p class="f">フロート</p></div>
+<p class="f">フロート</p>
+</div>
+<p style="clear:left;">p要素をフロートにしています。ただし、p要素やdiv要素に上下マージンはありません。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b147_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b147_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>不具合が発生している要素の親要素がli要素の場合やボーダーがあるボックスである場合にこの不具合は発生しません。</p>
+<pre>&lt;ul&gt;&lt;li&gt;
+&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;
+&lt;div&gt;&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;&lt;/div&gt;
+&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;
+&lt;/li&gt;&lt;/ul&gt;</pre>
+<ul><li>
+<p class="f">フロート</p>
+<div><p class="f">フロート</p></div>
+<p class="f">フロート</p>
+</li></ul>
+<p style="clear:left;"><ins datetime="2004-03-07T00:00:00+09:00">不具合が発生している要素の親要素に上パディングを指定することでこの不具合を回避することができます。</ins></p>
+<pre>&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;
+&lt;div style=&quot;<em>padding-top:1px;</em>&quot;&gt;
+&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;&lt;/div&gt;
+&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;</pre>
+<div>
+<p class="f">フロート</p>
+<div style="padding-top:1px;"><p class="f">フロート</p></div>
+<p class="f">フロート</p>
+</div>
+
+<h3 style="clear:left;">修正状況</h3>
+<ul>
+<li>WinIE6.0で不具合の発生を確認しました。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ147</div>
+</body>
+</html>

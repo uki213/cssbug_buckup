@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ064</div>
+
+<h2>fieldset要素にfloatプロパティが効かない<em>(7.0)</em></h2>
+
+<h3>症状</h3>
+<p>fieldset要素に対してfloatプロパティを指定しても無視されてしまう。従って、fieldset要素のボックスはフロートにすることができない。</p>
+
+<h3>例示</h3>
+<pre>&lt;form&gt;
+&lt;fieldset style=&quot;width:10em; float:left;&quot;&gt;
+&lt;legend&gt;Form&lt;/legend&gt;
+&lt;div&gt;&lt;input type=&quot;text&quot; style=&quot;width:8em;&quot;&gt;&lt;/div&gt;
+&lt;/fieldset&gt;
+&lt;p&gt;フロートの右&lt;/p&gt;
+&lt;p style=&quot;clear:left;&quot;&gt;フロートの下&lt;/p&gt;
+&lt;/form&gt;</pre>
+<div class="example">
+<form method="post" action="b064.html">
+<fieldset style="width:10em; float:left;">
+<legend>Form</legend>
+<div><input type="text" style="width:8em;"></div>
+</fieldset>
+<p style="margin:0;">フロートの右</p>
+<p style="clear:left; margin:0;">フロートの下</p>
+</form>
+</div>
+<p>fieldset要素をフロートにしています。fieldset要素の直後にあるp要素の内容物はフロートの右方に回りこむはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b064_1.png" alt="WinIE6" width="280" height="113">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b064_2.png" alt="Op7.1" width="192" height="105">Opera7.11での表示（標準モード）</p>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.11標準モード、Opera7.11互換モードで不具合の発生を確認しました。</li>
+<li>Opera6.06でこの不具合は発生しません。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ064</div>
+</body>
+</html>

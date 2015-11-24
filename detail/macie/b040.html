@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+<script type="text/javascript">
+<!--
+function create() {
+	var obj = document.getElementById('l1');
+	var ipt = document.createElement('input');
+	ipt.type = 'text';
+	obj.appendChild(ipt);
+}
+// -->
+</script>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ040</div>
+
+<h2>DOMによる要素生成後にクラッシュすることがある<em>(5.1)</em></h2>
+
+<h3>症状</h3>
+<p><code>document.createElement()</code> メソッドを用いて要素を生成するとMacIEの動作が不安定になり、クラッシュすることもある。具体的には以下のような症状がある。</p>
+<ul>
+<li>AppleScriptでa要素を生成した後、早く親要素に挿入しないと不安定になる。</li>
+<li>input要素を生成した後、type属性を設定しようとするとクラッシュする。</li>
+</ul>
+
+<h3>例示</h3>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt;
+function create() {
+  var obj = document.getElementById('l1');
+  var ipt = document.createElement('input');
+  ipt.type = 'text';
+  obj.appendChild(ipt);
+}
+&lt;/script&gt;
+
+&lt;form action=&quot;b040.html&quot;&gt;
+&lt;div&gt;&lt;input type=&quot;button&quot; value=&quot;input生成&quot; onclick=&quot;create()&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;l1&quot;&gt;&lt;/div&gt;
+&lt;/form&gt;</pre>
+<div class="example">
+<form action="b040.html">
+<div><input type="button" value="input生成" onclick="create()"></div>
+<div id="l1"></div>
+</form>
+</div>
+<p>「input生成」ボタンを押すとtype属性がtextのinput要素（一行入力ボックス）を生成します。</p>
+
+<h3>補足</h3>
+<p>a要素生成時の問題点については<a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/2002/01c.html#d23n01" title="ねこめしにっき">MacIE5.1 Carbon : AppleScript からの DOM いぢりでクラッシュ</a>で、input要素生成時の問題点についは<a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/2002/02c.html#d22n02" title="ねこめしにっき">MacIE5.1 Carbon : さまよい生成要素でクラッシュ</a>で詳しく説明されているので参考にしてください。</p>
+
+<h3>修正状況</h3>
+<p>OSX版MacIE5.1で不具合の発生が確認されています。OS9版MacIE5では発生しにくいようです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／</div>
+</body>
+</html>

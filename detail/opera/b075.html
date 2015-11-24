@@ -1,0 +1,83 @@
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
+<script type="text/javascript">
+<!--
+function list() {
+	var src = document.getElementById('source');
+	var nds = document.getElementById('nodes');
+	for (var i = 0; i < src.childNodes.length; i++) {
+		var litem = document.createElement('li');
+	    litem.appendChild(document.createTextNode(src.childNodes[i].nodeName));
+	    nds.appendChild(litem);
+	}
+}
+// -->
+</script>
+</head>
+<body onload="list()">
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ075</div>
+
+<h2>未知の要素を空要素として扱う<em>(7.2)</em></h2>
+<ul>
+<li>2004-03-03修正。<a href="../winie/b146.html" title="未知の要素は空要素として扱う">WinIEバグ146</a>に関連して修正。</li>
+</ul>
+
+<h3>症状</h3>
+<p>文書のMIMEタイプがtext/htmlであるときは、HTML勧告で定義していない要素（XHTML1.1のルビ関連要素など）を<del datetime="2004-03-03T00:00:00+09:00">無視する</del><ins datetime="2004-03-03T00:00:00+09:00">空要素として扱う</ins>。このため、HTML文書ではこれらの要素にスタイルを指定しても無視される。</p>
+
+<h3>例示</h3>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt;
+function list() {
+  var src = document.getElementById('source');
+  var nds = document.getElementById('nodes');
+  for (var i = 0; i &lt; src.childNodes.length; i++) {
+    var litem = document.createElement('li');
+    litem.appendChild(document.createTextNode(src.childNodes[i].nodeName));
+    nds.appendChild(litem);
+  }
+}
+&lt;/script&gt;
+
+&lt;p id=&quot;source&quot;&gt;&lt;foo&gt;1&lt;/foo&gt;2&lt;bar&gt;3&lt;/bar&gt;&lt;/p&gt;
+&lt;ol id=&quot;nodes&quot;&gt;&lt;/ol&gt;</pre>
+<div class="example">
+<p id="source"><foo>1</foo>2<bar>3</bar></p>
+<ol id="nodes"></ol>
+</div>
+<p>HTMLで定義されていない要素fooとbarを含むp要素の子ノードのリストをol要素に書き出しています。</p>
+
+<h3>実行結果</h3>
+<p>Netscape7.1、Opera7.11</p>
+<blockquote><ol>
+<li>FOO</li>
+<li>#text</li>
+<li>BAR</li>
+</ol></blockquote>
+<p>Opera7.23</p>
+<blockquote><ol>
+<li>foo</li>
+<li>#text</li>
+<li>#text</li>
+<li>bar</li>
+<li>#text</li>
+</ol></blockquote>
+
+<h3>補足</h3>
+<p>Opera7.2以降は文書のMIMEタイプを厳密に判断するので、XML系のMIMEタイプ（例：application/xhtml+xml, application/xml, text/xml）を指定した文書でなければHTML勧告外要素のスタイル指定が反映されません。従って文書の記述がXHTML準拠であるとしても、MIMEタイプがHTMLのものであればHTML勧告外要素へのスタイル指定は無効です。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.23の標準モードと互換モードで現象の発生を確認しました。</li>
+<li>Opera7.03、Opera7.11でこの現象は発生しないようです。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ075</div>
+</body>
+</html>

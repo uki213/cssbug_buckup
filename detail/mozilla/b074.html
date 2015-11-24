@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
+<title>Mozilla 5.0系 CSSバグリスト</title>
+</head>
+<body>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ074</div>
+
+<h2>インラインテーブルの行グループ要素や行要素でスタイル指定を無視される</h2>
+<ul>
+<li>2004-06-07修正。修正状況を変更。</li>
+</ul>
+
+<h3>症状</h3>
+<p>インラインテーブルでは、行グループ要素や行要素に背景などのスタイルを指定しても無視される。</p>
+
+<h3>例示</h3>
+<pre>&lt;div&gt;前
+&lt;span style=&quot;display:inline-table;&quot;&gt;
+&lt;span style=&quot;display:table-header-group; background:aqua;&quot;&gt;
+&lt;span style=&quot;display:table-row;&quot;&gt;
+&lt;span style=&quot;display:table-cell;&quot;&gt;head&lt;/span&gt;
+&lt;/span&gt;
+&lt;/span&gt;
+&lt;span style=&quot;display:table-footer-group;&quot;&gt;
+&lt;span style=&quot;display:table-row; background:lime;&quot;&gt;
+&lt;span style=&quot;display:table-cell;&quot;&gt;foot&lt;/span&gt;
+&lt;/span&gt;
+&lt;/span&gt;
+&lt;span style=&quot;display:table-row-group;&quot;&gt;
+&lt;span style=&quot;display:table-row;&quot;&gt;
+&lt;span style=&quot;display:table-cell; background:yellow;&quot;&gt;body&lt;/span&gt;
+&lt;/span&gt;
+&lt;/span&gt;
+&lt;/span&gt;
+後&lt;/div&gt;</pre>
+<div class="example">
+<div>前
+<span style="display:inline-table;">
+<span style="display:table-header-group; background:aqua;">
+<span style="display:table-row;">
+<span style="display:table-cell;">head</span>
+</span>
+</span>
+<span style="display:table-footer-group;">
+<span style="display:table-row; background:lime;">
+<span style="display:table-cell;">foot</span>
+</span>
+</span>
+<span style="display:table-row-group;">
+<span style="display:table-row;">
+<span style="display:table-cell; background:yellow;">body</span>
+</span>
+</span>
+</span>
+後</div>
+</div>
+<p>インラインテーブルのヘッダ行の背景色（行グループ要素で指定）は空色、フッタ行の背景色（行要素で指定）は黄緑色、その他の行の背景色（セル要素で指定）は黄色になるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b074_1.png" alt="Op7.2">Opera7.23標準モード</p>
+<p><img src="img/b074_2.png" alt="Ns7.1">Netscape7.1標準モード</p>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>Netscape7.1、Mozilla1.6で不具合の発生を確認しました。</li>
+<li>Mozilla1.7beta互換モードで不具合の発生を確認しました。</li>
+<li>Mozilla1.7beta標準モードでこの不具合は発生しないようです。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ074</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ057</div>
+
+<h2>全体にline-heightが指定されたページの最上部が消える<em>(IE6)</em></h2>
+
+<h3>症状</h3>
+<p>ページ全体にline-heightプロパティが%値で指定されているとき、ページ最上部にある要素の上端が見えなくなる。特に、ページ上端にある文字のサイズが大きい時に発生しやすい。</p>
+
+<h3>例示</h3>
+<p><a href="b057a.html">別ページ</a>で検証しています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b057_1.png" alt="Moz1.0" width="222" height="65">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b057_2.png" alt="WinIE6" width="218" height="56">WinIE6.0での表示（標準モード）</p>
+</div>
+
+<h3>補足</h3>
+<p>line-heightプロパティを単位なし数値で指定（150% → 1.5）するとこのバグを回避できます。</p>
+<p>ページの端が消えるバグについては<a href="b025.html" title="body要素の内容領域をはみ出す部分がレンダリングされない">WinIEバグ025</a>も参照してください。</p>
+
+<h3>修正状況</h3>
+<p>WinIE6.0では標準モードで不具合の発生が確認されました。互換モードでは発生しません。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ057</div>
+</body>
+</html>

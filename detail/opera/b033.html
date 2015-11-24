@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+<style type="text/css">
+<!--
+.sample {
+	background: yellow;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ033</div>
+
+<h2>class属性の大文字・小文字が区別されない<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>クラスセレクタなどを用い、class属性を条件にして宣言したスタイルは属性値の大文字・小文字に関係なく適用されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+.sample {
+  background: yellow;
+}
+&lt;/style&gt;
+&lt;div class=&quot;Sample&quot;&gt;背景色は？&lt;/div&gt;</pre>
+<div class="example">
+<div class="Sample">背景色は？</div>
+</div>
+<p>class属性は大文字と小文字が区別されるため、背景色を黄色にする宣言は適用されないはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b033_1.png" alt="Moz1.0.2" width="117" height="32">Moz1.0.2での表示（標準モード）</p>
+<p><img src="img/b033_2.png" alt="Op6" width="115" height="35">Opera6.05での表示</p>
+</div>
+
+<h3>補足</h3>
+<p>MozillaやWinIEなどでも互換モードを使用した場合に同じ現象が発生します。「.sample」と「.Sample」のように、大文字・小文字の違いしかないクラスセレクタを同一スタイルシート内で使うことは控えたほうがよいでしょう。</p>
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ033</div>
+</body>
+</html>

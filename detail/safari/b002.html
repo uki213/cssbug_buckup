@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Safari (KHTML) CSSバグリスト</title>
+<style type="text/css">
+<!--
+span.sample {
+	quotes: '【' '】';
+}
+span.sample:before {
+	content: open-quote;
+	color: blue;
+}
+span.sample:after {
+	content: close-quote;
+	color: blue;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ002</div>
+
+<h2>contentプロパティでopen-quote, close-quote値を無視する<em>(S1.0)</em></h2>
+
+<h3>症状</h3>
+<p>contentプロパティでopen-quote, close-quoteの各値を指定することで引用符を表示させることができない。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+span.sample {
+  quotes: '【' '】';
+}
+span.sample:before {
+  content: open-quote;
+  color: blue;
+}
+span.sample:after {
+  content: close-quote;
+  color: blue;
+}
+&lt;/style&gt;
+
+&lt;p&gt;→&lt;span class=&quot;sample&quot;&gt;引用&lt;/span&gt;←&lt;/p&gt;</pre>
+<div class="example">
+<p>→<span class="sample">引用</span>←</p>
+</div>
+<p>文字列「引用」の前後に引用符として前景色が青色の括弧を表示させています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b002_1.png" alt="N7" width="129" height="65">N7.02での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Safari1.0でこの不具合が発生するそうです。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ002</div>
+</body>
+</html>

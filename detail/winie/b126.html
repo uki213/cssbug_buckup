@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+<style type="text/css">
+<!--
+a:hover {
+	background-color: aqua;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ126</div>
+
+<h2>:hoverのスタイルが反映されると透過したhr要素が消える<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p>:hover擬似クラスにbackground-colorプロパティを設定しているとき、:hover擬似クラスのスタイルが適用されたときにAlphaフィルタを指定したhr要素が消える。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+a:hover {
+  background-color: aqua;
+}
+&lt;/style&gt;
+&lt;div&gt;&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
+&lt;hr style=&quot;filter:alpha(opacity=25); height:10px; color:red;&quot;&gt;
+&lt;/div&gt;</pre>
+<div class="example">
+<div><a href="../winie.html">WinIEバグ</a>
+<hr style="filter:alpha(opacity=25); height:10px; color:red;">
+</div>
+</div>
+<p>アンカーにマウスポインタ等を乗せるとバグが発生するはずですが、この例ではバグを発生できません。</p>
+
+<h3>修正状況</h3>
+<p>WinIE6.0で不具合が発生するそうです。</p>
+
+<h3>報告書き込み</h3>
+<blockquote>IE6。<br>
+アンカーにhover要素とbackground-color指定した場合、hover状態にすると<br>
+フィルター要素(filter:alpha)をつけた境界線(HR)は跡形も泣く消滅する。<br>
+同じフィルター要素でも画像&lt;img&gt;は何の影響も受けない。<br>
+IE5.5では何も問題のない指定。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ126</div>
+</body>
+</html>

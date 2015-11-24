@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
+<script type="text/javascript">
+<!--
+function df() {
+	var addsource = document.getElementById('source').getElementsByTagName('li');
+	var addlist = document.createDocumentFragment();
+	for(i = 0; i < addsource.length; i++) {
+		addlist.appendChild(addsource.item(i).cloneNode(true));
+	}
+	
+	var distel = document.getElementById('dist');
+	distel.appendChild(addlist.cloneNode(true));
+}
+// -->
+</script>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ081</div>
+
+<h2>DocumentFragmentオブジェクトへのappendChildに失敗する<em>(7.2)</em></h2>
+
+<h3>症状</h3>
+<p>DocumentFragmentオブジェクトに対して何度もappendChildメソッドを実行すると、メソッドの実行に失敗してオブジェクトの中身が空になることがある。</p>
+
+<h3>例示</h3>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt;
+function df() {
+  var addsource = document.getElementById('source').getElementsByTagName('li');
+  var addlist = document.createDocumentFragment();
+  for(i = 0; i &lt; addsource.length; i++) {
+    addlist.appendChild(addsource.item(i).cloneNode(true));
+  }
+  
+  var distel = document.getElementById('dist');
+  distel.appendChild(addlist.cloneNode(true));
+}
+&lt;/script&gt;
+
+&lt;ol id=&quot;dist&quot;&gt;
+&lt;li&gt;↓追加&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol id=&quot;source&quot; style=&quot;display:none;&quot;&gt;
+&lt;li&gt;追加&lt;/li&gt;&lt;li&gt;追加&lt;/li&gt;&lt;li&gt;追加&lt;/li&gt;&lt;li&gt;追加&lt;/li&gt;&lt;li&gt;追加&lt;/li&gt;
+&lt;li&gt;追加&lt;/li&gt;&lt;li&gt;追加&lt;/li&gt;&lt;li&gt;追加&lt;/li&gt;&lt;li&gt;追加&lt;/li&gt;&lt;li&gt;追加&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href=&quot;javascript:df();&quot;&gt;スクリプト実行&lt;/a&gt;&lt;/p&gt;</pre>
+<div class="example">
+<ol id="dist">
+<li>↓追加</li>
+</ol>
+<ol id="source" style="display:none;">
+<li>追加</li><li>追加</li><li>追加</li><li>追加</li><li>追加</li>
+<li>追加</li><li>追加</li><li>追加</li><li>追加</li><li>追加</li>
+</ol>
+<p><a href="javascript:df();">スクリプト実行</a></p>
+</div>
+<p>「スクリプト実行」のリンクを選択するとol要素にリストアイテムが10個追加されるはずです。</p>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.23でこの不具合が発生するそうです。</li>
+</ul>
+
+<h3>報告書き込み</h3>
+<blockquote>JavaScript について ? な挙動を見つけたので書いて見ます。<br>
+<br>
+Opera 7.22 ja 、Opera 7.23 ja において<br>
+DocumentFragment オブジェクトに appendChild を繰り返すと<br>
+少ない確率で失敗するようです。<br>
+失敗したときは追加先のオブジェクトが空になります。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ081</div>
+</body>
+</html>

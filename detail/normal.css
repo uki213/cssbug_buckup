@@ -1,0 +1,74 @@
+body {
+	margin: 2% 3% 15%;
+	background: #f5f5f5;
+	color: #000000;
+}
+
+a:link {
+	color: #0000ff;
+}
+
+a:visited {
+	color: #006400;
+}
+
+a:hover {
+	background: #ffe4e1;
+}
+
+a:active {
+	color: #ff4500;
+}
+
+h1 {
+	margin: 1em -3%;
+	border-width: 4px 0;
+	border-style: ridge;
+	border-color: #ff0000;
+	background: #ffd700;
+	color: #000066;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+h2 {
+	border: 3px ridge #32cd32;
+	background: #f0f8ff;
+	color: #000000;
+	font-size: 1.3em;
+}
+
+h3 {
+	border: 2px solid #0000ff;
+	background: #e0ffff;
+	color: #000000;
+	font-size: 1em;
+}
+
+p {
+	text-indent: 1em;
+}
+
+em {
+	color: #ff0000;
+	font-style: normal;
+}
+
+/* ナビゲーション */
+
+div.navi {
+	padding: 1px;
+	border-top: 1px dashed #000000;
+	border-bottom: 1px dashed #000000;
+	background: #fffafa;
+	color: #000000;
+	font-size: 0.85em;
+}
+
+div.navi:before {
+	content: "Navigation:";
+	margin-right: 1em;
+	color: #808080;
+	font-size: 0.9em;
+	font-style: italic;
+}

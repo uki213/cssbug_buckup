@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ082</div>
+
+<h2>font-sizeの%値指定で算出値が正しくない<em>(6.0/7.x)</em></h2>
+
+<h3>症状</h3>
+<p>font-sizeプロパティの値をem単位で指定したときと%単位で指定したときとで実際のフォントサイズが異なる場合があり、%値指定の場合のフォントサイズが小さくなる。</p>
+<p><em>(7.x)</em> font-sizeプロパティの%値指定ではフォントサイズをある大きさよりも大きくすることができない。</p>
+
+<h3>例示</h3>
+<pre>&lt;ul style=&quot;font-size:16px;&quot;&gt;
+&lt;li style=&quot;font-size:110%;&quot;&gt;Opera&lt;/li&gt;
+&lt;li style=&quot;font-size:1.1em;&quot;&gt;Opera&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<div class="example">
+<ul style="font-size:16px;">
+<li style="font-size:110%;">Opera</li>
+<li style="font-size:1.1em;">Opera</li>
+</ul>
+</div>
+<p>2つのli要素のフォントサイズは同じ大きさになるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b082_1.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+<p><img src="img/b082_2.png" alt="Op7.2">Opera7.23標準モード</p>
+</div>
+
+<h3>補足</h3>
+<p>Opera7ではfont-sizeプロパティを%単位の値で指定した場合、500%を超える値を指定しても表示上は500%相当のフォントサイズになります。以下の例をOpera7で表示すると、「6」から「8」が「5」と同じフォントサイズで表示されます。</p>
+<pre>&lt;p&gt;
+&lt;span style=&quot;font-size:100%;&quot;&gt;1&lt;/span&gt;
+&lt;span style=&quot;font-size:200%;&quot;&gt;2&lt;/span&gt;
+&lt;span style=&quot;font-size:300%;&quot;&gt;3&lt;/span&gt;
+&lt;span style=&quot;font-size:400%;&quot;&gt;4&lt;/span&gt;
+&lt;span style=&quot;font-size:500%;&quot;&gt;5&lt;/span&gt;
+&lt;span style=&quot;font-size:600%;&quot;&gt;6&lt;/span&gt;
+&lt;span style=&quot;font-size:700%;&quot;&gt;7&lt;/span&gt;
+&lt;span style=&quot;font-size:800%;&quot;&gt;8&lt;/span&gt;
+&lt;/p&gt;</pre>
+<div class="example">
+<p><span style="font-size:100%;">1</span> <span style="font-size:200%;">2</span> <span style="font-size:300%;">3</span> <span style="font-size:400%;">4</span> <span style="font-size:500%;">5</span> <span style="font-size:600%;">6</span> <span style="font-size:700%;">7</span> <span style="font-size:800%;">8</span></p>
+</div>
+
+<h3>修正状況</h3>
+<ul>
+<li>Opera7.23の標準モードと互換モードで不具合の発生を確認しました。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ082</div>
+</body>
+</html>

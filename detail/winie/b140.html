@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ140</div>
+
+<h2>最も高さが大きい要素にvertical-align:bottom;を指定すると配置が狂う<em>(5.5/6.0)</em></h2>
+
+<h3>症状</h3>
+<p>行内でもっとも高さが大きいインライン要素に <code>vertical-align:bottom;</code> を指定すると、その要素の他の文字列等との位置関係は <code>vertical-align:top;</code> の場合と同じになる。</p>
+
+<h3>例示</h3>
+<pre>&lt;p style=&quot;border:2px solid blue;&quot;&gt;段落
+&lt;span style=&quot;font-size:150%; vertical-align:top;&quot;&gt;top&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;border:2px solid red;&quot;&gt;段落
+&lt;span style=&quot;font-size:150%; vertical-align:middle;&quot;&gt;middle&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;border:2px solid green;&quot;&gt;段落
+&lt;span style=&quot;font-size:150%; vertical-align:bottom;&quot;&gt;bottom&lt;/span&gt;&lt;/p&gt;</pre>
+<div class="example">
+<p style="border:2px solid blue;">段落<span style="font-size:150%; vertical-align:top;">top</span></p>
+<p style="border:2px solid red;">段落<span style="font-size:150%; vertical-align:middle;">middle</span></p>
+<p style="border:2px solid green;">段落<span style="font-size:150%; vertical-align:bottom;">bottom</span></p>
+</div>
+<p>文字列「段落」の縦方向の位置は、topの場合に最も上方、bottomの場合に最も下方にあるはずです。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b140_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b140_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
+</div>
+
+<h3>修正状況</h3>
+<p>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ140</div>
+</body>
+</html>

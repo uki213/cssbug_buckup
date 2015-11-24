@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<link rev="made" href="mailto:cssbug@lycos.jp">
+<title>Opera CSSバグリスト</title>
+<style type="text/css">
+<!--
+span {
+	font-size: 100%;
+}
+-->
+</style>
+</head>
+<body>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ009</div>
+
+<h2>font-size:100%; が継承されると文字サイズが小さくなる<em>(6.0)</em></h2>
+
+<h3>症状</h3>
+<p><code>font-size: 100%;</code> という指定が子孫要素に継承されると、文字サイズが小さくなる。</p>
+
+<h3>例示</h3>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+span {
+  font-size: 100%;
+}
+&lt;/style&gt;
+
+&lt;p&gt;月&lt;span&gt;火&lt;span&gt;水&lt;span&gt;木&lt;/span&gt;金&lt;/span&gt;土&lt;/span&gt;日&lt;/p&gt;</pre>
+<div class="example">
+<p>月<span>火<span>水<span>木</span>金</span>土</span>日</p>
+</div>
+<p>文字サイズ100%を継承させています。</p>
+
+<h3>スクリーンショット</h3>
+<div class="shot">
+<p><img src="img/b009_1.png" alt="WinIE6" width="168" height="73">WinIE6.0での表示</p>
+<p><img src="img/b009_2.png" alt="Op6" width="154" height="72">Opera6.05での表示</p>
+</div>
+
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ009</div>
+</body>
+</html>

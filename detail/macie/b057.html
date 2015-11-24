@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
+</head>
+<body>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ057</div>
+
+<h2>固定レイアウト表で列幅の合計は表要素の幅の指定値を超えられない</h2>
+
+<h3>症状</h3>
+<p>固定レイアウト表（<code>table-layout:fixed;</code>）では列幅の指定値の合計が表要素の幅の指定値より大きい場合でも、表全体の幅は表要素のwidthプロパティの値が適用されてしまう。</p>
+
+<h3>例示</h3>
+<pre>&lt;table border=&quot;2&quot; style=&quot;table-layout:fixed; width:200px;&quot;&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width:200px;&quot;&gt;200px&lt;/td&gt;
+&lt;td style=&quot;width:100px;&quot;&gt;100px&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table border=&quot;2&quot; style=&quot;table-layout:fixed; width:200px;&quot;&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width:100%;&quot;&gt;100%&lt;/td&gt;
+&lt;td style=&quot;width:50%;&quot;&gt;50%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+<div class="example">
+<table border="2" style="table-layout:fixed; width:200px;">
+<tr>
+<td style="width:200px;">200px</td>
+<td style="width:100px;">100px</td>
+</tr>
+</table>
+<table border="2" style="table-layout:fixed; width:200px;">
+<tr>
+<td style="width:100%;">100%</td>
+<td style="width:50%;">50%</td>
+</tr>
+</table>
+</div>
+<p>どちらの表も1列目の幅が200px、2列目の幅が100pxになるはずですが、MacIEではどちらの表も全体の幅が200pxになるそうです。</p>
+
+<h3>報告書き込み</h3>
+<blockquote>table {<br>
+width: 300px;<br>
+table-layout: fixed;<br>
+}<br>
+td {<br>
+background: red;<br>
+}<br>
+<br>
+&lt;table&gt;<br>
+&lt;col style=&quot;width: 420px&quot;&gt;&lt;col style=&quot;width: 180px&quot;&gt;<br>
+&lt;tr&gt;&lt;td&gt;x&lt;/td&gt;&lt;td&gt;y&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;/table&gt;<br>
+<br>
+&lt;table&gt;<br>
+&lt;col style=&quot;width: 140%&quot;&gt;&lt;col style=&quot;width: 60%&quot;&gt;<br>
+&lt;tr&gt;&lt;td&gt;x&lt;/td&gt;&lt;td&gt;y&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;/table&gt;<br>
+<br>
+&lt;table&gt;<br>
+&lt;col style=&quot;width: 70%&quot;&gt;&lt;col style=&quot;width: 30%&quot;&gt;<br>
+&lt;tr&gt;&lt;td&gt;x&lt;/td&gt;&lt;td&gt;y&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;/table&gt;</blockquote>
+
+<blockquote>【MacIE5】<br>
+列幅合計が表のwidthを超える場合に、列が指定幅にならない。<br>
+<br>
+&gt;&gt;36 のソースを表示すると、全て300px幅の表になって<br>
+しまいます。列幅合計が表のwidthより大きくても、表の<br>
+widthの方が優先されるようです。</blockquote>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ057</div>
+</body>
+</html>
