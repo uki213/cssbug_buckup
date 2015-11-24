@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../macie.html" title="MacIE�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (MacOS) CSS�o�O���X�g</title>
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
 <script type="text/javascript">
 <!--
 function vis(id) {
@@ -32,15 +32,15 @@ a#a1:hover {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (MacOS) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O024</div>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ024</div>
 
-<h2>��Δz�u�v�f���ŋ[���N���X�ւ̎w����e�����������f����Ȃ�<em>(IE4.5)</em></h2>
+<h2>絶対配置要素内で擬似クラスへの指定内容が正しく反映されない<em>(IE4.5)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>��Δz�u���ꂽ�v�f���ŁA�[���N���X�Ɏw�肳�ꂽ�X�^�C���̈ꕔ�����f����Ȃ����Ƃ�����B</p>
+<h3>症状</h3>
+<p>絶対配置された要素内で、擬似クラスに指定されたスタイルの一部が反映されないことがある。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;script type=&quot;text/javascript&quot;&gt;
 function vis(id) {
   document.getElementById(id).style.visibility = 'visible';
@@ -61,56 +61,56 @@ a#a1:hover {
 &lt;/style&gt;
 
 &lt;div style=&quot;position:relative;&quot;&gt;
-&lt;span onmouseover=&quot;vis('l1')&quot;&gt;�����N&lt;/span&gt;
+&lt;span onmouseover=&quot;vis('l1')&quot;&gt;リンク&lt;/span&gt;
 &lt;div id=&quot;l1&quot; onmouseout=&quot;hid('l1')&quot;
     style=&quot;position:absolute; left:4em; top:0; visibility:hidden;&quot;&gt;
-&lt;a href=&quot;../macie.html&quot; id=&quot;a1&quot;&gt;MacIE�ڎ�&lt;/a&gt;
+&lt;a href=&quot;../macie.html&quot; id=&quot;a1&quot;&gt;MacIE目次&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;</pre>
 <div class="example">
 <div style="position:relative;">
-<span onmouseover="vis('l1')">�����N</span>
+<span onmouseover="vis('l1')">リンク</span>
 <div id="l1" onmouseout="hid('l1')" style="position:absolute; left:4em; top:0; visibility:hidden;">
-<a href="../macie.html" id="a1">MacIE�ڎ�</a>
+<a href="../macie.html" id="a1">MacIE目次</a>
 </div>
 </div>
 </div>
-<p>�u�����N�v�̕����Ƀ}�E�X�|�C���^���悹��ƁA������̉E���ɁA�O�i���ΐF�ŉ��������Ȃ��̃����N���\������܂��B���̃����N�Ƀ}�E�X�|�C���^���悹��ƁA�O�i�����F�ɕύX���ꉺ���������t������܂��B�����N����}�E�X�|�C���^�𗣂��ƁA�����N�����񂪏����܂��Bstyle�v�f�ł̎w��ǂ���ɕ\������邱�Ƃ��m�F���Ă��������B</p>
-<p>��Win���IE6.0�AMoz1.0.1�AOpera6.05�œ�����m�F���܂����B</p>
+<p>「リンク」の文字にマウスポインタを乗せると、文字列の右側に、前景が青緑色で下線装飾なしのリンクが表示されます。そのリンクにマウスポインタを乗せると、前景が紺色に変更され下線装飾が付加されます。リンクからマウスポインタを離すと、リンク文字列が消えます。style要素での指定どおりに表示されることを確認してください。</p>
+<p>※Win上のIE6.0、Moz1.0.1、Opera6.05で動作を確認しました。</p>
 
-<h3>�X�N���[���V���b�g</h3>
-<p>�ォ��A�}�E�X�|�C���^���悹�Ă��Ȃ��Ƃ��A�u�����N�v�Ƀ}�E�X�|�C���^���悹���Ƃ��A�A���J�[�Ƀ}�E�X�|�C���^���悹���Ƃ��̏�Ԃł��B</p>
+<h3>スクリーンショット</h3>
+<p>上から、マウスポインタを乗せていないとき、「リンク」にマウスポインタを乗せたとき、アンカーにマウスポインタを乗せたときの状態です。</p>
 <div class="shot">
-<p><img src="img/b024_1.png" alt="WinIE6" width="162" height="113">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b024_1.png" alt="WinIE6" width="162" height="113">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�i<code>position:absolute;</code> ��ݒ肵���jdiv�v�f���O���Ɛ���ɓ��삷�邱�Ƃ���A�e�v�f����Δz�u����Ă��邱�Ƃ��o�O�̌����̂悤�ł��B</p>
+<h3>補足</h3>
+<p>（<code>position:absolute;</code> を設定した）div要素を外すと正常に動作することから、親要素が絶対配置されていることがバグの原因のようです。</p>
 
-<h3>�C����</h3>
-<p>MacIE4.5�ŕs�����������͗l�B</p>
+<h3>修正状況</h3>
+<p>MacIE4.5で不具合が発生する模様。</p>
 
-<h3>�񍐏�������</h3>
-<blockquote>Mac IE4.5��<br>
+<h3>報告書き込み</h3>
+<blockquote>Mac IE4.5で<br>
 &lt;div id=&quot;test&quot; style=&quot;position:absolute; visibility:hidden; left:213px; top:281px; z-index:1&quot;&gt;<br>
 &lt;table width=&quot;200&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#6699CC&quot;&gt;<br>
 &lt;tr&gt;<br>
 &lt;td&gt;<br>
-&lt;a href=&quot;#&quot; onMouseOver=&quot;Swap('1','hoge');showLAYER('test')&quot; onMouseOut=&quot;Swap('0','hoge');hydeLAYER('test')&quot;&gt;�����N&lt;/a&gt;<br>
+&lt;a href=&quot;#&quot; onMouseOver=&quot;Swap('1','hoge');showLAYER('test')&quot; onMouseOut=&quot;Swap('0','hoge');hydeLAYER('test')&quot;&gt;リンク&lt;/a&gt;<br>
 &lt;/td&gt;<br>
 &lt;/tr&gt;<br>
 &lt;/table&gt;<br>
 &lt;/div&gt;<br>
-�Ƃ����Ƃ���A<br>
-�O���t�@�C���Ŏw�肵�Ă���<br>
+としたところ、<br>
+外部ファイルで指定している<br>
 A:link{font-size:10px;color:#FFFFFF}<br>
 A:visited{font-size:10px;color:#CC0000}<br>
 A:hover{font-size:10px;color:#FF3300;text-decoration:underline}<br>
-�������܂���B<br>
-�ǂ������Ȃ����Ƃ����ƁA�}�E�X�𓖂Ă����̐F���ς��܂���B�A���_�[���C���͌����܂����A<br>
-�}�E�X�𗣂��Ă������������Ȃ��A�Ƃ������́B<br>
-table����div����O�����琳��ɓ��삵�܂������A�O�����ɓ��삷����@�͂Ȃ����̂ł��傤���A�A�B</blockquote>
+が効きません。<br>
+どう効かないかというと、マウスを当てた時の色が変わりません。アンダーラインは効きますが、<br>
+マウスを離しても下線が消えない、というもの。<br>
+tableごとdivから外したら正常に動作しましたが、外さずに動作する方法はないものでしょうか、、。</blockquote>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O024</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ024</div>
 </body>
 </html>

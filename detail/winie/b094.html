@@ -2,23 +2,23 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O094</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ094</div>
 
-<h2>�u#�v�������Z���N�^�Ƃ��Ďw�肷��ƑS�̃Z���N�^�̂悤�Ɉ�����</h2>
+<h2>「#」だけをセレクタとして指定すると全称セレクタのように扱われる</h2>
 
-<h3>�Ǐ�</h3>
-<p>��ӃZ���N�^�̎��ʎq�u<code>#</code>�v�ƃu���b�N�J�n���������ʁu<code>{</code>�v���󔒂Ȃ��ő����ċL�q�����u���b�N�́A�{���͖�������Ȃ���΂Ȃ�Ȃ����AWinIE�̓u���b�N���̃X�^�C���錾��S�Ă̗v�f�ɔ��f����B</p>
+<h3>症状</h3>
+<p>一意セレクタの識別子「<code>#</code>」とブロック開始を示す括弧「<code>{</code>」を空白なしで続けて記述したブロックは、本来は無視されなければならないが、WinIEはブロック内のスタイル宣言を全ての要素に反映する。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 #{
   position: absolute;
@@ -26,17 +26,17 @@
   top: 0.5em;
 }
 &lt;/style&gt;</pre>
-<p><a href="b094a.html">���؃y�[�W</a>�ɏ�L��style�v�f��u���Ă��܂��B</p>
+<p><a href="b094a.html">検証ページ</a>に上記のstyle要素を置いています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b094_1.png" alt="Moz1.0.2" width="177" height="126">Moz1.0.2�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b094_2.png" alt="WinIE6" width="231" height="64">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b094_1.png" alt="Moz1.0.2" width="177" height="126">Moz1.0.2での表示（標準モード）</p>
+<p><img src="img/b094_2.png" alt="WinIE6" width="231" height="64">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�̗����ŕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードの両方で不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O094</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ094</div>
 </body>
 </html>

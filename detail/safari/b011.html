@@ -2,48 +2,48 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../safari.html" title="Safari�ڎ�">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<title>Safari (KHTML) CSSバグリスト</title>
 </head>
 <body>
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O011</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ011</div>
 
-<h2>�ꕔ�̃t�H���g�Ń{�[���h�\�����ł��Ȃ�<em>(S1.0)</em></h2>
+<h2>一部のフォントでボールド表示ができない<em>(S1.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>font-weight�v���p�e�B�Ń{�[���h�\����������w����s���Ă��A���{�ꕶ���̓{�[���h�ɂȂ炸�ɒʏ펞�Ɠ��������ŕ\������Ă��܂��B�������A�W���t�H���g�̎w�莟��Ń{�[���h�ɂȂ�ꍇ������B</p>
+<h3>症状</h3>
+<p>font-weightプロパティでボールド表示をさせる指定を行っても、日本語文字はボールドにならずに通常時と同じ太さで表示されてしまう。ただし、標準フォントの指定次第でボールドになる場合もある。</p>
 
-<h3>�Ꭶ</h3>
-<pre>&lt;p style=&quot;font-weight:bold;&quot;&gt;ABCDE���{��&lt;/p&gt;</pre>
+<h3>例示</h3>
+<pre>&lt;p style=&quot;font-weight:bold;&quot;&gt;ABCDE日本語&lt;/p&gt;</pre>
 <div class="example">
-<p style="font-weight:bold;">ABCDE���{��</p>
+<p style="font-weight:bold;">ABCDE日本語</p>
 </div>
-<p>1�o�C�g�p���̕����̓{�[���h�ŕ\������邪���{��̕����̓{�[���h�\���ɂȂ�Ȃ������ł��B</p>
+<p>1バイト英字の部分はボールドで表示されるが日本語の部分はボールド表示にならないそうです。</p>
 
-<h3>�⑫</h3>
-<p>Safari�̊��ݒ�ŕW���t�H���g�����ɂ��Ă��邩�ɂ���Č��ʂ��قȂ�悤�ł��B</p>
+<h3>補足</h3>
+<p>Safariの環境設定で標準フォントを何にしているかによって結果が異なるようです。</p>
 <ul>
-<li>���{��̕������{�[���h�ɂȂ�Ȃ��t�H���g�̗�
+<li>日本語の部分がボールドにならないフォントの例
 <ul>
-<li>Times�iSafari�̏����ݒ�j</li>
+<li>Times（Safariの初期設定）</li>
 <li>Osaka</li>
-<li>���SB101�i�����T��NewCID�j</li>
+<li>太ゴB101（モリサワNewCID）</li>
 </ul></li>
-<li>���{��̕������{�[���h�ɂȂ�t�H���g�̗�
+<li>日本語の部分がボールドになるフォントの例
 <ul>
-<li>�q���M�m�t�H���g</li>
-<li>�V�S�i�����T��NewCID�j</li>
-<li>���˃t�H���g</li>
+<li>ヒラギノフォント</li>
+<li>新ゴ（モリサワNewCID）</li>
+<li>小塚フォント</li>
 </ul></li>
 </ul>
 
-<h3>�C����</h3>
-<p>Safari1.0�ł��̌��ۂ��������邻���ł��B</p>
+<h3>修正状況</h3>
+<p>Safari1.0でこの現象が発生するそうです。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O011</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ011</div>
 </body>
 </html>

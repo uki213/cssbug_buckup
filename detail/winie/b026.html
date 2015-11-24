@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 p.a, p+em {
@@ -17,15 +17,15 @@ p.a, p+em {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O026</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ026</div>
 
-<h2>���Ή��̃Z���N�^���܂܂��錾�u���b�N�S�̂𖳎�����<em>(IE6)</em></h2>
+<h2>未対応のセレクタが含まれる宣言ブロック全体を無視する<em>(IE6)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�J���}��؂�ŃZ���N�^�𕡐��w�肷��Ƃ��A���̒��ɖ��Ή��̃Z���N�^���܂܂��ꍇ�̓u���b�N�S�̂����������B�Ή����Ă���Z���N�^����������B</p>
+<h3>症状</h3>
+<p>カンマ区切りでセレクタを複数指定するとき、その中に未対応のセレクタが含まれる場合はブロック全体が無視される。対応しているセレクタも無視する。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 p.a, p+em {
     color: blue;
@@ -35,17 +35,17 @@ p.a, p+em {
 <div class="example">
 <p class="a">AAA</p>
 </div>
-<p>WinIE�͗אڃZ���N�^�i+�j�ɂ͑Ή����Ă��܂���B</p>
+<p>WinIEは隣接セレクタ（+）には対応していません。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b026_1.png" alt="Moz1.0" width="102" height="65">Moz1.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b026_2.png" alt="WinIE6" width="108" height="77">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b026_1.png" alt="Moz1.0" width="102" height="65">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b026_2.png" alt="WinIE6" width="108" height="77">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>WinIE�͌����ɂ�CSS1�T�|�[�gUA�ł��B�܂��A�אڃZ���N�^��CSS1�ł͒�`����Ă��܂���B�]����CSS1�Ƃ��ẮA�s���ȃZ���N�^���܂ރu���b�N�𖳎�����̂͑Ó��ȐU�镑���ł��B</p>
+<h3>補足</h3>
+<p>WinIEは公式にはCSS1サポートUAです。また、隣接セレクタはCSS1では定義されていません。従ってCSS1としては、不正なセレクタを含むブロックを無視するのは妥当な振る舞いです。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O026</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ026</div>
 </body>
 </html>

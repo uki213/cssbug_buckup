@@ -1,27 +1,27 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O133</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ133</div>
 
-<h2>�A���J�[��:hover��Ԃɂ����iframe�v�f�̃T�C�Y���ω�����<em>(5.5/6.0)</em></h2>
+<h2>アンカーを:hover状態にするとiframe要素のサイズが変化する<em>(5.5/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�A���J�[��:hover�[���N���X�̏�ԂɂȂ����Ƃ��A�T�C�Y��%�P�ʂ̒l�Ŏw�肵��iframe�v�f�̃T�C�Y���ω����邱�Ƃ�����B</p>
+<h3>症状</h3>
+<p>アンカーが:hover擬似クラスの状態になったとき、サイズを%単位の値で指定したiframe要素のサイズが変化することがある。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;table border=&quot;2&quot;&gt;
 &lt;tr&gt;
 &lt;td&gt;
-&lt;p&gt;&lt;a href=&quot;../winie.html&quot;&gt;WinIE�ڎ�&lt;/a&gt;&lt;/p&gt;
-�c�c
+&lt;p&gt;&lt;a href=&quot;../winie.html&quot;&gt;WinIE目次&lt;/a&gt;&lt;/p&gt;
+……
 &lt;/td&gt;
 &lt;td&gt;
 &lt;iframe src=&quot;b132.html&quot; style=&quot;width:300px; height:100%;&quot;&gt;
@@ -33,12 +33,12 @@ iframe&lt;/iframe&gt;
 <table border="2">
 <tr>
 <td>
-<p><a href="../winie.html">WinIE�ڎ�</a></p>
-<p><a href="../winie.html">WinIE�ڎ�</a></p>
-<p><a href="../winie.html">WinIE�ڎ�</a></p>
-<p><a href="../winie.html">WinIE�ڎ�</a></p>
-<p><a href="../winie.html">WinIE�ڎ�</a></p>
-<p><a href="../winie.html">WinIE�ڎ�</a></p>
+<p><a href="../winie.html">WinIE目次</a></p>
+<p><a href="../winie.html">WinIE目次</a></p>
+<p><a href="../winie.html">WinIE目次</a></p>
+<p><a href="../winie.html">WinIE目次</a></p>
+<p><a href="../winie.html">WinIE目次</a></p>
+<p><a href="../winie.html">WinIE目次</a></p>
 </td>
 <td>
 <iframe src="b132.html" style="width:300px; height:100%;">iframe</iframe>
@@ -46,20 +46,20 @@ iframe&lt;/iframe&gt;
 </tr>
 </table>
 </div>
-<p>1��ڂ̃Z���ɂ���A���J�[�Ƀ}�E�X�|�C���^�Ȃǂ��悹�Ă��������B</p>
+<p>1列目のセルにあるアンカーにマウスポインタなどを乗せてください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b133_1.png" alt="Ns7.1">Netscape7.1�W�����[�h</p>
-<p><img src="img/b133_2.png" alt="WinIE6.0">WinIE6.0�W�����[�h</p>
+<p><img src="img/b133_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b133_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
 </div>
 
-<h3>�⑫</h3>
-<p>iframe�v�f�̃T�C�Y��px��em�Ȃǂ̒P�ʂŎw�肵���ꍇ�A���̕s��͔������܂���B</p>
+<h3>補足</h3>
+<p>iframe要素のサイズをpxやemなどの単位で指定した場合、この不具合は発生しません。</p>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ŕs��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0で不具合の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O133</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ133</div>
 </body>
 </html>

@@ -2,36 +2,36 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O048</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ048</div>
 
-<h2>em�P�ʂŎw�肵���l�������T�C�Y�ύX��ɐ��������f����Ȃ�<em>(IE6)</em></h2>
-<p>2003-10-01�C���B�⑫��ǉ��B</p>
+<h2>em単位で指定した値が文字サイズ変更後に正しく反映されない<em>(IE6)</em></h2>
+<p>2003-10-01修正。補足を追加。</p>
 
-<h3>�Ǐ�</h3>
-<p>���j���[�́m�\���������̃T�C�Y�n�ŕ����T�C�Y��ύX����ƁA�ύX���em�P�ʂŎw�肳�ꂽ�}�[�W���Ȃǂ��ύX��̕��������𐳂������f���Ă��Ȃ��B</p>
+<h3>症状</h3>
+<p>メニューの［表示→文字のサイズ］で文字サイズを変更すると、変更後にem単位で指定されたマージンなどが変更後の文字高さを正しく反映していない。</p>
 
-<h3>�Ꭶ</h3>
-<p><a href="b048a.html">������̃y�[�W</a>�ɗႪ����܂��B</p>
+<h3>例示</h3>
+<p><a href="b048a.html">こちらのページ</a>に例があります。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b048_1.png" alt="Moz1.0-100��" width="175" height="153">Moz1.0�ŕ����T�C�Y100���ł̕\��</p>
-<p><img src="img/b048_2.png" alt="Moz1.0-75��" width="122" height="109">Moz1.0�ŕ����T�C�Y75���ł̕\��</p>
-<p><img src="img/b048_3.png" alt="WinIE6.0-��" width="168" height="137">WinIE6.0�ŕ����T�C�Y�u���v�ł̕\��</p>
-<p><img src="img/b048_4.png" alt="WinIE6.0-�ŏ�" width="86" height="80">WinIE6.0�ŕ����T�C�Y�u�ŏ��v�ł̕\��</p>
+<p><img src="img/b048_1.png" alt="Moz1.0-100％" width="175" height="153">Moz1.0で文字サイズ100％での表示</p>
+<p><img src="img/b048_2.png" alt="Moz1.0-75％" width="122" height="109">Moz1.0で文字サイズ75％での表示</p>
+<p><img src="img/b048_3.png" alt="WinIE6.0-中" width="168" height="137">WinIE6.0で文字サイズ「中」での表示</p>
+<p><img src="img/b048_4.png" alt="WinIE6.0-最小" width="86" height="80">WinIE6.0で文字サイズ「最小」での表示</p>
 </div>
 
-<h3>�⑫</h3>
-<p><ins datetime="2003-10-01T00:00:00+09:00">font-size�v���p�e�B��em�P�ʂ�ex�P�ʂŎw�肵���v�f���l�X�g��Ԃɂ���Ƃ��A�����T�C�Y��ύX����ƕ����̑傫�����΂�΂�ɂȂ邱�Ƃ�����܂��B�Ⴆ�Έȉ��̗�ł͕����T�C�Y���u���v�ȊO�̏ꍇ�A4�̕����̃t�H���g�T�C�Y�����ׂĈقȂ�܂��B</ins></p>
+<h3>補足</h3>
+<p><ins datetime="2003-10-01T00:00:00+09:00">font-sizeプロパティをem単位やex単位で指定した要素がネスト状態にあるとき、文字サイズを変更すると文字の大きさがばらばらになることがあります。例えば以下の例では文字サイズが「中」以外の場合、4つの文字のフォントサイズがすべて異なります。</ins></p>
 <pre>&lt;p&gt;A
 &lt;span style=&quot;font-size:1em;&quot;&gt;B
 &lt;span style=&quot;font-size:1em;&quot;&gt;C
@@ -40,12 +40,12 @@
 <div class="example">
 <p>A<span style="font-size:1em;">B<span style="font-size:1em;">C<span style="font-size:1em;">D</span></span></span></p>
 </div>
-<p><ins datetime="2003-10-01T00:00:00+09:00">�����T�C�Y���u���v�̏ꍇ�̃t�H���g�T�C�Y�� A=B=C=D �ł����A�u��v��u�ő�v�ł̃t�H���g�T�C�Y�� A&lt;B&lt;C&lt;D �ɁA�u���v��u�ŏ��v�ł� A&gt;B&gt;C&gt;D �ɂȂ��Ă��܂��܂��B</ins></p>
-<p><ins datetime="2003-10-01T00:00:00+09:00">�Ȃ��A�c��v�f��font-size�v���p�e�B��%�l���ΒP�ʂ̒l�Ŏw�肷�邱�Ƃŕs�������ł��܂��B</ins></p>
+<p><ins datetime="2003-10-01T00:00:00+09:00">文字サイズが「中」の場合のフォントサイズは A=B=C=D ですが、「大」や「最大」でのフォントサイズは A&lt;B&lt;C&lt;D に、「小」や「最小」では A&gt;B&gt;C&gt;D になってしまいます。</ins></p>
+<p><ins datetime="2003-10-01T00:00:00+09:00">なお、祖先要素でfont-sizeプロパティを%値や絶対単位の値で指定することで不具合を回避できます。</ins></p>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O048</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ048</div>
 </body>
 </html>

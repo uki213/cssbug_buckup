@@ -2,133 +2,133 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../index.html" title="�g�b�v�y�[�W">
-<title>Opera CSS�o�O���X�g</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../index.html" title="トップページ">
+<title>Opera CSSバグリスト</title>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../index.html">�g�b�v�y�[�W</a>�^Opera�ڎ�</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../index.html">トップページ</a>／Opera目次</div>
 
-<p>�����ɂ�Windows��Opera6.0�ȍ~�iOpera�j��CSS/DOM�����̃o�O�ꗗ������܂��B�ȉ��̃��X�g���炻�ꂼ��̃o�O�̏ڍׂ����邱�Ƃ��ł��܂��B</p>
+<p>ここにはWindows版Opera6.0以降（Opera）のCSS/DOM実装のバグ一覧があります。以下のリストからそれぞれのバグの詳細を見ることができます。</p>
 
-<h2>Opera��CSS����</h2>
-<p>Opear6��DOCTYPE�X�C�b�`�͂Ȃ��A�P��̃��[���i�W�����[�h�����j�ɏ]����CSS�̉�́E�`�悪�s���܂��B</p>
-<p>Opera7.0�ȍ~�ɁuDOCTYPE�X�C�b�`�v����������Ă��܂��BDOCTYPE�錾�ɂ��AW3C�����肵��CSS�d�l�ɏ]���u�W�����[�h�v���A�ߋ���UA��������Ă���CSS�d�l�ɏ]���u�݊����[�h�v�ŉ�́E�`�悪�s���܂��B</p>
+<h2>OperaのCSS実装</h2>
+<p>Opear6にDOCTYPEスイッチはなく、単一のルール（標準モード相当）に従ってCSSの解析・描画が行われます。</p>
+<p>Opera7.0以降に「DOCTYPEスイッチ」が実装されています。DOCTYPE宣言により、W3Cが策定したCSS仕様に従う「標準モード」か、過去のUA実装されていたCSS仕様に従う「互換モード」で解析・描画が行われます。</p>
 <ul>
-<li>DOCTYPE�錾�Ȃ��F�@�݊����[�h</li>
-<li>HTML3.2�ȑO�F�@�݊����[�h</li>
-<li>HTML4 Transtional/Frameset�i�V�X�e�����ʎq�Ȃ��j�F�@�݊����[�h</li>
-<li>HTML4 Transtional/Frameset�i�V�X�e�����ʎq����j�F�@�W�����[�h</li>
-<li>HTML4 Strict�F�@�W�����[�h</li>
-<li>XHTML�iXML�錾����AMIME type�� text/html�j�F�@�݊����[�h</li>
-<li>XHTML�iXML�錾����AMIME type�� application/xhtml+xml�j�F�@�W�����[�h</li>
-<li>XHTML�iXML�錾�Ȃ��j�F�@�W�����[�h</li>
-<li>���m��DOCTYPE�錾�F�@�W�����[�h</li>
+<li>DOCTYPE宣言なし：　互換モード</li>
+<li>HTML3.2以前：　互換モード</li>
+<li>HTML4 Transtional/Frameset（システム識別子なし）：　互換モード</li>
+<li>HTML4 Transtional/Frameset（システム識別子あり）：　標準モード</li>
+<li>HTML4 Strict：　標準モード</li>
+<li>XHTML（XML宣言あり、MIME typeが text/html）：　互換モード</li>
+<li>XHTML（XML宣言あり、MIME typeが application/xhtml+xml）：　標準モード</li>
+<li>XHTML（XML宣言なし）：　標準モード</li>
+<li>未知のDOCTYPE宣言：　標準モード</li>
 </ul>
 
-<h2>�o�O���X�g</h2>
+<h2>バグリスト</h2>
 
-<h3>�m�F�ς݃o�O</h3>
+<h3>確認済みバグ</h3>
 <ul>
-<li>[2-219]<a href="opera/b001.html">�O���X�^�C���V�[�g����2�o�C�g���������߂��Ȃ�<em>(6.0/7.0)</em></a></li>
-<li>[2-219]<a href="opera/b002.html">�t�H���g�t�@�~���w���1�t�H���g�����F�����Ȃ�<em>(6.0/7.0)</em></a></li>
-<li>[2-219]<a href="opera/b003.html">text-indent�̎w��l�ɍ��}�[�W����p�f�B���O�̒l���ǉ������<em>(6.0)</em></a></li>
-<li>[2-228]<a href="opera/b005.html">left�v���p�e�B���w�肳�ꂽ�v�f�ł�right�v���p�e�B�����������<em>(6.0)</em></a></li>
-<li>[2-257]<a href="opera/b012.html">list-style-image:none; �𖳎�����<em>(6.0)</em></a></li>
-<li>[2-300][3-357][3-546]<a href="opera/b006.html">overflow�v���p�e�B�ւ̑Ή����s���S<em>(6.0/7.x)</em></a></li>
-<li>[2-301]<a href="opera/b007.html">�\�[�X���̉��s���󔒂Ƃ��ĕ\������Ȃ����Ƃ�����<em>(6.0)</em></a></li>
-<li>[2-302]<a href="opera/b013.html">��d�Ƀ��f�B�A���w�肳�ꂽ�X�^�C����F�����Ȃ�<em>(6.0)</em></a></li>
-<li>[2-316][2-430]<a href="opera/b008.html">�\�Z�����v�f�ւ̐܂�Ԃ��֎~�w�肪�Z�����̂ɍ�p����<em>(6.0)</em></a></li>
-<li>[2-319]<a href="opera/b009.html">font-size:100%; ���p�������ƕ����T�C�Y���������Ȃ�<em>(6.0)</em></a></li>
-<li>[2-321]<a href="opera/b015.html">�����w�肵���e�[�u���Z�����e�[�u���g����͂ݏo��</a></li>
-<li>[2-323]<a href="opera/b016.html">�s����@charset�̋L�q������X�^�C���V�[�g�̑S�̂����������<em>(6.0/7.0)</em></a></li>
-<li>[2-332]<a href="opera/b010.html">�[���Z���N�^���d�w�肵�Ă��n�߂̃Z���N�^�����F�����Ȃ�<em>(6.0)</em></a></li>
-<li>[2-494]<a href="opera/b017.html">�{�b�N�X�̃Z���^�����O���ɏ㉺�}�[�W�������������<em>(6.0)</em></a></li>
-<li>[2-527]<a href="opera/b018.html">background�v���p�e�B�ňʒu�̒l��2�w�肵�Ȃ��ƈʒu�w�肪���������<em>(6.0)</em></a></li>
-<li>[2-528]<a href="opera/b019.html">�����}�[�W����ݒ肵���v�f���̃����N���@�\���Ȃ����Ƃ�����<em>(6.0)</em></a></li>
-<li>[2-534]<a href="opera/b020.html">���Δz�u�����C�����C���v�f��z-index�v���p�e�B�������Ȃ�<em>(6.0)</em></a></li>
-<li>[2-576]<a href="opera/b023.html">border-color���ȗ��������̒l�����#000000�ɂȂ�<em>(6.0)</em></a></li>
-<li>[2-577]<a href="opera/b024.html">:link, :hover�ł̎w����e��:visited�̎w�肪�㏑�����Ȃ�<em>(6.0)</em></a></li>
-<li>[2-580]<a href="opera/b025.html">button�v�f�̔w�i�F��transparent�ɂ���Ə��#c0c0c0�ɂȂ�<em>(6.0)</em></a></li>
-<li>[2-580]<a href="opera/b026.html">���𖾎����Ă��Ȃ��t���[�g���܂�Ԃ���Ȃ�<em>(6.0)</em></a></li>
-<li>[2-589]<a href="opera/b027.html">���Δz�u�v�f��top�v���p�e�B��%�l��px�l�ň�����<em>(6.0)</em></a></li>
-<li>[2-673]<a href="opera/b028.html">�t���[�g����ɒ��O�̃t���[�g�̉��ӂ�艺�ɔz�u����Ă��܂�<em>(6.0)</em></a></li>
-<li>[2-673]<a href="opera/b029.html">�S�̃Z���N�^��font-size:inherit;���w�肷��ƃN���b�V������<em>(6.05)</em></a></li>
-<li>[2-722]<a href="opera/b030.html">�Œ肵���w�i�摜���X�N���[���ɂ���ď����Ă��܂�<em>(6.0)</em></a></li>
-<li>[2-722]<a href="opera/b031.html">body�ȊO�̗v�f�̔w�i�摜���{���̈�ɑ΂��ČŒ肳��Ȃ�<em>(6.0)</em></a></li>
-<li>[2-723]<a href="opera/b032.html">�[���v�f���܂ރZ���N�^���R���}��؂�ŕ����w�肷��Ɩ��������<em>(6.0)</em></a></li>
-<li>[2-737]<a href="opera/b033.html">class�����̑啶���E����������ʂ���Ȃ�<em>(6.0)</em></a></li>
-<li>[2-751]<a href="opera/b034.html">:first-letter�[���v�f�Ƀ}�[�W�����ݒu����Ȃ�<em>(7.0)</em></a></li>
-<li>[2-796]<a href="opera/b035.html">fieldset�v�f�̃{�[�_�[���ȗ��w��Ŗ����ɂ��邱�Ƃ��ł��Ȃ�<em>(7.0)</em></a></li>
-<li>[2-810]<a href="opera/b036.html">:first-letter�[���v�f�̔w�i��ݒ�ł��Ȃ�<em>(7.0)</em></a></li>
-<li>[2-821]<a href="opera/b037.html">���X�g�}�[�J�[�̃T�C�Y��li�v�f�̎q���u���b�N�v�f�̕����T�C�Y���p������<em>(7.0)</em></a></li>
-<li>[2-840]<a href="opera/b038.html">h4�v�f�ȊO�̌��o���v�f��font-size���Z�o����ۂɐe�v�f�̒l���Q�Ƃ��Ȃ�<em>(7.0)</em></a></li>
-<li>[2-854]<a href="opera/b039.html">�z�u���ꂽ�C�����C���v�f���q���v�f�̈ʒu�w����l������ۂɖ��������<em>(7.0)</em></a></li>
-<li>[2-856]<a href="opera/b040.html">�S�̃Z���N�^��box-sizing:border-box;��g�ݍ��킹��ƃ����N�̉������\������Ȃ�<em>(7.0)</em></a></li>
-<li>[2-857]<a href="opera/b041.html">�E�p�f�B���O��ݒ肵���v�f�̖�����br�v�f��u���ƃ��C�A�E�g�������<em>(7.0)</em></a></li>
-<li>[2-881]<a href="opera/b042.html">�e�[�u���Z������㉺�ɂ͂ݏo���������\������Ȃ�<em>(7.0)</em></a></li>
-<li>[2-903]<a href="opera/b043.html">�܂�Ԃ��ꂽ�t���[�g����ɃR���e�i�u���b�N�̍��[�Ɋ񂹂��Ă��܂�<em>(6.0)</em></a></li>
-<li>[2-903][3-11][3-400]<a href="opera/b044.html">��s����t���[�g�̏���Ɍ㑱�̃t���[�g���u�����<em>(7.0)</em></a></li>
-<li>[2-922]<a href="opera/b045.html">border-color�̊���l��transparent�l��CSS�d�l�ƈقȂ�F�ɂȂ�<em>(6.0/7.0)</em></a></li>
-<li>[2-944]<a href="opera/b046.html">�S�̃Z���N�^��display:none;���w�肷��ƃt���[�Y����<em>(7.0x)</em></a></li>
-<li>[3-29]<a href="opera/b047.html">�Œ肵�Ă��Ȃ��w�i�摜���X�N���[����ɗ���ĕ\�������<em>(7.0)</em></a></li>
-<li>[3-42]<a href="opera/b048.html">�w�i�Ɏw�肵���A�j���[�V����GIF�摜�ւ̑Ή����s���S<em>(6.0/7.0)</em></a></li>
-<li>[3-45]<a href="opera/b049.html">�{���̈�̃X�N���[���o�[�̃X�^�C����body�v�f�Ŏw�肵�Ȃ���΂Ȃ�Ȃ�<em>(7.0)</em></a></li>
-<li>[3-112]<a href="opera/b050.html">�摜���X�g�}�[�J�[�ƃO���t���X�g�}�[�J�[�ƂŔz�u�@���قȂ�<em>(7.0)</em></a></li>
-<li>[3-128]<a href="opera/b051.html">CDATA�^�����l�擪�̋󔒗ޕ����𖳎����Ȃ�<em>(6.0/7.0)</em></a></li>
-<li>[3-128]<a href="opera/b052.html">��Δz�u�^�Œ�z�u�^�t���[�g��Ԃ̃��X�g�A�C�e���v�f�̃��X�g�}�[�J�[��������<em>(6.0/7.0)</em></a></li>
-<li>[3-192]<a href="opera/b053.html">����q�֌W�̗v�f�Ԃŉ��}�[�W���̑��E���������s���Ȃ�<em>(7.0)</em></a></li>
-<li>[3-208]<a href="opera/b054.html">����title�����l���w�肵���O���X�^�C���V�[�g�̈ꕔ�����f����Ȃ�<em>(7.1)</em></a></li>
-<li>[3-219]<a href="opera/b055.html">�\������C�����C���e�[�u���������ɂ���ĕ\�������<em>(6.0)</em></a></li>
-<li>[3-219]<a href="opera/b056.html">�\���top�ȊO�ɒu���Ɛ������ʒu�ɕ\������Ȃ�<em>(6.0/7.0)</em></a></li>
-<li>[3-219]<a href="opera/b057.html">html�v�f�ɉ��p�f�B���O��ݒu�ł��Ȃ�<em>(7.0)</em></a></li>
-<li>[3-234]<a href="opera/b058.html">outside���X�g�}�[�J�[�Ɠ��e���̈ʒu�֌W���������Ȃ�<em>(6.0/7.0)</em></a></li>
-<li>[3-247]<a href="opera/b060.html">overflow�ŃX�N���[���o�[���o��Ƃ��̍����v�Z���������Ȃ�<em>(7.0)</em></a></li>
-<li>[3-268]<a href="opera/b062.html">fieldset�v�f�̏�p�f�B���O���{�[�_�[�̈�̊O���ɐݒu�����<em>(7.0)</em></a></li>
-<li>[3-308]<a href="opera/b063.html">CSS�ɂ��{�[�_�[�w�肪�Ȃ�collapse�{�[�_�[�̃e�[�u���ŃZ���g���\������Ȃ�<em>(7.0)</em></a></li>
-<li>[3-378]<a href="opera/b064.html">fieldset�v�f��float�v���p�e�B�������Ȃ�<em>(7.0)</em></a></li>
-<li>[3-395]<a href="opera/b065.html">�Z���̓��e���ɂ���ČŒ背�C�A�E�g���j�󂳂��<em>(6.0)</em></a></li>
-<li>[3-408]<a href="opera/b066.html">�C�����C���t���[����z-index�������Ȃ�<em>(6.0/7.0)</em></a></li>
-<li>[3-459]<a href="opera/b067.html">:hover�[���N���X��ԂɂȂ邱�ƂŃ}�[�W���̕����ω�����<em>(7.0)</em></a></li>
-<li>[3-477]<a href="opera/b068.html">�t���[�g�ƃt���[�g�Ɍ㑱����e�[�u���Ƃ��d�Ȃ�<em>(7.x)</em></a></li>
-<li>[3-528]<a href="opera/b069.html">rel=&quot;alternate stylesheet&quot; �łȂ���Α�փX�^�C���V�[�g�ɂȂ�Ȃ�<em>(7.x)</em></a></li>
-<li>[3-593]<a href="opera/b070.html">�{���̈�̃T�C�Y�������R���e�i�u���b�N�̃T�C�Y�Ƃ��Ĉ���<em>(7.x)</em></a></li>
-<li>[3-615]<a href="opera/b071.html">�C���|�[�g���̃X�^�C���V�[�g��F�����Ȃ����Ƃ�����<em>(7.2)</em></a></li>
-<li>[3-659]<a href="opera/b072.html">�e�[�u���s�v�f���w�i�֘A�v���p�e�B�𖳎�����<em>(6.0/7.x)</em></a></li>
-<li>[3-663]<a href="opera/b073.html">display:none;��Ԃ�textarea�v�f��value�v���p�e�B���擾�s�\<em>(6.0/7.x)</em></a></li>
-<li>[3-701]<a href="opera/b074.html">�񓽖��C�����C���v�f�݂̂��܂ރu���b�N�v�f��line-height�𖳎�<em>(7.x)</em></a></li>
-<li>[3-732]<a href="opera/b076.html">clear���w�肵���v�f�ł̓t���[�g�ɑ΂��ď�}�[�W����ݒu����<em>(6.0/7.x)</em></a></li>
-<li>[3-770][3-792]<a href="opera/b077.html">bottom:0;�ɔz�u�����{�b�N�X�̉������{���̈�̊O�ɂ͂ݏo��<em>(7.x)</em></a></li>
-<li>[3-787]<a href="opera/b079.html">body�v�f�̉��}�[�W���̈���ŌŒ�z�u�v�f���̃����N�������Ȃ�<em>(7.2)</em></a></li>
-<li>[3-820]<a href="opera/b080.html">border-box��bottom�̎Z�o���������Ȃ�<em>(7.x)</em></a></li>
-<li>[4-25]<a href="opera/b082.html">font-size��%�l�w��ŎZ�o�l���������Ȃ�<em>(6.0/7.x)</em></a></li>
-<li>[4-43][4-53][4-91]<a href="opera/b083.html">�Œ背�C�A�E�g�\�ŗ�̕����������Ȃ�<em>(6.0/7.x)</em></a></li>
-<li>[4-73]<a href="opera/b084.html">table�v�f�̏�}�[�W����caption�v�f�̏�ɐݒu�����<em>(7.x)</em></a></li>
-<li>[4-99]<a href="opera/b085.html">visibility:hidden;���w�肵���v�f��:hover�������Ȃ�<em>(6.0/7.x)</em></a></li>
-<li>[4-102]<a href="opera/b086.html">z-index�𕉂̐��ɂ��������N��I���ł��Ȃ�<em>(7.x)</em></a></li>
-<li>[4-103]<a href="opera/b087.html">���⍂�����w�肵���v�f�̎q���v�f�Ńf�t�H���g�w��̃}�[�W����������<em>(7.x)</em></a></li>
+<li>[2-219]<a href="opera/b001.html">外部スタイルシート中の2バイト文字を解釈しない<em>(6.0/7.0)</em></a></li>
+<li>[2-219]<a href="opera/b002.html">フォントファミリ指定で1フォントしか認識しない<em>(6.0/7.0)</em></a></li>
+<li>[2-219]<a href="opera/b003.html">text-indentの指定値に左マージンやパディングの値が追加される<em>(6.0)</em></a></li>
+<li>[2-228]<a href="opera/b005.html">leftプロパティが指定された要素ではrightプロパティが無視される<em>(6.0)</em></a></li>
+<li>[2-257]<a href="opera/b012.html">list-style-image:none; を無視する<em>(6.0)</em></a></li>
+<li>[2-300][3-357][3-546]<a href="opera/b006.html">overflowプロパティへの対応が不完全<em>(6.0/7.x)</em></a></li>
+<li>[2-301]<a href="opera/b007.html">ソース中の改行が空白として表示されないことがある<em>(6.0)</em></a></li>
+<li>[2-302]<a href="opera/b013.html">二重にメディアを指定されたスタイルを認識しない<em>(6.0)</em></a></li>
+<li>[2-316][2-430]<a href="opera/b008.html">表セル内要素への折り返し禁止指定がセル自体に作用する<em>(6.0)</em></a></li>
+<li>[2-319]<a href="opera/b009.html">font-size:100%; が継承されると文字サイズが小さくなる<em>(6.0)</em></a></li>
+<li>[2-321]<a href="opera/b015.html">幅を指定したテーブルセルがテーブル枠からはみ出る</a></li>
+<li>[2-323]<a href="opera/b016.html">不正な@charsetの記述があるスタイルシートの全体が無視される<em>(6.0/7.0)</em></a></li>
+<li>[2-332]<a href="opera/b010.html">擬似セレクタを二重指定しても始めのセレクタしか認識しない<em>(6.0)</em></a></li>
+<li>[2-494]<a href="opera/b017.html">ボックスのセンタリング時に上下マージンが無視される<em>(6.0)</em></a></li>
+<li>[2-527]<a href="opera/b018.html">backgroundプロパティで位置の値を2つ指定しないと位置指定が無視される<em>(6.0)</em></a></li>
+<li>[2-528]<a href="opera/b019.html">負数マージンを設定した要素内のリンクが機能しないことがある<em>(6.0)</em></a></li>
+<li>[2-534]<a href="opera/b020.html">相対配置したインライン要素にz-indexプロパティが効かない<em>(6.0)</em></a></li>
+<li>[2-576]<a href="opera/b023.html">border-colorを省略した時の値が常に#000000になる<em>(6.0)</em></a></li>
+<li>[2-577]<a href="opera/b024.html">:link, :hoverでの指定内容を:visitedの指定が上書きしない<em>(6.0)</em></a></li>
+<li>[2-580]<a href="opera/b025.html">button要素の背景色をtransparentにすると常に#c0c0c0になる<em>(6.0)</em></a></li>
+<li>[2-580]<a href="opera/b026.html">幅を明示していないフロートが折り返されない<em>(6.0)</em></a></li>
+<li>[2-589]<a href="opera/b027.html">相対配置要素のtopプロパティの%値がpx値で扱われる<em>(6.0)</em></a></li>
+<li>[2-673]<a href="opera/b028.html">フロートが常に直前のフロートの下辺より下に配置されてしまう<em>(6.0)</em></a></li>
+<li>[2-673]<a href="opera/b029.html">全称セレクタにfont-size:inherit;を指定するとクラッシュする<em>(6.05)</em></a></li>
+<li>[2-722]<a href="opera/b030.html">固定した背景画像がスクロールによって消えてしまう<em>(6.0)</em></a></li>
+<li>[2-722]<a href="opera/b031.html">body以外の要素の背景画像が閲覧領域に対して固定されない<em>(6.0)</em></a></li>
+<li>[2-723]<a href="opera/b032.html">擬似要素を含むセレクタをコンマ区切りで複数指定すると無視される<em>(6.0)</em></a></li>
+<li>[2-737]<a href="opera/b033.html">class属性の大文字・小文字が区別されない<em>(6.0)</em></a></li>
+<li>[2-751]<a href="opera/b034.html">:first-letter擬似要素にマージンが設置されない<em>(7.0)</em></a></li>
+<li>[2-796]<a href="opera/b035.html">fieldset要素のボーダーを省略指定で無しにすることができない<em>(7.0)</em></a></li>
+<li>[2-810]<a href="opera/b036.html">:first-letter擬似要素の背景を設定できない<em>(7.0)</em></a></li>
+<li>[2-821]<a href="opera/b037.html">リストマーカーのサイズがli要素の子孫ブロック要素の文字サイズを継承する<em>(7.0)</em></a></li>
+<li>[2-840]<a href="opera/b038.html">h4要素以外の見出し要素でfont-sizeを算出する際に親要素の値を参照しない<em>(7.0)</em></a></li>
+<li>[2-854]<a href="opera/b039.html">配置されたインライン要素が子孫要素の位置指定を考慮する際に無視される<em>(7.0)</em></a></li>
+<li>[2-856]<a href="opera/b040.html">全称セレクタとbox-sizing:border-box;を組み合わせるとリンクの下線が表示されない<em>(7.0)</em></a></li>
+<li>[2-857]<a href="opera/b041.html">右パディングを設定した要素の末尾にbr要素を置くとレイアウトが乱れる<em>(7.0)</em></a></li>
+<li>[2-881]<a href="opera/b042.html">テーブルセルから上下にはみ出す部分が表示されない<em>(7.0)</em></a></li>
+<li>[2-903]<a href="opera/b043.html">折り返されたフロートが常にコンテナブロックの左端に寄せられてしまう<em>(6.0)</em></a></li>
+<li>[2-903][3-11][3-400]<a href="opera/b044.html">先行するフロートの上方に後続のフロートが置かれる<em>(7.0)</em></a></li>
+<li>[2-922]<a href="opera/b045.html">border-colorの既定値とtransparent値がCSS仕様と異なる色になる<em>(6.0/7.0)</em></a></li>
+<li>[2-944]<a href="opera/b046.html">全称セレクタにdisplay:none;を指定するとフリーズする<em>(7.0x)</em></a></li>
+<li>[3-29]<a href="opera/b047.html">固定していない背景画像がスクロール後に乱れて表示される<em>(7.0)</em></a></li>
+<li>[3-42]<a href="opera/b048.html">背景に指定したアニメーションGIF画像への対応が不完全<em>(6.0/7.0)</em></a></li>
+<li>[3-45]<a href="opera/b049.html">閲覧領域のスクロールバーのスタイルをbody要素で指定しなければならない<em>(7.0)</em></a></li>
+<li>[3-112]<a href="opera/b050.html">画像リストマーカーとグリフリストマーカーとで配置法が異なる<em>(7.0)</em></a></li>
+<li>[3-128]<a href="opera/b051.html">CDATA型属性値先頭の空白類文字を無視しない<em>(6.0/7.0)</em></a></li>
+<li>[3-128]<a href="opera/b052.html">絶対配置／固定配置／フロート状態のリストアイテム要素のリストマーカーが消える<em>(6.0/7.0)</em></a></li>
+<li>[3-192]<a href="opera/b053.html">入れ子関係の要素間で下マージンの相殺が正しく行われない<em>(7.0)</em></a></li>
+<li>[3-208]<a href="opera/b054.html">同じtitle属性値を指定した外部スタイルシートの一部が反映されない<em>(7.1)</em></a></li>
+<li>[3-219]<a href="opera/b055.html">表題を持つインラインテーブルが下方にずれて表示される<em>(6.0)</em></a></li>
+<li>[3-219]<a href="opera/b056.html">表題をtop以外に置くと正しい位置に表示されない<em>(6.0/7.0)</em></a></li>
+<li>[3-219]<a href="opera/b057.html">html要素に下パディングを設置できない<em>(7.0)</em></a></li>
+<li>[3-234]<a href="opera/b058.html">outsideリストマーカーと内容物の位置関係が正しくない<em>(6.0/7.0)</em></a></li>
+<li>[3-247]<a href="opera/b060.html">overflowでスクロールバーが出るときの高さ計算が正しくない<em>(7.0)</em></a></li>
+<li>[3-268]<a href="opera/b062.html">fieldset要素の上パディングがボーダー領域の外側に設置される<em>(7.0)</em></a></li>
+<li>[3-308]<a href="opera/b063.html">CSSによるボーダー指定がないcollapseボーダーのテーブルでセル枠が表示されない<em>(7.0)</em></a></li>
+<li>[3-378]<a href="opera/b064.html">fieldset要素にfloatプロパティが効かない<em>(7.0)</em></a></li>
+<li>[3-395]<a href="opera/b065.html">セルの内容物によって固定レイアウトが破壊される<em>(6.0)</em></a></li>
+<li>[3-408]<a href="opera/b066.html">インラインフレームにz-indexが効かない<em>(6.0/7.0)</em></a></li>
+<li>[3-459]<a href="opera/b067.html">:hover擬似クラス状態になることでマージンの幅が変化する<em>(7.0)</em></a></li>
+<li>[3-477]<a href="opera/b068.html">フロートとフロートに後続するテーブルとが重なる<em>(7.x)</em></a></li>
+<li>[3-528]<a href="opera/b069.html">rel=&quot;alternate stylesheet&quot; でなければ代替スタイルシートにならない<em>(7.x)</em></a></li>
+<li>[3-593]<a href="opera/b070.html">閲覧領域のサイズを初期コンテナブロックのサイズとして扱う<em>(7.x)</em></a></li>
+<li>[3-615]<a href="opera/b071.html">インポート元のスタイルシートを認識しないことがある<em>(7.2)</em></a></li>
+<li>[3-659]<a href="opera/b072.html">テーブル行要素が背景関連プロパティを無視する<em>(6.0/7.x)</em></a></li>
+<li>[3-663]<a href="opera/b073.html">display:none;状態のtextarea要素のvalueプロパティを取得不能<em>(6.0/7.x)</em></a></li>
+<li>[3-701]<a href="opera/b074.html">非匿名インライン要素のみを含むブロック要素のline-heightを無視<em>(7.x)</em></a></li>
+<li>[3-732]<a href="opera/b076.html">clearを指定した要素ではフロートに対して上マージンを設置する<em>(6.0/7.x)</em></a></li>
+<li>[3-770][3-792]<a href="opera/b077.html">bottom:0;に配置したボックスの下部が閲覧領域の外にはみ出す<em>(7.x)</em></a></li>
+<li>[3-787]<a href="opera/b079.html">body要素の下マージン領域内で固定配置要素内のリンクが効かない<em>(7.2)</em></a></li>
+<li>[3-820]<a href="opera/b080.html">border-boxでbottomの算出が正しくない<em>(7.x)</em></a></li>
+<li>[4-25]<a href="opera/b082.html">font-sizeの%値指定で算出値が正しくない<em>(6.0/7.x)</em></a></li>
+<li>[4-43][4-53][4-91]<a href="opera/b083.html">固定レイアウト表で列の幅が小さくなる<em>(6.0/7.x)</em></a></li>
+<li>[4-73]<a href="opera/b084.html">table要素の上マージンがcaption要素の上に設置される<em>(7.x)</em></a></li>
+<li>[4-99]<a href="opera/b085.html">visibility:hidden;を指定した要素に:hoverが効かない<em>(6.0/7.x)</em></a></li>
+<li>[4-102]<a href="opera/b086.html">z-indexを負の数にしたリンクを選択できない<em>(7.x)</em></a></li>
+<li>[4-103]<a href="opera/b087.html">幅や高さを指定した要素の子孫要素でデフォルト指定のマージンが消える<em>(7.x)</em></a></li>
 </ul>
 
-<h3>���m�F�o�O</h3>
+<h3>未確認バグ</h3>
 <ul>
-<li>[2-357]<a href="opera/b011.html">�Œ�z�u�����v�f���ɂ��郊���N�������Ȃ�</a></li>
-<li>[3-265]<a href="opera/b061.html">�Œ�z�u�����v�f������y�[�W�Ńt���[�Y���邱�Ƃ�����<em>(7.0)</em></a></li>
-<li>[3-784]<a href="opera/b078.html">���̎Q�Ƃŕ\�L�����������������\������Ȃ�</a></li>
-<li>[3-826]<a href="opera/b081.html">DocumentFragment�I�u�W�F�N�g�ւ�appendChild�Ɏ��s����<em>(7.2)</em></a></li>
+<li>[2-357]<a href="opera/b011.html">固定配置した要素内にあるリンクが効かない</a></li>
+<li>[3-265]<a href="opera/b061.html">固定配置した要素があるページでフリーズすることがある<em>(7.0)</em></a></li>
+<li>[3-784]<a href="opera/b078.html">実体参照で表記した文字が正しく表示されない</a></li>
+<li>[3-826]<a href="opera/b081.html">DocumentFragmentオブジェクトへのappendChildに失敗する<em>(7.2)</em></a></li>
 </ul>
 
-<h3>�d�l�ʂ�̓���</h3>
+<h3>仕様通りの動作</h3>
 <ul>
-<li>[2-226]<a href="opera/b004.html">�������f�B�A���w�肳�ꂽ@import��F�����Ȃ�<em>(6.0)</em></a></li>
-<li>[2-311]<a href="opera/b014.html">�t���X�N���[�����[�h��screen���f�B�A�ł͂Ȃ�<em>(6.0/7.0)</em></a></li>
-<li>[2-534]<a href="opera/b021.html">position�v���p�e�B���X�N���v�g����ύX�ł��Ȃ�<em>(6.0)</em></a></li>
-<li>[2-536]<a href="opera/b022.html">�C�����C���v�f�ɔw�i�摜���w��ł��Ȃ�<em>(6.0)</em></a></li>
-<li>[3-238]<a href="opera/b059.html">body�v�f���̗͂]�����p�f�B���O�Őݒ肵�Ă���<em>(6.0/7.0)</em></a></li>
-<li>[3-714]<a href="opera/b075.html">���m�̗v�f����v�f�Ƃ��Ĉ���<em>(7.2)</em></a></li>
+<li>[2-226]<a href="opera/b004.html">複数メディアが指定された@importを認識しない<em>(6.0)</em></a></li>
+<li>[2-311]<a href="opera/b014.html">フルスクリーンモードがscreenメディアではない<em>(6.0/7.0)</em></a></li>
+<li>[2-534]<a href="opera/b021.html">positionプロパティをスクリプトから変更できない<em>(6.0)</em></a></li>
+<li>[2-536]<a href="opera/b022.html">インライン要素に背景画像を指定できない<em>(6.0)</em></a></li>
+<li>[3-238]<a href="opera/b059.html">body要素周囲の余白をパディングで設定している<em>(6.0/7.0)</em></a></li>
+<li>[3-714]<a href="opera/b075.html">未知の要素を空要素として扱う<em>(7.2)</em></a></li>
 </ul>
 
-<div class="navi"><a href="../index.html">�g�b�v�y�[�W</a>�^Opera�ڎ�</div>
+<div class="navi"><a href="../index.html">トップページ</a>／Opera目次</div>
 </body>
 </html>

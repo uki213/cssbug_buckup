@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 a:hover {
@@ -17,40 +17,40 @@ a:hover {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O126</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ126</div>
 
-<h2>:hover�̃X�^�C�������f�����Ɠ��߂���hr�v�f��������<em>(6.0)</em></h2>
+<h2>:hoverのスタイルが反映されると透過したhr要素が消える<em>(6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>:hover�[���N���X��background-color�v���p�e�B��ݒ肵�Ă���Ƃ��A:hover�[���N���X�̃X�^�C�����K�p���ꂽ�Ƃ���Alpha�t�B���^���w�肵��hr�v�f��������B</p>
+<h3>症状</h3>
+<p>:hover擬似クラスにbackground-colorプロパティを設定しているとき、:hover擬似クラスのスタイルが適用されたときにAlphaフィルタを指定したhr要素が消える。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 a:hover {
   background-color: aqua;
 }
 &lt;/style&gt;
-&lt;div&gt;&lt;a href=&quot;../winie.html&quot;&gt;WinIE�o�O&lt;/a&gt;
+&lt;div&gt;&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
 &lt;hr style=&quot;filter:alpha(opacity=25); height:10px; color:red;&quot;&gt;
 &lt;/div&gt;</pre>
 <div class="example">
-<div><a href="../winie.html">WinIE�o�O</a>
+<div><a href="../winie.html">WinIEバグ</a>
 <hr style="filter:alpha(opacity=25); height:10px; color:red;">
 </div>
 </div>
-<p>�A���J�[�Ƀ}�E�X�|�C���^�����悹��ƃo�O����������͂��ł����A���̗�ł̓o�O�𔭐��ł��܂���B</p>
+<p>アンカーにマウスポインタ等を乗せるとバグが発生するはずですが、この例ではバグを発生できません。</p>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ŕs����������邻���ł��B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0で不具合が発生するそうです。</p>
 
-<h3>�񍐏�������</h3>
-<blockquote>IE6�B<br>
-�A���J�[��hover�v�f��background-color�w�肵���ꍇ�Ahover��Ԃɂ����<br>
-�t�B���^�[�v�f(filter:alpha)���������E��(HR)�͐Ռ`���������ł���B<br>
-�����t�B���^�[�v�f�ł��摜&lt;img&gt;�͉��̉e�����󂯂Ȃ��B<br>
-IE5.5�ł͉������̂Ȃ��w��B</blockquote>
+<h3>報告書き込み</h3>
+<blockquote>IE6。<br>
+アンカーにhover要素とbackground-color指定した場合、hover状態にすると<br>
+フィルター要素(filter:alpha)をつけた境界線(HR)は跡形も泣く消滅する。<br>
+同じフィルター要素でも画像&lt;img&gt;は何の影響も受けない。<br>
+IE5.5では何も問題のない指定。</blockquote>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O126</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ126</div>
 </body>
 </html>

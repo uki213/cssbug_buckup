@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 @import url('b117a.css');
@@ -15,22 +15,22 @@
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O117</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ117</div>
 
-<h2>@import�̃l�X�g��3�K�w���[���ł��Ȃ�<em>(5.x/6.0)</em></h2>
+<h2>@importのネストを3階層より深くできない<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>@import�L�[���[�h�ŃC���|�[�g�����X�^�C���V�[�g����@import�L�[���[�h��p���đ��̃X�^�C���V�[�g���C���|�[�g���鑀����J��Ԃ��Ƃ��A3�K�w���[���ʒu�ɂ���X�^�C���V�[�g�̓C���|�[�g����Ȃ��i4��ڈȍ~��@import�͖��������j�B</p>
+<h3>症状</h3>
+<p>@importキーワードでインポートされるスタイルシート内で@importキーワードを用いて他のスタイルシートをインポートする操作を繰り返すとき、3階層より深い位置にあるスタイルシートはインポートされない（4回目以降の@importは無視される）。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <ul>
 <li>b117.html
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 @import url('b117a.css');
 &lt;/style&gt;
 
-&lt;p class=&quot;sample&quot;&gt;�X�^�C��&lt;/p&gt;</pre>
+&lt;p class=&quot;sample&quot;&gt;スタイル&lt;/p&gt;</pre>
 </li>
 <li>b117a.css
 <pre>@import url('b117b.css');
@@ -57,22 +57,22 @@
 </li>
 </ul>
 <div class="example">
-<p class="sample">�X�^�C��</p>
+<p class="sample">スタイル</p>
 </div>
-<p>@import�L�[���[�h��p���āu�O�i�F�E�w�i�F�E�{�[�_�[�E�C�^���b�N�v�̊e�X�^�C����K�p�����Ă��܂��B</p>
+<p>@importキーワードを用いて「前景色・背景色・ボーダー・イタリック」の各スタイルを適用させています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b117_1.png" alt="N7.1" width="103" height="67">N7.1�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b117_2.png" alt="WinIE6" width="103" height="72">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b117_1.png" alt="N7.1" width="103" height="67">N7.1での表示（標準モード）</p>
+<p><img src="img/b117_2.png" alt="WinIE6" width="103" height="72">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>CSS2�����ł�@import�L�[���[�h�̃l�X�g���Ɋւ���K�肪�Ȃ����߁A�����ł͂��̌��ۂ��o�O�ł͂Ȃ�WinIE�̎d�l��̌��E�ƍl���Ă��܂��B</p>
+<h3>補足</h3>
+<p>CSS2勧告では@importキーワードのネスト数に関する規定がないため、ここではこの現象をバグではなくWinIEの仕様上の限界と考えています。</p>
 
-<h3>�C����</h3>
-<p>WinIE5.5�AWinIE6.0�W�����[�h�AWinIE6.0�݊����[�h�ł��̌��ۂ��������܂��B</p>
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードでこの現象が発生します。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O117</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ117</div>
 </body>
 </html>

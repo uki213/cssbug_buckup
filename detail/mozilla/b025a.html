@@ -2,8 +2,8 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<title>Moz5.0�@�o�O025���؃y�[�W</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Moz5.0　バグ025検証ページ</title>
 <style type="text/css">
 <!--
 body {
@@ -34,9 +34,9 @@ body {
 </style>
 </head>
 <body>
-<div id="header"><a href="b025.html">�o�O025�̃y�[�W�֖߂�</a></div>
+<div id="header"><a href="b025.html">バグ025のページへ戻る</a></div>
 <div id="main">
-<p>�X�^�C���V�[�g�̎w��͈ȉ��̒ʂ�ł��B</p>
+<p>スタイルシートの指定は以下の通りです。</p>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 body {
     overflow: hidden;
@@ -61,16 +61,16 @@ body {
     background: aqua;
 }
 &lt;/style&gt;</pre>
-<p>body�v�f���̋L�q�͈ȉ��̒ʂ�ł��B</p>
+<p>body要素内の記述は以下の通りです。</p>
 <pre>&lt;body&gt;
-&lt;div id=&quot;header&quot;&gt;�i�w�b�_�j&lt;/div&gt;
-&lt;div id=&quot;main&quot;&gt;�i�{���j&lt;/div&gt;
+&lt;div id=&quot;header&quot;&gt;（ヘッダ）&lt;/div&gt;
+&lt;div id=&quot;main&quot;&gt;（本文）&lt;/div&gt;
 &lt;/body&gt;</pre>
 
-<p>���̃y�[�W�ł́A <code>overflow: auto;</code> ��p���āA������[���t���[�����������Ă��܂��BNetscape6.x�ł́A���̃y�[�W�������Ƃ��ɏc�X�N���[���o�[��2�{�\������܂��B1�{��id�����̑����l��'menu'��div�v�f�ɕ\������Ă�����́A����1�{�͉{���̈�̃X�N���[���o�[�ł��B</p>
-<p>�Ȃ��A���̃y�[�W�ł́Abody�v�f���̑S�v�f����Δz�u�̂��߁A�����̎Z�o��body�v�f���͋�Ɓi������0�j�����܂��B</p>
+<p>このページでは、 <code>overflow: auto;</code> を用いて、いわゆる擬似フレームを実現しています。Netscape6.xでは、このページを見たときに縦スクロールバーが2本表示されます。1本はid属性の属性値が'menu'のdiv要素に表示されているもの、もう1本は閲覧領域のスクロールバーです。</p>
+<p>なお、このページでは、body要素内の全要素が絶対配置のため、高さの算出上body要素内は空と（高さ＝0）扱われます。</p>
 
-<!-- �v�f���[���{���̈�O�ɕ\�������̂ŗ]����ݒu -->
+<!-- 要素下端が閲覧領域外に表示されるので余白を設置 -->
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 </div>
 </body>

@@ -2,23 +2,23 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../safari.html" title="Safari�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<title>Safari (KHTML) CSSバグリスト</title>
 </head>
 <body>
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O009</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ009</div>
 
-<h2>�Œ背�C�A�E�g�e�[�u���ŃZ������%�l�w�莞�ɎZ�o�l���s���m<em>(S1.0)</em></h2>
+<h2>固定レイアウトテーブルでセル幅の%値指定時に算出値が不正確<em>(S1.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�Œ背�C�A�E�g�e�[�u���i<code>table-layout:fixed;</code>�j���ŗ񕝂��w�肷��Ƃ��A�w��l�ɋ�̓I�Ȓl�E%�P�ʂ̒l�Eauto�l�����݂�����ƁA%�P�ʂ̒l�̎Z�o�l���{���Z�o�����ׂ��l��菬�����Ȃ邱�Ƃ�����B</p>
+<h3>症状</h3>
+<p>固定レイアウトテーブル（<code>table-layout:fixed;</code>）内で列幅を指定するとき、指定値に具体的な値・%単位の値・auto値を混在させると、%単位の値の算出値が本来算出されるべき値より小さくなることがある。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;table border=&quot;2&quot; style=&quot;width:50%; table-layout:fixed&quot;&gt;
 &lt;tr&gt;
 &lt;td style=&quot;background:aqua; width:5em;&quot;&gt;5em&lt;/td&gt;
@@ -35,19 +35,19 @@
 </tr>
 </table>
 </div>
-<p>������3��ڂɂ���Z���̕����e�[�u���̕��̔����ɂȂ�͂��ł��B</p>
+<p>左から3列目にあるセルの幅がテーブルの幅の半分になるはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b009_1.png" alt="N7.1" width="358" height="45">N7.1�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b009_1.png" alt="N7.1" width="358" height="45">N7.1での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�������C�A�E�g�e�[�u���i<code>table-layout:auto;</code>�j�ł��̕s��͔������Ȃ������ł��B�܂��A�Œ背�C�A�E�g�e�[�u���ł��񕝂̎w��ɒP�ʂ����݂��Ȃ���΁i%�P�ʂ̒l�������g�p����ꍇ��A��̓I�Ȓl��auto�l�������g�p����ꍇ�Ȃǁj�s����������Ȃ������ł��B</p>
+<h3>補足</h3>
+<p>自動レイアウトテーブル（<code>table-layout:auto;</code>）でこの不具合は発生しないそうです。また、固定レイアウトテーブルでも列幅の指定に単位が混在しなければ（%単位の値だけを使用する場合や、具体的な値とauto値だけを使用する場合など）不具合が発生しないそうです。</p>
 
-<h3>�C����</h3>
-<p>Safari1.0�ł��̕s����������邻���ł��B</p>
+<h3>修正状況</h3>
+<p>Safari1.0でこの不具合が発生するそうです。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O009</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ009</div>
 </body>
 </html>

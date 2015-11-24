@@ -2,31 +2,31 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O003</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ003</div>
 
-<h2>�|�W�V���j���O���g�p�����y�[�W�Ńt���[�g�z�u�̉摜��p����Ɣw�i�摜�������<em>(IE5)</em></h2>
+<h2>ポジショニングを使用したページでフロート配置の画像を用いると背景画像がずれる<em>(IE5)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>position�v���p�e�B�ŉ��炩�̔z�u���s���Ă���v�f������y�[�W���ŉ摜�iimg�v�f�j���t���[�g�z�u����ƁA�����Ƃ͊֌W�̂Ȃ��w�i�摜���{���̏ꏊ���炸��ĕ\�������B</p>
+<h3>症状</h3>
+<p>positionプロパティで何らかの配置を行っている要素があるページ内で画像（img要素）をフロート配置すると、これらとは関係のない背景画像が本来の場所からずれて表示される。</p>
 
-<h3>�Ꭶ</h3>
-<p>�o�O�𔭐�������悤�ȗႪ�������Ă��܂���B</p>
+<h3>例示</h3>
+<p>バグを発生させるような例が見つかっていません。</p>
 
-<h3>�񍐏�������</h3>
-<blockquote>�yCSS�z-WinIE5<br>
-position���g���Ă���y�[�W�ŉ摜��float���w��<br>
-����ƁA�֘A�̖������̔w�i�摜���ςȈʒu��<br>
-��Ԃ��Ƃ�����B�����T�C�Y������Ǝ������肷��B</blockquote>
+<h3>報告書き込み</h3>
+<blockquote>【CSS】-WinIE5<br>
+positionを使っているページで画像にfloatを指定<br>
+すると、関連の無い他の背景画像が変な位置に<br>
+飛ぶことがある。文字サイズいじると治ったりする。</blockquote>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O003</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ003</div>
 </body>
 </html>

@@ -2,51 +2,51 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../index.html" title="�g�b�v�y�[�W">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../index.html" title="トップページ">
+<title>Safari (KHTML) CSSバグリスト</title>
 </head>
 <body>
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../index.html">�g�b�v�y�[�W</a>�^Safari�ڎ�</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../index.html">トップページ</a>／Safari目次</div>
 
-<p>�����ɂ�Safari��CSS/DOM�����o�O�̈ꗗ������܂��B�ȉ��̃��X�g���炻�ꂼ��̃o�O�̏ڍׂ����邱�Ƃ��ł��܂��B</p>
+<p>ここにはSafariのCSS/DOM実装バグの一覧があります。以下のリストからそれぞれのバグの詳細を見ることができます。</p>
 
-<h2>Safari��CSS����</h2>
-<p>Safari�̃����_�����O�G���W����<a href="http://www.kde.org/">KDE�v���W�F�N�g</a>���J�����Ă���KHTML���x�[�X�ɂ������̂ł��BKDE�ł̓E�F�u�u���E�U�E�t�@�C���}�l�[�W���ł���<a href="http://www.konqueror.org/">Konqueror</a>��KHTML���g�p����Ă��܂��B</p>
+<h2>SafariのCSS実装</h2>
+<p>Safariのレンダリングエンジンは<a href="http://www.kde.org/">KDEプロジェクト</a>が開発しているKHTMLをベースにしたものです。KDEではウェブブラウザ・ファイルマネージャである<a href="http://www.konqueror.org/">Konqueror</a>にKHTMLが使用されています。</p>
 
-<h2>�o�O���X�g</h2>
+<h2>バグリスト</h2>
 
-<h3>�m�F�ς݃o�O</h3>
+<h3>確認済みバグ</h3>
 <ul>
-<li><a href="safari/b001.html">content�v���p�e�B�Ɏw�肵�����{�ꕶ���������������ĕ\�������<em>(1.0)</em></a></li>
-<li><a href="safari/b002.html">content�v���p�e�B��open-quote, close-quote�l�𖳎�����<em>(1.0)</em></a></li>
-<li><a href="safari/b003.html">���̂ɓ��{�ꕶ�����܂ރt�H���g�t�@�~���̎w��𖳎�����<em>(1.0)</em></a></li>
-<li><a href="safari/b004.html">clear�v���p�e�B��none�ȊO�̒l����none�l�ɏ㏑���ł��Ȃ�<em>(1.0)</em></a></li>
-<li><a href="safari/b005.html">document.styleSheets[n].title�����null�l��Ԃ�<em>(1.0)</em></a></li>
-<li><a href="safari/b006.html">�󔒕����݂̂̃e�L�X�g�m�[�h�𐳏�Ɏ擾�ł��Ȃ�<em>(1.0)</em></a></li>
-<li>[3-479][3-939]<a href="safari/b008.html">caption�v�f���܂ރe�[�u���ł�col/colgroup�ɑ΂���X�^�C���������Ȃ�<em>(1.x)</em></a></li>
-<li>[3-503]<a href="safari/b009.html">�Œ背�C�A�E�g�e�[�u���ŃZ������%�l�w�莞�ɎZ�o�l���s���m<em>(1.0)</em></a></li>
-<li>[3-716]<a href="safari/b013.html">:hover�[���N���X��vertical-align������<em>(1.x)</em></a></li>
+<li><a href="safari/b001.html">contentプロパティに指定した日本語文字が文字化けして表示される<em>(1.0)</em></a></li>
+<li><a href="safari/b002.html">contentプロパティでopen-quote, close-quote値を無視する<em>(1.0)</em></a></li>
+<li><a href="safari/b003.html">名称に日本語文字を含むフォントファミリの指定を無視する<em>(1.0)</em></a></li>
+<li><a href="safari/b004.html">clearプロパティはnone以外の値からnone値に上書きできない<em>(1.0)</em></a></li>
+<li><a href="safari/b005.html">document.styleSheets[n].titleが常にnull値を返す<em>(1.0)</em></a></li>
+<li><a href="safari/b006.html">空白文字のみのテキストノードを正常に取得できない<em>(1.0)</em></a></li>
+<li>[3-479][3-939]<a href="safari/b008.html">caption要素を含むテーブルではcol/colgroupに対するスタイルが効かない<em>(1.x)</em></a></li>
+<li>[3-503]<a href="safari/b009.html">固定レイアウトテーブルでセル幅の%値指定時に算出値が不正確<em>(1.0)</em></a></li>
+<li>[3-716]<a href="safari/b013.html">:hover擬似クラスでvertical-alignが無効<em>(1.x)</em></a></li>
 </ul>
 
-<h3>���m�F�o�O</h3>
+<h3>未確認バグ</h3>
 <ul>
-<li>[3-309]<a href="safari/b007.html">�t�@�C�����ɃA���_�[�o�[���܂ފO���X�^�C���V�[�g��ǂݍ��܂Ȃ�<em>(S1.0)</em></a></li>
-<li>[3-587]<a href="safari/b010.html">�g�p�����͂��̂Ȃ��t�H���g�ŕ����񂪕\�������<em>(1.0)</em></a></li>
-<li>[3-587]<a href="safari/b011.html">�ꕔ�̃t�H���g�Ń{�[���h�\�����ł��Ȃ�<em>(1.0)</em></a></li>
-<li>[3-638]<a href="safari/b012.html">��Ɏw�肵����փX�^�C���V�[�g���Œ�X�^�C���V�[�g�Ƃ��Ĉ���<em>(1.0)</em></a></li>
-<li>[3-765]<a href="safari/b014.html">�t���[�g����s�v�f�̉��ӂ���ɒu�����</a></li>
-<li>[3-769]<a href="safari/b015.html">html�v�f�Ɏw�肳�ꂽtransparent�w�i�̈������s��<em>(1.2)</em></a></li>
-<li>[3-936]<a href="safari/b016.html">�[���N���X�ŕ�����̈ꕔ���̑O�i�F���ς��Ȃ�<em>(1.2)</em></a></li>
-<li>[4-21]<a href="safari/b017.html">�ꕔ�̃{�[�_�[��color�̒l�������p���Ȃ�<em>(1.2)</em></a></li>
-<li>[4-36]<a href="safari/b018.html">�Œ背�C�A�E�g�\��%�l�w��̗񕝂�100%�𒴂����Ȃ�</a></li>
-<li>[4-85]<a href="safari/b019.html">�C�����C���t���[����window.name�Ő������Q�Ƃł��Ȃ�</a></li>
+<li>[3-309]<a href="safari/b007.html">ファイル名にアンダーバーを含む外部スタイルシートを読み込まない<em>(S1.0)</em></a></li>
+<li>[3-587]<a href="safari/b010.html">使用されるはずのないフォントで文字列が表示される<em>(1.0)</em></a></li>
+<li>[3-587]<a href="safari/b011.html">一部のフォントでボールド表示ができない<em>(1.0)</em></a></li>
+<li>[3-638]<a href="safari/b012.html">先に指定した代替スタイルシートを固定スタイルシートとして扱う<em>(1.0)</em></a></li>
+<li>[3-765]<a href="safari/b014.html">フロートが先行要素の下辺より上に置かれる</a></li>
+<li>[3-769]<a href="safari/b015.html">html要素に指定されたtransparent背景の扱いが不正<em>(1.2)</em></a></li>
+<li>[3-936]<a href="safari/b016.html">擬似クラスで文字列の一部分の前景色が変わらない<em>(1.2)</em></a></li>
+<li>[4-21]<a href="safari/b017.html">一部のボーダーはcolorの値を引き継がない<em>(1.2)</em></a></li>
+<li>[4-36]<a href="safari/b018.html">固定レイアウト表で%値指定の列幅が100%を超えられない</a></li>
+<li>[4-85]<a href="safari/b019.html">インラインフレームをwindow.nameで正しく参照できない</a></li>
 </ul>
 
-<h3>�d�l�ʂ�̓���</h3>
+<h3>仕様通りの動作</h3>
 
-<div class="navi"><a href="../index.html">�g�b�v�y�[�W</a>�^Safari�ڎ�</div>
+<div class="navi"><a href="../index.html">トップページ</a>／Safari目次</div>
 </body>
 </html>

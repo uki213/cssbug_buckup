@@ -1,11 +1,11 @@
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../mozilla.html" title="Moz�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Mozilla 5.0�n CSS�o�O���X�g</title>
+<title>Mozilla 5.0系 CSSバグリスト</title>
 <style type="text/css">
 <!--
 hr {
@@ -16,23 +16,23 @@ hr {
 </style>
 </head>
 <body>
-<h1>Mozilla 5.0�n CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../mozilla.html">Moz�ڎ�</a>�^�o�O053</div>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ053</div>
 
-<h2>�܂�Ԃ���}�������v�f���ɂ���hr�v�f�̕����������Z�o����Ȃ�<em>(N7.0/Moz1.4a)</em></h2>
+<h2>折り返しを抑制した要素内にあるhr要素の幅が正しく算出されない<em>(N7.0/Moz1.4a)</em></h2>
 <ul>
-<li>2003-05-20�C���B���@�̂��߂�WinIE�Ńo�O����������_�ɂ��Ēǉ��B</li>
-<li>2003-05-26�C���B�����悤�ȏǏ�����o�O�ɂ��Ă̕⑫��ǉ��B</li>
-<li>2003-05-30�C���B�Ԉ���������N�̏C���B</li>
+<li>2003-05-20修正。回避法のためにWinIEでバグが発生する点について追加。</li>
+<li>2003-05-26修正。同じような症状を持つバグについての補足を追加。</li>
+<li>2003-05-30修正。間違ったリンクの修正。</li>
 </ul>
 
-<h3>�Ǐ�</h3>
+<h3>症状</h3>
 <ul>
-<li><code>white-space: nowrap;</code> �i�܂���nowrap�����j�Ő܂�Ԃ���}������td�v�f���ŁAhr�v�f�̐������̒��������ɒZ���Ȃ�B�܂��Awidth�v���p�e�B�̎w��𖳎�����B</li>
-<li><code>white-space: nowrap;</code> �Ő܂�Ԃ���}�������u���b�N�v�f���ŁAhr�v�f��width�v���p�e�B��%�l�Ŏw�肷��Ɛe�v�f�̕��ł͂Ȃ�body�v�f�̕��ɑ΂���%�l���Z�o����B</li>
+<li><code>white-space: nowrap;</code> （またはnowrap属性）で折り返しを抑制したtd要素内で、hr要素の水平線の長さが非常に短くなる。また、widthプロパティの指定を無視する。</li>
+<li><code>white-space: nowrap;</code> で折り返しを抑制したブロック要素内で、hr要素のwidthプロパティを%値で指定すると親要素の幅ではなくbody要素の幅に対する%値を算出する。</li>
 </ul>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 hr {
   background: red;
@@ -60,16 +60,16 @@ hr {
 <hr>
 </div>
 </div>
-<p>td�v�f��div�v�f�̓����ɂ���hr�v�f�͂ǂ�����e�v�f�̕��ɍ��킹�������̐������Ƃ��ĕ\�������͂��ł��B</p>
+<p>td要素とdiv要素の内部にあるhr要素はどちらも親要素の幅に合わせた長さの水平線として表示されるはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b053_1.png" alt="WinIE6" width="199" height="63">WinIE6.0�ł̕\���i�݊����[�h�j</p>
-<p><img src="img/b053_2.png" alt="N7" width="213" height="65">N7.02�ł̕\���i�݊����[�h�j</p>
+<p><img src="img/b053_1.png" alt="WinIE6" width="199" height="63">WinIE6.0での表示（互換モード）</p>
+<p><img src="img/b053_2.png" alt="N7" width="213" height="65">N7.02での表示（互換モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>hr�v�f�ɑ΂��� <code>display: block;</code> ���w�肷�邱�Ƃł��̃o�O������ł��܂��B<ins datetime="2003-05-20T00:00:00+09:00">�������A���̎w��̂��߂�<a href="../winie/b105.html" title="hr�v�f�Ɏw�肵�����}�[�W�����e�v�f�̉��}�[�W���Ƃ��Ĕ��f�����">WinIE�ŕʂ̃o�O</a>���������邱�Ƃ�����܂��B</ins></p>
+<h3>補足</h3>
+<p>hr要素に対して <code>display: block;</code> を指定することでこのバグを回避できます。<ins datetime="2003-05-20T00:00:00+09:00">ただし、この指定のために<a href="../winie/b105.html" title="hr要素に指定した下マージンが親要素の下マージンとして反映される">WinIEで別のバグ</a>が発生することがあります。</ins></p>
 <pre>&lt;table border=&quot;2&quot; style=&quot;width:5em;&quot;&gt;
 &lt;tr&gt;
 &lt;td style=&quot;white-space:nowrap;&quot;&gt;&lt;hr style=&quot;<em>display:block;</em>&quot;&gt;&lt;/td&gt;
@@ -90,18 +90,18 @@ hr {
 <hr style="display:block;">
 </div>
 </div>
-<p>Mozilla.org Bugzilla�ł͈ȉ��̍��ڂ��Y�����܂��B</p>
+<p>Mozilla.org Bugzillaでは以下の項目が該当します。</p>
 <ul>
-<li><a href="http://bugzilla.mozilla.org/show_bug.cgi?id=60992">Bugzilla Bug 60992�F&lt;hr&gt; Draws incorrectly if it is in a block with NOWRAP (Quirks Mode Only)</a></li>
+<li><a href="http://bugzilla.mozilla.org/show_bug.cgi?id=60992">Bugzilla Bug 60992：&lt;hr&gt; Draws incorrectly if it is in a block with NOWRAP (Quirks Mode Only)</a></li>
 </ul>
-<p><ins datetime="2003-05-26T00:00:00+09:00">���̃o�O�Ɠ����悤�ȏǏ�����ʂ̃o�O������܂���</ins>�i<del datetime="2003-05-30T00:00:00+09:00"><a href="b053.html" title="�܂�Ԃ���}�������v�f���ɂ���hr�v�f�̕����������Z�o����Ȃ�">Moz�o�O053</a></del><ins datetime="2003-05-30T00:00:00+09:00"><a href="b054.html" title="hr�v�f�̃{�[�_�[���������ݒ肳��Ȃ�">Moz�o�O054</a></ins>�j<ins datetime="2003-05-26T00:00:00+09:00">�A���̃o�O�Ƃ͉��@���قȂ�܂��Bheight�v���p�e�B���w�肵�Ă����̃o�O�͉���ł��܂���B</ins></p>
+<p><ins datetime="2003-05-26T00:00:00+09:00">このバグと同じような症状を持つ別のバグがありますが</ins>（<del datetime="2003-05-30T00:00:00+09:00"><a href="b053.html" title="折り返しを抑制した要素内にあるhr要素の幅が正しく算出されない">Mozバグ053</a></del><ins datetime="2003-05-30T00:00:00+09:00"><a href="b054.html" title="hr要素のボーダーが正しく設定されない">Mozバグ054</a></ins>）<ins datetime="2003-05-26T00:00:00+09:00">、このバグとは回避法が異なります。heightプロパティを指定してもこのバグは回避できません。</ins></p>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>N7.02�݊����[�h�AMoz1.4a�݊����[�h�ŕs��̔������m�F����܂����B</li>
-<li>N7.02�W�����[�h�AMoz1.4a�W�����[�h�ł��̕s��͔������܂���B</li>
+<li>N7.02互換モード、Moz1.4a互換モードで不具合の発生が確認されました。</li>
+<li>N7.02標準モード、Moz1.4a標準モードでこの不具合は発生しません。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../mozilla.html">Moz�ڎ�</a>�^�o�O053</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ053</div>
 </body>
 </html>

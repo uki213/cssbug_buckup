@@ -2,33 +2,33 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O089</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ089</div>
 
-<h2>:hover�̃X�^�C�������f�����ƃy�[�W���X�N���[���ł��Ȃ��Ȃ�<em>(IE5.5)</em></h2>
+<h2>:hoverのスタイルが反映されるとページをスクロールできなくなる<em>(IE5.5)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�{���̈�̃X�N���[���o�[���\������Ă���y�[�W�ŁA�����N�Ƀ}�E�X�|�C���^�����ڂ��邱�Ƃ�:hover�[���N���X�Ɏw�肵���X�^�C�����\���ɔ��f�����ƁA�{���̈�̃X�N���[���o�[�������邱�Ƃ�����B</p>
+<h3>症状</h3>
+<p>閲覧領域のスクロールバーが表示されているページで、リンクにマウスポインタ等を載せることで:hover擬似クラスに指定したスタイルが表示に反映されると、閲覧領域のスクロールバーが消えることがある。</p>
 
-<h3>�Ꭶ</h3>
-<p>�Č��ł��܂���B</p>
+<h3>例示</h3>
+<p>再現できません。</p>
 
-<h3>�񍐏�������</h3>
+<h3>報告書き込み</h3>
 <blockquote>a:hover{color:#000000;text-decoration:none;background-color:#ffffff;}<br>
-�ŁA�}�E�X�J�[�\�������������Ƃ��A�w�i���ς��悤�ɂ����̂ł����A<br>
-�i�y�[�W�͏c�X�N���[���̂݉��2�����炢�̃y�[�W�Łj�ŏ��ɕ\��������ԂŁA<br>
-��ʏ㕔�̃����N�͖��Ȃ��̂ł����A���̂ق��̃����N���|�C���g�����u�ԁA�u�ӂ��v��<br>
-�c�X�N���[���o�[�������Ă��܂��A�y�[�W���؂ꂽ��ԂɂȂ��Ă��܂��܂��B<br>
-�Ȃ�ł�������́Hwin98/ie5.5�ł��Blint100�_�ł����B�B�B</blockquote>
+で、マウスカーソルが当たったとき、背景が変わるようにしたのですが、<br>
+（ページは縦スクロールのみ画面2個分ぐらいのページで）最初に表示した状態で、<br>
+画面上部のリンクは問題ないのですが、下のほうのリンクをポイントした瞬間、「ふっ」と<br>
+縦スクロールバーが消えてしまい、ページが切れた状態になってしまいます。<br>
+なんですかこれは？win98/ie5.5です。lint100点でした。。。</blockquote>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O089</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ089</div>
 </body>
 </html>

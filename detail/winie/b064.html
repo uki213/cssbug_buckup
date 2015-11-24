@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 body {
@@ -16,39 +16,39 @@ body {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O064</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ064</div>
 
-<h2>�ꕔ��border-style�ɖ��Ή�<em>(IE5)</em></h2>
-<p>2003-04-06�C���BWinIE5.0�ȑO�ł�dotted/dashed�ɖ��Ή��ł��邱�Ƃ�ǉ��B</p>
+<h2>一部のborder-styleに未対応<em>(IE5)</em></h2>
+<p>2003-04-06修正。WinIE5.0以前ではdotted/dashedに未対応であることを追加。</p>
 
-<h3>�Ǐ�</h3>
-<p>�X�^�C���V�[�g�ł̎w��Ɋւ�炸�Abody�v�f�ɑ΂��Đݒ肳�ꂽ�{�[�_�[�͏��solid�i�����j�ŕ\�������B<ins datetime="2003-04-06T00:00:00+09:00">�܂��A���̑��̗v�f�ł�dashed�܂���dotted�X�^�C���̃{�[�_�[��solid�ŕ\�������B</ins></p>
+<h3>症状</h3>
+<p>スタイルシートでの指定に関わらず、body要素に対して設定されたボーダーは常にsolid（実線）で表示される。<ins datetime="2003-04-06T00:00:00+09:00">また、その他の要素でもdashedまたはdottedスタイルのボーダーがsolidで表示される。</ins></p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 body {
   border-left: 3px dotted blue;
 }
 &lt;/style&gt;</pre>
-<p>���̃y�[�W��body�v�f�ɍ��{�[�_�[��_���ŕ\�������Ă��܂��B</p>
-<p>�����̃y�[�W�͌݊����[�h�ŕ\�������Ă��܂��B</p>
+<p>このページのbody要素に左ボーダーを点線で表示させています。</p>
+<p>※このページは互換モードで表示させています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b064_1.png" alt="Moz1.0" width="71" height="141">Moz1.0�ł̕\���i�݊����[�h�j</p>
-<p><img src="img/b064_2.png" alt="WinIE6" width="61" height="144">WinIE6.0�ł̕\���i�݊����[�h�j</p>
+<p><img src="img/b064_1.png" alt="Moz1.0" width="71" height="141">Moz1.0での表示（互換モード）</p>
+<p><img src="img/b064_2.png" alt="WinIE6" width="61" height="144">WinIE6.0での表示（互換モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>CSS�ł́Asolid�ȊO�̃{�[�_�[�X�^�C����solid�ŕ\�����Ă��悢�Ƃ���Ă���̂ŁA���̌��ۂ͎d�l�ɔ���������ł͂���܂���B</p>
+<h3>補足</h3>
+<p>CSSでは、solid以外のボーダースタイルをsolidで表示してもよいとされているので、この現象は仕様に反する実装ではありません。</p>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>body�v�f�̃{�[�_�[�����solid�FWinIE6�݊����[�h�ŕs��̔������m�F����܂����B�W�����[�h�ł͎w�肵���{�[�_�[�X�^�C���ŕ\������܂��B</li>
-<li>dashed/dotted�X�^�C���ɖ��Ή��FWinIE5.0�ȑO�ŕs����������܂��BWinIE5.5�ȍ~�ł͂����̃X�^�C���ɂ��Ή����Ă��܂��B</li>
+<li>body要素のボーダーが常にsolid：WinIE6互換モードで不具合の発生が確認されました。標準モードでは指定したボーダースタイルで表示されます。</li>
+<li>dashed/dottedスタイルに未対応：WinIE5.0以前で不具合が発生します。WinIE5.5以降ではこれらのスタイルにも対応しています。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O064</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ064</div>
 </body>
 </html>

@@ -2,23 +2,23 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O046</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ046</div>
 
-<h2>�C�����C���v�f�Ɏw�肵���p�f�B���O��{�[�_�[�̏㉺��������<em>(IE6)</em></h2>
+<h2>インライン要素に指定したパディングやボーダーの上下が消える<em>(IE6)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�������w�肳�ꂽ�v�f���ɂ���C�����C���v�f�Ƀp�f�B���O��{�[�_�[���w�肳��Ă���Ƃ��A�p�f�B���O��{�[�_�[�̐e�v�f���͂ݏo���Ă��镔���������Ă��܂��B</p>
+<h3>症状</h3>
+<p>高さが指定された要素内にあるインライン要素にパディングやボーダーが指定されているとき、パディングやボーダーの親要素をはみ出している部分が消えてしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div class="example"&gt;
 &lt;p style="height:20px; border:3px solid red; font-size:18px;"&gt;
 A&lt;span style="padding:10px; border:3px solid blue;"&gt;B&lt;/span&gt;C
@@ -28,16 +28,16 @@ A&lt;span style="padding:10px; border:3px solid blue;"&gt;B&lt;/span&gt;C
 A<span style="padding:10px; border:3px solid blue;">B</span>C
 </p>
 </div>
-<p>span�v�f�̏�{�[�_�[���牺�{�[�_�[�܂ł̍����͐e�v�f�̍����𒴂��Ă��܂��B</p>
+<p>span要素の上ボーダーから下ボーダーまでの高さは親要素の高さを超えています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b046_1.png" alt="Moz1.0" width="135" height="80">Moz1.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b046_2.png" alt="WinIE6" width="122" height="49">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b046_1.png" alt="Moz1.0" width="135" height="80">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b046_2.png" alt="WinIE6" width="122" height="49">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�㉺����������C�����C���v�f�� <code>position: relative;</code> �������Ďw�肷��΂��̃o�O������ł��܂��B</p>
+<h3>補足</h3>
+<p>上下部が消えるインライン要素に <code>position: relative;</code> を加えて指定すればこのバグを回避できます。</p>
 <pre>&lt;p style=&quot;height:20px; border:3px solid red; font-size:18px;&quot;&gt;
 A&lt;span style=&quot;padding:10px; border:3px solid blue; <em>position:relative;</em>&quot;&gt;B&lt;/span&gt;C
 &lt;/p&gt;</pre>
@@ -47,9 +47,9 @@ A<span style="padding:10px; border:3px solid blue; position:relative;">B</span>C
 </p>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O046</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ046</div>
 </body>
 </html>

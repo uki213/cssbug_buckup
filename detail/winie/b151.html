@@ -2,54 +2,54 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O151</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ151</div>
 
-<h2>�t���[�g�̍��E�ɂ���s�̒[�������<em>(5.x/6.0)</em></h2>
+<h2>フロートの左右にある行の端がずれる<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�t���[�g�̉��ɁA�t���[�g�ɏd�Ȃ�Ȃ��悤�Ƀ}�[�W����ݒu�����u���b�N�{�b�N�X��u���i������i�g�j�Ƃ��A�u���b�N�{�b�N�X�̍s�Ńt���[�g�̍��E�ɒu�������̂́A�ق��̍s�ɔ�ׂĕ�����̒[������Ă���B</p>
+<h3>症状</h3>
+<p>フロートの横に、フロートに重ならないようにマージンを設置したブロックボックスを置く（いわゆる段組）とき、ブロックボックスの行でフロートの左右に置かれるものは、ほかの行に比べて文字列の端がずれている。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;float:left; width:4em; border:2px solid red;&quot;&gt;
 Float&lt;br&gt;Float&lt;/div&gt;
 &lt;div style=&quot;margin-left:5em; padding:0; border:2px solid blue;&quot;&gt;
-��&lt;br&gt;��&lt;br&gt;��&lt;br&gt;��&lt;br&gt;��&lt;/div&gt;</pre>
+←&lt;br&gt;←&lt;br&gt;←&lt;br&gt;←&lt;br&gt;←&lt;/div&gt;</pre>
 <div class="example">
 <div style="float:left; width:4em; border:2px solid red;">Float<br>Float</div>
-<div style="margin-left:5em; padding:0; border:2px solid blue;">��<br>��<br>��<br>��<br>��</div>
+<div style="margin-left:5em; padding:0; border:2px solid blue;">←<br>←<br>←<br>←<br>←</div>
 </div>
-<p>�E���̃u���b�N�{�b�N�X��1�s�ڂ���3�s�ڂ̓t���[�g�{�b�N�X�̉E���ɂ���s�ł��B4�s�ڂ�5�s�ڂ̓t���[�g�{�b�N�X�̉E���ɂȂ��s�ł��B���L���̈ʒu���r���Ă��������B</p>
+<p>右側のブロックボックスの1行目から3行目はフロートボックスの右方にある行です。4行目と5行目はフロートボックスの右方にない行です。矢印記号の位置を比較してください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b151_1.png" alt="Ns7.1">Netscape7.1�W�����[�h</p>
-<p><img src="img/b151_2.png" alt="WinIE6.0">WinIE6.0�W�����[�h</p>
+<p><img src="img/b151_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b151_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�u���b�N�{�b�N�X��width�v���p�e�B����̓I�Ȓl�Ŗ������邱�Ƃł��̃o�O��������邱�Ƃ��ł��܂��B</p>
+<h3>補足</h3>
+<p>ブロックボックスのwidthプロパティを具体的な値で明示することでこのバグを回避することができます。</p>
 <pre>&lt;div style=&quot;float:left; width:4em; border:2px solid red;&quot;&gt;
 Float&lt;br&gt;Float&lt;/div&gt;
 &lt;div style=&quot;margin-left:5em; <em>width:50%;</em> padding:0; border:2px solid blue;&quot;&gt;
-��&lt;br&gt;��&lt;br&gt;��&lt;br&gt;��&lt;br&gt;��&lt;/div&gt;</pre>
+←&lt;br&gt;←&lt;br&gt;←&lt;br&gt;←&lt;br&gt;←&lt;/div&gt;</pre>
 <div class="example">
 <div style="float:left; width:4em; border:2px solid red;">Float<br>Float</div>
-<div style="margin-left:5em; width:50%; padding:0; border:2px solid blue;">��<br>��<br>��<br>��<br>��</div>
+<div style="margin-left:5em; width:50%; padding:0; border:2px solid blue;">←<br>←<br>←<br>←<br>←</div>
 </div>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>WinIE6.0�̕W�����[�h�ƌ݊����[�h�ŕs��̔������m�F���܂����B</li>
+<li>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O151</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ151</div>
 </body>
 </html>

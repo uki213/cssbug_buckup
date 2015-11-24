@@ -2,23 +2,23 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Opera CSS�o�O���X�g</title>
+<title>Opera CSSバグリスト</title>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O043</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ043</div>
 
-<h2>�܂�Ԃ��ꂽ�t���[�g����ɃR���e�i�u���b�N�̍��[�Ɋ񂹂��Ă��܂�<em>(6.0)</em></h2>
+<h2>折り返されたフロートが常にコンテナブロックの左端に寄せられてしまう<em>(6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�R���e�i�u���b�N�̕����������߂Ƀt���[�g���܂�Ԃ����Ƃ��A�t���[�Ƃ̊񂹕��͏�񂹂����i�E�j�񂹂��D�悳��Ȃ���΂Ȃ�Ȃ����AOpera�͍��i�E�j�񂹂�D�悵�Ă��܂��B</p>
+<h3>症状</h3>
+<p>コンテナブロックの幅が狭いためにフロートが折り返されるとき、フローとの寄せ方は上寄せが左（右）寄せより優先されなければならないが、Operaは左（右）寄せを優先してしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;width:180px; height:130px; border:2px dashed blue;&quot;&gt;
 &lt;div style=&quot;float:left; width:80px; height:80px; background:aqua;&quot;&gt;A&lt;/div&gt;
 &lt;div style=&quot;float:left; width:80px; height:40px; background:lime;&quot;&gt;B&lt;/div&gt;
@@ -31,23 +31,23 @@
 <div style="float:left; width:80px; height:40px; background:fuchsia;">C</div>
 </div>
 </div>
-<p>3�̃t���[�g����ׂĂ��܂����A�R���e�i�u���b�N�̕��̐����ɂ��uC�v�̃t���[�g�͐܂�Ԃ���܂��B���̃t���[�g���ǂ��ɒu����邩���m�F���Ă��������B</p>
+<p>3つのフロートを並べていますが、コンテナブロックの幅の制限により「C」のフロートは折り返されます。このフロートがどこに置かれるかを確認してください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b043_1.png" alt="Moz1.0.2" width="196" height="147">Moz1.0.2�ł̕\��</p>
-<p><img src="img/b043_2.png" alt="Op6" width="197" height="147">Opera6.05�ł̕\��</p>
+<p><img src="img/b043_1.png" alt="Moz1.0.2" width="196" height="147">Moz1.0.2での表示</p>
+<p><img src="img/b043_2.png" alt="Op6" width="197" height="147">Opera6.05での表示</p>
 </div>
 
-<h3>�⑫</h3>
-<p>���t���[�g�ƉE�t���[�g�����݂ɘA�����Ēu�����ꍇ�̃o�O�Ƃ���<a href="b028.html" title="�t���[�g����ɒ��O�̃t���[�g�̉��ӂ�艺�ɔz�u����Ă��܂�">Opera�o�O028</a>������܂��B</p>
+<h3>補足</h3>
+<p>左フロートと右フロートを交互に連続して置いた場合のバグとして<a href="b028.html" title="フロートが常に直前のフロートの下辺より下に配置されてしまう">Operaバグ028</a>があります。</p>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>Opera6.06�ŕs��̔������m�F����܂����B</li>
-<li>Opera7.03�ł͕W���E�݊����[�h�Ƃ��ɕs��̔����݂͂��܂���B</li>
+<li>Opera6.06で不具合の発生が確認されました。</li>
+<li>Opera7.03では標準・互換モードともに不具合の発生はみられません。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O043</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ043</div>
 </body>
 </html>

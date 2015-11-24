@@ -2,41 +2,41 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../mozilla.html" title="Moz�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Mozilla 5.0�n CSS�o�O���X�g</title>
+<title>Mozilla 5.0系 CSSバグリスト</title>
 </head>
 <body>
-<h1>Mozilla 5.0�n CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../mozilla.html">Moz�ڎ�</a>�^�o�O041</div>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ041</div>
 
-<h2>�ʏ�z�u�ȊO�Ŕz�u���ꂽ�v�f�Ɍ㑱����v�f�̏�}�[�W�������������<em>(N6)</em></h2>
+<h2>通常配置以外で配置された要素に後続する要素の上マージンが無視される<em>(N6)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>��Δz�u�i<code>position: absolute;</code>�j�E�Œ�z�u�i<code>position: fixed;</code>�j�E�t���[�g�̌�ɒu����Ă���ʏ�z�u�v�f�̏�}�[�W������������Ă��܂��B</p>
+<h3>症状</h3>
+<p>絶対配置（<code>position: absolute;</code>）・固定配置（<code>position: fixed;</code>）・フロートの後に置かれている通常配置要素の上マージンが無視されてしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;position:absolute; height:40px; border:2px solid red;&quot;&gt;Absolute&lt;/div&gt;
 &lt;div style=&quot;margin: 50px; border:2px dashed blue;&quot;&gt;Static&lt;/div&gt;</pre>
 <div class="example">
 <div style="position:absolute; height:40px; border:2px solid red;">Absolute</div>
 <div style="margin:50px; border:2px dashed blue;">Static</div>
 </div>
-<p>��Δz�u����div�v�f�̍�����40px�A�㑱����div�v�f�́i��j�}�[�W����50px�Ȃ̂ŁA2��div�v�f�͏d�Ȃ炸�ɕ\�������͂��ł��B</p>
+<p>絶対配置したdiv要素の高さが40px、後続するdiv要素の（上）マージンが50pxなので、2つのdiv要素は重ならずに表示されるはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
-<p>�Ꭶ�\�[�X���y�[�W�擪�ibody�J�n�^�O����j�ɒu�����Ƃ��̂��̂ł��B</p>
+<h3>スクリーンショット</h3>
+<p>例示ソースをページ先頭（body開始タグ直後）に置いたときのものです。</p>
 <div class="shot">
-<p><img src="img/b041_1.png" alt="Op6" width="168" height="115">Opera6.05�ł̕\��</p>
-<p><img src="img/b041_2.png" alt="Moz1.0.1" width="135" height="78">Moz1.0.1�ł̕\��</p>
+<p><img src="img/b041_1.png" alt="Op6" width="168" height="115">Opera6.05での表示</p>
+<p><img src="img/b041_2.png" alt="Moz1.0.1" width="135" height="78">Moz1.0.1での表示</p>
 </div>
 
-<h3>�C����</h3>
-<p>N6.2.3/N7/Moz1.0.1�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>N6.2.3/N7/Moz1.0.1では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../mozilla.html">Moz�ڎ�</a>�^�o�O041</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ041</div>
 </body>
 </html>

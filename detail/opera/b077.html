@@ -2,11 +2,11 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
-<title>Opera CSS�o�O���X�g</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
 <style type="text/css">
 <!--
 body {
@@ -20,19 +20,19 @@ body {
 <script type="text/javascript" src="b077.js"></script>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O077</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ077</div>
 
-<h2>bottom:0;�ɔz�u�����{�b�N�X�̉������{���̈�̊O�ɂ͂ݏo��<em>(7.x)</em></h2>
+<h2>bottom:0;に配置したボックスの下部が閲覧領域の外にはみ出す<em>(7.x)</em></h2>
 <ul>
-<li>2004-02-27�C���B�Ꭶ��ύX���A�Č��ł��Ȃ��̂ŃX�N���[���V���b�g���폜�B</li>
-<li>2004-03-07�C���B�Ꭶ��ύX���A�X�N���[���V���b�g��ǉ��B</li>
+<li>2004-02-27修正。例示を変更し、再現できないのでスクリーンショットを削除。</li>
+<li>2004-03-07修正。例示を変更し、スクリーンショットを追加。</li>
 </ul>
 
-<h3>�Ǐ�</h3>
-<p><code>bottom:0;</code> �w��Ŕz�u�����{�b�N�X�̉������{���̈�̊O�ɂ͂ݏo�����Ƃ�����B</p>
+<h3>症状</h3>
+<p><code>bottom:0;</code> 指定で配置したボックスの下側が閲覧領域の外にはみ出すことがある。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 body {
   position: relative;
@@ -44,22 +44,22 @@ body {
 &lt;script type=&quot;text/javascript&quot; src=&quot;b077.js&quot;&gt;&lt;/script&gt;
 
 &lt;div style=&quot;position:fixed; bottom:0; left:0; width:6em; background:aqua;&quot;&gt;
-�܂�Ԃ���钷��������&lt;/div&gt;</pre>
+折り返される長い文字列&lt;/div&gt;</pre>
 <div class="example">
-<div style="position:fixed; bottom:0; left:0; width:6em; background:aqua;">�܂�Ԃ���钷��������</div>
+<div style="position:fixed; bottom:0; left:0; width:6em; background:aqua;">折り返される長い文字列</div>
 </div>
-<p>�����̍s�����i�m�߂�n���m�i�ށn�j�Ȃǂ�����ƁA�Œ�z�u�����{�b�N�X�̉��������{���̈�̊O�ɂ͂ݏo�����Ƃ�����܂��B</p>
+<p>履歴の行き来（［戻る］→［進む］）などをすると、固定配置したボックスの下半分が閲覧領域の外にはみ出すことがあります。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b077_1.png" alt="Op7.2">Opera7.23�W�����[�h</p>
+<p><img src="img/b077_1.png" alt="Op7.2">Opera7.23標準モード</p>
 </div>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>Opera7.23�ŕs��̔������m�F���܂����B</li>
+<li>Opera7.23で不具合の発生を確認しました。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O077</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ077</div>
 </body>
 </html>

@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 div.a {
@@ -21,15 +21,15 @@ div.a span {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O047</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ047</div>
 
-<h2>white-space:nowrap;���w�肵���v�f�̓������\������Ȃ�<em>(IE6)</em></h2>
+<h2>white-space:nowrap;を指定した要素の内部が表示されない<em>(IE6)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>����E�B���h�E���̂��Ƃł� <code>white-space:nowrap;</code> ���w�肵���v�f���̈ꕔ�܂��͑S�̂��\������Ȃ��Ȃ�B�������A���̌��ۂ�������E�B���h�E���͗v�f�̓��e���̗ʂɂ���ĈقȂ�B</p>
+<h3>症状</h3>
+<p>あるウィンドウ幅のもとでは <code>white-space:nowrap;</code> を指定した要素内の一部または全体が表示されなくなる。ただし、この現象がおきるウィンドウ幅は要素の内容物の量によって異なる。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 div.a {
   white-space: nowrap;
@@ -50,20 +50,20 @@ div.a span {
 </div>
 </div>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b047_1.png" alt="Moz1.0" width="238" height="54">Moz1.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b047_2.png" alt="WinIE6�S����" width="237" height="56">WinIE6.0�Ŋ��S�ɏ������Ƃ��i�W�����[�h�j</p>
-<p><img src="img/b047_3.png" alt="WinIE6�ꕔ����" width="227" height="52">WinIE6.0�ō��[�����������Ă����ԁi�W�����[�h�j</p>
+<p><img src="img/b047_1.png" alt="Moz1.0" width="238" height="54">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b047_2.png" alt="WinIE6全消失" width="237" height="56">WinIE6.0で完全に消えたとき（標準モード）</p>
+<p><img src="img/b047_3.png" alt="WinIE6一部消失" width="227" height="52">WinIE6.0で左端だけが消えている状態（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>nowrap�w�肳�ꂽ�v�f�̎q���Ƀ{�[�_�[��}�[�W�����w�肳�ꂽ�v�f�����݂���Ƃ��Ƀo�O�̔������������Ȃ�܂��B</p>
-<p>���̌��ۂ́A<code>white-space: nowrap;</code> �Ƃ����L�q���O�����Ƃŉ���ł��܂��B</p>
+<h3>補足</h3>
+<p>nowrap指定された要素の子孫にボーダーやマージンが指定された要素が存在するときにバグの発生率が高くなります。</p>
+<p>この現象は、<code>white-space: nowrap;</code> という記述を外すことで回避できます。</p>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O047</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ047</div>
 </body>
 </html>

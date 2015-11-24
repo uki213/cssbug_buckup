@@ -2,55 +2,55 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O148</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ148</div>
 
-<h2>clear:all;��clear:both;�Ɠ���<em>(5.x/6.0)</em></h2>
+<h2>clear:all;はclear:both;と同等<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>W3C��CSS�����ł�clear�v���p�e�B��all�Ƃ����l�͒�`����Ă��Ȃ��B������WinIE��all�l��both�l�Ɠ����悤�Ɉ����B</p>
+<h3>症状</h3>
+<p>W3CのCSS勧告ではclearプロパティにallという値は定義されていない。しかしWinIEはall値をboth値と同じように扱う。</p>
 
-<h3>�Ꭶ</h3>
-<pre>&lt;div style=&quot;float:left; width:5em; background:aqua;&quot;&gt;�t���[�g&lt;/div&gt;
-&lt;div style=&quot;clear:all;&quot;&gt;��荞�ޕ�����&lt;/div&gt;
-&lt;div style=&quot;float:right; width:5em; background:aqua;&quot;&gt;�t���[�g&lt;/div&gt;
-&lt;div style=&quot;clear:all;&quot;&gt;��荞�ޕ�����&lt;/div&gt;</pre>
+<h3>例示</h3>
+<pre>&lt;div style=&quot;float:left; width:5em; background:aqua;&quot;&gt;フロート&lt;/div&gt;
+&lt;div style=&quot;clear:all;&quot;&gt;回り込む文字列&lt;/div&gt;
+&lt;div style=&quot;float:right; width:5em; background:aqua;&quot;&gt;フロート&lt;/div&gt;
+&lt;div style=&quot;clear:all;&quot;&gt;回り込む文字列&lt;/div&gt;</pre>
 <div class="example">
-<div style="float:left; width:5em; background:aqua;">�t���[�g</div>
-<div style="clear:all;">��荞�ޕ�����</div>
-<div style="float:right; width:5em; background:aqua;">�t���[�g</div>
-<div style="clear:all;">��荞�ޕ�����</div>
+<div style="float:left; width:5em; background:aqua;">フロート</div>
+<div style="clear:all;">回り込む文字列</div>
+<div style="float:right; width:5em; background:aqua;">フロート</div>
+<div style="clear:all;">回り込む文字列</div>
 </div>
-<p>clear�v���p�e�B���w�肵��div�v�f�̓��e���̓t���[�g�̍��E�ɉ�荞��ŕ\�������͂��ł��B</p>
+<p>clearプロパティを指定したdiv要素の内容物はフロートの左右に回り込んで表示されるはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b148_1.png" alt="Ns7.1">Netscape7.1�W�����[�h</p>
-<p><img src="img/b148_2.png" alt="WinIE6.0">WinIE6.0�W�����[�h</p>
+<p><img src="img/b148_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b148_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�������t�@�����X�ł�clear�v���p�e�B��all�Ƃ����l�͒�`����Ă��܂���B</p>
+<h3>補足</h3>
+<p>公式リファレンスでもclearプロパティにallという値は定義されていません。</p>
 <ul>
-<li><a href="http://msdn.microsoft.com/workshop/author/dhtml/reference/properties/clear_0.asp">clear Attribute | clear Property</a>�iMSDN Library�j</li>
+<li><a href="http://msdn.microsoft.com/workshop/author/dhtml/reference/properties/clear_0.asp">clear Attribute | clear Property</a>（MSDN Library）</li>
 </ul>
-<p>���Ȃ݂ɁAWinIE4.0�̃��t�@�����X�ł�style�I�u�W�F�N�g��clear�v���p�e�B�Ŏg�p�\�Ȓl�̈ꗗ��all�����݂��܂��Bbr�v�f��clear�����ɍ��킹�������Ǝv���܂����A���ꂪ�e�����Ă���̂�������܂���B</p>
+<p>ちなみに、WinIE4.0のリファレンスではstyleオブジェクトのclearプロパティで使用可能な値の一覧にallが存在します。br要素のclear属性に合わせた実装と思われますが、これが影響しているのかもしれません。</p>
 <ul>
-<li><a href="http://www.microsoft.com/japan/msdn/library/ja/jpisdk/dhtml/references/properties/clear_0.asp">clear</a>�iMSDN Japan�j</li>
-</ul>
-
-<h3>�C����</h3>
-<ul>
-<li>WinIE6.0�ŕs��̔������m�F���܂����B</li>
+<li><a href="http://www.microsoft.com/japan/msdn/library/ja/jpisdk/dhtml/references/properties/clear_0.asp">clear</a>（MSDN Japan）</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O148</div>
+<h3>修正状況</h3>
+<ul>
+<li>WinIE6.0で不具合の発生を確認しました。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ148</div>
 </body>
 </html>

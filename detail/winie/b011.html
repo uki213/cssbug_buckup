@@ -2,26 +2,26 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O011</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ011</div>
 
-<h2>�_�C�i�~�b�N�v���p�e�B���t�H�[�����i�ɑ΂��Đ����������Ȃ�<em>(5.0)</em></h2>
+<h2>ダイナミックプロパティがフォーム部品に対して正しく効かない<em>(5.0)</em></h2>
 <ul>
-<li>2004-02-27�C���BWinIE5.0�Ńo�O�̔������m�F�B</li>
+<li>2004-02-27修正。WinIE5.0でバグの発生を確認。</li>
 </ul>
 
-<h3>�Ǐ�</h3>
-<p>�t�H�[�����i�v�f��font-size�v���p�e�B�̒l���_�C�i�~�b�N�v���p�e�B��p���Ďw�肵���Ƃ��A�����̑傫���ɂ̓_�C�i�~�b�N�v���p�e�B�̒l�����f����邪�t�H�[�����i�̃T�C�Y�͏����T�C�Y�̂܂ܕς��Ȃ��B</p>
+<h3>症状</h3>
+<p>フォーム部品要素にfont-sizeプロパティの値をダイナミックプロパティを用いて指定したとき、文字の大きさにはダイナミックプロパティの値が反映されるがフォーム部品のサイズは初期サイズのまま変わらない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;form&gt;&lt;div&gt;
 &lt;input type=&quot;text&quot;
   style=&quot;font-size:expression(document.body.clientWidth/30);&quot;
@@ -32,23 +32,23 @@
 <input type="text" style="font-size:expression(document.body.clientWidth/30);" value="FORM">
 </div></form>
 </div>
-<p>���̓{�b�N�X���̕����T�C�Y�͉{���̈�̕���30����1�ɐݒ肳��Ă��܂��B</p>
+<p>入力ボックス内の文字サイズは閲覧領域の幅の30分の1に設定されています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
 <p><img src="img/b011_1.png" alt="WinIE5.0">WinIE5.0</p>
-<p><img src="img/b011_2.png" alt="WinIE6.0">WinIE6.0�W�����[�h</p>
+<p><img src="img/b011_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
 </div>
 
-<h3>�⑫</h3>
-<p>WinIE5.5�ȍ~�ł��A�t�H�[�����i�v�f�ɑ΂���filter�v���p�e�B�𑽗p����Ɠ��l�̕s�����������ꍇ�����邻���ł��B</p>
+<h3>補足</h3>
+<p>WinIE5.5以降でも、フォーム部品要素に対してfilterプロパティを多用すると同様の不具合が発生する場合があるそうです。</p>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>WinIE5.0�ŕs��̔������m�F���܂����B</li>
-<li>WinIE5.5�AWinIE6.0�ł��̕s��͔������Ȃ��悤�ł��B</li>
+<li>WinIE5.0で不具合の発生を確認しました。</li>
+<li>WinIE5.5、WinIE6.0でこの不具合は発生しないようです。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O011</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ011</div>
 </body>
 </html>

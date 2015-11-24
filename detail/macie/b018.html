@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../macie.html" title="MacIE�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (MacOS) CSS�o�O���X�g</title>
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
 </head>
 <style type="text/css">
 <!--
@@ -20,15 +20,15 @@ span#a {
 -->
 </style>
 <body>
-<h1>Internet Explorer (MacOS) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O018</div>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ018</div>
 
-<h2>display�v���p�e�B�Ŗ��Ή��̒l�𖳎����Ȃ�<em>(IE4.1)</em></h2>
+<h2>displayプロパティで未対応の値を無視しない<em>(IE4.1)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>display�v���p�e�B�ɖ��Ή��̒l�iblock, inline�Ȃǁj���w�肳���ƁA���̒l�𖳎������ɏ����l�ŏ㏑�����Ă��܂��B</p>
+<h3>症状</h3>
+<p>displayプロパティに未対応の値（block, inlineなど）が指定されると、その値を無視せずに初期値で上書きしてしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 span#a {
   display: none;
@@ -38,30 +38,30 @@ span#a {
 }
 &lt;/style&gt;
 
-&lt;span&gt;������H&lt;/span&gt;</pre>
+&lt;span&gt;見える？&lt;/span&gt;</pre>
 <div class="example">
-<span>������H</span>
+<span>見える？</span>
 </div>
-<p>MacIE4.1�ł�none�i�Ή��j�𔽉f�Ainline�i���Ή��j�𖳎����邽�߁Aspan�v�f�͕\������Ȃ��͂��ł��Bnone��inline�̑o���ɑΉ�����UA�ł́Anone��inline�ŏ㏑�������̂ŁAspan�v�f�͕\������܂��B</p>
+<p>MacIE4.1ではnone（対応）を反映、inline（未対応）を無視するため、span要素は表示されないはずです。noneとinlineの双方に対応したUAでは、noneがinlineで上書きされるので、span要素は表示されます。</p>
 
-<h3>�C����</h3>
-<p>MacIE4.1�Ŕ�������͗l�B</p>
+<h3>修正状況</h3>
+<p>MacIE4.1で発生する模様。</p>
 
-<h3>�񍐏�������</h3>
-<blockquote>�mMacIE4.1�n<br>
-IE4��display�v���p�e�B�̒linline��block�ɂ͖��Ή����Ƃ����B<br>
+<h3>報告書き込み</h3>
+<blockquote>［MacIE4.1］<br>
+IE4はdisplayプロパティの値inlineやblockには未対応だとされる。<br>
 &nbsp;cf.http://www.zspc.com/documents/css2/display/display.html<br>
-�����ň�v���Ă��āAIE4�ŕ\��������錳�ƂȂ镔����span�Ŋ����āA<br>
-IE4�ł͏����āAIE5�ȍ~�ł̂ݕ\�������悤�Ƃ����B<br>
-#div1 span {display:none;}/*Win&amp;MacIE4����*/<br>
-#div1 span {display:inline;}/*ver5�ȏ�����AWin&amp;MacIE4�ł͖����̂͂�*/<br>
-�Ƃ��낪MacIE4.1�Ō�����A���ꂪ�Ӑ}�ɔ����ĕ\������Ă��܂����B<br>
-�X�^�C���w��̓�s�ڂ����Ƃ����Ə����邪�B<br>
-�ǂ���display�v���p�e�B�����Ή��̒l�����ꍇ�A���̃u���b�N�𖳎����Ȃ���<br>
-�㏑������݂������B����������display:none;�������Ȃ��Ȃ�炵���B<br>
-������ĕ��@�ᔽ�ł��B�o�O�ł��ˁB<br>
-MacIE4.5��WinIE4�ł͂ǂ��Ȃ̂��B�ǎ����ށB</blockquote>
+そこで一計を案じて、IE4で表示が崩れる元となる部分をspanで括って、<br>
+IE4では消して、IE5以降でのみ表示させようとした。<br>
+#div1 span {display:none;}/*Win&amp;MacIE4向け*/<br>
+#div1 span {display:inline;}/*ver5以上向け、Win&amp;MacIE4では無効のはず*/<br>
+ところがMacIE4.1で見たら、これが意図に反して表示されてしまった。<br>
+スタイル指定の二行目を削るとちゃんと消えるが。<br>
+どうもdisplayプロパティが未対応の値を持つ場合、そのブロックを無視しないで<br>
+上書きするみたいだ。したがってdisplay:none;が効かなくなるらしい。<br>
+それって文法違反です。バグですね。<br>
+MacIE4.5やWinIE4ではどうなのか。追試求む。</blockquote>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O018</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ018</div>
 </body>
 </html>

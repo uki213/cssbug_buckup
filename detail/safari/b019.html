@@ -2,11 +2,11 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../safari.html" title="Safari�ڎ�">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<title>Safari (KHTML) CSSバグリスト</title>
 <script type="text/javascript">
 <!--
 function change(uri) {
@@ -16,15 +16,15 @@ function change(uri) {
 </script>
 </head>
 <body>
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O019</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ019</div>
 
-<h2>�C�����C���t���[����window.name�Ő������Q�Ƃł��Ȃ�</h2>
+<h2>インラインフレームをwindow.nameで正しく参照できない</h2>
 
-<h3>�Ǐ�</h3>
-<p>�X�N���v�g�ŃC�����C���t���[���� <code><var>window</var>.<var>name</var></code> �̌`���ŎQ�Ƃ��Ă��A�Ώۂ̃C�����C���t���[�����w�肷�邱�Ƃ��ł��Ȃ��B�Ⴆ�΃C�����C���t���[���ŕ\������y�[�W��URI��ύX���悤�Ƃ���ƐV�����E�B���h�E���J���A���̃E�B���h�E�Ɏw�肵��URI�̃y�[�W���\�������B</p>
+<h3>症状</h3>
+<p>スクリプトでインラインフレームを <code><var>window</var>.<var>name</var></code> の形式で参照しても、対象のインラインフレームを指定することができない。例えばインラインフレームで表示するページのURIを変更しようとすると新しいウィンドウが開き、そのウィンドウに指定したURIのページが表示される。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;script type=&quot;text/javascript&quot;&gt;
 function change(uri) {
   self.iframe1.location.href = uri;
@@ -33,27 +33,27 @@ function change(uri) {
 
 &lt;div&gt;&lt;iframe name=&quot;iframe1&quot; src=&quot;../safari.html&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href=&quot;javascript:change('../macie.html');&quot;&gt;
-MacIE�o�O���X�g�̃y�[�W&lt;/a&gt;&lt;/p&gt;
+MacIEバグリストのページ&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;javascript:change('../safari.html');&quot;&gt;
-Safari�o�O���X�g�̃y�[�W&lt;/a&gt;&lt;/p&gt;</pre>
+Safariバグリストのページ&lt;/a&gt;&lt;/p&gt;</pre>
 <div class="example">
 <div><iframe name="iframe1" src="../safari.html" style="width:400px; height:100px;"></iframe></div>
-<p><a href="javascript:change('../macie.html');">MacIE�o�O���X�g�̃y�[�W</a></p>
-<p><a href="javascript:change('../safari.html');">Safari�o�O���X�g�̃y�[�W</a></p>
+<p><a href="javascript:change('../macie.html');">MacIEバグリストのページ</a></p>
+<p><a href="javascript:change('../safari.html');">Safariバグリストのページ</a></p>
 </div>
-<p>���ꂼ��̃����N�Ɏw�肵��JavaScript�����s����ƁA�C�����C���t���[�����ɕ\������Ă���y�[�W���ς��͂��ł��B</p>
+<p>それぞれのリンクに指定したJavaScriptを実行すると、インラインフレーム内に表示されているページが変わるはずです。</p>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>Safari1.2�ł��̕s����������邻���ł��B</li>
+<li>Safari1.2でこの不具合が発生するそうです。</li>
 </ul>
 
-<h3>�񍐏�������</h3>
-<blockquote>CSS�ł͂Ȃ���ł����A�A�A�B<br>
-Safari1.2��iframe���������Ƃ��ɁAwindow.name�����܂��������ꂸ<br>
-iframe�̂Ȃ���html��ύX���悤�Ƃ���ƁA�V����Window���Ђ炢�Ă��܂��܂��B<br>
-���m�̖��ł��傤���H</blockquote>
+<h3>報告書き込み</h3>
+<blockquote>CSSではないんですが、、、。<br>
+Safari1.2でiframeをつかったときに、window.nameがうまく解決されず<br>
+iframeのなかのhtmlを変更しようとすると、新しくWindowがひらいてしまいます。<br>
+既知の問題でしょうか？</blockquote>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O019</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ019</div>
 </body>
 </html>

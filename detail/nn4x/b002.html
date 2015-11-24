@@ -2,40 +2,40 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../nn4x.html" title="NN4.x�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Netscape Navigator 4.x CSS�o�O���X�g</title>
+<title>Netscape Navigator 4.x CSSバグリスト</title>
 </head>
 <body>
-<h1>Netscape Navigator 4.x CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../nn4x.html">NN4.x�ڎ�</a>�^�o�O002</div>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ002</div>
 
-<h2>�摜���܂܂��v�f��line-height���w�肷��Ɖ摜�̃��C�A�E�g������</h2>
+<h2>画像が含まれる要素にline-heightを指定すると画像のレイアウトが狂う</h2>
 
-<h3>�Ǐ�</h3>
-<p>�摜���܂܂��v�f�ɑ΂���line-height�v���p�e�B���w�肵�čs���𒲐�����ƁA�摜�̔z�u�������B</p>
+<h3>症状</h3>
+<p>画像が含まれる要素に対してline-heightプロパティを指定して行高を調整すると、画像の配置が狂う。</p>
 
-<h3>�Ꭶ</h3>
-<pre>&lt;p style=&quot;line-height: 1.3;&quot;&gt;�v�f���ɉ摜&lt;img src=&quot;img01.png&quot; alt=&quot;�摜&quot;&gt;���c&lt;br&gt;
-�܂��A�c&lt;/p&gt;</pre>
+<h3>例示</h3>
+<pre>&lt;p style=&quot;line-height: 1.3;&quot;&gt;要素内に画像&lt;img src=&quot;img01.png&quot; alt=&quot;画像&quot;&gt;が…&lt;br&gt;
+また、…&lt;/p&gt;</pre>
 <div class="example">
-<p style="line-height: 1.3;">�v�f���ɉ摜<img src="../img/img01.png" alt="�摜" width="48" height="48">���܂܂�Ă��܂��B<br>
-�܂��A���̗v�f�ɂ�line-height�v���p�e�B���w�肳��Ă��܂��B</p>
+<p style="line-height: 1.3;">要素内に画像<img src="../img/img01.png" alt="画像" width="48" height="48">が含まれています。<br>
+また、この要素にはline-heightプロパティが指定されています。</p>
 </div>
-<p>�s����e�v�f�̍s����1.3�{�ɐݒ肵�Ă��܂��B</p>
+<p>行高を親要素の行高の1.3倍に設定しています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b002_1.png" alt="IE6" width="430" height="130">IE6.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b002_2.png" alt="NN4" width="437" height="71">NN4.78�ł̕\��</p>
+<p><img src="img/b002_1.png" alt="IE6" width="430" height="130">IE6.0での表示（標準モード）</p>
+<p><img src="img/b002_2.png" alt="NN4" width="437" height="71">NN4.78での表示</p>
 </div>
 
-<h3>�C����</h3>
-<p>NN4.78�ł͖��C���ł��B</p>
+<h3>修正状況</h3>
+<p>NN4.78では未修正です。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../nn4x.html">NN4.x�ڎ�</a>�^�o�O002</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ002</div>
 </body>
 </html>

@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 table.sample {
@@ -21,15 +21,15 @@ table.sample td {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O118</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ118</div>
 
-<h2>overflow�ւ̑Ή����s���S�ȗv�f<em>(5.x/6.0)</em></h2>
+<h2>overflowへの対応が不完全な要素<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�\�̃Z���v�f�ith, td�j��s�O���[�v�v�f�ithead, tfoot, tbody�j�Ȃǈꕔ�̗v�f�ł́Aoverflow�v���p�e�B�ւ̑Ή����s���S�ɂȂ��Ă���B�Ⴆ�΁Ascroll�l���w�肵�Ă��X�N���[���o�[������Ȃ��B</p>
+<h3>症状</h3>
+<p>表のセル要素（th, td）や行グループ要素（thead, tfoot, tbody）など一部の要素では、overflowプロパティへの対応が不完全になっている。例えば、scroll値を指定してもスクロールバーが現れない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;table border=&quot;2&quot; style=&quot;width:15em; table-layout:fixed;&quot;&gt;
 &lt;tr&gt;
 &lt;td style=&quot;overflow:visible; border:1px solid red;&quot;&gt;AAAAAAAAAAAAAAAAAAAA&lt;/td&gt;
@@ -52,15 +52,15 @@ table.sample td {
 </tr>
 </table>
 </div>
-<p>�\�̃��C�A�E�g�ɌŒ背�C�A�E�g���g�p����ƁA�Z���v�f�̓��e�����{�b�N�X���͂ݏo�����Ƃ�����܂��B�����ł́A���̂悤�ȏꍇ��overflow�v���p�e�B�̒l�ɂ���ĐU�镑�����ǂ̂悤�ɕς�邩�������Ă��܂��B</p>
+<p>表のレイアウトに固定レイアウトを使用すると、セル要素の内容物がボックスをはみ出すことがあります。ここでは、そのような場合にoverflowプロパティの値によって振る舞いがどのように変わるかを示しています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b118_1.png" alt="WinIE6" width="249" height="103">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b118_1.png" alt="WinIE6" width="249" height="103">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�Z���v�f��overflow�v���p�e�B���w�肵���Ƃ��A�͂ݏo�������e���̈����͊T�ˈȉ��̂悤�ɂȂ�܂��B<em>��������Ă������</em>��CSS�����ƈقȂ�����ł��B</p>
+<h3>補足</h3>
+<p>セル要素にoverflowプロパティを指定したとき、はみ出した内容物の扱いは概ね以下のようになります。<em>強調されているもの</em>はCSS勧告と異なる実装です。</p>
 <table border="2">
 <tr>
 <th>overflow:</th>
@@ -71,31 +71,31 @@ table.sample td {
 </tr>
 <tr>
 <th>WinIE6.0</td>
-<td><em>�{�b�N�X���L����Btable�v�f�̃{�b�N�X���͂ݏo�������͕\�����Ȃ��B</em></td>
-<td>����B</td>
-<td><em>hidden�Ɠ����B�X�N���[���s�\�B</em></td>
-<td><em>hidden�Ɠ����B�X�N���[���s�\�B</em></td>
+<td><em>ボックスを広げる。table要素のボックスをはみ出す部分は表示しない。</em></td>
+<td>正常。</td>
+<td><em>hiddenと同じ。スクロール不能。</em></td>
+<td><em>hiddenと同じ。スクロール不能。</em></td>
 </tr>
 <tr>
 <th>Netscape7.1</td>
-<td>����B</td>
-<td>����B</td>
-<td><em>visible�Ɠ����B�X�N���[���s�\�B</em></td>
-<td><em>visible�Ɠ����B�X�N���[���s�\�B</em></td>
+<td>正常。</td>
+<td>正常。</td>
+<td><em>visibleと同じ。スクロール不能。</em></td>
+<td><em>visibleと同じ。スクロール不能。</em></td>
 </tr>
 <tr>
 <th>Opera7.11</td>
-<td><em>hidden�Ɠ����B</em></td>
-<td>����B</td>
-<td><em>hidden�Ɠ����B�X�N���[���s�\�B</em></td>
-<td><em>hidden�Ɠ����B�X�N���[���s�\�B</em></td>
+<td><em>hiddenと同じ。</em></td>
+<td>正常。</td>
+<td><em>hiddenと同じ。スクロール不能。</em></td>
+<td><em>hiddenと同じ。スクロール不能。</em></td>
 </tr>
 </table>
-<p>��auto�l�̈����ɂ��ẮA��ʓI�ȃu���b�N�{�b�N�X�ł̈����ƈقȂ邩�ǂ����Ŕ��f���Ă��܂��B</p>
+<p>※auto値の扱いについては、一般的なブロックボックスでの扱いと異なるかどうかで判断しています。</p>
 
-<h3>�C����</h3>
-<p>WinIE5.5�AWinIE6.0�W�����[�h�AWinIE6.0�݊����[�h�ŕs��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O118</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ118</div>
 </body>
 </html>

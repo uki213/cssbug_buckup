@@ -2,24 +2,24 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O043</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ043</div>
 
-<h2>left, top���w�肳�ꂽ�v�f�ł�right, bottom��F�����Ȃ�<em>(IE6)</em></h2>
-<p><em>2002-10-14�C���B</em></p>
+<h2>left, topが指定された要素ではright, bottomを認識しない<em>(IE6)</em></h2>
+<p><em>2002-10-14修正。</em></p>
 
-<h3>�Ǐ�</h3>
-<p>left�����top�v���p�e�B���w�肳�ꂽ�v�f�ł́Aright�����bottom�v���p�e�B�̎w�肪���������B</p>
+<h3>症状</h3>
+<p>leftおよびtopプロパティが指定された要素では、rightおよびbottomプロパティの指定が無視される。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;position:relative; width:100px; height:100px; background:aqua;&quot;&gt;A1
 &lt;div style=&quot;position:absolute; left:10px; top:10px;
   right:10px; bottom:10px; background:green;&quot;&gt;B1&lt;/div&gt;
@@ -35,17 +35,17 @@
 <div style="position:absolute; right:10px; bottom:10px; background:teal;">B2</div>
 </div>
 </div>
-<p>A1, B1��left, top, right, bottom�����ׂĎw�肵�����́AA2, B2��right, bottom�������w�肵�����̂ł��B</p>
+<p>A1, B1はleft, top, right, bottomをすべて指定したもの、A2, B2はright, bottomだけを指定したものです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b043_1.png" alt="Moz1.0.1" width="111" height="215">Moz1.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b043_2.png" alt="WinIE6" width="111" height="214">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b043_1.png" alt="Moz1.0.1" width="111" height="215">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b043_2.png" alt="WinIE6" width="111" height="214">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊��̗����[�h�ŕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換の両モードで不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O043</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ043</div>
 </body>
 </html>

@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 body {
@@ -31,15 +31,15 @@ div.scrl {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O081</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ081</div>
 
-<h2>overflow:scroll;�����w�肳�ꂽ�v�f�̔w�i�摜���{���̈�ɑ΂��ČŒ肳��Ȃ�<em>(IE6)</em></h2>
+<h2>overflow:scroll;等が指定された要素の背景画像が閲覧領域に対して固定されない<em>(IE6)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>overflow�v���p�e�B��scroll��auto���w�肳�ꂽ�v�f�̔w�i�摜���Œ肵���i<code>background-attachment: fixed;</code>�j�Ƃ��A�w�i�̊�ʒu���{���̈捶��[�ł͂Ȃ����Y�v�f�̍���[�ɂȂ�ihtml, body�v�f�������j�B</p>
+<h3>症状</h3>
+<p>overflowプロパティにscrollやautoが指定された要素の背景画像を固定した（<code>background-attachment: fixed;</code>）とき、背景の基準位置が閲覧領域左上端ではなく当該要素の左上端になる（html, body要素を除く）。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 body {
     background-attachment: fixed;
@@ -54,24 +54,24 @@ div.scrl {
 }
 &lt;/style&gt;
 
-&lt;div class=&quot;scrl&quot;&gt;�w�i���Œ�&lt;br&gt;�w�i���Œ�&lt;br&gt;�c�c&lt;/div&gt;</pre>
+&lt;div class=&quot;scrl&quot;&gt;背景を固定&lt;br&gt;背景を固定&lt;br&gt;……&lt;/div&gt;</pre>
 <div class="example">
-<div class="scrl">�w�i���Œ�<br>�w�i���Œ�<br>�w�i���Œ�<br>�w�i���Œ�<br>�w�i���Œ�<br>�w�i���Œ�<br>�w�i���Œ�<br>�w�i���Œ�</div>
+<div class="scrl">背景を固定<br>背景を固定<br>背景を固定<br>背景を固定<br>背景を固定<br>背景を固定<br>背景を固定<br>背景を固定</div>
 </div>
-<p>body�v�f�̍��[�ɌŒ�z�u�����w�i�摜��div�v�f�S�̂ɌŒ�z�u�����w�i�摜�͂Ȃ����ĕ\�������͂��ł��B</p>
+<p>body要素の左端に固定配置した背景画像とdiv要素全体に固定配置した背景画像はつながって表示されるはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b081_1.png" alt="Moz1.0.1" width="160" height="103">Moz1.0.1�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b081_2.png" alt="WinIE6" width="159" height="109">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b081_1.png" alt="Moz1.0.1" width="160" height="103">Moz1.0.1での表示（標準モード）</p>
+<p><img src="img/b081_2.png" alt="WinIE6" width="159" height="109">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>WinIE�ł́Ahtml, body�v�f�ȊO�̗v�f�Ɏw�肵���w�i�摜���{���̈�ɑ΂��ČŒ肳��܂���i<a href="b065.html" title="body�v�f�ȊO�Ŕw�i�摜���Œ�ł��Ȃ�">WinIE�o�O065</a>�j�B</p>
+<h3>補足</h3>
+<p>WinIEでは、html, body要素以外の要素に指定した背景画像が閲覧領域に対して固定されません（<a href="b065.html" title="body要素以外で背景画像を固定できない">WinIEバグ065</a>）。</p>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł́A�W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では、標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O081</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ081</div>
 </body>
 </html>

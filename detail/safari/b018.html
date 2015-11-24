@@ -2,22 +2,22 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../safari.html" title="Safari�ڎ�">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<title>Safari (KHTML) CSSバグリスト</title>
 </head>
 <body>
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O018</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ018</div>
 
-<h2>�Œ背�C�A�E�g�\��%�l�w��̗񕝂�100%�𒴂����Ȃ�</h2>
+<h2>固定レイアウト表で%値指定の列幅が100%を超えられない</h2>
 
-<h3>�Ǐ�</h3>
-<p>�Œ背�C�A�E�g�\�i<code>table-layout:fixed;</code>�j�ŗ�̕���%�P�ʂ̒l�Ŏw�肷��ꍇ�A�w��l�̍��v��100%�𒴂���ꍇ�ł��A�\�S�̂̕��͕\�v�f��width�v���p�e�B�̒l���K�p����Ă��܂��B</p>
+<h3>症状</h3>
+<p>固定レイアウト表（<code>table-layout:fixed;</code>）で列の幅を%単位の値で指定する場合、指定値の合計が100%を超える場合でも、表全体の幅は表要素のwidthプロパティの値が適用されてしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;table border=&quot;2&quot; style=&quot;table-layout:fixed; width:200px;&quot;&gt;
 &lt;tr&gt;
 &lt;td style=&quot;width:200px;&quot;&gt;200px&lt;/td&gt;
@@ -44,15 +44,15 @@
 </tr>
 </table>
 </div>
-<p>�ǂ���̕\��1��ڂ̕���200px�A2��ڂ̕���100px�ɂȂ�͂��ł��B</p>
+<p>どちらの表も1列目の幅が200px、2列目の幅が100pxになるはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
-<p><a href="../mozilla/b077.html" title="�Œ背�C�A�E�g�\��%�l�w��̗񕝂�100%�𒴂����Ȃ�">Moz�o�O077</a>�̃X�N���[���V���b�g�Ɠ��l�̏�ԂɂȂ邻���ł��B</p>
+<h3>スクリーンショット</h3>
+<p><a href="../mozilla/b077.html" title="固定レイアウト表で%値指定の列幅が100%を超えられない">Mozバグ077</a>のスクリーンショットと同様の状態になるそうです。</p>
 
-<h3>�񍐏�������</h3>
-<blockquote>�yMozilla�z�ƁySafari�z<br>
-�񕝂�%�w�肳�ꂽ�Œ背�C�A�E�g�̕\�ŁA�񕝍��v��<br>
-100%�𒴂���ꍇ�ɁA�񂪎w�蕝�ɂȂ�Ȃ��B<br>
+<h3>報告書き込み</h3>
+<blockquote>【Mozilla】と【Safari】<br>
+列幅が%指定された固定レイアウトの表で、列幅合計が<br>
+100%を超える場合に、列が指定幅にならない。<br>
 <br>
 table {<br>
 width: 300px;<br>
@@ -77,26 +77,26 @@ background: red;<br>
 &lt;tr&gt;&lt;td&gt;x&lt;/td&gt;&lt;td&gt;y&lt;/td&gt;&lt;/tr&gt;<br>
 &lt;/table&gt;</blockquote>
 
-<blockquote>CSS�d�l���ɂ́A�Œ背�C�A�E�g�̕\�ł́A�\�̕��́A<br>
-�񕝍��v�ƕ\��width�w��̂����傫�������̗p�����<br>
-����܂��B<br>
+<blockquote>CSS仕様書には、固定レイアウトの表では、表の幅は、<br>
+列幅合計と表のwidth指定のうち大きい方を採用すると<br>
+あります。<br>
 <br>
-&gt;&gt;36 �̃\�[�X�ł́A&lt;table&gt;��width��300px������A<br>
-1��2�ڂ̕\�͓����񕝂�\���Ă��܂��B�����āA<br>
-�񕝍��v������300px�𒴂���̂ŁA���ʗ����Ƃ�<br>
-600px�قǂ̕��̕\�ɂȂ�ׂ��ł���ˁB<br>
+&gt;&gt;36 のソースでは、&lt;table&gt;のwidthは300pxだから、<br>
+1つ目2つ目の表は同じ列幅を表しています。そして、<br>
+列幅合計が共に300pxを超えるので、結果両方とも<br>
+600pxほどの幅の表になるべきですよね。<br>
 <br>
-�Ƃ��낪�AMozilla��Safari�́A1�ڂ̕\�͐������\��<br>
-���܂����A2�ڂ̕\��3�ڂƓ����\���ɂȂ�܂��B<br>
+ところが、MozillaとSafariは、1つ目の表は正しく表示<br>
+しますが、2つ目の表は3つ目と同じ表示になります。<br>
 <br>
-�܂�A140%, 60% �Ǝw�肷��ƁA��������v100%<br>
-�ɕϊ����� 70%, 30% �̕��ŕ\�����Ă��܂��悤�ł��B<br>
-�������A���̓���͎d�l���ɂ͍���Ȃ��Ǝv���܂��B<br>
+つまり、140%, 60% と指定すると、これを合計100%<br>
+に変換して 70%, 30% の幅で表示してしまうようです。<br>
+しかし、この動作は仕様書には合わないと思います。<br>
 <br>
-�Ȃ��A�������C�A�E�g�̏ꍇ�́A�ŏI�I�ɃA���S���Y����<br>
-���R�Ƃ���̂ŁA���̓���ł��d�l���Ɉᔽ����Ƃ͌���<br>
-�Ȃ��Ǝv���܂��B</blockquote>
+なお、自動レイアウトの場合は、最終的にアルゴリズムは<br>
+自由とあるので、この動作でも仕様書に違反するとは言え<br>
+ないと思います。</blockquote>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O018</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ018</div>
 </body>
 </html>

@@ -2,42 +2,42 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O120</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ120</div>
 
-<h2>�����R���e�i�u���b�N�𐶐�����v�f�̕����w��ł��Ȃ�<em>(5.x/6.0)</em></h2>
+<h2>初期コンテナブロックを生成する要素の幅を指定できない<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�����R���e�i�u���b�N�𐶐�����v�f�iWinIE6�W�����[�h�ł�html�v�f�AWinIE6�݊����[�h��WinIE5.5�ȑO��body�v�f�j�ɑ΂���width�v���p�e�B���w�肵�Ă���������Ă��܂��A�����w�肵�Ȃ��Ƃ��Ɠ������ʂɂȂ�B</p>
+<h3>症状</h3>
+<p>初期コンテナブロックを生成する要素（WinIE6標準モードではhtml要素、WinIE6互換モードとWinIE5.5以前はbody要素）に対してwidthプロパティを指定しても無視されてしまい、幅を指定しないときと同じ結果になる。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 body {
   width: 20em;
   border-right: 2px dashed blue;
 }
 &lt;/style&gt;
-&lt;p&gt;This specification�c�c&lt;/p&gt;</pre>
-<p>���̂悤�Ȏw���<a href="b120a.html">���؃y�[�W</a>�ōs���Ă��܂��B</p>
+&lt;p&gt;This specification……&lt;/p&gt;</pre>
+<p>このような指定を<a href="b120a.html">検証ページ</a>で行っています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
-<p>2�̃u���E�U�̓E�B���h�E�̕����قړ����ɂ��Ă��܂��B</p>
+<h3>スクリーンショット</h3>
+<p>2つのブラウザはウィンドウの幅をほぼ同じにしています。</p>
 <div class="shot">
-<p><img src="img/b120_1.png" alt="N7.1" width="433" height="39">N7.1�ł̕\���i�݊����[�h�j</p>
-<p><img src="img/b120_2.png" alt="WinIE6" width="434" height="39">WinIE6.0�ł̕\���i�݊����[�h�j</p>
+<p><img src="img/b120_1.png" alt="N7.1" width="433" height="39">N7.1での表示（互換モード）</p>
+<p><img src="img/b120_2.png" alt="WinIE6" width="434" height="39">WinIE6.0での表示（互換モード）</p>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE5.5�AWinIE6.0�W�����[�h�AWinIE6.0�݊����[�h�ł��̌��ۂ̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードでこの現象の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O120</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ120</div>
 </body>
 </html>

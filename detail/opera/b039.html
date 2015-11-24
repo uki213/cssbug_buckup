@@ -2,47 +2,47 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Opera CSS�o�O���X�g</title>
+<title>Opera CSSバグリスト</title>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O039</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ039</div>
 
-<h2>�z�u���ꂽ�C�����C���v�f���q���v�f�̈ʒu�w����l������ۂɖ��������<em>(7.0)</em></h2>
+<h2>配置されたインライン要素が子孫要素の位置指定を考慮する際に無視される<em>(7.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>���Δz�u���ꂽ�C�����C���v�f�̎q���v�f���Δz�u�i<code>position: absolute;</code>�j����Ƃ��A���Δz�u���ꂽ�v�f����Δz�u�̃R���e�i�u���b�N�Ƃ��ċ@�\���Ȃ��B</p>
+<h3>症状</h3>
+<p>相対配置されたインライン要素の子孫要素を絶対配置（<code>position: absolute;</code>）するとき、相対配置された要素が絶対配置のコンテナブロックとして機能しない。</p>
 
-<h3>�Ꭶ</h3>
-<pre>&lt;span style=&quot;position:relative; border:2px solid red;&quot;&gt;��
-&lt;span style=&quot;position:absolute; left:1.5em; top:0; border:2px solid blue;&quot;&gt;��
+<h3>例示</h3>
+<pre>&lt;span style=&quot;position:relative; border:2px solid red;&quot;&gt;○
+&lt;span style=&quot;position:absolute; left:1.5em; top:0; border:2px solid blue;&quot;&gt;◇
 &lt;/span&gt;&lt;/span&gt;</pre>
 <div class="example">
-<span style="position:relative; border:2px solid red;">��
-<span style="position:absolute; left:1.5em; top:0; border:2px solid blue;">��
+<span style="position:relative; border:2px solid red;">○
+<span style="position:absolute; left:1.5em; top:0; border:2px solid blue;">◇
 </span></span>
 </div>
-<p>�u���v���܂�span�v�f�i�e�j�𑊑Δz�u�A�u���v���܂�span�v�f�i�q�j���Δz�u���Ă��܂��B</p>
+<p>「○」を含むspan要素（親）を相対配置、「◇」を含むspan要素（子）を絶対配置しています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
-<p>��Opera7�ł́u���v���܂�span�v�f��html�v�f���R���e�i�u���b�N�Ƃ��Đ�Δz�u����Ă��܂��B</p>
+<h3>スクリーンショット</h3>
+<p>※Opera7では「◇」を含むspan要素がhtml要素をコンテナブロックとして絶対配置されています。</p>
 <div class="shot">
-<p><img src="img/b039_1.png" alt="Moz1.0.2" width="65" height="35">Moz1.0.2�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b039_2.png" alt="Op7" width="78" height="29">Opera7.03�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b039_1.png" alt="Moz1.0.2" width="65" height="35">Moz1.0.2での表示（標準モード）</p>
+<p><img src="img/b039_2.png" alt="Op7" width="78" height="29">Opera7.03での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>���̃o�O�̂��߂ɁA���r�֘A�v�f��Internet Explorer�̂悤�ɕ\���i�������ł�rt�v�f��rb�v�f�̏�ɒu�����j������X�^�C���V�[�g�̃T���v�����g�p�����Ƃ���rt�v�f�������Ă��܂��i�{���̈�̊O���ɂ͂ݏo���Ă���j���Ƃ�����܂��B</p>
-<p>���Δz�u�����v�f���u���b�N�v�f�̏ꍇ�̓R���e�i�u���b�N�Ƃ��ċ@�\���܂��B�܂��A�e�̃C�����C���v�f���Δz�u�����ꍇ�����l�ɃR���e�i�u���b�N�Ƃ��ċ@�\���܂��B</p>
+<h3>補足</h3>
+<p>このバグのために、ルビ関連要素をInternet Explorerのように表示（横書きではrt要素がrb要素の上に置かれる）させるスタイルシートのサンプルを使用したときにrt要素が消えてしまう（閲覧領域の外側にはみ出している）ことがあります。</p>
+<p>相対配置した要素がブロック要素の場合はコンテナブロックとして機能します。また、親のインライン要素を絶対配置した場合も同様にコンテナブロックとして機能します。</p>
 
-<h3>�C����</h3>
-<p>Opera7.03�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>Opera7.03では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O039</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ039</div>
 </body>
 </html>

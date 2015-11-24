@@ -2,23 +2,23 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O045</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ045</div>
 
-<h2>�|�W�V���j���O���ꂽ�v�f���㑱�v�f�̃}�[�W���������p��<em>(IE5.5)</em></h2>
+<h2>ポジショニングされた要素が後続要素のマージンを引き継ぐ<em>(IE5.5)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>��Δz�u���ꂽ�v�f���A�㑱����ʂ̗v�f�̃}�[�W���������p���ł��܂��B</p>
+<h3>症状</h3>
+<p>絶対配置された要素が、後続する別の要素のマージンを引き継いでしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;position:relative; background:blue;&quot;&gt;
 &lt;div style=&quot;position:absolute; width:100px; background:lime;&quot;&gt;A&lt;/div&gt;
 &lt;div style=&quot;margin-left:110px; background:aqua;&quot;&gt;B&lt;br&gt;B&lt;/div&gt;
@@ -29,16 +29,16 @@
 <div style="margin-left:110px; background:aqua;">B<br>B</div>
 </div>
 </div>
-<p>2�i�g�݂̃T���v���ł��BB��div�v�f�ɐݒ肳��Ă��鍶�}�[�W���́AA��div�v�f�ɏd�Ȃ�̂�h�����߂ɐݒ肳��Ă��܂��B</p>
+<p>2段組みのサンプルです。Bのdiv要素に設定されている左マージンは、Aのdiv要素に重なるのを防ぐために設定されています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b045_1.png" alt="Moz1.0" width="233" height="49">Moz1.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b045_2.png" alt="WinIE6" width="233" height="57">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b045_1.png" alt="Moz1.0" width="233" height="49">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b045_2.png" alt="WinIE6" width="233" height="57">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>���̃o�O���������ɂ́A�}�[�W���������p���ł��܂��v�f�ō�����̈ʒu�ileft�v���p�e�B�j���`���A����ɐe�v�f�ŕ��iwidth�v���p�e�B�j���`���Ă��������B</p>
+<h3>補足</h3>
+<p>このバグを回避するには、マージンを引き継いでしまう要素で左からの位置（leftプロパティ）を定義し、さらに親要素で幅（widthプロパティ）を定義してください。</p>
 <pre>&lt;div style=&quot;position:relative; background:blue; <em>width:100%;</em>&quot;&gt;
 &lt;div style=&quot;position:absolute; width:100px; <em>left:0;</em> background:lime;&quot;&gt;A&lt;/div&gt;
 &lt;div style=&quot;margin-left:110px; background:aqua;&quot;&gt;B&lt;br&gt;B&lt;/div&gt;
@@ -49,7 +49,7 @@
 <div style="margin-left:110px; background:aqua;">B<br>B</div>
 </div>
 </div>
-<p>�܂��́A�e�v�f�Ƀ{�[�_�[���p�f�B���O��ݒ肵�Ă��������B</p>
+<p>または、親要素にボーダーかパディングを設定してください。</p>
 <pre>&lt;div style=&quot;position:relative; background:blue; <em>padding:1px;</em>&quot;&gt;
 &lt;div style=&quot;position:absolute; width:100px; background:lime;&quot;&gt;A&lt;/div&gt;
 &lt;div style=&quot;margin-left:110px; background:aqua;&quot;&gt;B&lt;br&gt;B&lt;/div&gt;
@@ -61,9 +61,9 @@
 </div>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O045</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ045</div>
 </body>
 </html>

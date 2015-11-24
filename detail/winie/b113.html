@@ -2,49 +2,49 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O113</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ113</div>
 
-<h2>�C�����C���v�f�ɋ��܂�Ă���t���[�g�����ɂ���Ēu�����<em>(5.x/6.0)</em></h2>
+<h2>インライン要素に挟まれているフロートが下にずれて置かれる<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�\�[�X���ŃC�����C���v�f�̊Ԃɂ���v�f���t���[�g�ɂ����Ƃ��A�t���[�g���{���u�����ׂ��ʒu���牺���ɂ��ꂽ�ʒu�ɒu�����B���̂��߃t���[�g�́A�t���[�g�̒��O�̍s�Ɋ܂܂����e�̌�ɒu����Ă��܂��B</p>
+<h3>症状</h3>
+<p>ソース中でインライン要素の間にある要素をフロートにしたとき、フロートが本来置かれるべき位置から下方にずれた位置に置かれる。このためフロートは、フロートの直前の行に含まれる内容の後に置かれてしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;width:14em;&quot;&gt;
-&lt;span style=&quot;color:red;&quot;&gt;�t���[�g�̑O�ɂ���C�����C���v�f�ł��B&lt;/span&gt;
-&lt;span style=&quot;float:left; width:5em; border:1px dashed blue;&quot;&gt;�t���[�g&lt;/span&gt;
-&lt;span style=&quot;color:green;&quot;&gt;�t���[�g�̌�ɂ���C�����C���v�f�ł��B&lt;/span&gt;
+&lt;span style=&quot;color:red;&quot;&gt;フロートの前にあるインライン要素です。&lt;/span&gt;
+&lt;span style=&quot;float:left; width:5em; border:1px dashed blue;&quot;&gt;フロート&lt;/span&gt;
+&lt;span style=&quot;color:green;&quot;&gt;フロートの後にあるインライン要素です。&lt;/span&gt;
 &lt;/div&gt;</pre>
 <div class="example">
 <div style="width:14em;">
-<span style="color:red;">�t���[�g�̑O�ɂ���C�����C���v�f�ł��B</span>
-<span style="float:left; width:5em; border:1px dashed blue;">�t���[�g</span>
-<span style="color:green;">�t���[�g�̌�ɂ���C�����C���v�f�ł��B</span>
+<span style="color:red;">フロートの前にあるインライン要素です。</span>
+<span style="float:left; width:5em; border:1px dashed blue;">フロート</span>
+<span style="color:green;">フロートの後にあるインライン要素です。</span>
 </div>
 </div>
-<p>�O�i�F���ԐF��span�v�f�ƁA�O�i�F���ΐF��span�v�f�̊Ԃɂ���span�v�f���t���[�g�ɂ��Ă��܂��B</p>
+<p>前景色が赤色のspan要素と、前景色が緑色のspan要素の間にあるspan要素をフロートにしています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b113_1.png" alt="Op7" width="233" height="90">Opera7.11�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b113_2.png" alt="WinIE6" width="233" height="70">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b113_1.png" alt="Op7" width="233" height="90">Opera7.11での表示（標準モード）</p>
+<p><img src="img/b113_2.png" alt="WinIE6" width="233" height="70">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>���X�g�A�C�e���v�f�� <code>list-style-position: inside;</code> ���w�肵�����X�g�A�C�e���v�f���̐擪�ɂ���t���[�g�ł��̃o�O�͔������܂���i<a href="b111.html" title="�擪�Ƀt���[�g�����郊�X�g�A�C�e���v�f�Ń��X�g�}�[�J�[���v�f���ɓ��荞��">WinIE�o�O111�Q��</a>�j�B�������AWinIE�͂��̏ꍇ�̃��X�g�}�[�J�[���C�����C���v�f�Ƃ��Ĉ����Ă��Ȃ��\��������܂��B</p>
+<h3>補足</h3>
+<p>リストアイテム要素に <code>list-style-position: inside;</code> を指定したリストアイテム要素内の先頭にあるフロートでこのバグは発生しません（<a href="b111.html" title="先頭にフロートがあるリストアイテム要素でリストマーカーが要素内に入り込む">WinIEバグ111参照</a>）。ただし、WinIEはこの場合のリストマーカーをインライン要素として扱っていない可能性もあります。</p>
 
-<h3>�C����</h3>
-<p>WinIE5.5�AWinIE6.0�W�����[�h�AWinIE6.0�݊����[�h�ŕs��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O113</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ113</div>
 </body>
 </html>

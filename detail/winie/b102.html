@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 a:hover {
@@ -17,36 +17,36 @@ a:hover {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O102</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ102</div>
 
-<h2>�A���J�[��:hover��Ԃɂ���Ɛe�u���b�N�̍������ω�����<em>(5.5/6.0)</em></h2>
-<p>2003-05-14�č쐬�B</p>
+<h2>アンカーを:hover状態にすると親ブロックの高さが変化する<em>(5.5/6.0)</em></h2>
+<p>2003-05-14再作成。</p>
 
-<h3>�Ǐ�</h3>
-<p>�ȉ��̏����Q�̂����ꂩ�ɊY������Ƃ��A�A���J�[�Ƀ}�E�X�|�C���^�����悹��:hover��Ԃɂ���Ɠ�������3�Ԗڂ̃{�b�N�X�̍��������������茸�������肷��B</p>
+<h3>症状</h3>
+<p>以下の条件群のいずれかに該当するとき、アンカーにマウスポインタ等を乗せて:hover状態にすると内側から3番目のボックスの高さが増加したり減少したりする。</p>
 <ul>
-<li>�����Q1
+<li>条件群1
 <ul>
-<li>3�d�ȏ�̓���q�u���b�N�ɂȂ��Ă���B</li>
-<li>��ԓ����̃u���b�N�Ɋ܂܂ꂽa�v�f��:hover�^���N���X�Ŕw�i��ݒ肵�Ă���B</li>
-<li>�ł������̃u���b�N�ɔC�ӂ̏㉺�}�[�W����ݒ肵�Ă���B</li>
-<li>��������2�Ԗڂ̃u���b�N�ɔw�i�ƃ{�[�_�[��ݒ肵�Ă���B</li>
-<li>��������3�Ԗڂ̃u���b�N�ɔC�ӂ̕���ݒ肵�Ă���B</li>
+<li>3重以上の入れ子ブロックになっている。</li>
+<li>一番内側のブロックに含まれたa要素に:hover疑似クラスで背景を設定している。</li>
+<li>最も内側のブロックに任意の上下マージンを設定している。</li>
+<li>内側から2番目のブロックに背景とボーダーを設定している。</li>
+<li>内側から3番目のブロックに任意の幅を設定している。</li>
 </ul>
 </li>
-<li>�����Q2
+<li>条件群2
 <ul>
-<li>3�d�ȏ�̓���q�u���b�N�ɂȂ��Ă���A�ł������̃u���b�N���������݂���B</li>
-<li>��ԓ����̃u���b�N�Ɋ܂܂ꂽa�v�f��:hover�^���N���X�Ŕw�i��ݒ肵�Ă���B</li>
-<li>��������2�Ԗڂ̃u���b�N�ɔC�ӂ̏㉺�}�[�W����ݒ肵�Ă���B</li>
-<li>��������2�Ԗڂ̃u���b�N�܂��͂���������ɂ���v�f�ɔw�i��ݒ肵�Ă���B</li>
-<li>��������3�Ԗڂ̃u���b�N�ɔC�ӂ̕���ݒ肵�Ă���B</li>
+<li>3重以上の入れ子ブロックになっており、最も内側のブロックが複数存在する。</li>
+<li>一番内側のブロックに含まれたa要素に:hover疑似クラスで背景を設定している。</li>
+<li>内側から2番目のブロックに任意の上下マージンを設定している。</li>
+<li>内側から2番目のブロックまたはそれより内側にある要素に背景を設定している。</li>
+<li>内側から3番目のブロックに任意の幅を設定している。</li>
 </ul>
 </li>
 </ul>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 a:hover {
   background: aqua;
@@ -56,67 +56,67 @@ a:hover {
 &lt;div style=&quot;width:50%; border:2px solid red;&quot;&gt;
 &lt;div style=&quot;background:yellow; border:2px dashed green;&quot;&gt;
 &lt;div style=&quot;margin:1em 0;&quot;&gt;
-&lt;a href=&quot;../winie.html&quot;&gt;WinIE�o�O&lt;/a&gt;
+&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
 &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;div style=&quot;width:50%; border:2px solid blue;&quot;&gt;
 &lt;div style=&quot;margin:1em 0;&quot;&gt;
-&lt;div&gt;&lt;a href=&quot;../winie.html&quot;&gt;WinIE�o�O&lt;/a&gt;
+&lt;div&gt;&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
 &lt;span style=&quot;background:yellow;&quot;&gt;Inline&lt;/span&gt;&lt;/div&gt;
-&lt;div&gt;&lt;a href=&quot;../winie.html&quot;&gt;WinIE�o�O&lt;/a&gt;
+&lt;div&gt;&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
 &lt;span style=&quot;background:yellow;&quot;&gt;Inline&lt;/span&gt;&lt;/div&gt;
 &lt;/div&gt;&lt;/div&gt;</pre>
 <div class="example">
 <div style="width:50%; border:2px solid red;">
 <div style="background:yellow; border:2px dashed green;">
 <div style="margin:1em 0;">
-<a href="../winie.html">WinIE�o�O</a>
+<a href="../winie.html">WinIEバグ</a>
 </div></div></div>
 <div style="width:50%; border:2px solid blue;">
 <div style="margin:1em 0;">
-<div><a href="../winie.html">WinIE�o�O</a>
+<div><a href="../winie.html">WinIEバグ</a>
 <span style="background:yellow;">Inline</span></div>
-<div><a href="../winie.html">WinIE�o�O</a>
+<div><a href="../winie.html">WinIEバグ</a>
 <span style="background:yellow;">Inline</span></div>
 </div></div>
 </div>
-<p>2�̗��u���Ă��܂��B�O�҂͏����Q1�̗�A��҂͏����Q2�̗�ł��B�A���J�[���|�C���g���ē�����m���߂Ă��������B</p>
+<p>2つの例を置いています。前者は条件群1の例、後者は条件群2の例です。アンカーをポイントして動作を確かめてください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
-<p>���}�E�X�|�C���^���ڂ�����̃X�N���[���V���b�g�ł��B�Ȃ��A�}�E�X�|�C���^���ڂ���O��WinIE6.0�ł̕\����N7.02�̃X�N���[���V���b�g�Ɠ�����Ԃł����B</p>
+<h3>スクリーンショット</h3>
+<p>※マウスポインタを載せた後のスクリーンショットです。なお、マウスポインタを載せる前のWinIE6.0での表示はN7.02のスクリーンショットと同じ状態でした。</p>
 <div class="shot">
-<p><img src="img/b102_1.png" alt="N7" width="158" height="145">N7.02�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b102_2.png" alt="WinIE6" width="162" height="144">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b102_1.png" alt="N7" width="158" height="145">N7.02での表示（標準モード）</p>
+<p><img src="img/b102_2.png" alt="WinIE6" width="162" height="144">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�o�O�̉��@���������������Ă��܂��B</p>
+<h3>補足</h3>
+<p>バグの回避法がいくつか分かっています。</p>
 <ul>
-<li>��������3�Ԗڂ̃u���b�N�ŕ����w�肵�Ȃ��B�i�����Q1�Ə����Q2�̗����ɗL���j</li>
-<li>�ł������̃u���b�N�̓�������a�v�f�����Ƀu���b�N�v�f��u���B�i�����Q1�Ə����Q2�̗����ɗL���B�������A�����Q2�̏ꍇ�̓u���b�N�v�f���g�܂��͂��̎q���v�f�ɔw�i���w�肵�Ă͂Ȃ�Ȃ��j
+<li>内側から3番目のブロックで幅を指定しない。（条件群1と条件群2の両方に有効）</li>
+<li>最も内側のブロックの内部かつa要素より後ろにブロック要素を置く。（条件群1と条件群2の両方に有効。ただし、条件群2の場合はブロック要素自身またはその子孫要素に背景を指定してはならない）
 <pre>&lt;div style=&quot;width:50%; border:2px solid red;&quot;&gt;
 &lt;div style=&quot;background:yellow; border:2px dashed green;&quot;&gt;
 &lt;div style=&quot;margin:1em 0;&quot;&gt;
-&lt;a href=&quot;../winie.html&quot;&gt;WinIE�o�O&lt;/a&gt;
-<em>&lt;div&gt;�u���b�N�v�f&lt;/div&gt;</em>
+&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
+<em>&lt;div&gt;ブロック要素&lt;/div&gt;</em>
 &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</pre>
 </li>
-<li>�w�i���Ȃ��ɂ���B�i�����Q1�Ə����Q2�̗����ɗL���j</li>
-<li>��ԓ����̃u���b�N�̃}�[�W���ʂƓ�������2�Ԗڂ̃u���b�N�̃}�[�W���ʂ𓯂��ɂ���B�i�����Q1�Ə����Q2�̗����ɗL���j
+<li>背景をなしにする。（条件群1と条件群2の両方に有効）</li>
+<li>一番内側のブロックのマージン量と内側から2番目のブロックのマージン量を同じにする。（条件群1と条件群2の両方に有効）
 <pre>&lt;div style=&quot;width:50%; border:2px solid red;&quot;&gt;
 &lt;div style=&quot;<em>margin:1em 0;</em> background:yellow; border:2px dashed green;&quot;&gt;
 &lt;div style=&quot;<em>margin:1em 0;</em>&quot;&gt;
-&lt;a href=&quot;../winie.html&quot;&gt;WinIE�o�O&lt;/a&gt;
+&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
 &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</pre>
 </li>
-<li>��������2�Ԗڂ̃u���b�N�Ƀ{�[�_�[��ݒu���Ȃ��B�i�����Q1�ɗL���j</li>
-<li>��������2�Ԗڂ̃u���b�N�Ƀ{�[�_�[��ݒu����B�i�����Q2�ɗL���j</li>
+<li>内側から2番目のブロックにボーダーを設置しない。（条件群1に有効）</li>
+<li>内側から2番目のブロックにボーダーを設置する。（条件群2に有効）</li>
 </ul>
-<p>�������A�ꍇ�ɂ���Ă͕ʂ̃o�O�i<a href="b103.html" title="�A���J�[��:hover��Ԃɂ���ƌ㑱����t���[�g�̈ꕔ��������">WinIE�o�O103</a>�j����������̂Œ��ӂ��Ă��������B</p>
+<p>ただし、場合によっては別のバグ（<a href="b103.html" title="アンカーを:hover状態にすると後続するフロートの一部が消える">WinIEバグ103</a>）が発生するので注意してください。</p>
 
-<h3>�C����</h3>
-<p>WinIE5.5�AWinIE6.0�W�����[�h�AWinIE6.0�݊����[�h�ŕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O102</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ102</div>
 </body>
 </html>

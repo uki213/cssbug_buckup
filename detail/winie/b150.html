@@ -2,49 +2,49 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O150</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ150</div>
 
-<h2>clear�̎w�肪�e�v�f�ɂ��e������<em>(5.x/6.0)</em></h2>
+<h2>clearの指定が親要素にも影響する<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�t���[�g�̌���ɐe�q�֌W�����{�b�N�X������Ƃ��A�e�v�f�̊J�n�^�O�Ǝq�v�f�̊J�n�^�O���אڂ��Ă����ԂŎq�v�f��clear�v���p�e�B���w�肷��ƁA�q�v�f�����łȂ��e�v�f�̃{�b�N�X����荞�݂��}������Ă��܂��B</p>
+<h3>症状</h3>
+<p>フロートの後方に親子関係を持つボックスがあるとき、親要素の開始タグと子要素の開始タグが隣接している状態で子要素にclearプロパティを指定すると、子要素だけでなく親要素のボックスも回り込みが抑制されてしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <div class="example">
 <div style="float:left; width:3em; height:3em; background:aqua;">Float</div>
 <div style="background:yellow;">
 <div style="clear:left; width:3em; height:3em; background:lime;">Clear</div>
 </div>
 </div>
-<p>���F�̔w�i�̈�́A�t���[�g�{�b�N�X��clear�v���p�e�B���w�肵���{�b�N�X�̗����Ɋ|����͂��ł��B</p>
+<p>黄色の背景領域は、フロートボックスとclearプロパティを指定したボックスの両方に掛かるはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b150_1.png" alt="Op7.2">Opera7.23�W�����[�h</p>
-<p><img src="img/b150_2.png" alt="WinIE6.0">WinIE6.0�W�����[�h</p>
+<p><img src="img/b150_1.png" alt="Op7.2">Opera7.23標準モード</p>
+<p><img src="img/b150_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�ȉ��̂����ꂩ�ɊY������ꍇ�A���̕s��͔������܂���B</p>
+<h3>補足</h3>
+<p>以下のいずれかに該当する場合、この不具合は発生しません。</p>
 <ul>
-<li>�e�v�f�ɏ�{�[�_�[��ݒu���Ă���B</li>
-<li>�e�v�f�ɏ�p�f�B���O��ݒu���Ă���B</li>
-<li>�e�v�f�̊J�n�^�O�Ǝq�v�f�̊J�n�^�O�̊Ԃɕ�����Ȃǂ����݂���B</li>
+<li>親要素に上ボーダーを設置している。</li>
+<li>親要素に上パディングを設置している。</li>
+<li>親要素の開始タグと子要素の開始タグの間に文字列などが存在する。</li>
 </ul>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>WinIE6.0�̕W�����[�h�ƌ݊����[�h�ŕs��̔������m�F���܂����B</li>
+<li>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O150</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ150</div>
 </body>
 </html>

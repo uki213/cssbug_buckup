@@ -2,46 +2,46 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O128</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ128</div>
 
-<h2>word-break���u���b�N���x���v�f�ȊO�Ō����Ȃ�<em>(5.x/6.0)</em></h2>
+<h2>word-breakがブロックレベル要素以外で効かない<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�u���b�N���x���v�f�ȊO�ł�word-break�v���p�e�B�̎w�肪���������B</p>
+<h3>症状</h3>
+<p>ブロックレベル要素以外ではword-breakプロパティの指定が無視される。</p>
 
-<h3>�Ꭶ</h3>
-<pre>&lt;p&gt;&lt;span style=&quot;word-break:break-all;&quot;&gt;AAA�c�c&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;word-break:break-all;&quot;&gt;&lt;span&gt;BBB�c�c&lt;/span&gt;&lt;/p&gt;</pre>
+<h3>例示</h3>
+<pre>&lt;p&gt;&lt;span style=&quot;word-break:break-all;&quot;&gt;AAA……&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;word-break:break-all;&quot;&gt;&lt;span&gt;BBB……&lt;/span&gt;&lt;/p&gt;</pre>
 <div class="example">
 <p><span style="word-break:break-all;">AAAAAAAAAAAAAAAAAAAA-AAAAAAAAAAAAAAAAAAAA</span></p>
 <p style="word-break:break-all;"><span>BBBBBBBBBBBBBBBBBBBB-BBBBBBBBBBBBBBBBBBBB</span></p>
 </div>
-<p><code>word-break:break-all;</code> �w��i�P��̐؂�ڂł����Ă��܂�Ԃ����s���j���C�����C���v�f�Ɏw�肵���ꍇ�ƃu���b�N�v�f�Ɏw�肵���ꍇ�Ƃ��r���Ă��܂��B�uAAA�c�c�v��uBBB�c�c�v�̓r���Ő܂�Ԃ���邩���m�F���Ă��������B�Ȃ��A�ʏ�̓n�C�t���̒���Ő܂�Ԃ���܂��B</p>
+<p><code>word-break:break-all;</code> 指定（単語の切れ目であっても折り返しを行う）をインライン要素に指定した場合とブロック要素に指定した場合とを比較しています。「AAA……」や「BBB……」の途中で折り返されるかを確認してください。なお、通常はハイフンの直後で折り返されます。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b128_1.png" alt="WinIE6">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b128_1.png" alt="WinIE6">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>2001�N5��17����CSS3���Ă܂ł́Aword-break�v���p�e�B�̓u���b�N���x���v�f�ɂ̂ݓK�p�\�ł���ƒ�߂Ă��܂����B���݂�WinIE�͂���Ɋ�Â��������ł���ƍl�����܂��B����A2002�N5��23����CSS3���Ĉȍ~�́Aword-break�v���p�e�B�͂��ׂĂ̗v�f�ɓK�p�\�ł���ƒ�߂Ă��܂��B�������A�܂������Ɏ����Ă��Ȃ����߂ɍ��ケ�̋K�肪�ύX�����\��������܂��B</p>
-<p>WinIE�ɂ�����word-break�v���p�e�B�̎d�l�̏ڍׂ͈ȉ����Q�Ƃ��Ă��������B</p>
+<h3>補足</h3>
+<p>2001年5月17日のCSS3草案までは、word-breakプロパティはブロックレベル要素にのみ適用可能であると定めていました。現在のWinIEはこれに基づいた実装であると考えられます。一方、2002年5月23日のCSS3草案以降は、word-breakプロパティはすべての要素に適用可能であると定めています。ただし、まだ勧告に至っていないために今後この規定が変更される可能性があります。</p>
+<p>WinIEにおけるword-breakプロパティの仕様の詳細は以下を参照してください。</p>
 <ul>
-<li><a href="http://msdn.microsoft.com/workshop/author/dhtml/reference/properties/wordbreak.asp">word-break Attribute | wordBreak Property</a>�iMSDN�j</li>
+<li><a href="http://msdn.microsoft.com/workshop/author/dhtml/reference/properties/wordbreak.asp">word-break Attribute | wordBreak Property</a>（MSDN）</li>
 </ul>
 
-<h3>�C����</h3>
-<p>WinIE6.0�̕W�����[�h�A�݊����[�h�ŕs��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0の標準モード、互換モードで不具合の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O128</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ128</div>
 </body>
 </html>

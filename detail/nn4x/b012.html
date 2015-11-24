@@ -2,50 +2,50 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../nn4x.html" title="NN4.x�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Netscape Navigator 4.x CSS�o�O���X�g</title>
+<title>Netscape Navigator 4.x CSSバグリスト</title>
 </head>
 <body>
-<h1>Netscape Navigator 4.x CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../nn4x.html">NN4.x�ڎ�</a>�^�o�O012</div>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ012</div>
 
-<h2>�{�[�_�[�ƃ}�[�W����ݒ肵���v�f���̃t�H���g�w�肪���������</h2>
+<h2>ボーダーとマージンを設定した要素内のフォント指定が無視される</h2>
 <ul>
-<li>2003-07-31�C���B�Ǐ���C���B</li>
+<li>2003-07-31修正。症状を修正。</li>
 </ul>
 
-<h3>�Ǐ�</h3>
-<p>�{�[�_�[�ƃ}�[�W����ݒ肵���u���b�N�v�f���ł́A�e�v�f��u���E�U����̃t�H���g��O�i�F�Ɋւ���w�肪���������B<ins datetime="2003-07-31T00:00:00+09:00">�Ⴆ�Ό��o���v�f�͏�����ԂŃt�H���g�T�C�Y���w�肵����A�t�H���g�E�F�C�g���{�[���h�ɂ����肵�Ă��邪�A����炪��������Ă��܂��B</ins></p>
+<h3>症状</h3>
+<p>ボーダーとマージンを設定したブロック要素内では、親要素やブラウザ既定のフォントや前景色に関する指定が無視される。<ins datetime="2003-07-31T00:00:00+09:00">例えば見出し要素は初期状態でフォントサイズを指定したり、フォントウェイトをボールドにしたりしているが、これらが無視されてしまう。</ins></p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;font-style:italic;&quot;&gt;
 &lt;p style=&quot;margin:0; border:1px solid blue; background:black; color:white;&quot;&gt;
-�t�H���g��O�i�F�����������&lt;/p&gt;
+フォントや前景色が無視される&lt;/p&gt;
 &lt;/div&gt;</pre>
 <div class="example">
 <div style="font-style:italic;">
-<p style="margin:0; border:1px solid blue; background:black; color:white;">�t�H���g��O�i�F�����������</p>
+<p style="margin:0; border:1px solid blue; background:black; color:white;">フォントや前景色が無視される</p>
 </div>
 </div>
-<p>p�v�f�Ń}�[�W���A�{�[�_�[��ݒ肵�A����ɔw�i�F�����A�O�i�F�𔒂ɂ��Ă��܂��B�܂��A�e�v�f����̓C�^���b�N�\�����p������܂��B</p>
+<p>p要素でマージン、ボーダーを設定し、さらに背景色を黒、前景色を白にしています。また、親要素からはイタリック表示が継承されます。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b012_1.png" alt="Moz1.0" width="234" height="37">Moz1.0�ł̕\��</p>
-<p><img src="img/b012_2.png" alt="N4.78" width="259" height="41">NN4.78�ł̕\��</p>
+<p><img src="img/b012_1.png" alt="Moz1.0" width="234" height="37">Moz1.0での表示</p>
+<p><img src="img/b012_2.png" alt="N4.78" width="259" height="41">NN4.78での表示</p>
 </div>
-<p>��NN4.78�ł͑O�i�F�������I�ɍ��ɂȂ��Ă��܂����߂ɕ����������Ȃ��Ȃ��Ă��܂��B�u���������v�̕����͔͈͑I�������Č�����悤�ɂ��Ă��܂��B</p>
+<p>※NN4.78では前景色が強制的に黒になってしまうために文字が見えなくなっています。「無視される」の部分は範囲選択をして見えるようにしています。</p>
 
-<h3>�⑫</h3>
-<p>Mac��NN4.75�ł͓��Y�v�f�i�Ꭶ�ł�p�v�f�j�Ɏw�肵�Ȃ������Ƃŉ���ł��邻���ł��B</p>
+<h3>補足</h3>
+<p>Mac版NN4.75では当該要素（例示ではp要素）に指定しなおすことで回避できるそうです。</p>
 
-<h3>�C����</h3>
-<p>NN4.78�ł͕s��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>NN4.78では不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../nn4x.html">NN4.x�ڎ�</a>�^�o�O012</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ012</div>
 </body>
 </html>

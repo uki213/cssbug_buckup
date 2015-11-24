@@ -2,42 +2,42 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O025</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ025</div>
 
-<h2>body�v�f�̓��e�̈���͂ݏo�������������_�����O����Ȃ�<em>(IE6)</em></h2>
+<h2>body要素の内容領域をはみ出す部分がレンダリングされない<em>(IE6)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>body�v�f�̎q���v�f�Ń}�[�W���𕉐��ɂ���body�v�f�̃{�b�N�X����͂ݏo���悤�ɂ����ꍇ�A�W�����[�h�ł�body�v�f�̃{�b�N�X���͂ݏo�������������_�����O����Ȃ��B</p>
+<h3>症状</h3>
+<p>body要素の子孫要素でマージンを負数にしてbody要素のボックスからはみ出すようにした場合、標準モードではbody要素のボックスをはみ出す部分がレンダリングされない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;margin:0 -2%; border:4px solid red;&quot;&gt;A&lt;/div&gt;</pre>
 <div class="example">
 <div style="margin:0 -2%; border:4px solid red;">A</div>
 </div>
-<p>div�v�f�͍��E�}�[�W���𕉂̒l�ɂ��Ă���̂ŁAbody�v�f�̃{�b�N�X���͂ݏo�����ƂɂȂ�܂��B</p>
+<p>div要素は左右マージンを負の値にしているので、body要素のボックスをはみ出すことになります。</p>
 
-<h3>�X�N���[���V���b�g</h3>
-<p>�ΐF�̔j����body�v�f�ɐݒ肵���{�[�_�[�ł��B</p>
+<h3>スクリーンショット</h3>
+<p>緑色の破線はbody要素に設定したボーダーです。</p>
 <div class="shot">
-<p><img src="img/b025_1.png" alt="Moz1.0" width="413" height="49">Moz1.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b025_2.png" alt="WinIE6" width="412" height="54">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b025_1.png" alt="Moz1.0" width="413" height="49">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b025_2.png" alt="WinIE6" width="412" height="54">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>body�v�f�̊O���ɕ�����Ȃǂ��z�u�����ꍇ�͂��̕����������_�����O����܂��i�Ꭶ�ł͍��[�̕���'A'�����镔���j�B</p>
+<h3>補足</h3>
+<p>body要素の外側に文字列などが配置される場合はその部分がレンダリングされます（例示では左端の文字'A'がある部分）。</p>
 
-<h3>�C����</h3>
-<p>WinIE6.0�W�����[�h�Ŕ�������o�O�ł��BIE6.0�݊����[�h�y��5.5�ȑO�ł͔������܂���B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0標準モードで発生するバグです。IE6.0互換モード及び5.5以前では発生しません。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O025</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ025</div>
 </body>
 </html>

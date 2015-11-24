@@ -2,37 +2,37 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O058</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ058</div>
 
-<h2>line-height���w�肳�ꂽ���Δz�u�v�f�̏�{�[�_�[��[��������<em>(IE6)</em></h2>
+<h2>line-heightが指定された相対配置要素の上ボーダー上端が消える<em>(IE6)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�q���ɒu���v�f�ȊO�̃C�����C���v�f�������܂ޑ��Δz�u�̃u���b�N�v�f��line-height�v���p�e�B���w�肳��Ă���Ƃ��i�܂��́A�e�v�f����p�����Ă���Ƃ��j�ɁA��{�[�_�[�̏�[�������Ă��܂��B</p>
+<h3>症状</h3>
+<p>子孫に置換要素以外のインライン要素だけを含む相対配置のブロック要素にline-heightプロパティが指定されているとき（または、親要素から継承しているとき）に、上ボーダーの上端が消えてしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;line-height:1.2; position:relative; border:1px solid red;&quot;&gt;A&lt;/div&gt;</pre>
 <div class="example">
 <div style="line-height:1.2; position:relative; border:1px solid red;">A</div>
 </div>
-<p>�l���̃{�[�_�[�̑����͂������1px�ł��B</p>
+<p>四方のボーダーの太さはいずれも1pxです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b058_1.png" alt="Moz1.0" width="127" height="38">Moz1.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b058_2.png" alt="WinIE6" width="127" height="39">WinIE6.0�ł̕\���i�݊����[�h�j</p>
+<p><img src="img/b058_1.png" alt="Moz1.0" width="127" height="38">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b058_2.png" alt="WinIE6" width="127" height="39">WinIE6.0での表示（互換モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>���Δz�u����v�f�̎q���Ƀu���b�N�v�f��u���v�f��u���悤�ɂ���Εs�������ł��܂��B</p>
+<h3>補足</h3>
+<p>相対配置する要素の子孫にブロック要素や置換要素を置くようにすれば不具合を回避できます。</p>
 <pre>&lt;div style=&quot;line-height:1.2; position:relative; border:1px solid red;&quot;&gt;
 <em>&lt;p&gt;</em>A<em>&lt;/p&gt;</em>
 &lt;/div&gt;</pre>
@@ -42,9 +42,9 @@
 </div>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／</div>
 </body>
 </html>

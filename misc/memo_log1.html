@@ -2,31 +2,31 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta http-equiv="content-style-type" content="text/css">
 <meta http-equiv="content-script-type" content="text/javascript">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../index.html" title="�g�b�v�y�[�W">
-<title>���상��</title>
+<link rel="start" href="../index.html" title="トップページ">
+<title>制作メモ</title>
 </head>
 <body>
-<h1>���상�����O1</h1>
-<div class="navi"><a href="../index.html">�g�b�v�y�[�W</a>�^���상�����O1</div>
+<h1>制作メモログ1</h1>
+<div class="navi"><a href="../index.html">トップページ</a>／制作メモログ1</div>
 
-<h2>�ߋ��̃���</h2>
+<h2>過去のメモ</h2>
 
 <h3><a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/732n">http://pc2.2ch.net/test/read.cgi/hp/1050844510/732n</a></h3>
-<blockquote>780 �FName_Not_Found �F04/01/21 12:43 ID:++dQIGAQ<br>
+<blockquote>780 ：Name_Not_Found ：04/01/21 12:43 ID:++dQIGAQ<br>
 ---------------------------------------------------------------<br>
-&lt;h3&gt;���̈�&lt;/h3&gt;<br>
-&lt;img src=&quot;./img/1.jpg&quot; width=&quot;120&quot; height=&quot;120&quot; alt=&quot;��&quot; /&gt;<br>
-&lt;p&gt;�݂�ȕĂ�H�ׂ悤��&lt;/p&gt;<br>
-&lt;h3&gt;���̓�&lt;/h3&gt;<br>
-&lt;img src=&quot;./img/2.jpg&quot; width=&quot;120&quot; height=&quot;120&quot; alt=&quot;��&quot; /&gt;<br>
-&lt;p&gt;����������&lt;/p&gt;<br>
-&lt;h3&gt;���̎O&lt;/h3&gt;<br>
-&lt;img src=&quot;./img/3.jpg&quot; width=&quot;120&quot; height=&quot;120&quot; alt=&quot;��&quot; /&gt;<br>
-&lt;p&gt;�������܂���&lt;/p&gt;<br>
+&lt;h3&gt;其の一&lt;/h3&gt;<br>
+&lt;img src=&quot;./img/1.jpg&quot; width=&quot;120&quot; height=&quot;120&quot; alt=&quot;米&quot; /&gt;<br>
+&lt;p&gt;みんな米を食べようぜ&lt;/p&gt;<br>
+&lt;h3&gt;其の二&lt;/h3&gt;<br>
+&lt;img src=&quot;./img/2.jpg&quot; width=&quot;120&quot; height=&quot;120&quot; alt=&quot;酒&quot; /&gt;<br>
+&lt;p&gt;酒飲もうぜ&lt;/p&gt;<br>
+&lt;h3&gt;其の三&lt;/h3&gt;<br>
+&lt;img src=&quot;./img/3.jpg&quot; width=&quot;120&quot; height=&quot;120&quot; alt=&quot;魚&quot; /&gt;<br>
+&lt;p&gt;酒魚うまいぜ&lt;/p&gt;<br>
 ---------------------------------------------------------------<br>
 img {<br>
 float : left;<br>
@@ -39,36 +39,36 @@ p {<br>
 margin : 0em;<br>
 }<br>
 ---------------------------------------------------------------<br>
-�l�X�P�Ƃ����W���Ō����img��h3�̊ԂɃX�y�[�X���ł��܂���B</blockquote>
-<p>����́AWinIE��Opera�̃o�O�Ƃ��Ĉ����܂����B</p>
+ネスケとかモジラで見るとimgとh3の間にスペースができません。</blockquote>
+<p>これは、WinIEとOperaのバグとして扱いました。</p>
 
 <h3><a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/690n">http://pc2.2ch.net/test/read.cgi/hp/1050844510/690n</a></h3>
-<blockquote>marquee�̃^�O�̒���loop=&quot;��&quot;���Ă�������ł����A������2�o�C�g��������Ȃ���ł����H<br>
-���E���ʂŗL���ɋ@�\����v�f�Ȃ�ł��傤���H�H</blockquote>
-<p>MSDN�̃��t�@�����X�ɂ���loop�����Ɏw��ł���̂͐����݂̂ł���A���[�v�񐔂𖳌��ɂ������ꍇ�́u0�v���u-1�v���w�肷��A�ƌ��߂��Ă��܂��B���Ȃ݂ɏ����l��-1�ł��B</p>
+<blockquote>marqueeのタグの中でloop=&quot;∞&quot;ってあったんですが、∞って2バイト文字じゃないんですか？<br>
+世界共通で有効に機能する要素なんでしょうか？？</blockquote>
+<p>MSDNのリファレンスによるとloop属性に指定できるのは整数のみであり、ループ回数を無限にしたい場合は「0」か「-1」を指定する、と決められています。ちなみに初期値は-1です。</p>
 <ul>
 <li><a href="http://msdn.microsoft.com/library/default.asp?url=/workshop/author/dhtml/reference/properties/loop_1.asp">LOOP Attribute | loop Property</a></li>
 </ul>
-<p>�F���ł��Ȃ������l�u���v�𖳎����A�f�t�H���g�̑����l�u-1�v���g�p���Ă��邽�߂Ɍ��ʂƂ��ă��[�v�񐔂������ɂȂ��Ă���Ƃ��l������̂ł����B</p>
+<p>認識できない属性値「∞」を無視し、デフォルトの属性値「-1」を使用しているために結果としてループ回数が無限になっているとも考えられるのですが。</p>
 
 <h3><a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/647n">http://pc2.2ch.net/test/read.cgi/hp/1050844510/647n</a></h3>
-<blockquote>��Ȍ��ہBWin98SE/IE6�ɂāB<br>
-�����T�C�Y���u���v�ȊO�ŉ{�����A���L�y�[�W�ֈړ�����B<br>
-�@OpenType�t�H���g��p����2�o�C�g������\�����邱�Ƃ��ł��Ȃ�(6.0)<br>
-�@http://cssbug.at.infoseek.co.jp/detail/winie/b122.html<br>
-����Ƌ����I�ɕ����T�C�Y���u���v�ŕ\������Ă��܂ӁB<br>
-����̓��{�ꕶ������A�l�r�i�o�j�S�V�b�N�ŕ\������ĂȂ��₤���B<br>
-���́H</blockquote>
-<blockquote>����A�ǂ����Č����Ȃ��ꍇ������ˁB<br>
-�ȑO�ɉ{�������Ƃ��̕����T�C�Y�ɋ����I�ɕύX����݂����ł�����B<br>
+<blockquote>奇妙な現象。Win98SE/IE6にて。<br>
+文字サイズを「中」以外で閲覧中、下記ページへ移動する。<br>
+　OpenTypeフォントを用いて2バイト文字を表示することができない(6.0)<br>
+　http://cssbug.at.infoseek.co.jp/detail/winie/b122.html<br>
+すると強制的に文字サイズが「中」で表示されてしまふ。<br>
+事例の日本語文字列も、ＭＳ（Ｐ）ゴシックで表示されてないやうだ。<br>
+何故？</blockquote>
+<blockquote>いや、どうも再現しない場合があるね。<br>
+以前に閲覧したときの文字サイズに強制的に変更するみたいでもある。<br>
 <br>
-��ŏ�L�t�q�k��\�����ʃy�[�W��\���������T�C�Y���ɂ��遨��L�t�q�k��\����<br>
-�Ƃ���ƁA���ɂȂ炸�u��v�ɂȂ�܂����B</blockquote>
-<p>WinXP/IE6�ł��������܂����B�����A���̌��ۂ�CSS�����Ƃ͈Ⴄ����̃o�O�ɂ��v����̂ł����A�ڂ���ׂ��ł��傤���B</p>
+大で上記ＵＲＬを表示→別ページを表示→文字サイズ小にする→上記ＵＲＬを表示→<br>
+とすると、小にならず「大」になりました。</blockquote>
+<p>WinXP/IE6でも発生しました。ただ、この現象はCSS実装とは違う分野のバグにも思えるのですが、載せるべきでしょうか。</p>
 
 <h3><a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/603n">http://pc2.2ch.net/test/read.cgi/hp/1050844510/603n</a></h3>
-<blockquote>MacIE5.1�ŁA�\�̋�Z����\�������Ęg����t����ƁA�{����<br>
-�Z���̑傫�����傫���\������܂��B<br>
+<blockquote>MacIE5.1で、表の空セルを表示させて枠線を付けると、本来の<br>
+セルの大きさより大きく表示されます。<br>
 <br>
 table { empty-cells: show }<br>
 td { border: 1px solid }<br>
@@ -78,35 +78,35 @@ td { border: 1px solid }<br>
 &lt;tr&gt;&lt;td&gt;xx&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;<br>
 &lt;/table&gt;<br>
 <br>
-����őS�Z���͓����傫���ɂȂ�͂��ł����A�E���̋�Z����<br>
-�g�������傫���A�ׂ̘g���Əd�Ȃ��Ă��܂��܂��B<br>
+これで全セルは同じ大きさになるはずですが、右下の空セルの<br>
+枠だけが大きく、隣の枠線と重なってしまいます。<br>
 <br>
-�Ȃ��Atd �v�f�� background �v���p�e�B���w�肷��ƁA�w�i<br>
-�̈�͑S�Z�������傫���ɂȂ�܂��B�܂� border ������<br>
-�傫���� background �͐���ȑ傫���Ȃ̂ł��B�]���āA<br>
-border �� background �̊ԂɌ��Ԃ��󂫂܂��B<br>
+なお、td 要素に background プロパティを指定すると、背景<br>
+領域は全セル同じ大きさになります。つまり border だけが<br>
+大きくて background は正常な大きさなのです。従って、<br>
+border と background の間に隙間が空きます。<br>
 <br>
-�Ȃ��A���̖��͋�Z���� &lt;td&gt;&lt;/td&gt; �ł͂Ȃ��A&lt;td&gt; &lt;/td&gt; ��<br>
-�������ɊԂɃX�y�[�X�������悤�ɂ���Δ������܂���B</blockquote>
-<blockquote>���݂܂���B<br>
-css�]�X�ł͂Ȃ��P��html�̕��@��<br>
-�Ԉ���Ă�������������܂���c�B<br>
-�����͂킩��܂��񂪁c�B</blockquote>
-<p>CSS�����o�O�ł͂Ȃ��\��������悤�ł��B</p>
+なお、この問題は空セルを &lt;td&gt;&lt;/td&gt; ではなく、&lt;td&gt; &lt;/td&gt; と<br>
+いう風に間にスペースを書くようにすれば発生しません。</blockquote>
+<blockquote>すみません。<br>
+css云々ではなく単にhtmlの文法が<br>
+間違ってただけかもしれません…。<br>
+原因はわかりませんが…。</blockquote>
+<p>CSS実装バグではない可能性があるようです。</p>
 
 <h3><a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/491n">http://pc2.2ch.net/test/read.cgi/hp/1050844510/491n</a></h3>
-<blockquote>�����̕��@�ԈႢ����̃o�O�����ǂ����ł��傤���E�E <br>
+<blockquote>自分の文法間違いからのバグだけどいいでしょうか・・ <br>
 <br>
-&lt;table border&gt;&lt;td style=&quot;background-color:#dddddd;&quot;&gt;������&lt;/td&gt;&lt;td&gt;������&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; <br>
+&lt;table border&gt;&lt;td style=&quot;background-color:#dddddd;&quot;&gt;あああ&lt;/td&gt;&lt;td&gt;あああ&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; <br>
 <br>
-�̂悤�Ƀe�[�u����&lt;tr&gt;��t���Y���ƁA�l�X�P�S�ł�&lt;/tr&gt;�܂�background-color�v�f���p������Ă��܂��܂��B <br>
-IE6�ENN7�ł͖�肠��܂���B</blockquote>
-<p>�ȗ����邱�Ƃ��ł��Ȃ��Atr�v�f�̊J�n�^�O���������Ă����ԂŔ�������o�O�B�������}�[�N�A�b�v������Δ������Ȃ��o�O�Ȃ̂Ń��X�g�ɍڂ���K�v�͂Ȃ��悤�Ɏv���܂��B</p>
+のようにテーブルに&lt;tr&gt;を付け忘れると、ネスケ４では&lt;/tr&gt;までbackground-color要素が継承されてしまいます。 <br>
+IE6・NN7では問題ありません。</blockquote>
+<p>省略することができない、tr要素の開始タグが欠落している状態で発生するバグ。正しいマークアップをすれば発生しないバグなのでリストに載せる必要はないように思えます。</p>
 
 <h3><a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/484n">http://pc2.2ch.net/test/read.cgi/hp/1050844510/484n</a></h3>
 <blockquote>&lt;p&gt;<br>
-&nbsp;&lt;em&gt;������&lt;/em&gt;<br>
-&nbsp;���͕��͕��͕���<br>
+&nbsp;&lt;em&gt;強調文&lt;/em&gt;<br>
+&nbsp;文章文章文章文章<br>
 &lt;/p&gt;<br>
 <br>
 p {<br>
@@ -117,50 +117,50 @@ em {<br>
 display:block;<br>
 }<br>
 <br>
-WinIE6�ł��������ƁAem�̌�ŉ��s����āA<br>
-���̌�́u���͕��͕��́v�ɂ��C���f���g������܂��B</blockquote>
-<p>�ȉ��̗��3�s�ڂ̐擪�ɃC���f���g������̂������납�����ł��B</p>
+WinIE6でこう書くと、emの後で改行されて、<br>
+その後の「文章文章文章」にもインデントが入ります。</blockquote>
+<p>以下の例の3行目の先頭にインデントが入るのが正か誤かが問題です。</p>
 <pre>&lt;div style=&quot;text-indent:1em;&quot;&gt;
-�C���f���g����
-&lt;div&gt;�C���f���g����&lt;/div&gt;
-�C���f���g�H
+インデントあり
+&lt;div&gt;インデントあり&lt;/div&gt;
+インデント？
 &lt;/div&gt;
-&lt;div&gt;�C���f���g�Ȃ�&lt;/div&gt;</pre>
+&lt;div&gt;インデントなし&lt;/div&gt;</pre>
 <div class="example">
 <div style="text-indent:1em;">
-�C���f���g����
-<div>�C���f���g����</div>
-�C���f���g�H
-<div>�C���f���g����</div>
-�C���f���g�H
-<div>�C���f���g����</div>
-�C���f���g�H
+インデントあり
+<div>インデントあり</div>
+インデント？
+<div>インデントあり</div>
+インデント？
+<div>インデントあり</div>
+インデント？
 </div>
-<div>�C���f���g�Ȃ�</div>
+<div>インデントなし</div>
 </div>
-<p>�C���f���g������̂����������Mozilla��Opera�̃o�O�A����Ȃ��̂����������WinIE�̃o�O�ɂȂ�܂��B</p>
+<p>インデントが入るのが正しければMozillaやOperaのバグ、入らないのが正しければWinIEのバグになります。</p>
 
 <h3><a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/476n">http://pc2.2ch.net/test/read.cgi/hp/1050844510/476n</a></h3>
-<blockquote>Table�̃Z���^�����O<br>
+<blockquote>Tableのセンタリング<br>
 http://members.jcom.home.ne.jp/jintrick/Personal/css_miss_table.html<br>
 table{ width : 500px }<br>
-���̂悤�ɕ����s�N�Z���Ŏw�肵�Ă����ꍇ�AIE�ł͏�ɋ����������ȕ��@�ł̓Z���^�����O����܂���B</blockquote>
-<p><code>table {margin:0 20%; width:500px; }</code> �̂悤�Ɏw�肵���ꍇ�͍��E�}�[�W���A���E�{�[�_�[�A���E�p�f�B���O�A���e�̈�̂��ׂĂ̕���auto�ȊO�̒l�ɂȂ��Ă��܂��BCSS2�͂��̂悤�ȏ�Ԃł�margin-right�̎w��l�𖳎�����ƒ�߂Ă��܂��B</p>
+このように幅をピクセルで指定していた場合、IEでは上に挙げた正式な方法ではセンタリングされません。</blockquote>
+<p><code>table {margin:0 20%; width:500px; }</code> のように指定した場合は左右マージン、左右ボーダー、左右パディング、内容領域のすべての幅がauto以外の値になっています。CSS2はこのような状態ではmargin-rightの指定値を無視すると定めています。</p>
 
 <h3><a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/453n">http://pc2.2ch.net/test/read.cgi/hp/1050844510/453n</a></h3>
 <blockquote>http://pc2.2ch.net/test/read.cgi/hp/1011140326/877-881<br>
-��CSS��p�����i�g�̍쐬�̃R�c<br>
-��http://www.fromdfj.net/html/column.html<br>
+＞CSSを用いた段組の作成のコツ<br>
+＞http://www.fromdfj.net/html/column.html<br>
 <br>
-�����̃T�C�g������IE�Ō���Ɖ��̕��Ń��C�A�E�g�������<br>
-�������d�Ȃ��Č����܂��B<br>
-�X�^�C���V�[�g���I�t�ɂ���Ɠǂ߂܂����ǁB<br>
+そこのサイトうちのIEで見ると下の方でレイアウトが崩れて<br>
+文字が重なって見えます。<br>
+スタイルシートをオフにすると読めますけど。<br>
 <br>
 Mac&nbsp;IE5.1<br>
 <br>
-Mac�Ō��ă��C�A�E�g��������Ă����ꍇ�́A90�����炢�̊m���ŃX�^�C���V�[�g��<br>
-�����ɂ���΂����ƌ�����B</blockquote>
-<p>�������킩��܂���B</p>
+Macで見てレイアウトがくずれていた場合は、90％くらいの確率でスタイルシートを<br>
+無効にすればちゃんと見える。</blockquote>
+<p>原因がわかりません。</p>
 
 <h3><a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/363n">http://pc2.2ch.net/test/read.cgi/hp/1050844510/363n</a></h3>
 <blockquote>IE6 SP1 Netscape7<br>
@@ -169,23 +169,23 @@ Mac�Ō��ă��C�A�E�g��������Ă����ꍇ�́A90�����炢�̊m���ŃX�^�C���V�[�g��<br>
 &lt;Style&gt;&lt;!-- body{ line-height: 125%; } --&gt;&lt;/Style&gt;<br>
 &lt;/Head&gt;<br>
 <br>
-�Ƃ��������� line-height ���w�肷���<br>
-�{�b�N�X�Ƀp�f�B���O��ݒ肵�Ă����������B</blockquote>
-<p>���ꂾ���Ńp�f�B���O����������邱�Ƃ͂Ȃ��悤�ł��B</p>
+という感じで line-height を指定すると<br>
+ボックスにパディングを設定しても無視される。</blockquote>
+<p>これだけでパディングが無視されることはないようです。</p>
 
 <h3><a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/357n">http://pc2.2ch.net/test/read.cgi/hp/1050844510/357n</a></h3>
 <blockquote>2.<br>
-��&lt;td&gt;&lt;div style=&quot;overflow:scroll;&quot;&gt;�ق��ق�&lt;/div&gt;&lt;/td&gt;���g����<br>
-��Opera�ł̓e�[�u������͂ݏo���Ă��܂��܂��B</blockquote>
-<p>Opera7.03/7.11�ł̓X�N���[���o�[�͂͂ݏo���Ȃ��悤�ł��B</p>
+＞&lt;td&gt;&lt;div style=&quot;overflow:scroll;&quot;&gt;ほげほげ&lt;/div&gt;&lt;/td&gt;を使うと<br>
+＞Operaではテーブルからはみ出してしまいます。</blockquote>
+<p>Opera7.03/7.11ではスクロールバーははみ出さないようです。</p>
 
 <h3><a href="http://pc2.2ch.net/test/read.cgi/hp/1050844510/36n">http://pc2.2ch.net/test/read.cgi/hp/1050844510/36n</a></h3>
-<blockquote>�u���b�N�v�f�i�̉�j���t���[�g�̍����𒴂���O��2��o�Ă���Ə����clear���ꂽ�悤�ȁB</blockquote>
-<p>�o�O���������郆�[�U�G�[�W�F���g���s���̂��ߕ��ޕs�\�B���̂悤�ȏꍇ���낤���H</p>
-<pre>&lt;div style=&quot;float:left; width:100px; height:200px;&quot;&gt;�t&lt;/div&gt;
-&lt;div style=&quot;height:80px;&quot;&gt;�u1&lt;/div&gt;
-&lt;div style=&quot;height:80px;&quot;&gt;�u2&lt;/div&gt;</pre>
+<blockquote>ブロック要素（の塊）がフロートの高さを超える前に2回出てくると勝手にclearされたような。</blockquote>
+<p>バグが発生するユーザエージェントが不明のため分類不能。このような場合だろうか？</p>
+<pre>&lt;div style=&quot;float:left; width:100px; height:200px;&quot;&gt;フ&lt;/div&gt;
+&lt;div style=&quot;height:80px;&quot;&gt;ブ1&lt;/div&gt;
+&lt;div style=&quot;height:80px;&quot;&gt;ブ2&lt;/div&gt;</pre>
 
-<div class="navi"><a href="../index.html">�g�b�v�y�[�W</a>�^���상�����O1</div>
+<div class="navi"><a href="../index.html">トップページ</a>／制作メモログ1</div>
 </body>
 </html>

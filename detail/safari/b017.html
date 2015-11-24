@@ -2,22 +2,22 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../safari.html" title="Safari�ڎ�">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<title>Safari (KHTML) CSSバグリスト</title>
 </head>
 <body>
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O017</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ017</div>
 
-<h2>�ꕔ�̃{�[�_�[��color�̒l�������p���Ȃ�<em>(1.2)</em></h2>
+<h2>一部のボーダーはcolorの値を引き継がない<em>(1.2)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>border-color�v���p�e�B�����w��̏ꍇ�A�ꕔ�̃{�[�_�[�X�^�C���ł̓{�[�_�[�F�����Y�v�f��color�v���p�e�B�̒l�Ƃ͈قȂ�F�ɂȂ��Ă��܂��B</p>
+<h3>症状</h3>
+<p>border-colorプロパティが未指定の場合、一部のボーダースタイルではボーダー色が当該要素のcolorプロパティの値とは異なる色になってしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;border:2px dashed blue;&quot;&gt;dashed&lt;/div&gt;
 &lt;div style=&quot;border:2px dashed; color:blue;&quot;&gt;dashed&lt;/div&gt;
 &lt;div style=&quot;border:4px ridge blue;&quot;&gt;ridge&lt;/div&gt;
@@ -28,20 +28,20 @@
 <div style="border:4px ridge blue;">ridge</div>
 <div style="border:4px ridge; color:blue;">ridge</div>
 </div>
-<p>�����<a href="../winie/b123.html" title="�ꕔ�̃{�[�_�[��color�̒l�������p���Ȃ�">WinIE�o�O123</a>�̗Ꭶ�Ɠ������̂ł��BWinIE�Ɠ����Ǐ�Ƃ������ƂȂ̂ŁA4�Ԗڂ�div�v�f�̃{�[�_�[�������F�ɂȂ�Ȃ��͂��ł��B</p>
+<p>これは<a href="../winie/b123.html" title="一部のボーダーはcolorの値を引き継がない">WinIEバグ123</a>の例示と同じものです。WinIEと同じ症状ということなので、4番目のdiv要素のボーダーだけが青色にならないはずです。</p>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>Safari1.2�ł��̕s����������邻���ł��B</li>
+<li>Safari1.2でこの不具合が発生するそうです。</li>
 </ul>
 
-<h3>�񍐏�������</h3>
-<blockquote>�m�F�ς݃o�O&nbsp;WinIE<br>
-�ꕔ�̃{�[�_�[��color�̒l�������p���Ȃ�(5.x/6.0)<br>
+<h3>報告書き込み</h3>
+<blockquote>確認済みバグ&nbsp;WinIE<br>
+一部のボーダーはcolorの値を引き継がない(5.x/6.0)<br>
 http://cssbug.at.infoseek.co.jp/detail/winie/b123.html<br>
 <br>
-Safari1.2�ŉ{�������瓯���Ǐ󂪔������܂����B</blockquote>
+Safari1.2で閲覧したら同じ症状が発生しました。</blockquote>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O017</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ017</div>
 </body>
 </html>

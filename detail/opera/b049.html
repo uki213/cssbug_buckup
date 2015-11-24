@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Opera CSS�o�O���X�g</title>
+<title>Opera CSSバグリスト</title>
 <style type="text/css">
 <!--
 html {
@@ -20,15 +20,15 @@ body {
 </style>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O049</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ049</div>
 
-<h2>�{���̈�̃X�N���[���o�[�̃X�^�C����body�v�f�Ŏw�肵�Ȃ���΂Ȃ�Ȃ�<em>(7.0)</em></h2>
+<h2>閲覧領域のスクロールバーのスタイルをbody要素で指定しなければならない<em>(7.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�X�N���[���o�[�̃X�^�C���Ɋւ���v���p�e�B�i<em>WinIE�Ǝ��g��</em>�j�ŉ{���̈�̃X�N���[���o�[�̃X�^�C�����w�肷��Ƃ��́Abody�v�f�ɂ����̃v���p�e�B���w�肵�Ȃ���΂Ȃ�Ȃ��B</p>
+<h3>症状</h3>
+<p>スクロールバーのスタイルに関するプロパティ（<em>WinIE独自拡張</em>）で閲覧領域のスクロールバーのスタイルを指定するときは、body要素にこれらのプロパティを指定しなければならない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 html {
   scrollbar-face-color: lime;
@@ -37,23 +37,23 @@ body {
   scrollbar-face-color: aqua;
 }
 &lt;/style&gt;</pre>
-<p>html�v�f�̃X�N���[���o�[�����ΐF�ɁAbody�v�f�̃X�N���[���o�[����F�ɂ��Ă��܂��B�{���̈�̃X�N���[���o�[���ǂ̗v�f�ɑΉ����Ă��邩���m���߂Ă��������B</p>
+<p>html要素のスクロールバーを黄緑色に、body要素のスクロールバーを空色にしています。閲覧領域のスクロールバーがどの要素に対応しているかを確かめてください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b049_1.png" alt="WinIE6" width="26" height="126">WinIE6.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b049_2.png" alt="Op7" width="23" height="133">Opera7.10�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b049_1.png" alt="WinIE6" width="26" height="126">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b049_2.png" alt="Op7" width="23" height="133">Opera7.10での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
+<h3>補足</h3>
 <ul>
-<li>Opera7�ł́A�ݒ�t�@�C���iopera6.ini�j�� [User Prefs] �ȉ��� <code>Enable Scrollbar Colors=1</code> �Ə��������邱�ƂŃX�N���[���o�[�֘A�̃v���p�e�B���L���ɂȂ�܂��i������Ԃł͖����ɂȂ��Ă��܂��j�B</li>
-<li>WinIE6.0�݊����[�h��WinIE5.5�ł�Opera7���l�Abody�v�f�ɐ錾�����X�^�C�����{���̈�̃X�N���[���o�[�ɔ��f����܂��B�]���āA�����ł�WinIE6.0�W�����[�h�Ƃ̍����o�O�Ƃ��Ĉ����Ă��܂��B</li>
+<li>Opera7では、設定ファイル（opera6.ini）の [User Prefs] 以下に <code>Enable Scrollbar Colors=1</code> と書き加えることでスクロールバー関連のプロパティが有効になります（初期状態では無効になっています）。</li>
+<li>WinIE6.0互換モードとWinIE5.5ではOpera7同様、body要素に宣言したスタイルが閲覧領域のスクロールバーに反映されます。従って、ここではWinIE6.0標準モードとの差をバグとして扱っています。</li>
 </ul>
 
-<h3>�C����</h3>
-<p>Opera7.10�W�����[�h�AOpera7.10�݊����[�h�ŕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>Opera7.10標準モード、Opera7.10互換モードで不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O049</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ049</div>
 </body>
 </html>

@@ -2,26 +2,26 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O115</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ115</div>
 
-<h2>fieldset�v�f�̏�p�f�B���O���{�[�_�[�̈�̊O���ɐݒu�����<em>(5.x/6.0)</em></h2>
+<h2>fieldset要素の上パディングがボーダー領域の外側に設置される<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>fieldset�v�f�Ƀp�f�B���O��ݒ肷��ƁA��p�f�B���O���{�[�_�[�̈�̊O���ɐݒu�����B</p>
+<h3>症状</h3>
+<p>fieldset要素にパディングを設定すると、上パディングがボーダー領域の外側に設置される。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;form style=&quot;padding:0; border:2px solid blue;&quot;&gt;
 &lt;fieldset style=&quot;margin:0; padding:1em;&quot;&gt;
-&lt;legend style=&quot;margin:0; padding:0;&quot;&gt;�t�H�[����&lt;/legend&gt;
+&lt;legend style=&quot;margin:0; padding:0;&quot;&gt;フォーム例&lt;/legend&gt;
 &lt;div style=&quot;border:2px solid red;&quot;&gt;
 &lt;input type=&quot;text&quot;&gt;&lt;/div&gt;
 &lt;/fieldset&gt;
@@ -29,26 +29,26 @@
 <div class="example">
 <form action="b062.html" style="padding:0; border:2px solid blue;">
 <fieldset style="margin:0; padding:1em;">
-<legend style="margin:0; padding:0;">�t�H�[����</legend>
+<legend style="margin:0; padding:0;">フォーム例</legend>
 <div style="border:2px solid red;">
 <input type="text"></div>
 </fieldset>
 </form>
 </div>
-<p>fieldset�v�f�̎l����1em�̃p�f�B���O��ݒ肵�Ă��܂��Bform�v�f�̃p�f�B���O�Afieldset�v�f�̃}�[�W���Alegend�v�f�̃}�[�W���ƃp�f�B���O�͂��ꂼ��0�ɂ��Ă��܂��B</p>
+<p>fieldset要素の四方に1emのパディングを設定しています。form要素のパディング、fieldset要素のマージン、legend要素のマージンとパディングはそれぞれ0にしています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b115_1.png" alt="N7" width="163" height="108">N7.02�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b115_2.png" alt="WinIE6" width="162" height="133">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b115_1.png" alt="N7" width="163" height="108">N7.02での表示（標準モード）</p>
+<p><img src="img/b115_2.png" alt="WinIE6" width="162" height="133">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�X�N���[���V���b�g�ł͍��p�f�B���O������ɐݒu����Ă��܂����A���ɂ���Ă͍��E�p�f�B���O���܂������ݒu����Ȃ����Ƃ�����悤�ł��B</p>
+<h3>補足</h3>
+<p>スクリーンショットでは左パディングが正常に設置されていますが、環境によっては左右パディングがまったく設置されないことがあるようです。</p>
 
-<h3>�C����</h3>
-<p>WinIE5.5�AWinIE6.0�W�����[�h�AWinIE6.0�݊����[�h�ŕs��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O115</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ115</div>
 </body>
 </html>

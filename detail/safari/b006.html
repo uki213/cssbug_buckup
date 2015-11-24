@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../safari.html" title="Safari�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<title>Safari (KHTML) CSSバグリスト</title>
 <script type="text/javascript">
 <!--
 function nodes() {
@@ -23,15 +23,15 @@ function nodes() {
 </script>
 </head>
 <body onload="nodes()">
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O006</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ006</div>
 
-<h2>�󔒕����݂̂̃e�L�X�g�m�[�h�𐳏�Ɏ擾�ł��Ȃ�<em>(S1.0)</em></h2>
+<h2>空白文字のみのテキストノードを正常に取得できない<em>(S1.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�󔒕����i1�o�C�g�X�y�[�X�Ɖ��s�����j�����ō\�������e�L�X�g�m�[�h���ꕔ�����擾�ł��Ȃ��B</p>
+<h3>症状</h3>
+<p>空白文字（1バイトスペースと改行文字）だけで構成されるテキストノードを一部しか取得できない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;script type=&quot;text/javascript&quot;&gt;
 function nodes() {
   var obj1 = document.getElementById('samplenode');
@@ -45,21 +45,21 @@ function nodes() {
 &lt;/script&gt;
 
 &lt;ul id=&quot;samplenode&quot;&gt;
-&lt;li&gt;���X�g1&lt;/li&gt;
-&lt;li&gt;���X�g2&lt;/li&gt;
+&lt;li&gt;リスト1&lt;/li&gt;
+&lt;li&gt;リスト2&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ol id=&quot;nlist&quot;&gt;&lt;/ol&gt;</pre>
 <div class="example">
 <ul id="samplenode">
-<li>���X�g1</li>
-<li>���X�g2</li>
+<li>リスト1</li>
+<li>リスト2</li>
 </ul>
 <ol id="nlist"></ol>
 </div>
-<p>ul�v�f�̎q�m�[�h�̈ꗗ���Aul�v�f�̎��ɂ���ol�v�f�ɏo�͂��Ă��܂��B</p>
+<p>ul要素の子ノードの一覧を、ul要素の次にあるol要素に出力しています。</p>
 
-<h3>�o�͌���</h3>
-<p>N7.02�ł̌��ʁF</p>
+<h3>出力結果</h3>
+<p>N7.02での結果：</p>
 <blockquote>
 <ol>
 <li>#text</li>
@@ -70,15 +70,15 @@ function nodes() {
 </ol>
 </blockquote>
 
-<h3>�⑫</h3>
-<p>���̃o�O�ɂ��Ă͈ȉ��̕������Q�Ƃ��Ă��������B</p>
+<h3>補足</h3>
+<p>このバグについては以下の文書を参照してください。</p>
 <ul>
-<li><a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/tmp/safari/only_space_textnode.html" title="�˂��߂��ɂ���">Safari �ɂ�����󔒕����݂̂̃e�L�X�g�m�[�h�̈���</a>�i<a href="http://www.remus.dti.ne.jp/~a-satomi/">�����ѓX���邫��������</a>�j</li>
+<li><a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/tmp/safari/only_space_textnode.html" title="ねこめしにっき">Safari における空白文字のみのテキストノードの扱い</a>（<a href="http://www.remus.dti.ne.jp/~a-satomi/">娘娘飯店しるきぃうぇぶ</a>）</li>
 </ul>
 
-<h3>�C����</h3>
-<p>Safari1.0�ł��̕s����������邻���ł��B</p>
+<h3>修正状況</h3>
+<p>Safari1.0でこの不具合が発生するそうです。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O006</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ006</div>
 </body>
 </html>

@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Opera CSS�o�O���X�g</title>
+<title>Opera CSSバグリスト</title>
 <style type="text/css">
 <!--
 a:hover {
@@ -17,16 +17,16 @@ a:hover {
 </style>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O067</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ067</div>
 
-<h2>:hover�[���N���X��ԂɂȂ邱�ƂŃ}�[�W���̕����ω�����</h2>
-<p>2003-11-23�C���BOpera7.22�ł̏󋵂�ǉ��B</p>
+<h2>:hover擬似クラス状態になることでマージンの幅が変化する</h2>
+<p>2003-11-23修正。Opera7.22での状況を追加。</p>
 
-<h3>�Ǐ�</h3>
-<p>�}�[�W���̐ݒu��ԂɈُ킪����Ƃ��i<a href="b053.html" title="����q�֌W�̗v�f�Ԃŉ��}�[�W���̑��E���������s���Ȃ�">Opera�o�O053�Q��</a>�j�Aa�v�f��:hover�[���N���X�Ƀ{�[�_�[�Ȃǈꕔ�̃v���p�e�B���w�肷��ƁA�}�E�X�|�C���^���悹���Ƃ��Ƀ}�[�W���̕����ω����邱�Ƃ�����B</p>
+<h3>症状</h3>
+<p>マージンの設置状態に異常があるとき（<a href="b053.html" title="入れ子関係の要素間で下マージンの相殺が正しく行われない">Operaバグ053参照</a>）、a要素の:hover擬似クラスにボーダーなど一部のプロパティを指定すると、マウスポインタを乗せたときにマージンの幅が変化することがある。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 a:hover {
   border-bottom: 2px solid;
@@ -45,21 +45,21 @@ a:hover {
 </div>
 <div style="border:2px solid blue;"><a href="b067.html">2</a></div>
 </div>
-<p>�Ꭶ�ɂ�3�̃����N������܂��B�n�߂Ɂu2�v�̃����N�Ƀ}�E�X�|�C���^�Ȃǂ��悹�Ă��������B���ɁA�u1�v�̃����N�i2����܂����A�ǂ���ł��悢�ł��j�Ƀ}�E�X�|�C���^�Ȃǂ��悹�Ă��������B</p>
+<p>例示には3つのリンクがあります。始めに「2」のリンクにマウスポインタなどを乗せてください。次に、「1」のリンク（2つありますが、どちらでもよいです）にマウスポインタなどを乗せてください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b067_1.png" alt="Op7" width="85" height="139">Opera7.11�i�}�E�X�|�C���^���悹��O�j</p>
-<p><img src="img/b067_2.png" alt="Op7" width="86" height="120">Opera7.11�i�u2�v�̃����N�Ƀ}�E�X�|�C���^���悹����j</p>
-<p>��2�Ԗڂ̃X�N���[���V���b�g�̏�ԂɂȂ�����Łu1�v�̃����N�Ƀ}�E�X�|�C���^���悹��ƁA�������}�[�W�����������܂��B���̌��ʁA1�Ԗڂ̃X�N���[���V���b�g�Ɠ�����Ԃɖ߂�܂��B</p>
+<p><img src="img/b067_1.png" alt="Op7" width="85" height="139">Opera7.11（マウスポインタを乗せる前）</p>
+<p><img src="img/b067_2.png" alt="Op7" width="86" height="120">Opera7.11（「2」のリンクにマウスポインタを乗せた後）</p>
+<p>※2番目のスクリーンショットの状態になった後で「1」のリンクにマウスポインタを乗せると、消えたマージンが復活します。その結果、1番目のスクリーンショットと同じ状態に戻ります。</p>
 </div>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>Opera7.11�ŕs��̔������m�F���܂����B</li>
-<li>Opera7.22�ł��̕s��͔������Ȃ��悤�ł��B</li>
+<li>Opera7.11で不具合の発生を確認しました。</li>
+<li>Opera7.22でこの不具合は発生しないようです。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O067</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ067</div>
 </body>
 </html>

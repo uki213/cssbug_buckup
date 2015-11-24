@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta http-equiv="content-style-type" content="text/css">
 <meta http-equiv="content-script-type" content="text/javascript">
 <link rel="stylesheet" type="text/css" href="normal.css">
-<link rel="contents" href="../index.html" title="ƒgƒbƒvƒy[ƒW">
-<title>col/colgroup—v‘f‚Ö‚ÌƒXƒ^ƒCƒ‹w’è</title>
+<link rel="contents" href="../index.html" title="ãƒˆãƒƒãƒ—ãƒšãƒ¼ã‚¸">
+<title>col/colgroupè¦ç´ ã¸ã®ã‚¹ã‚¿ã‚¤ãƒ«æŒ‡å®š</title>
 <style type="text/css">
 <!--
 table.bordertest td {
@@ -19,81 +19,81 @@ table.bordertest td {
 </style>
 </head>
 <body>
-<h1>col/colgroup—v‘f‚Ö‚ÌƒXƒ^ƒCƒ‹w’è</h1>
-<div class="navi"><a href="../index.html">ƒgƒbƒvƒy[ƒW</a>^iŠÖ˜A•¶‘j^col/colgroup—v‘f‚Ö‚ÌƒXƒ^ƒCƒ‹w’è</div>
-<p>‚±‚±‚Å‚Ícol—v‘f‚âcolgroup—v‘f‚É‘Î‚µ‚ÄCSS‚ğİ’è‚µ‚½ê‡‚ÌAƒ†[ƒUƒG[ƒWƒFƒ“ƒg‚É‚æ‚é‰ğß‚Ìˆá‚¢‚ğ‚Ü‚Æ‚ß‚Ä‚¢‚Ü‚·B</p>
+<h1>col/colgroupè¦ç´ ã¸ã®ã‚¹ã‚¿ã‚¤ãƒ«æŒ‡å®š</h1>
+<div class="navi"><a href="../index.html">ãƒˆãƒƒãƒ—ãƒšãƒ¼ã‚¸</a>ï¼ï¼ˆé–¢é€£æ–‡æ›¸ï¼‰ï¼col/colgroupè¦ç´ ã¸ã®ã‚¹ã‚¿ã‚¤ãƒ«æŒ‡å®š</div>
+<p>ã“ã“ã§ã¯colè¦ç´ ã‚„colgroupè¦ç´ ã«å¯¾ã—ã¦CSSã‚’è¨­å®šã—ãŸå ´åˆã®ã€ãƒ¦ãƒ¼ã‚¶ã‚¨ãƒ¼ã‚¸ã‚§ãƒ³ãƒˆã«ã‚ˆã‚‹è§£é‡ˆã®é•ã„ã‚’ã¾ã¨ã‚ã¦ã„ã¾ã™ã€‚</p>
 <ul>
-<li>visibilityƒvƒƒpƒeƒB‚Ì€‚ğXVBMozilla1.7beta‚Ìî•ñ‚ğ’Ç‰ÁBi2004-03-24j</li>
+<li>visibilityãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®é …ã‚’æ›´æ–°ã€‚Mozilla1.7betaã®æƒ…å ±ã‚’è¿½åŠ ã€‚ï¼ˆ2004-03-24ï¼‰</li>
 </ul>
-<p>’ˆÓFWindows”ÅMozilla1.7beta‚ÅvisibilityƒvƒƒpƒeƒB‚Ì€‚É‚ ‚é—á¦‚ğ‰{——‚·‚é‚Æ<em>Mozilla‚ªƒNƒ‰ƒbƒVƒ…‚µ‚Ü‚·</em>B3Œ20“úˆÈ~‚Ìnightlyƒrƒ‹ƒh‚Å‚ÍƒNƒ‰ƒbƒVƒ…‚µ‚Ü‚¹‚ñB</p>
+<p>æ³¨æ„ï¼šWindowsç‰ˆMozilla1.7betaã§visibilityãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®é …ã«ã‚ã‚‹ä¾‹ç¤ºã‚’é–²è¦§ã™ã‚‹ã¨<em>MozillaãŒã‚¯ãƒ©ãƒƒã‚·ãƒ¥ã—ã¾ã™</em>ã€‚3æœˆ20æ—¥ä»¥é™ã®nightlyãƒ“ãƒ«ãƒ‰ã§ã¯ã‚¯ãƒ©ãƒƒã‚·ãƒ¥ã—ã¾ã›ã‚“ã€‚</p>
 
-<h2>‚Í‚¶‚ß‚É</h2>
-<p>(X)HTML‚É‚¨‚¢‚Ä•\‚ÌƒZƒ‹—v‘f‚Ís—v‘f‚Ìq‘·‚Å‚·B]‚Á‚ÄƒXƒ^ƒCƒ‹ƒV[ƒg‚ÌŠeƒvƒƒpƒeƒB‚Ì’l‚Í—ñ—v‘f‚Å‚Í‚È‚­s—v‘f‚©‚çŒp³‚µ‚Ü‚·B‚½‚¾‚µCSS2‚Å‚Í <a href="#border">border</a>, <a href="#background">background</a>, <a href="#width">width</a>, <a href="#visibility">visibility</a> ‚Ì4í—Ş‚ÌƒvƒƒpƒeƒB‚ÉŒÀ‚ècol—v‘f‚âcolgroup—v‘f‚Ö‚Ì“K—p‚ğ‰Â‚Æ‚µ‚Ä‚¢‚Ü‚·B</p>
+<h2>ã¯ã˜ã‚ã«</h2>
+<p>(X)HTMLã«ãŠã„ã¦è¡¨ã®ã‚»ãƒ«è¦ç´ ã¯è¡Œè¦ç´ ã®å­å­«ã§ã™ã€‚å¾“ã£ã¦ã‚¹ã‚¿ã‚¤ãƒ«ã‚·ãƒ¼ãƒˆã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã¯åˆ—è¦ç´ ã§ã¯ãªãè¡Œè¦ç´ ã‹ã‚‰ç¶™æ‰¿ã—ã¾ã™ã€‚ãŸã ã—CSS2ã§ã¯ <a href="#border">border</a>, <a href="#background">background</a>, <a href="#width">width</a>, <a href="#visibility">visibility</a> ã®4ç¨®é¡ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«é™ã‚Šcolè¦ç´ ã‚„colgroupè¦ç´ ã¸ã®é©ç”¨ã‚’å¯ã¨ã—ã¦ã„ã¾ã™ã€‚</p>
 
 <div class="source">
 <code>&lt;table border=&quot;2&quot;&gt;<br>
 &lt;colgroup style=&quot;width:10em; text-align:center;&quot;&gt;&lt;/colgroup&gt;<br>
 &lt;colgroup&gt;&lt;col style=&quot;width:10em; color:blue;&quot;&gt;&lt;/colgroup&gt;<br>
-&lt;tr&gt;&lt;td&gt;’†‰›‘µ‚¦‚Å‚Í‚È‚¢&lt;/td&gt;&lt;td&gt;ÂF‚Å‚Í‚È‚¢&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;tr&gt;&lt;td&gt;ä¸­å¤®æƒãˆã§ã¯ãªã„&lt;/td&gt;&lt;td&gt;é’è‰²ã§ã¯ãªã„&lt;/td&gt;&lt;/tr&gt;<br>
 &lt;/table&gt;</code>
 </div>
 <div class="example">
 <table border="2">
 <colgroup style="width:10em; text-align:center;"></colgroup>
 <colgroup><col style="width:10em; color:blue;"></colgroup>
-<tr><td>’†‰›‘µ‚¦‚Å‚Í‚È‚¢</td><td>ÂF‚Å‚Í‚È‚¢</td></tr>
+<tr><td>ä¸­å¤®æƒãˆã§ã¯ãªã„</td><td>é’è‰²ã§ã¯ãªã„</td></tr>
 </table>
 </div>
 
 <dl>
 <dt>WinIE5.x/6.0</dt>
 <dd><ul>
-<li>col/colgroup—v‘f‚©‚çŒp³‚·‚é‚Í‚¸‚Ì‚È‚¢ƒvƒƒpƒeƒB‚ªŒp³‚·‚éB</li>
+<li>col/colgroupè¦ç´ ã‹ã‚‰ç¶™æ‰¿ã™ã‚‹ã¯ãšã®ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒç¶™æ‰¿ã™ã‚‹ã€‚</li>
 </ul></dd>
 <dt>Netscape4.x</dt>
 <dd><ul>
-<li>col/colgroup—v‘f‚ğ–³‹‚·‚éB‚·‚×‚Ä‚ÌƒXƒ^ƒCƒ‹‚ª”½‰f‚³‚ê‚È‚¢B</li>
+<li>col/colgroupè¦ç´ ã‚’ç„¡è¦–ã™ã‚‹ã€‚ã™ã¹ã¦ã®ã‚¹ã‚¿ã‚¤ãƒ«ãŒåæ˜ ã•ã‚Œãªã„ã€‚</li>
 </ul></dd>
 </dl>
 
-<h2>caption‚ª‚ ‚é•\</h2>
+<h2>captionãŒã‚ã‚‹è¡¨</h2>
 <div class="source">
 <code>&lt;table border=&quot;2&quot;&gt;<br>
-&lt;caption&gt;‘è&lt;/caption&gt;<br>
+&lt;caption&gt;é¡Œ&lt;/caption&gt;<br>
 &lt;colgroup style=&quot;width:10em;&quot;&gt;&lt;/colgroup&gt;<br>
 &lt;colgroup&gt;&lt;col style=&quot;background:yellow;&quot;&gt;&lt;/colgroup&gt;<br>
-&lt;tr&gt;&lt;td&gt;•‚ª10em&lt;/td&gt;&lt;td&gt;”wŒi‚ª‰©F&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;tr&gt;&lt;td&gt;å¹…ãŒ10em&lt;/td&gt;&lt;td&gt;èƒŒæ™¯ãŒé»„è‰²&lt;/td&gt;&lt;/tr&gt;<br>
 &lt;/table&gt;<br>
 &lt;table border=&quot;2&quot;&gt;<br>
-&lt;!-- ‘è‚È‚µ --&gt;<br>
+&lt;!-- é¡Œãªã— --&gt;<br>
 &lt;colgroup style=&quot;width:10em;&quot;&gt;&lt;/colgroup&gt;<br>
 &lt;colgroup&gt;&lt;col style=&quot;background:yellow;&quot;&gt;&lt;/colgroup&gt;<br>
-&lt;tr&gt;&lt;td&gt;•‚ª10em&lt;/td&gt;&lt;td&gt;”wŒi‚ª‰©F&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;tr&gt;&lt;td&gt;å¹…ãŒ10em&lt;/td&gt;&lt;td&gt;èƒŒæ™¯ãŒé»„è‰²&lt;/td&gt;&lt;/tr&gt;<br>
 &lt;/table&gt;</code>
 </div>
 <div class="example">
 <table border="2">
-<caption>‘è</caption>
+<caption>é¡Œ</caption>
 <colgroup style="width:10em;"><col></colgroup>
 <colgroup><col style="background:yellow;"></colgroup>
-<tr><td>•‚ª10em</td><td>”wŒi‚ª‰©F</td></tr>
+<tr><td>å¹…ãŒ10em</td><td>èƒŒæ™¯ãŒé»„è‰²</td></tr>
 </table>
 <table border="2">
-<!-- ‘è‚È‚µ -->
+<!-- é¡Œãªã— -->
 <colgroup style="width:10em;"><col></colgroup>
 <colgroup><col style="background:yellow;"></colgroup>
-<tr><td>•‚ª10em</td><td>”wŒi‚ª‰©F</td></tr>
+<tr><td>å¹…ãŒ10em</td><td>èƒŒæ™¯ãŒé»„è‰²</td></tr>
 </table>
 </div>
 
 <dl>
 <dt>Safari1.x, Konqueror3.1.3</dt>
 <dd><ul>
-<li>caption—v‘f‚ª‚ ‚é•\‚Å‚Ícol/colgroup—v‘f‚Éw’è‚µ‚½ƒXƒ^ƒCƒ‹‚ª‚·‚×‚Ä–³‹‚³‚ê‚éB</li>
+<li>captionè¦ç´ ãŒã‚ã‚‹è¡¨ã§ã¯col/colgroupè¦ç´ ã«æŒ‡å®šã—ãŸã‚¹ã‚¿ã‚¤ãƒ«ãŒã™ã¹ã¦ç„¡è¦–ã•ã‚Œã‚‹ã€‚</li>
 </ul></dd>
 </dl>
 
-<h2 name="border">borderƒvƒƒpƒeƒB</h2>
+<h2 name="border">borderãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</h2>
 <div class="source">
 <code>&lt;style type=&quot;text/css&quot;&gt;<br>
 td {<br>
@@ -138,24 +138,24 @@ td {<br>
 <dl>
 <dt>WinIE5.x/6.0, Konqueror3.1.3</dt>
 <dd><ul>
-<li>–¢‘Î‰Btable—v‘f‚Ætd—v‘f‚Ìƒ{[ƒ_[‚¾‚¯‚ğ˜g‚Ég—p‚·‚éB</li>
+<li>æœªå¯¾å¿œã€‚tableè¦ç´ ã¨tdè¦ç´ ã®ãƒœãƒ¼ãƒ€ãƒ¼ã ã‘ã‚’æ ã«ä½¿ç”¨ã™ã‚‹ã€‚</li>
 </ul></dd>
-<dt>Netscape7.1AMozilla1.7beta</dt>
+<dt>Netscape7.1ã€Mozilla1.7beta</dt>
 <dd><ul>
-<li>–â‘è‚È‚µB³í‚Éƒ{[ƒ_[‚ğİ’u‚µ‚Ä‚¢‚éB</li>
+<li>å•é¡Œãªã—ã€‚æ­£å¸¸ã«ãƒœãƒ¼ãƒ€ãƒ¼ã‚’è¨­ç½®ã—ã¦ã„ã‚‹ã€‚</li>
 </ul></dd>
 <dt>Opera6.06</dt>
 <dd><ul>
-<li>col—v‘f‚ğŠÜ‚Ü‚È‚¢colgroup—v‘f‚ğ–³‹‚µA–³‹‚µ‚½•ª‚¾‚¯—ñ‚ª‘O‚É‹l‚Ü‚éBÔF‚Ìƒ{[ƒ_[‚Íİ’u‚³‚ê‚¸A(3)(6)‚Ì—ñ‚ª—ÎF‚Ìƒ{[ƒ_[A(5)(7)‚Ì—ñ‚ªƒsƒ“ƒNF‚Ìƒ{[ƒ_[‚É‚È‚éB</li>
-<li>col—v‘f‚ğŠÜ‚Şcolgroup—v‘f‚ÉƒvƒƒpƒeƒB‚ğw’è‚·‚é‚Æ¶‰E‚Ìc˜g‚ªİ’u‚³‚ê‚È‚¢B(3)(6)‚Ì—ñ‚Ì¶‰E‚Ì˜g‚Í—ÎF‚Å‚Í‚È‚¢B</li>
+<li>colè¦ç´ ã‚’å«ã¾ãªã„colgroupè¦ç´ ã‚’ç„¡è¦–ã—ã€ç„¡è¦–ã—ãŸåˆ†ã ã‘åˆ—ãŒå‰ã«è©°ã¾ã‚‹ã€‚èµ¤è‰²ã®ãƒœãƒ¼ãƒ€ãƒ¼ã¯è¨­ç½®ã•ã‚Œãšã€(3)(6)ã®åˆ—ãŒç·‘è‰²ã®ãƒœãƒ¼ãƒ€ãƒ¼ã€(5)(7)ã®åˆ—ãŒãƒ”ãƒ³ã‚¯è‰²ã®ãƒœãƒ¼ãƒ€ãƒ¼ã«ãªã‚‹ã€‚</li>
+<li>colè¦ç´ ã‚’å«ã‚€colgroupè¦ç´ ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã™ã‚‹ã¨å·¦å³ã®ç¸¦æ ãŒè¨­ç½®ã•ã‚Œãªã„ã€‚(3)(6)ã®åˆ—ã®å·¦å³ã®æ ã¯ç·‘è‰²ã§ã¯ãªã„ã€‚</li>
 </ul></dd>
 <dt>Opera7.23</dt>
 <dd><ul>
-<li>col—v‘f‚ğŠÜ‚Şcolgroup—v‘f‚ÉƒvƒƒpƒeƒB‚ğw’è‚·‚é‚Æ—ñ‚Ì‰E˜g‚ªİ’u‚³‚ê‚È‚¢B(4)(10)‚Ì—ñ‚Ì‰E˜g‚Ítd—v‘f‚Ìƒ{[ƒ_[‚É‚È‚éB</li>
+<li>colè¦ç´ ã‚’å«ã‚€colgroupè¦ç´ ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã™ã‚‹ã¨åˆ—ã®å³æ ãŒè¨­ç½®ã•ã‚Œãªã„ã€‚(4)(10)ã®åˆ—ã®å³æ ã¯tdè¦ç´ ã®ãƒœãƒ¼ãƒ€ãƒ¼ã«ãªã‚‹ã€‚</li>
 </ul></dd>
 </dl>
 
-<h2 name="background">backgroundƒvƒƒpƒeƒB</h2>
+<h2 name="background">backgroundãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</h2>
 <div class="source">
 <code>&lt;col style=&quot;background:yellow;&quot;&gt;<br>
 &lt;col style=&quot;background:yellow;&quot;&gt;</code>
@@ -164,7 +164,7 @@ td {<br>
 <table border="2">
 <col style="background:yellow;">
 <col style="background:yellow;">
-<tr><td>(1)</td><td>‰©F</td></tr>
+<tr><td>(1)</td><td>é»„è‰²</td></tr>
 </table>
 </div>
 <div class="source">
@@ -173,7 +173,7 @@ td {<br>
 <div class="example">
 <table border="2">
 <col span="2" style="background:yellow;">
-<tr><td>(2)</td><td>‰©F</td></tr>
+<tr><td>(2)</td><td>é»„è‰²</td></tr>
 </table>
 </div>
 <div class="source">
@@ -184,7 +184,7 @@ td {<br>
 <table border="2">
 <colgroup style="background:yellow;"></colgroup>
 <colgroup style="background:yellow;"></colgroup>
-<tr><td>(3)</td><td>‰©F</td></tr>
+<tr><td>(3)</td><td>é»„è‰²</td></tr>
 </table>
 </div>
 <div class="source">
@@ -193,7 +193,7 @@ td {<br>
 <div class="example">
 <table border="2">
 <colgroup span="2" style="background:yellow;"></colgroup>
-<tr><td>(4)</td><td>‰©F</td></tr>
+<tr><td>(4)</td><td>é»„è‰²</td></tr>
 </table>
 </div>
 <div class="source">
@@ -202,7 +202,7 @@ td {<br>
 <div class="example">
 <table border="2">
 <colgroup style="background:yellow;"><col><col></colgroup>
-<tr><td>(5)</td><td>‰©F</td></tr>
+<tr><td>(5)</td><td>é»„è‰²</td></tr>
 </table>
 </div>
 <div class="source">
@@ -211,25 +211,25 @@ td {<br>
 <div class="example">
 <table border="2">
 <colgroup style="background:yellow;"><col span="2"></colgroup>
-<tr><td>(6)</td><td>‰©F</td></tr>
+<tr><td>(6)</td><td>é»„è‰²</td></tr>
 </table>
 </div>
 <dl>
-<dt>WinIE5.x/6.0, Opera7.23AMozilla1.7beta•W€ƒ‚[ƒh</dt>
+<dt>WinIE5.x/6.0, Opera7.23ã€Mozilla1.7betaæ¨™æº–ãƒ¢ãƒ¼ãƒ‰</dt>
 <dd><ul>
-<li>–â‘è‚È‚µB(1)‚©‚ç(6)‚Å‚·‚×‚Ä‚Ì—ñ‚Ì”wŒi‚ª‰©F‚É‚È‚éB</li>
+<li>å•é¡Œãªã—ã€‚(1)ã‹ã‚‰(6)ã§ã™ã¹ã¦ã®åˆ—ã®èƒŒæ™¯ãŒé»„è‰²ã«ãªã‚‹ã€‚</li>
 </ul></dd>
-<dt>Opera6.06, Netscape7.1AMozilla1.7ŒİŠ·ƒ‚[ƒh</dt>
+<dt>Opera6.06, Netscape7.1ã€Mozilla1.7äº’æ›ãƒ¢ãƒ¼ãƒ‰</dt>
 <dd><ul>
-<li>–¢‘Î‰B(1)‚©‚ç(6)‚Å‚·‚×‚Ä‚Ì—ñ‚Ì”wŒi‚ª“§‰ß‚Ì‚Ü‚ÜB</li>
+<li>æœªå¯¾å¿œã€‚(1)ã‹ã‚‰(6)ã§ã™ã¹ã¦ã®åˆ—ã®èƒŒæ™¯ãŒé€éã®ã¾ã¾ã€‚</li>
 </ul></dd>
 <dt>Konqueror3.1.3</dt>
 <dd><ul>
-<li>col—v‘f‚ğŠÜ‚Ü‚¸span‘®«‚ğÈ‚¢‚½colgroup—v‘f‚Å‚Ìw’è‚ğ–³‹‚·‚éB(3)‚Å‚·‚×‚Ä‚Ì—ñ‚Ì”wŒi‚ª“§‰ß‚Ì‚Ü‚ÜB</li>
+<li>colè¦ç´ ã‚’å«ã¾ãšspanå±æ€§ã‚’çœã„ãŸcolgroupè¦ç´ ã§ã®æŒ‡å®šã‚’ç„¡è¦–ã™ã‚‹ã€‚(3)ã§ã™ã¹ã¦ã®åˆ—ã®èƒŒæ™¯ãŒé€éã®ã¾ã¾ã€‚</li>
 </ul></dd>
 </dl>
 
-<h2 name="width">widthƒvƒƒpƒeƒB</h2>
+<h2 name="width">widthãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</h2>
 <div class="source">
 <code>&lt;col style=&quot;width:10em;&quot;&gt;<br>
 &lt;col style=&quot;width:10em;&quot;&gt;</code>
@@ -300,47 +300,47 @@ td {<br>
 </table>
 </div>
 <dl>
-<dt>WinIE5.x/6.0, Netscape7.1AMozilla1.7beta</dt>
+<dt>WinIE5.x/6.0, Netscape7.1ã€Mozilla1.7beta</dt>
 <dd><ul>
-<li>–â‘è‚È‚µB(1)‚©‚ç(7)‚Ì‚·‚×‚Ä‚Ì—ñ‚Ì•‚ªw’è’l‚Ç‚¨‚è‚É‚È‚éB</li>
+<li>å•é¡Œãªã—ã€‚(1)ã‹ã‚‰(7)ã®ã™ã¹ã¦ã®åˆ—ã®å¹…ãŒæŒ‡å®šå€¤ã©ãŠã‚Šã«ãªã‚‹ã€‚</li>
 </ul></dd>
 <dt>Opera6.06</dt>
 <dd><ul>
-<li>col—v‘f‚Ìspan‘®«‚ğ–³‹‚·‚éB(2)‚Í1—ñ–Ú‚µ‚©•‚ªw’è’l‚Ç‚¨‚è‚É‚È‚ç‚¸A2—ñ–ÚˆÈ~‚Íauto’l‘Š“–‚Ì•‚É‚È‚éB</li>
-<li>colgroup—v‘f‚Å‚Ìw’è‚ğ–³‹‚·‚éB(3)‚©‚ç(7)‚Í‚·‚×‚Ä‚Ì—ñ‚ªauto’l‘Š“–‚Ì•‚É‚È‚éB</li>
+<li>colè¦ç´ ã®spanå±æ€§ã‚’ç„¡è¦–ã™ã‚‹ã€‚(2)ã¯1åˆ—ç›®ã—ã‹å¹…ãŒæŒ‡å®šå€¤ã©ãŠã‚Šã«ãªã‚‰ãšã€2åˆ—ç›®ä»¥é™ã¯autoå€¤ç›¸å½“ã®å¹…ã«ãªã‚‹ã€‚</li>
+<li>colgroupè¦ç´ ã§ã®æŒ‡å®šã‚’ç„¡è¦–ã™ã‚‹ã€‚(3)ã‹ã‚‰(7)ã¯ã™ã¹ã¦ã®åˆ—ãŒautoå€¤ç›¸å½“ã®å¹…ã«ãªã‚‹ã€‚</li>
 </ul></dd>
 <dt>Opera7.23</dt>
 <dd><ul>
-<li>colgroup—v‘f‚ÅƒXƒ^ƒCƒ‹Aq‚Ìcol—v‘f‚ÅƒXƒ^ƒCƒ‹‚ğ“K—p‚·‚é—ñ‚ğw’è‚·‚é•û–@‚ª–³‹‚³‚ê‚éB(5)‚Æ(6)‚Í‚·‚×‚Ä‚Ì—ñ‚ªauto’l‘Š“–‚Ì•‚É‚È‚éB(7)‚Í1—ñ–Ú‚µ‚©•‚ªw’è’l‚Ç‚¨‚è‚É‚È‚ç‚È‚¢B</li>
+<li>colgroupè¦ç´ ã§ã‚¹ã‚¿ã‚¤ãƒ«ã€å­ã®colè¦ç´ ã§ã‚¹ã‚¿ã‚¤ãƒ«ã‚’é©ç”¨ã™ã‚‹åˆ—ã‚’æŒ‡å®šã™ã‚‹æ–¹æ³•ãŒç„¡è¦–ã•ã‚Œã‚‹ã€‚(5)ã¨(6)ã¯ã™ã¹ã¦ã®åˆ—ãŒautoå€¤ç›¸å½“ã®å¹…ã«ãªã‚‹ã€‚(7)ã¯1åˆ—ç›®ã—ã‹å¹…ãŒæŒ‡å®šå€¤ã©ãŠã‚Šã«ãªã‚‰ãªã„ã€‚</li>
 </ul></dd>
 <dt>MacIE5.x</dt>
 <dd><ul>
-<li>colgroup—v‘f‚Å‚Ìw’è‚ğ–³‹‚·‚éB(3)‚©‚ç(7)‚Í‚·‚×‚Ä‚Ì—ñ‚ªauto’l‘Š“–‚Ì•‚É‚È‚é‚Í‚¸B</li>
+<li>colgroupè¦ç´ ã§ã®æŒ‡å®šã‚’ç„¡è¦–ã™ã‚‹ã€‚(3)ã‹ã‚‰(7)ã¯ã™ã¹ã¦ã®åˆ—ãŒautoå€¤ç›¸å½“ã®å¹…ã«ãªã‚‹ã¯ãšã€‚</li>
 </ul></dd>
 <dt>Safari1.2, Konqueror3.1.3</dt>
 <dd><ul>
-<li>span‘®«‚ğŠÜ‚Şcol/colgroup—v‘f‚Å‚Ìw’è‚ğ–³‹‚·‚éB(2)(4)(6)‚Í‚·‚×‚Ä‚Ì—ñ‚ªauto’l‘Š“–‚Ì•‚É‚È‚éB</li>
-<li>col—v‘f‚ğŠÜ‚Ü‚È‚¢colgroup—v‘f‚ğ–³‹‚·‚éB(3)‚Í‚·‚×‚Ä‚Ì—ñ‚ªauto’l‘Š“–‚Ì•‚É‚È‚éB(7)‚Í1—ñ–Ú‚Æ2—ñ–Ú‚Ì•‚ª5emA3—ñ–Ú‚ªauto’l‘Š“–‚Ì•‚É‚È‚éB</li>
+<li>spanå±æ€§ã‚’å«ã‚€col/colgroupè¦ç´ ã§ã®æŒ‡å®šã‚’ç„¡è¦–ã™ã‚‹ã€‚(2)(4)(6)ã¯ã™ã¹ã¦ã®åˆ—ãŒautoå€¤ç›¸å½“ã®å¹…ã«ãªã‚‹ã€‚</li>
+<li>colè¦ç´ ã‚’å«ã¾ãªã„colgroupè¦ç´ ã‚’ç„¡è¦–ã™ã‚‹ã€‚(3)ã¯ã™ã¹ã¦ã®åˆ—ãŒautoå€¤ç›¸å½“ã®å¹…ã«ãªã‚‹ã€‚(7)ã¯1åˆ—ç›®ã¨2åˆ—ç›®ã®å¹…ãŒ5emã€3åˆ—ç›®ãŒautoå€¤ç›¸å½“ã®å¹…ã«ãªã‚‹ã€‚</li>
 </ul></dd>
 </dl>
 
 <hr>
-<p><em>Mozilla1.7beta‚Å‚±‚±‚©‚çæ‚ğ‰{——‚µ‚È‚¢‚Å‰º‚³‚¢BMozilla‚ªƒNƒ‰ƒbƒVƒ…‚µ‚Ü‚·I</em></p>
+<p><em>Mozilla1.7betaã§ã“ã“ã‹ã‚‰å…ˆã‚’é–²è¦§ã—ãªã„ã§ä¸‹ã•ã„ã€‚MozillaãŒã‚¯ãƒ©ãƒƒã‚·ãƒ¥ã—ã¾ã™ï¼</em></p>
 <hr>
 
-<h2 name="visibility">visibilityƒvƒƒpƒeƒB</h2>
+<h2 name="visibility">visibilityãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</h2>
 <div class="source">
 <code>&lt;table border=&quot;2&quot;&gt;<br>
 &lt;colgroup&gt;&lt;/colgroup&gt;<br>
 &lt;colgroup style=&quot;visibility:collapse;&quot;&gt;&lt;/colgroup&gt;<br>
 &lt;colgroup&gt;&lt;/colgroup&gt;<br>
-&lt;tr&gt;&lt;td&gt;Œ©‚¦‚é&lt;/td&gt;&lt;td&gt;Œ©‚¦‚È‚¢&lt;/td&gt;&lt;td&gt;Œ©‚¦‚é&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;tr&gt;&lt;td&gt;è¦‹ãˆã‚‹&lt;/td&gt;&lt;td&gt;è¦‹ãˆãªã„&lt;/td&gt;&lt;td&gt;è¦‹ãˆã‚‹&lt;/td&gt;&lt;/tr&gt;<br>
 &lt;/table&gt;<br>
 &lt;table border=&quot;2&quot;&gt;<br>
 &lt;col&gt;<br>
 &lt;col style=&quot;visibility:collapse;&quot;&gt;<br>
 &lt;col&gt;<br>
-&lt;tr&gt;&lt;td&gt;Œ©‚¦‚é&lt;/td&gt;&lt;td&gt;Œ©‚¦‚È‚¢&lt;/td&gt;&lt;td&gt;Œ©‚¦‚é&lt;/td&gt;&lt;/tr&gt;<br>
+&lt;tr&gt;&lt;td&gt;è¦‹ãˆã‚‹&lt;/td&gt;&lt;td&gt;è¦‹ãˆãªã„&lt;/td&gt;&lt;td&gt;è¦‹ãˆã‚‹&lt;/td&gt;&lt;/tr&gt;<br>
 &lt;/table&gt;</code>
 </div>
 <div class="example">
@@ -348,28 +348,28 @@ td {<br>
 <colgroup></colgroup>
 <colgroup style="visibility:collapse;"></colgroup>
 <colgroup></colgroup>
-<tr><td>Œ©‚¦‚é</td><td>Œ©‚¦‚È‚¢</td><td>Œ©‚¦‚é</td></tr>
+<tr><td>è¦‹ãˆã‚‹</td><td>è¦‹ãˆãªã„</td><td>è¦‹ãˆã‚‹</td></tr>
 </table>
 <table border="2">
 <col>
 <col style="visibility:collapse;">
 <col>
-<tr><td>Œ©‚¦‚é</td><td>Œ©‚¦‚È‚¢</td><td>Œ©‚¦‚é</td></tr>
+<tr><td>è¦‹ãˆã‚‹</td><td>è¦‹ãˆãªã„</td><td>è¦‹ãˆã‚‹</td></tr>
 </table>
 </div>
 <dl>
 <dt>Netscape7.1</dt>
 <dd><ul>
-<li><del datetime="2004-03-24T00:00:00+09:00">–â‘è‚È‚µB</del>2—ñ–Ú‚Í•\¦‚³‚ê‚È‚¢B<ins datetime="2004-03-24T00:00:00+09:00">‚½‚¾‚µAƒy[ƒW‚Ìã’[‚ğ•\¦‚µ‚½ó‘Ô‚Å‰{———Ìˆæ“à‚ÉŒ©‚¦‚È‚¢•\‚ÉŒÀ‚éB]‚Á‚ÄAƒy[ƒW‚Ìæ“ª‚É‹ß‚¢ˆÊ’u‚É‚ ‚é•\‚Å‚Í‚±‚ÌƒvƒƒpƒeƒB‚ªŒø‚©‚È‚¢ê‡‚ª‚ ‚éB</ins></li>
+<li><del datetime="2004-03-24T00:00:00+09:00">å•é¡Œãªã—ã€‚</del>2åˆ—ç›®ã¯è¡¨ç¤ºã•ã‚Œãªã„ã€‚<ins datetime="2004-03-24T00:00:00+09:00">ãŸã ã—ã€ãƒšãƒ¼ã‚¸ã®ä¸Šç«¯ã‚’è¡¨ç¤ºã—ãŸçŠ¶æ…‹ã§é–²è¦§é ˜åŸŸå†…ã«è¦‹ãˆãªã„è¡¨ã«é™ã‚‹ã€‚å¾“ã£ã¦ã€ãƒšãƒ¼ã‚¸ã®å…ˆé ­ã«è¿‘ã„ä½ç½®ã«ã‚ã‚‹è¡¨ã§ã¯ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒåŠ¹ã‹ãªã„å ´åˆãŒã‚ã‚‹ã€‚</ins></li>
 </ul></dd>
 <dt>WinIE5.x/6.0, Opera6.06/7.23, Konqueror3.1.3</dt>
 <dd><ul>
-<li>–¢‘Î‰B2—ñ–Ú‚Í•\¦‚³‚ê‚éB</li>
+<li>æœªå¯¾å¿œã€‚2åˆ—ç›®ã¯è¡¨ç¤ºã•ã‚Œã‚‹ã€‚</li>
 </ul></dd>
 <dt>Mozilla1.7beta</dt>
-<dd>col/colgroup—v‘f‚É <code>visibility:collapse;</code> ‚ğw’è‚µ‚½•\‚ğ•`‰æ‚·‚é“_‚ÅƒNƒ‰ƒbƒVƒ…‚·‚éB</dd>
+<dd>col/colgroupè¦ç´ ã« <code>visibility:collapse;</code> ã‚’æŒ‡å®šã—ãŸè¡¨ã‚’æç”»ã™ã‚‹æ™‚ç‚¹ã§ã‚¯ãƒ©ãƒƒã‚·ãƒ¥ã™ã‚‹ã€‚</dd>
 </dl>
 
-<div class="navi"><a href="../index.html">ƒgƒbƒvƒy[ƒW</a>^iŠÖ˜A•¶‘j^col/colgroup—v‘f‚Ö‚ÌƒXƒ^ƒCƒ‹w’è</div>
+<div class="navi"><a href="../index.html">ãƒˆãƒƒãƒ—ãƒšãƒ¼ã‚¸</a>ï¼ï¼ˆé–¢é€£æ–‡æ›¸ï¼‰ï¼col/colgroupè¦ç´ ã¸ã®ã‚¹ã‚¿ã‚¤ãƒ«æŒ‡å®š</div>
 </body>
 </html>

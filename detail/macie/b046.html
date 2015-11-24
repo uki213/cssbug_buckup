@@ -2,39 +2,39 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../macie.html" title="MacIE�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (MacOS) CSS�o�O���X�g</title>
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (MacOS) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O046</div>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ046</div>
 
-<h2>ISO-2022-JP��\22���܂ޕ������u&quot;�v�Ɣ��f����<em>(5.0)</em></h2>
+<h2>ISO-2022-JPで\22を含む文字を「&quot;」と判断する<em>(5.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�X�^�C���V�[�g��ISO-2022-JP�ŋL�q�����Ƃ��A16�i�\�L�Łu\22�v���܂ޕ����i�u���v�Ȃǁj���_�u���N�H�[�e�[�V�����u&quot;�v�Ɣ��f����B���̂��߁A���̂悤�ȕ����̌�ɂ���X�^�C���錾���K�p����Ȃ��Ȃ邱�Ƃ�����B</p>
+<h3>症状</h3>
+<p>スタイルシートをISO-2022-JPで記述したとき、16進表記で「\22」を含む文字（「◆」など）をダブルクォーテーション「&quot;」と判断する。このため、このような文字の後にあるスタイル宣言が適用されなくなることがある。</p>
 
-<h3>�Ꭶ</h3>
-<pre>content: &quot;������&quot;;</pre>
-<p>���̂悤�Ȑ錾������ƁA�u���v��content�v���p�e�B�̒l�̏I�[�Ɣ��f����Ă��܂��܂��B���Ȃ݂ɁAISO-2022-JP�Łu���v��\217e�A�u���v��\2221�ł��B</p>
+<h3>例示</h3>
+<pre>content: &quot;◇◆◇&quot;;</pre>
+<p>このような宣言があると、「◆」がcontentプロパティの値の終端と判断されてしまいます。ちなみに、ISO-2022-JPで「◇」は\217e、「◆」は\2221です。</p>
 
-<h3>�⑫</h3>
-<p>�ȉ��̕��@���̂邱�ƂŃo�O������ł��܂��B</p>
+<h3>補足</h3>
+<p>以下の方法を採ることでバグを回避できます。</p>
 <ul>
-<li>�����N�����������g�p���Ȃ��B</li>
-<li>�G�X�P�[�v����i�� �� \25c6�j�B</li>
-<li>�l���V���O���N�H�[�e�[�V�����Ŋ���i<code>content: '������';</code>�j�B</li>
-<li>�X�^�C���V�[�g��ISO-2022-JP�ȊO�̕����R�[�h�ŋL�q����B</li>
+<li>問題を起こす文字を使用しない。</li>
+<li>エスケープする（◆ → \25c6）。</li>
+<li>値をシングルクォーテーションで括る（<code>content: '◇◆◇';</code>）。</li>
+<li>スタイルシートをISO-2022-JP以外の文字コードで記述する。</li>
 </ul>
-<p>�ڂ�����<a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/2002/05b.html#d12n01" title="�˂��߂��ɂ���">MacIE5 : CSS ���̓��{�ꕶ���̉�</a>���Q�Ƃ��Ă��������B</p>
+<p>詳しくは<a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/2002/05b.html#d12n01" title="ねこめしにっき">MacIE5 : CSS 中の日本語文字の怪</a>を参照してください。</p>
 
-<h3>�C����</h3>
-<p>MacIE5.0�ŕs��̔������m�F����Ă��܂��B</p>
+<h3>修正状況</h3>
+<p>MacIE5.0で不具合の発生が確認されています。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O046</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ046</div>
 </body>
 </html>

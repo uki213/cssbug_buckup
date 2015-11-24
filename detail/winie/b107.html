@@ -2,42 +2,42 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O107</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ107</div>
 
-<h2>�t���[�g�̍��E�}�[�W�����w��l���傫���Ȃ�<em>(5.x/6.0)</em></h2>
+<h2>フロートの左右マージンが指定値より大きくなる<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�t���[�g���������{�b�N�X�ɍ��E�}�[�W�����w�肷��ƁA�w��l��2�{���x�̃}�[�W�����ݒu�����B</p>
+<h3>症状</h3>
+<p>フロート化させたボックスに左右マージンを指定すると、指定値の2倍程度のマージンが設置される。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;float:left; width:3em;
   margin-left:1em; background:aqua;&quot;&gt;F&lt;/div&gt;
-&lt;div style=&quot;clear:left; font-family:'�l�r �S�V�b�N',monospace;&quot;&gt;
-��������&lt;/div&gt;</pre>
+&lt;div style=&quot;clear:left; font-family:'ＭＳ ゴシック',monospace;&quot;&gt;
+□□□□&lt;/div&gt;</pre>
 <div class="example">
 <div style="float:left; width:3em; margin-left:1em; background:aqua;">F</div>
-<div style="clear:left; font-family:'�l�r �S�V�b�N',monospace;">��������</div>
+<div style="clear:left; font-family:'ＭＳ ゴシック',monospace;">□□□□</div>
 </div>
-<p>�t���[�g�ɂ�1em�̍��}�[�W�����w�肵�Ă��܂��B���̍s�ɂ���u���v�̗���Q�l�ɂ��ă}�[�W���̗ʂ��݂Ă��������B</p>
+<p>フロートには1emの左マージンを指定しています。次の行にある「□」の列を参考にしてマージンの量をみてください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b107_1.png" alt="N7" width="86" height="51">N7.02�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b107_2.png" alt="WinIE6" width="103" height="50">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b107_1.png" alt="N7" width="86" height="51">N7.02での表示（標準モード）</p>
+<p><img src="img/b107_2.png" alt="WinIE6" width="103" height="50">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE5.5�AWinIE6.0�W�����[�h�AWinIE6.0�݊����[�h�ŕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードで不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O107</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ107</div>
 </body>
 </html>

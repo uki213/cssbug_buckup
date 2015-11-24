@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 p#a:first-letter {
@@ -17,15 +17,15 @@ p#a:first-letter {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O069</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ069</div>
 
-<h2>�[���v�f��vertical-align�v���p�e�B�������Ȃ�</h2>
+<h2>擬似要素にvertical-alignプロパティが効かない</h2>
 
-<h3>�Ǐ�</h3>
-<p>:first-letter�Ȃǂ̋[���v�f�ɑ΂���vertical-align�v���p�e�B���w�肵�Ă����f����Ȃ��B</p>
+<h3>症状</h3>
+<p>:first-letterなどの擬似要素に対してvertical-alignプロパティを指定しても反映されない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 p#a:first-letter {
   vertical-align: 1em;
@@ -36,17 +36,17 @@ p#a:first-letter {
 <div class="example">
 <p id="a">CSS</p>
 </div>
-<p>1�����ڂ� 'C' ��1��������ɂ���Ă���͂��ł��B</p>
+<p>1文字目の 'C' が1文字分上にずれているはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b069_1.png" alt="Moz1.0.1" width="96" height="82">Moz1.0.1�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b069_2.png" alt="WinIE6" width="103" height="72">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b069_1.png" alt="Moz1.0.1" width="96" height="82">Moz1.0.1での表示（標準モード）</p>
+<p><img src="img/b069_2.png" alt="WinIE6" width="103" height="72">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O069</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ069</div>
 </body>
 </html>

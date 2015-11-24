@@ -2,11 +2,11 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../safari.html" title="Safari�ڎ�">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<title>Safari (KHTML) CSSバグリスト</title>
 <style type="text/css">
 <!--
 html {
@@ -20,15 +20,15 @@ body {
 </head>
 <body>
 <div style="background: #f5f5f5;">
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O015</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ015</div>
 
-<h2>html�v�f�Ɏw�肳�ꂽtransparent�w�i�̈������s��<em>(1.2)</em></h2>
+<h2>html要素に指定されたtransparent背景の扱いが不正<em>(1.2)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>CSS2��html�v�f��background�v���p�e�B��transparent�l���w�肵���ꍇ�́Abody�v�f��background�v���p�e�B�̒l���L�����o�X�̔w�i�Ƃ���ƒ�߂Ă���B������Safari��body�v�f�̔w�i���L�����o�X�̔w�i�Ƃ��Ȃ����߁Abody�v�f�̃}�[�W���̈��body�v�f�̔w�i���`�悳��Ȃ��B</p>
+<h3>症状</h3>
+<p>CSS2はhtml要素のbackgroundプロパティにtransparent値を指定した場合は、body要素のbackgroundプロパティの値をキャンバスの背景とすると定めている。しかしSafariはbody要素の背景をキャンバスの背景としないため、body要素のマージン領域にbody要素の背景が描画されない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 html {
   background: transparent;
@@ -37,16 +37,16 @@ body {
   background: #808080;
 }
 &lt;/style&gt;</pre>
-<p>body�v�f�̃}�[�W���̈�͊D�F�œh��Ԃ����͂��ł��B</p>
+<p>body要素のマージン領域は灰色で塗りつぶされるはずです。</p>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>Safari1.2�ł��̕s����������邻���ł��B</li>
-<li>Safari1.0�ł��̕s��͔������Ȃ������ł��B</li>
+<li>Safari1.2でこの不具合が発生するそうです。</li>
+<li>Safari1.0でこの不具合は発生しないそうです。</li>
 </ul>
 
-<h3>�񍐏�������</h3>
-<blockquote>���T�����[�X���ꂽ�΂���� Safari 1.2 �ł��B<br>
+<h3>報告書き込み</h3>
+<blockquote>今週リリースされたばかりの Safari 1.2 です。<br>
 <br>
 * {<br>
 color: inherit;<br>
@@ -58,22 +58,22 @@ background: #ffcccc;<br>
 margin: 1em 10%;<br>
 }<br>
 <br>
-���������悤�ȃX�^�C�����g���Ă�����ABODY �� margin ������<br>
-�w�i�F���t���Ȃ��Ȃ�܂����B���Ȃ݂ɁA�S�̃Z���N�^�̓��[�U�[<br>
-�X�^�C���̌��ʂ��������߂Ɏg���Ă��܂��B�ǂ����A<br>
+こういうようなスタイルを使っていたら、BODY の margin 部分に<br>
+背景色が付かなくなりました。ちなみに、全称セレクタはユーザー<br>
+スタイルの効果を消すために使っています。どうも、<br>
 <br>
 HTML { background: transparent; }<br>
 BODY { background: #ffcccc; }<br>
 <br>
-�ƂȂ��Ă��鎞�� HTML �v�f�̔w�i�F���L�����o�X�̔w�i�F�Ƃ���<br>
-�̗p���Ă��܂��悤�ł��BCCS2 �ɂ��΁AHTML �v�f�̔w�i�F��<br>
-transparent �̏ꍇ�� BODY �v�f�̔w�i�F���L�����o�X�̔w�i�F��<br>
-���ׂ��Ƃ���܂��B<br>
+となっている時に HTML 要素の背景色をキャンバスの背景色として<br>
+採用してしまうようです。CCS2 によれば、HTML 要素の背景色が<br>
+transparent の場合は BODY 要素の背景色をキャンバスの背景色と<br>
+すべきとあります。<br>
 <br>
-���̖��́ASafari 1.0 �Ȃǂł͋N����܂���B1.2 �ɂȂ���<br>
-��������悤�ɂȂ�܂����B</blockquote>
+この問題は、Safari 1.0 などでは起こりません。1.2 になって<br>
+発生するようになりました。</blockquote>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O015</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ015</div>
 </div>
 </body>
 </html>

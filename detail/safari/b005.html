@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../safari.html" title="Safari�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<title>Safari (KHTML) CSSバグリスト</title>
 <script type="text/javascript">
 <!--
 function sheets() {
@@ -22,15 +22,15 @@ function sheets() {
 </script>
 </head>
 <body onload="sheets()">
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O005</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ005</div>
 
-<h2>document.styleSheets[n].title�����null�l��Ԃ�<em>(S1.0)</em></h2>
+<h2>document.styleSheets[n].titleが常にnull値を返す<em>(S1.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p><code>document.styleSheets[<var>n</var>]</code> �I�u�W�F�N�g��title�v���p�e�B�͏��null�l��Ԃ��B���̂��߁A�X�^�C���V�[�g�؂�ւ��X�N���v�g���g�p���邱�Ƃ��ł��Ȃ��B</p>
+<h3>症状</h3>
+<p><code>document.styleSheets[<var>n</var>]</code> オブジェクトのtitleプロパティは常にnull値を返す。このため、スタイルシート切り替えスクリプトを使用することができない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;normal.css&quot; title=&quot;Normal&quot;&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;
 function sheets() {
@@ -47,19 +47,19 @@ function sheets() {
 <div class="example">
 <ul id="slist"></ul>
 </div>
-<p>���̕����Ɋ֘A�t�����Ă���X�^�C���V�[�g��title�v���p�e�B�̈ꗗ�����X�g�ɏo�͂��Ă��܂��B</p>
+<p>この文書に関連付けられているスタイルシートのtitleプロパティの一覧をリストに出力しています。</p>
 
-<h3>�o�͌���</h3>
-<p>N7.02�ł̌��ʁF</p>
+<h3>出力結果</h3>
+<p>N7.02での結果：</p>
 <blockquote>
 <ul>
 <li>Normal</li>
 </ul>
 </blockquote>
 
-<h3>�C����</h3>
-<p>Safari1.0�ł��̕s����������邻���ł��B</p>
+<h3>修正状況</h3>
+<p>Safari1.0でこの不具合が発生するそうです。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O005</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ005</div>
 </body>
 </html>

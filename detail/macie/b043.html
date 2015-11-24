@@ -2,41 +2,41 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../macie.html" title="MacIE�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (MacOS) CSS�o�O���X�g</title>
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (MacOS) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O043</div>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ043</div>
 
-<h2>���Δz�u�܂��͐�Δz�u�����v�f���ŉ��������������ɂȂ�<em>(5.0)</em></h2>
+<h2>相対配置または絶対配置した要素内で下線装飾が無効になる<em>(5.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>���Δz�u�܂��͐�Δz�u�iabsolute�j�����v�f�̓����C�����C���{�b�N�X���ł͉��������i<code>text-decoration: underline;</code>�j�w�肪���f����Ȃ��B</p>
+<h3>症状</h3>
+<p>相対配置または絶対配置（absolute）した要素の匿名インラインボックス内では下線装飾（<code>text-decoration: underline;</code>）指定が反映されない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;a href=&quot;../macie.html&quot; style=&quot;position:relative;&quot;&gt;
-  MacIE�ڎ�&lt;/a&gt;</pre>
+  MacIE目次&lt;/a&gt;</pre>
 <div class="example">
-<a href="../macie.html" style="position:relative;">MacIE�ڎ�</a>
+<a href="../macie.html" style="position:relative;">MacIE目次</a>
 </div>
-<p>�f�t�H���g�ŉ����������ݒ肳��Ă���a�v�f�𑊑Δz�u������ł��B</p>
+<p>デフォルトで下線装飾が設定されているa要素を相対配置した例です。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b043_1.png" alt="N7" width="92" height="35">N7.02�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b043_1.png" alt="N7" width="92" height="35">N7.02での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>���Δz�u�����v�f�̎q���v�f�ł��̃o�O�͔������܂���B</p>
+<h3>補足</h3>
+<p>相対配置した要素の子孫要素でこのバグは発生しません。</p>
 
-<h3>�C����</h3>
-<p>MacIE5.0�ŕs��̔������m�F����Ă��܂��B</p>
+<h3>修正状況</h3>
+<p>MacIE5.0で不具合の発生が確認されています。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O043</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ043</div>
 </body>
 </html>

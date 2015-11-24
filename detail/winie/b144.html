@@ -2,51 +2,51 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css">
 <link rel="stylesheet" type="text/css" href="b144.css" media="screen">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O144</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ144</div>
 
-<h2>media�������܂�link�v�f�ŌĂяo�����O���X�^�C���V�[�g�ł�@media�𖳎�<em>(5.x)</em></h2>
+<h2>media属性を含むlink要素で呼び出した外部スタイルシートでは@mediaを無視<em>(5.x)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>media�������܂�link�v�f�ŊO���X�^�C���V�[�g��ǂݍ��ޏꍇ�A���̊O���X�^�C���V�[�g���Ŏw�肵��@media�L�[���[�h�͖��������B</p>
+<h3>症状</h3>
+<p>media属性を含むlink要素で外部スタイルシートを読み込む場合、その外部スタイルシート内で指定した@mediaキーワードは無視される。</p>
 
-<h3>�Ꭶ</h3>
-<p>HTML�����F</p>
+<h3>例示</h3>
+<p>HTML文書：</p>
 <pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;b144.css&quot; media=&quot;screen&quot;&gt;</pre>
-<p>b144.css�F</p>
+<p>b144.css：</p>
 <pre>@media projection {
   div.prj {
     border: 2px dashed blue;
   }
 }</pre>
 <div class="example">
-<div class="prj">screen�F�{�[�_�[�Ȃ�</div>
+<div class="prj">screen：ボーダーなし</div>
 </div>
-<p>screen���f�B�A��p�̊O���X�^�C���V�[�g��projection���f�B�A��p�̐錾��u���Ă��܂��B���̐錾�͂ǂ̃��f�B�A�ł��K�p����Ȃ��͂��ł��B</p>
+<p>screenメディア専用の外部スタイルシートにprojectionメディア専用の宣言を置いています。この宣言はどのメディアでも適用されないはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b144_1.png" alt="WinIE6.0">WinIE6.0�W�����[�h</p>
+<p><img src="img/b144_1.png" alt="WinIE6.0">WinIE6.0標準モード</p>
 <p><img src="img/b144_2.png" alt="WinIE5.5">WinIE5.5</p>
 </div>
 
-<h3>�⑫</h3>
-<p><code>media=&quot;all&quot;</code> �� <code>media=&quot;&quot;</code> �Ƃ����w����܂�link�v�f�ł����̕s����������܂��B@media�L�[���[�h���g�p����O���X�^�C���V�[�g��media�����̂Ȃ�link�v�f�œǂݍ���ł��������B</p>
+<h3>補足</h3>
+<p><code>media=&quot;all&quot;</code> や <code>media=&quot;&quot;</code> という指定を含むlink要素でもこの不具合が発生します。@mediaキーワードを使用する外部スタイルシートはmedia属性のないlink要素で読み込んでください。</p>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>WinIE5.0�AWinIE5.5�ŕs��̔������m�F���܂����B</li>
-<li>WinIE6.0�ł��̕s��͔������Ȃ��悤�ł��B</li>
+<li>WinIE5.0、WinIE5.5で不具合の発生を確認しました。</li>
+<li>WinIE6.0でこの不具合は発生しないようです。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O144</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ144</div>
 </body>
 </html>

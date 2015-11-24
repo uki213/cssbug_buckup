@@ -2,41 +2,41 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="b036.css" title="�o�O���ؗp">
-<link rel="alternate stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../mozilla.html" title="Moz�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="b036.css" title="バグ検証用">
+<link rel="alternate stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Mozilla 5.0�n CSS�o�O���X�g</title>
+<title>Mozilla 5.0系 CSSバグリスト</title>
 </head>
 <body>
-<h1>Mozilla 5.0�n CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../mozilla.html">Moz�ڎ�</a>�^�o�O036</div>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ036</div>
 
-<h2>�D��V�[�g��display:none;����փV�[�g�ɂ������p�����<em>(N7)</em></h2>
+<h2>優先シートのdisplay:none;が代替シートにも引き継がれる<em>(N7)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�D��X�^�C���V�[�g�� <code>display: none;</code> ���w�肳�ꂽ�v�f�́A��փX�^�C���V�[�g�ɂ��̎w�肪�Ȃ��ꍇ�ł��A�X�^�C���V�[�g�؂�ւ���ɕ\������Ȃ��B<code>display: block !important;</code> ���̎w��������Ȃ��B</p>
+<h3>症状</h3>
+<p>優先スタイルシートで <code>display: none;</code> を指定された要素は、代替スタイルシートにその指定がない場合でも、スタイルシート切り替え後に表示されない。<code>display: block !important;</code> 等の指定も効かない。</p>
 
-<h3>�Ꭶ</h3>
-b036.css�̓��e�i�ꕔ�j�F
+<h3>例示</h3>
+b036.cssの内容（一部）：
 <pre>p.hid {
   display: none;
 }</pre>
-<p>HTML�\�[�X�i�ꕔ�j�F</p>
-<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;b036.css&quot; title=&quot;�o�O���ؗp&quot;&gt;
-&lt;link rel=&quot;alternate stylesheet&quot; type=&quot;text/css&quot; href=&quot;normal.css&quot; title=&quot;�W��&quot;&gt;
+<p>HTMLソース（一部）：</p>
+<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;b036.css&quot; title=&quot;バグ検証用&quot;&gt;
+&lt;link rel=&quot;alternate stylesheet&quot; type=&quot;text/css&quot; href=&quot;normal.css&quot; title=&quot;標準&quot;&gt;
 
-&lt;p class=&quot;hid&quot;&gt;��\��&lt;/p&gt;</pre>
+&lt;p class=&quot;hid&quot;&gt;非表示&lt;/p&gt;</pre>
 <div class="example">
-<p class="hid">��\��</p>
+<p class="hid">非表示</p>
 </div>
-<p>��̘g���ɁA���e�����u��\���v��p�v�f������܂��B���j���[����X�^�C���V�[�g���u�W���v��u��{�y�[�W�X�^�C���v�ɐ؂�ւ��Ă݂Ă��������B</p>
+<p>上の枠内に、内容物が「非表示」のp要素があります。メニューからスタイルシートを「標準」や「基本ページスタイル」に切り替えてみてください。</p>
 
-<h3>�C����</h3>
-<p>N7/Moz1.0.1�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>N7/Moz1.0.1では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../mozilla.html">Moz�ڎ�</a>�^�o�O036</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ036</div>
 </body>
 </html>

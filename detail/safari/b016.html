@@ -2,11 +2,11 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../safari.html" title="Safari�ڎ�">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<title>Safari (KHTML) CSSバグリスト</title>
 <style type="text/css">
 <!--
 a:link, a:visited {
@@ -19,15 +19,15 @@ a:hover {
 </style>
 </head>
 <body>
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O016</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ016</div>
 
-<h2>�[���N���X�ŕ�����̈ꕔ���̑O�i�F���ς��Ȃ�<em>(1.2)</em></h2>
+<h2>擬似クラスで文字列の一部分の前景色が変わらない<em>(1.2)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>:hover�[���N���X�őO�i�F��ς���X�^�C���w����s���Ƃ��A:hover�̏�ԂɂȂ��Ă�������̈ꕔ�������őO�i�F���ω����Ȃ����Ƃ�����B�Ⴆ�΃A���_�[���C����艺�̕����A�C�^���b�N�̂ȂǂŉE���ɂ͂ݏo�������Ȃǂł��̌��ۂ���������B</p>
+<h3>症状</h3>
+<p>:hover擬似クラスで前景色を変えるスタイル指定を行うとき、:hoverの状態になっても文字列の一部分だけで前景色が変化しないことがある。例えばアンダーラインより下の部分、イタリック体などで右側にはみ出す部分などでこの現象が発生する。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 a:link, a:visited {
   color: blue;
@@ -41,25 +41,25 @@ a:hover {
 <div class="example">
 <p><a href="../safari.html" style="font:200% 'Times New Roman',serif;">gjpqy</a></p>
 </div>
-<p>�������Times New Roman�t�H���g�ŕ\�����Ă��܂��BSafari�ł̓}�E�X�|�C���^�����悹���Ƃ��ɃA���_�[���C����艺�̕����̑O�i�F���ԐF�ɂȂ�Ȃ������ł��B</p>
+<p>文字列はTimes New Romanフォントで表示しています。Safariではマウスポインタ等を乗せたときにアンダーラインより下の部分の前景色が赤色にならないそうです。</p>
 
-<h3>�⑫</h3>
-<p>�t�H���g�ɂ���ĕs��̔����󋵂��ς�邻���ł��B</p>
+<h3>補足</h3>
+<p>フォントによって不具合の発生状況が変わるそうです。</p>
 <ul>
-<li>�q���M�m�t�H���g�F�f�B�Z���_�̕����ŕs�����������B</li>
-<li>Osaka�F�s��͔������Ȃ��B</li>
-<li>Times New Roman�F�f�B�Z���_�̕����ŕs�����������B</li>
-<li>VT100�F�����̒��S��艺�̗̈�ŕs�����������B</li>
+<li>ヒラギノフォント：ディセンダの部分で不具合が発生する。</li>
+<li>Osaka：不具合は発生しない。</li>
+<li>Times New Roman：ディセンダの部分で不具合が発生する。</li>
+<li>VT100：文字の中心より下の領域で不具合が発生する。</li>
 </ul>
-<p>�܂���������C�^���b�N�̂Ȃǂŕ\������ƁA�m�[�}���ŕ\�������Ƃ��ɔ�ׂĉE�ɂ͂ݏo�������ł����l�̌��ۂ��������܂��B</p>
+<p>また文字列をイタリック体などで表示すると、ノーマルで表示したときに比べて右にはみ出す部分でも同様の現象が発生します。</p>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>Safari1.2�ł��̕s����������邻���ł��B</li>
+<li>Safari1.2でこの不具合が発生するそうです。</li>
 </ul>
 
-<h3>�񍐏�������</h3>
-<blockquote>�����N�v�f�̉�����艺�ɂ͂ݏo���������̕����̐F��ς����Ȃ��iSafari1.2�j<br>
+<h3>報告書き込み</h3>
+<blockquote>リンク要素の下線より下にはみ出した部分の文字の色を変えられない（Safari1.2）<br>
 <br>
 a:visited { color: purple; }<br>
 a:hover { color: green; }<br>
@@ -67,24 +67,24 @@ a:active { color: maroon; }<br>
 <br>
 &lt;a href=&quot;&quot;&gt;jpg&lt;/a&gt;<br>
 <br>
-j��g�Ȃǂ̉�����艺�ɂ͂ݏo���������̐F���^���v�f�ɂ��w��ŕς����Ȃ��B<br>
-�����������Ă���������B</blockquote>
+jやgなどの下線より下にはみ出した部分の色が疑似要素による指定で変えられない。<br>
+下線を消しても発生する。</blockquote>
 
-<blockquote>&gt;�t�H���g�i�̐݌v�j�ɂ���Č��ʂ��قȂ邩��<br>
-�����Ă݂��Ƃ���A�q���M�m�n�ł͔������܂�����Osaka�ł͔������܂���ł����B<br>
-�܂��Α̂�����A�M�L�̂̂悤�ȃt�H���g�ɂ���ƍ��E�ɂ͂ݏo���������̐F���ς��Ȃ��Ȃ�܂����B</blockquote>
+<blockquote>&gt;フォント（の設計）によって結果が異なるかも<br>
+試してみたところ、ヒラギノ系では発生しましたがOsakaでは発生しませんでした。<br>
+また斜体したり、筆記体のようなフォントにすると左右にはみ出した部分の色が変わらなくなりました。</blockquote>
 
 <blockquote>&gt;&gt;943<br>
-�t�H���g�ɂ��܂��BTimes New Roman�ł͔������܂����B<br>
-�܂��ǂ̕�������F���ς��Ȃ��Ȃ邩�̓t�H���g�ɂ���ĈႤ�悤�ł��B<br>
-VT100���Ɖ����ǂ��납���S���牺�����̐F���ς��܂���B<br>
+フォントによります。Times New Romanでは発生しました。<br>
+またどの部分から色が変わらなくなるかはフォントによって違うようです。<br>
+VT100だと下線どころか中心から下半分の色が変わりません。<br>
 &gt;&gt;944<br>
 Hiragino Maru Gothic Pro<br>
 Hiragino Kaku Gothic Pro<br>
 Hiragino Kaku Gothic Std<br>
 Hiragino Mincho Pro<br>
-�Ǝw�肷��ƃq���M�m�ɂȂ�܂��BW3�Ƃ����������̑����͎w��ł��܂��񂪁B</blockquote>
+と指定するとヒラギノになります。W3といった文字の太さは指定できませんが。</blockquote>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O016</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ016</div>
 </body>
 </html>

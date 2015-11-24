@@ -2,43 +2,43 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O001</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ001</div>
 
-<h2>�{�b�N�X�̕��⍂�����Z�o����Ƃ��Ƀp�f�B���O��{�[�_�[�̃T�C�Y���܂߂Ă��܂�</h2>
+<h2>ボックスの幅や高さを算出するときにパディングやボーダーのサイズを含めてしまう</h2>
 
-<h3>�Ǐ�</h3>
-<p>CSS1/CSS2�ł̓{�b�N�X�̕����Z�o����Ƃ��Ƀp�f�B���O��{�[�_�[�̃T�C�Y�͏��O�����B������WinIE�ł͂������܂߂ĕ��⍂�����Z�o����B</p>
+<h3>症状</h3>
+<p>CSS1/CSS2ではボックスの幅を算出するときにパディングやボーダーのサイズは除外される。しかしWinIEではこれらを含めて幅や高さを算出する。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;width:150px; height:20px; padding-left:30px; border:10px solid blue;&quot;&gt;&lt;/div&gt;
-&lt;img src=&quot;../img/img01.png&quot; alt=&quot;��r�p�摜&quot; width=&quot;200&quot; height=&quot;40&quot;&gt;</pre>
+&lt;img src=&quot;../img/img01.png&quot; alt=&quot;比較用画像&quot; width=&quot;200&quot; height=&quot;40&quot;&gt;</pre>
 <div class="example">
 <div style="width: 150px; height: 20px; padding-left: 30px; border: 10px solid blue;"></div>
-<img src="../img/img01.png" alt="��r�p�摜" width="200" height="40">
+<img src="../img/img01.png" alt="比較用画像" width="200" height="40">
 </div>
-<p>��i��div�v�f�̃{�[�_�[�O���̃T�C�Y�Ɖ��i�̉摜�̃T�C�Y���������Ȃ�悤�Ɏw�肵�Ă��܂��B</p>
+<p>上段のdiv要素のボーダー外縁のサイズと下段の画像のサイズが等しくなるように指定しています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b001_1.png" alt="Moz1.0" width="216" height="100">Moz1.0�i�݊����[�h�j</p>
-<p><img src="img/b001_2.png" alt="WinIE6" width="220" height="102">WinIE6.0�i�݊����[�h�j</p>
+<p><img src="img/b001_1.png" alt="Moz1.0" width="216" height="100">Moz1.0（互換モード）</p>
+<p><img src="img/b001_2.png" alt="WinIE6" width="220" height="102">WinIE6.0（互換モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�{�b�N�X�T�C�Y�̎Z�o���Ƀ{�[�_�[�܂ł��܂߂�Ƃ����l������CSS3�œ��������\��ł��B�������A����WinIE�͌����I�ɂ�CSS3���T�|�[�g���Ă��܂���B</p>
+<h3>補足</h3>
+<p>ボックスサイズの算出時にボーダーまでを含めるという考え方はCSS3で導入される予定です。ただし、現在WinIEは公式的にはCSS3をサポートしていません。</p>
 
-<h3>�C����</h3>
-<p>WinIE6.0�W�����[�h��CSS2�ɏ]�����T�C�Y�Z�o���s���܂��BIE6�݊����[�h�ł͏]�����l�A�{�[�_�[�܂ł��܂ގZ�o���s���Ă��܂��B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0標準モードはCSS2に従ったサイズ算出を行います。IE6互換モードでは従来同様、ボーダーまでを含む算出が行われています。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O001</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ001</div>
 </body>
 </html>

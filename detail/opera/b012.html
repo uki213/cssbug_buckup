@@ -2,23 +2,23 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Opera CSS�o�O���X�g</title>
+<title>Opera CSSバグリスト</title>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O012</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ012</div>
 
-<h2>list-style-image:none; �𖳎�����<em>(6.0)</em></h2>
+<h2>list-style-image:none; を無視する<em>(6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>ul�v�f��������q�ɂȂ��Ă����ԂŁA�e�v�f��list-style-image�v���p�e�B�Ń��X�g�}�[�J�[�ɉ摜���w�肷��ƁA�q���v�f�� <code>list-style-image: none;</code> ���w�肵�Ă��e�v�f�̎w����p�����Ă��܂��B</p>
+<h3>症状</h3>
+<p>ul要素等が入れ子になっている状態で、親要素にlist-style-imageプロパティでリストマーカーに画像を指定すると、子孫要素で <code>list-style-image: none;</code> を指定しても親要素の指定を継承してしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;ul style=&quot;list-style-image:url(../img/img02.png);&quot;&gt;
 &lt;li&gt;A&lt;/li&gt;
 &lt;li&gt;B&lt;ul style=&quot;list-style-image:none;&quot;&gt;
@@ -35,17 +35,17 @@
 </ul></li>
 </ul>
 </div>
-<p>�e��ul�v�f���͉摜���}�[�J�[�ɗp���A�q��ul�v�f���̓f�t�H���g�̃}�[�J�[��p����悤�Ɏw�肵�܂����B</p>
+<p>親のul要素内は画像をマーカーに用い、子のul要素内はデフォルトのマーカーを用いるように指定しました。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b012_1.png" alt="WinIE6" width="144" height="133">WinIE6.0�ł̕\��</p>
-<p><img src="img/b012_2.png" alt="Op6" width="148" height="156">Opera6.05�ł̕\��</p>
+<p><img src="img/b012_1.png" alt="WinIE6" width="144" height="133">WinIE6.0での表示</p>
+<p><img src="img/b012_2.png" alt="Op6" width="148" height="156">Opera6.05での表示</p>
 </div>
 
-<h3>�C����</h3>
-<p>Opera6.05�ł̓X�^�C���V�[�g�̎w��𖳎������p�����s���܂��BOpera7.0�ł͕W���E�݊����[�h�Ƃ��� none ��F�����܂��B</p>
+<h3>修正状況</h3>
+<p>Opera6.05ではスタイルシートの指定を無視した継承が行われます。Opera7.0では標準・互換モードともに none を認識します。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O012</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ012</div>
 </body>
 </html>

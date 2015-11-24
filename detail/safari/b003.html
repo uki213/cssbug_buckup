@@ -2,38 +2,38 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../safari.html" title="Safari�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<title>Safari (KHTML) CSSバグリスト</title>
 </head>
 <body>
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O003</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ003</div>
 
-<h2>���̂ɓ��{�ꕶ�����܂ރt�H���g�t�@�~���̎w��𖳎�����<em>(S1.0)</em></h2>
+<h2>名称に日本語文字を含むフォントファミリの指定を無視する<em>(S1.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>���̂ɓ��{��Ȃǂ̑��o�C�g�������܂܂�Ă���t�H���g�t�@�~����font-family�v���p�e�B�Ɏw�肵�Ă����������B�t�H���g�����G�X�P�[�v���Ă�����ł��Ȃ��B</p>
+<h3>症状</h3>
+<p>名称に日本語などの多バイト文字が含まれているフォントファミリをfont-familyプロパティに指定しても無視される。フォント名をエスケープしても回避できない。</p>
 
-<h3>�Ꭶ</h3>
-<pre>&lt;p style=&quot;font-family:'�݂������-P','�������o�t�H���g',sans-serif;&quot;&gt;
-�t�H���g�t�@�~��&lt;/p&gt;</pre>
+<h3>例示</h3>
+<pre>&lt;p style=&quot;font-family:'みかちゃん-P','あくあＰフォント',sans-serif;&quot;&gt;
+フォントファミリ&lt;/p&gt;</pre>
 <div class="example">
-<p style="font-family:'�݂������-P','�������o�t�H���g',sans-serif;">�t�H���g�t�@�~��</p>
+<p style="font-family:'みかちゃん-P','あくあＰフォント',sans-serif;">フォントファミリ</p>
 </div>
-<p>�C���^�[�l�b�g��Ō��J����Ă���t�H���g���w�肵�Ă��܂��iMacOSX�ɕt�����Ă��Ė��̂ɓ��{�ꂪ�܂܂�Ă���t�H���g��������΂�����w�肷��̂ł����c�c�j�B</p>
+<p>インターネット上で公開されているフォントを指定しています（MacOSXに付属していて名称に日本語が含まれているフォントが分かればそれを指定するのですが……）。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b003_1.png" alt="N7" width="151" height="63">N7.02�ł̕\���i�t�H���g�́u�݂������v�ł��j</p>
+<p><img src="img/b003_1.png" alt="N7" width="151" height="63">N7.02での表示（フォントは「みかちゃん」です）</p>
 </div>
 
-<h3>�C����</h3>
-<p>Safari1.0�ł��̕s����������邻���ł��B</p>
+<h3>修正状況</h3>
+<p>Safari1.0でこの不具合が発生するそうです。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O003</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ003</div>
 </body>
 </html>

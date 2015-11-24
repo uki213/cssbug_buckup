@@ -2,34 +2,34 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="b007_.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../safari.html" title="Safari�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<title>Safari (KHTML) CSSバグリスト</title>
 </head>
 <body>
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O007</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ007</div>
 
-<h2>�t�@�C�����ɃA���_�[�o�[���܂ފO���X�^�C���V�[�g��ǂݍ��܂Ȃ�<em>(S1.0)</em></h2>
+<h2>ファイル名にアンダーバーを含む外部スタイルシートを読み込まない<em>(S1.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�t�@�C�����ɃA���_�[�o�[�u _ �v���܂ފO���X�^�C���V�[�g��link�v�f�Ŏw�肵�Ă��ǂݍ��܂�Ȃ��B</p>
+<h3>症状</h3>
+<p>ファイル名にアンダーバー「 _ 」を含む外部スタイルシートはlink要素で指定しても読み込まれない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;b007_.css&quot; title=&quot;Normal&quot;&gt;</pre>
-<p>�ub007_.css�v���ǂݍ��܂�Ă���̂ł���΁Ah1, h2, h3�̊e�v�f�ɂ̓{�[�_�[���ݒu����Ă���͂��ł��B</p>
+<p>「b007_.css」が読み込まれているのであれば、h1, h2, h3の各要素にはボーダーが設置されているはずです。</p>
 
-<h3>�C����</h3>
-<p>Safari1.0�ł��̕s�����������悤�ł��B</p>
+<h3>修正状況</h3>
+<p>Safari1.0でこの不具合が発生するようです。</p>
 
-<h3>�񍐏�������</h3>
+<h3>報告書き込み</h3>
 <blockquote>http://pc2.2ch.net/test/read.cgi/hp/1057645762/12-13n
-&gt;���O�������NCSS�t�@�C�����Ɂu�Q�v�i�A���_�[�o�[�j���g����
-&gt;Safari�ł͓ǂݍ��܂Ȃ��̂ł����ӁI</blockquote>
+&gt;●外部リンクCSSファイル名に「＿」（アンダーバー）を使うと
+&gt;Safariでは読み込まないのでご注意！</blockquote>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O007</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ007</div>
 </body>
 </html>

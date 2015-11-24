@@ -2,61 +2,61 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O161</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ161</div>
 
-<h2>���⍂�����w�肵���v�f�̎q���v�f�Ńf�t�H���g�w��̃}�[�W����������<em>(5.x/6.0)</em></h2>
+<h2>幅や高さを指定した要素の子孫要素でデフォルト指定のマージンが消える<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>width�v���p�e�B��height�v���p�e�B��auto�ȊO�̒l���w�肵���v�f�̎q���ɁA�f�t�H���g�Ń}�[�W��������v�f�ip, blockquote, ul�Ȃǁj������Ƃ��A�f�t�H���g�̃}�[�W���������邱�Ƃ�����B</p>
+<h3>症状</h3>
+<p>widthプロパティやheightプロパティにauto以外の値を指定した要素の子孫に、デフォルトでマージンがある要素（p, blockquote, ulなど）があるとき、デフォルトのマージンが消えることがある。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <div class="example">
 <div style="width:50%; padding:2px; background:blue;">
-<p style="background:aqua;">p�v�f</p>
+<p style="background:aqua;">p要素</p>
 </div>
 <div style="width:50%; padding:2px; background:red;">
-<ul style="background:yellow;"><li>ul�v�f</li></ul>
+<ul style="background:yellow;"><li>ul要素</li></ul>
 </div>
 </div>
-<p>p�v�f��ul�v�f�Ń}�[�W���̐ݒu��Ԃ��m�F���Ă��܂��Bp�v�f��ul�v�f�̃{�b�N�X�̏㉺��1em���A�F��ԐF�̗̈悪�ݒu�����͂��ł��B</p>
+<p>p要素とul要素でマージンの設置状態を確認しています。p要素やul要素のボックスの上下に1emずつ、青色や赤色の領域が設置されるはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b161_1.png" alt="Ns7.1">Netscape7.1�W�����[�h</p>
-<p><img src="img/b161_2.png" alt="WinIE6.0">WinIE6.0�W�����[�h</p>
+<p><img src="img/b161_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b161_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
 </div>
 
-<h3>�⑫</h3>
-<p>����҂�{���҂��X�^�C���V�[�g��p���Ďw�肵���}�[�W���͐������ݒu����܂��B</p>
+<h3>補足</h3>
+<p>制作者や閲覧者がスタイルシートを用いて指定したマージンは正しく設置されます。</p>
 <pre>&lt;div style=&quot;width:50%; padding:2px; background:blue;&quot;&gt;
-&lt;p style=&quot;background:aqua; <em>margin:1em 0;</em>&quot;&gt;p�v�f&lt;/p&gt;
+&lt;p style=&quot;background:aqua; <em>margin:1em 0;</em>&quot;&gt;p要素&lt;/p&gt;
 &lt;/div&gt;
 &lt;div style=&quot;width:50%; padding:2px; background:red;&quot;&gt;
 &lt;ul style=&quot;background:yellow; <em>margin:1em 0 1em 40px;</em>&quot;&gt;
-&lt;li&gt;ul�v�f&lt;/li&gt;&lt;/ul&gt;
+&lt;li&gt;ul要素&lt;/li&gt;&lt;/ul&gt;
 &lt;/div&gt;</pre>
 <div class="example">
 <div style="width:50%; padding:2px; background:blue;">
-<p style="background:aqua; margin:1em 0;">p�v�f</p>
+<p style="background:aqua; margin:1em 0;">p要素</p>
 </div>
 <div style="width:50%; padding:2px; background:red;">
-<ul style="background:yellow; margin:1em 0 1em 40px;"><li>ul�v�f</li></ul>
+<ul style="background:yellow; margin:1em 0 1em 40px;"><li>ul要素</li></ul>
 </div>
 </div>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>WinIE6.0�̕W�����[�h�ƌ݊����[�h�ŕs��̔������m�F���܂����B</li>
+<li>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O161</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ161</div>
 </body>
 </html>

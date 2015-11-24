@@ -2,23 +2,23 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../nn4x.html" title="NN4.x�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Netscape Navigator 4.x CSS�o�O���X�g</title>
+<title>Netscape Navigator 4.x CSSバグリスト</title>
 </head>
 <body>
-<h1>Netscape Navigator 4.x CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../nn4x.html">NN4.x�ڎ�</a>�^�o�O009</div>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ009</div>
 
-<h2>font�v���p�e�B�ŕ��@�ᔽ������ƃu���b�N�S�̂̃X�^�C���w�肪���������</h2>
+<h2>fontプロパティで文法違反をするとブロック全体のスタイル指定が無視される</h2>
 
-<h3>�Ǐ�</h3>
-<p>font�v���p�e�B�ŕ��@�ᔽ������ƁA���̃v���p�e�B���܂ރu���b�N�S�̂̃X�^�C������������Ă��܂��B</p>
+<h3>症状</h3>
+<p>fontプロパティで文法違反をすると、そのプロパティを含むブロック全体のスタイルが無視されてしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;font-size:2em; font-family:Arial,sans-serif; color:yellow; background:navy;&quot;&gt;
 FONT1&lt;/div&gt;
 &lt;div style=&quot;font:2em Arial,sans-serif; color:yellow; background:green;&quot;&gt;
@@ -30,20 +30,20 @@ FONT3&lt;/div&gt;</pre>
 <div style="font:2em Arial,sans-serif; color:yellow; background:green;">FONT2</div>
 <div style="font:Arial,sans-serif 2em; color:yellow; background:blue;">FONT3</div>
 </div>
-<p>�uFONT1�v��font-size, font-family���g�p�����ꍇ�A�uFONT2�v��font�v���p�e�B�𐳂����g�p�����ꍇ�A�uFONT3�v��font�v���p�e�B�Ō�����g�����i�T�C�Y�ƃt�@�~���̎w�菇���t�j�������ꍇ�ł��B</p>
+<p>「FONT1」はfont-size, font-familyを使用した場合、「FONT2」はfontプロパティを正しく使用した場合、「FONT3」はfontプロパティで誤った使い方（サイズとファミリの指定順が逆）をした場合です。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b009_1.png" alt="WinIE6" width="159" height="105">WinIE6.0�ł̕\��</p>
-<p><img src="img/b009_2.png" alt="NN4" width="117" height="101">NN4.78�ł̕\��</p>
+<p><img src="img/b009_1.png" alt="WinIE6" width="159" height="105">WinIE6.0での表示</p>
+<p><img src="img/b009_2.png" alt="NN4" width="117" height="101">NN4.78での表示</p>
 </div>
 
-<h3>�⑫</h3>
-<p>CSS�ł́A�s���Ȑ錾���܂܂�Ă���ꍇ�͂��̐錾�݂̂𖳎�����悤�ɋK�肳��Ă��܂��B</p>
+<h3>補足</h3>
+<p>CSSでは、不正な宣言が含まれている場合はその宣言のみを無視するように規定されています。</p>
 
-<h3>�C����</h3>
-<p>NN4.78�ł̓u���b�N���̂��ׂĂ̐錾����������܂��B</p>
+<h3>修正状況</h3>
+<p>NN4.78ではブロック内のすべての宣言が無視されます。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../nn4x.html">NN4.x�ڎ�</a>�^�o�O009</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ009</div>
 </body>
 </html>

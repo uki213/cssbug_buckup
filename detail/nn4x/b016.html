@@ -2,58 +2,58 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../nn4x.html" title="NN4.x�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Netscape Navigator 4.x CSS�o�O���X�g</title>
+<title>Netscape Navigator 4.x CSSバグリスト</title>
 </head>
 <body>
-<h1>Netscape Navigator 4.x CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../nn4x.html">NN4.x�ڎ�</a>�^�o�O016</div>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ016</div>
 
-<h2>���݂��Ȃ��J�n�^�O��style�������܂ފJ�n�^�O�̒���Ɍ����</h2>
+<h2>実在しない開始タグがstyle属性を含む開始タグの直後に現れる</h2>
 
-<h3>�Ǐ�</h3>
-<p>�C�����C���X�^�C���V�[�g���܂ޕ����̃\�[�X��\���������Ƃ��Astyle�������܂ފJ�n�^�O�̒���ɁA���ۂ͑��݂��Ȃ��ATtyle�������܂܂��J�n�^�O������邱�Ƃ�����B����ɁA���̌��ۂɂ���ăX�^�C��������邱�Ƃ�����B</p>
+<h3>症状</h3>
+<p>インラインスタイルシートを含む文書のソースを表示させたとき、style属性を含む開始タグの直後に、実際は存在しない、Ttyle属性が含まれる開始タグが現れることがある。さらに、この現象によってスタイルが乱れることがある。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;script type=&quot;text/javascript&quot;&gt;
-document.write('�X�N���v�g');
+document.write('スクリプト');
 &lt;/script&gt;
-&lt;div style=&quot;position:relative; background:aqua;&quot;&gt;�w�i���v�f&lt;/div&gt;</pre>
+&lt;div style=&quot;position:relative; background:aqua;&quot;&gt;背景つき要素&lt;/div&gt;</pre>
 <div class="example">
 <script type="text/javascript">
-document.write('�X�N���v�g');
+document.write('スクリプト');
 </script>
-<div style="position:relative; background:aqua;">�w�i���v�f</div>
+<div style="position:relative; background:aqua;">背景つき要素</div>
 </div>
-<p>�����̓ǂݍ��݂��I��������ɁA�u���E�U�̃E�B���h�E�����T�C�Y���Ă��������B</p>
+<p>文書の読み込みが終了した後に、ブラウザのウィンドウをリサイズしてください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
-<p>���E�B���h�E�̃T�C�Y��ύX������̏�Ԃ̃X�N���[���V���b�g�ł��B</p>
+<h3>スクリーンショット</h3>
+<p>※ウィンドウのサイズを変更した後の状態のスクリーンショットです。</p>
 <div class="shot">
-<p><img src="img/b016_1.png" alt="N7" width="223" height="92">N7.02�ł̕\��</p>
-<p><img src="img/b016_2.png" alt="NN4" width="314" height="153">NN4.8�ł̕\��</p>
+<p><img src="img/b016_1.png" alt="N7" width="223" height="92">N7.02での表示</p>
+<p><img src="img/b016_2.png" alt="NN4" width="314" height="153">NN4.8での表示</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�ȉ��̓o�O���������Ă���Ƃ���NN�ŕ\�������O�o�̗Ꭶ�̃\�[�X�ł��i���₷�����邽�߂ɉ��s�����Ă��܂��B���ۂ�style����������div�v�f�J�n�^�O��div�v�f�I���^�O�̊Ԃ͉��s������܂���j�BTtyle����������div�v�f�J�n�^�O�̂��߂ɂ��̕����͏I���^�O���Ȃ�div�v�f�����݂�����̂Ƃ��Ĉ����A���ꂪ���C�A�E�g�𗐂������ɂȂ邱�Ƃ�����܂��B</p>
-<pre>�X�N���v�g
+<h3>補足</h3>
+<p>以下はバグが発生しているときにNNで表示した前出の例示のソースです（見やすくするために改行を入れています。実際はstyle属性を持つdiv要素開始タグとdiv要素終了タグの間は改行がありません）。Ttyle属性を持つdiv要素開始タグのためにこの文書は終了タグがないdiv要素が存在するものとして扱われ、これがレイアウトを乱す原因になることがあります。</p>
+<pre>スクリプト
 &lt;DIV style=&quot;position:relative; background:aqua;&quot;&gt;
 <em>&lt;DIV Ttyle=&quot;position:relative; background:aqua;&quot;&gt;</em>
-�w�i���v�f&lt;/DIV&gt;</pre>
-<p>�Ȃ��A���̃o�O�͕K����������킯�ł͂���܂���B�ȉ��̏����ɊY������ꍇ�ɓ��ɔ������₷���悤�ł��B</p>
+背景つき要素&lt;/DIV&gt;</pre>
+<p>なお、このバグは必ず発生するわけではありません。以下の条件に該当する場合に特に発生しやすいようです。</p>
 <ul>
-<li>�������ŃX�N���v�g�iJavaScript�j���g�p���Ă���ꍇ�B</li>
-<li>position�v���p�e�B���g�p���Ă���ꍇ�B</li>
-<li>�L���b�V�����g�p���ĕ�����\������ꍇ�B���ɁA�E�B���h�E�̃��T�C�Y��c�[���o�[�̐܂��݂Ȃǂ������Ƃ��B</li>
+<li>文書内でスクリプト（JavaScript）を使用している場合。</li>
+<li>positionプロパティを使用している場合。</li>
+<li>キャッシュを使用して文書を表示する場合。特に、ウィンドウのリサイズやツールバーの折り畳みなどをしたとき。</li>
 </ul>
 
-<h3>�C����</h3>
-<p>NN4.8�ŕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>NN4.8で不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../nn4x.html">NN4.x�ڎ�</a>�^�o�O016</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ016</div>
 </body>
 </html>

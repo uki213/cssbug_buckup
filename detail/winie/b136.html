@@ -2,50 +2,50 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O136</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ136</div>
 
-<h2>�w�i���w�肵���t�H�[�����i�Ŏ��o�X�^�C���������ɂȂ�<em>(6.0)</em></h2>
+<h2>背景を指定したフォーム部品で視覚スタイルが無効になる<em>(6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>input�v�f��textarea�v�f�ɔw�i���w�肷��ƁAWindowsXP�ȍ~�Ŏ������ꂽ���o�X�^�C���ɂ�鑕���������ɂȂ�N���V�b�N�X�^�C���̑����iWin2000/9x�Ɠ��������j�ɂȂ��Ă��܂��B</p>
+<h3>症状</h3>
+<p>input要素やtextarea要素に背景を指定すると、WindowsXP以降で実装された視覚スタイルによる装飾が無効になりクラシックスタイルの装飾（Win2000/9xと同じ装飾）になってしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;form&gt;
 &lt;ul&gt;&lt;li&gt;
-&lt;input type=&quot;text&quot; style=&quot;width:10em;&quot; value=&quot;�w�i�Ȃ�&quot;&gt;
+&lt;input type=&quot;text&quot; style=&quot;width:10em;&quot; value=&quot;背景なし&quot;&gt;
 &lt;/li&gt;&lt;li&gt;
-&lt;input type=&quot;text&quot; style=&quot;width:10em; background:silver;&quot; value=&quot;�w�i����&quot;&gt;
+&lt;input type=&quot;text&quot; style=&quot;width:10em; background:silver;&quot; value=&quot;背景あり&quot;&gt;
 &lt;/li&gt;&lt;/ul&gt;
 &lt;/form&gt;</pre>
 <div class="example">
 <form action="b136.html">
 <ul>
-<li><input type="text" style="width:10em;" value="�w�i�Ȃ�"></li>
-<li><input type="text" style="width:10em; background:silver;" value="�w�i����"></li>
+<li><input type="text" style="width:10em;" value="背景なし"></li>
+<li><input type="text" style="width:10em; background:silver;" value="背景あり"></li>
 </ul>
 </form>
 </div>
-<p>2�̓��̓{�b�N�X��ݒu���Ă��܂��B�O�҂͔w�i�w��Ȃ��A��҂͔w�i�w�肠��̏ꍇ�ł��B</p>
+<p>2つの入力ボックスを設置しています。前者は背景指定なし、後者は背景指定ありの場合です。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b136_1.png" alt="WinIE6">WinIE6.0�W�����[�h</p>
+<p><img src="img/b136_1.png" alt="WinIE6">WinIE6.0標準モード</p>
 </div>
 
-<h3>�⑫</h3>
-<p>���̕s��͓��̓{�b�N�X�iinput, textarea�j�A�`�F�b�N�{�b�N�X�iinput�j�A���W�I�{�^���iinput�j�A�����{�^���iinput, button�j�̊e�t�H�[�����i��fieldset�v�f�̃f�t�H���g�̃{�[�_�[�Ŕ������܂��B�Z���N�g�{�b�N�X�ł͔������Ȃ��悤�ł��B</p>
+<h3>補足</h3>
+<p>この不具合は入力ボックス（input, textarea）、チェックボックス（input）、ラジオボタン（input）、押しボタン（input, button）の各フォーム部品とfieldset要素のデフォルトのボーダーで発生します。セレクトボックスでは発生しないようです。</p>
 
-<h3>�C����</h3>
-<p>WinIE6.0�iWindowsXP�j�ŕs��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0（WindowsXP）で不具合の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O136</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ136</div>
 </body>
 </html>

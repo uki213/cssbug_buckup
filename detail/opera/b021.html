@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Opera CSS�o�O���X�g</title>
+<title>Opera CSSバグリスト</title>
 <script type="text/javascript">
 <!--
 function getstyl(id1) {
@@ -29,13 +29,13 @@ function chgpos(id1) {
 function chglef(id1) {
 	obj = document.getElementById(id1);
 	if(navigator.userAgent.match(/Opera/i)) {
-		if(obj.style.left == '0') {		//Opera6�ł�px�P�ʂ��O��
+		if(obj.style.left == '0') {		//Opera6ではpx単位が前提
 			obj.style.left = '100';
 		} else {
 			obj.style.left = '0';
 		}
 	} else {
-		if(obj.style.left == '0px') {	//IE��Moz�͂�����
+		if(obj.style.left == '0px') {	//IEやMozはこちら
 			obj.style.left = '100px';
 		} else {
 			obj.style.left = '0px';
@@ -47,15 +47,15 @@ function chglef(id1) {
 </script>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O021</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ021</div>
 
-<h2>position�v���p�e�B���X�N���v�g����ύX�ł��Ȃ�<em>(6.0)</em></h2>
+<h2>positionプロパティをスクリプトから変更できない<em>(6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�X�N���v�g��position�v���p�e�B���Δz�u����ʏ�z�u�ɐ؂�ւ����ꍇ�A�؂�ւ����left, top, right, bottom�̊e�v���p�e�B�̎w��l�����f�����B</p>
+<h3>症状</h3>
+<p>スクリプトでpositionプロパティを絶対配置から通常配置に切り替えた場合、切り替え後もleft, top, right, bottomの各プロパティの指定値が反映される。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;script type=&quot;text/javascript&quot;&gt;
 function chgpos(id1) {
   var obj = document.getElementById(id1);
@@ -68,13 +68,13 @@ function chgpos(id1) {
 function chglef(id1) {
   var obj = document.getElementById(id1);
   if(navigator.userAgent.match(/Opera/i)) {
-    if(obj.style.left == '0') {  //Opera6�ł�px�P�ʂ��O��
+    if(obj.style.left == '0') {  //Opera6ではpx単位が前提
       obj.style.left = '100';
     } else {
       obj.style.left = '0';
     }
   } else {
-    if(obj.style.left == '0px') { //IE��Moz�͂�����
+    if(obj.style.left == '0px') { //IEやMozはこちら
       obj.style.left = '100px';
     } else {
       obj.style.left = '0px';
@@ -86,27 +86,27 @@ function chglef(id1) {
 &lt;div id=&quot;d1&quot; style=&quot;position:absolute; left:0px; width:2em; height:2em; background:red;&quot;&gt;
 A&lt;/div&gt;
 &lt;form action=&quot;#&quot;&gt;
-&lt;input type=&quot;button&quot; value=&quot;position: absolute ���� static;&quot; onclick=&quot;chgpos('d1')&quot;&gt;&lt;br&gt;
-&lt;input type=&quot;button&quot; value=&quot;left: 0px; ���� 100px;&quot; onclick=&quot;chglef('d1')&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;button&quot; value=&quot;position: absolute ←→ static;&quot; onclick=&quot;chgpos('d1')&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;button&quot; value=&quot;left: 0px; ←→ 100px;&quot; onclick=&quot;chglef('d1')&quot;&gt;&lt;br&gt;
 &lt;/form&gt;</pre>
 <div class="example">
 <div id="d1" style="position:absolute; left:0px; width:2em; height:2em; background:red;">A</div>
 <form action="#">
 <input type="text" value="" id="in1">
-<input type="button" value="position: absolute ���� static;" onclick="chgpos('d1')"><br>
+<input type="button" value="position: absolute ←→ static;" onclick="chgpos('d1')"><br>
 <input type="text" value="" id="in2">
-<input type="button" value="left: 0px; ���� 100px;" onclick="chglef('d1')"><br>
+<input type="button" value="left: 0px; ←→ 100px;" onclick="chglef('d1')"><br>
 </form>
 </div>
-<p>��̃{�^����position�v���p�e�B�̐؂�ւ��A���̃{�^����left�v���p�e�B�̐؂�ւ����s���܂��B�܂��A�e�{�^���̍��ɂ���{�b�N�X�Ƀv���p�e�B�̏�Ԃ��\������Ă��܂��B�{�^����������left�v���p�e�B���ǂ̂悤�ɔ��f����邩���m�F���Ă��������B</p>
+<p>上のボタンでpositionプロパティの切り替え、下のボタンでleftプロパティの切り替えを行います。また、各ボタンの左にあるボックスにプロパティの状態が表示されています。ボタンを押してleftプロパティがどのように反映されるかを確認してください。</p>
 
-<h3>�⑫</h3>
-<p>Opera6�ł́AJavaScript����style�I�u�W�F�N�g��position�Ɋւ���v���p�e�B�̒l�ύX�ɑΉ����Ă��Ȃ��悤�ł��i���m�ɂ́A�l�͕ύX�ł��Ă��\���ɔ��f����Ȃ��j�B</p>
-<p>�Q�l�Fhttp://www.opera.com/docs/specs/js/</p>
+<h3>補足</h3>
+<p>Opera6では、JavaScriptからstyleオブジェクトのpositionに関するプロパティの値変更に対応していないようです（正確には、値は変更できても表示に反映されない）。</p>
+<p>参考：http://www.opera.com/docs/specs/js/</p>
 
-<h3>�C����</h3>
-<p>Opera6.05�ł́Aposition�̐؂�ւ��ɑΉ����Ă��Ȃ��悤�ł��BOpera7.0�ł�position�v���p�e�B��DOM��p���ĕύX�ł���悤�ɂȂ�܂����B</p>
+<h3>修正状況</h3>
+<p>Opera6.05では、positionの切り替えに対応していないようです。Opera7.0ではpositionプロパティをDOMを用いて変更できるようになりました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O021</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ021</div>
 </body>
 </html>

@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../mozilla.html" title="Moz�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Mozilla 5.0�n CSS�o�O���X�g</title>
+<title>Mozilla 5.0系 CSSバグリスト</title>
 <style type="text/css">
 <!--
 li.a {
@@ -24,15 +24,15 @@ a.b:hover {
 </style>
 </head>
 <body>
-<h1>Mozilla 5.0�n CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../mozilla.html">Moz�ڎ�</a>�^�o�O023</div>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ023</div>
 
-<h2>�Œ�z�u���ꂽ���X�g�A�C�e���v�f���ŕ����Ԋu��ς���Ɨv�f�S�̂�����<em>(Moz1.0RC3)</em></h2>
+<h2>固定配置されたリストアイテム要素内で文字間隔を変えると要素全体が動く<em>(Moz1.0RC3)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>���𑊑ΒP�ʂ̒l�Ŏw�肵�A���Œ�z�u�ɂ������X�g�A�C�e���v�f�ili�v�f�ȂǁA <code>display: list-item;</code> ���w�肳�ꂽ�v�f�j���ŁAhover�[���N���X��p����letter-spacing�v���p�e�B�̒l��ς���ƁA�}�E�X���Ń|�C���g�����u�Ԃɗv�f�S�̂��ړ�����B</p>
+<h3>症状</h3>
+<p>幅を相対単位の値で指定し、かつ固定配置にしたリストアイテム要素（li要素など、 <code>display: list-item;</code> が指定された要素）内で、hover擬似クラスを用いてletter-spacingプロパティの値を変えると、マウス等でポイントした瞬間に要素全体が移動する。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 li.a {
   position: fixed;
@@ -47,20 +47,20 @@ a.b:hover {
 &lt;/style&gt;
 
 &lt;ul&gt;
-&lt;li class=&quot;a&quot;&gt;&lt;a class=&quot;b&quot; href=&quot;../mozilla.html&quot;&gt;�ڎ��y�[�W&lt;/a&gt;&lt;br&gt;
-&lt;a class=&quot;b&quot; href=&quot;../mozilla.html&quot;&gt;�ڎ��y�[�W&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;a&quot;&gt;&lt;a class=&quot;b&quot; href=&quot;../mozilla.html&quot;&gt;目次ページ&lt;/a&gt;&lt;br&gt;
+&lt;a class=&quot;b&quot; href=&quot;../mozilla.html&quot;&gt;目次ページ&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</pre>
 <div class="example">
 <ul>
-<li class="a"><a class="b" href="../mozilla.html">�ڎ��y�[�W</a><br>
-<a class="b" href="../mozilla.html">�ڎ��y�[�W</a></li>
+<li class="a"><a class="b" href="../mozilla.html">目次ページ</a><br>
+<a class="b" href="../mozilla.html">目次ページ</a></li>
 </ul>
 </div>
-<p>�y�[�W����ɌŒ�z�u���ꂽli�v�f���ɂ���2�̃����N��Ń}�E�X�|�C���^�����x���s���������Ă݂Ă��������B</p>
+<p>ページ左上に固定配置されたli要素内にある2つのリンク上でマウスポインタを何度も行き来させてみてください。</p>
 
-<h3>�C����</h3>
-<p>Moz1.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����BN6.2.3�ł͕W���E�݊����[�h�Ƃ��ɕs��͔������܂���ł����B</p>
+<h3>修正状況</h3>
+<p>Moz1.0では標準・互換モードともに不具合の発生が確認されました。N6.2.3では標準・互換モードともに不具合は発生しませんでした。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../mozilla.html">Moz�ڎ�</a>�^�o�O023</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ023</div>
 </body>
 </html>

@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 p.a {
@@ -23,15 +23,15 @@ p.b:first-letter {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O004</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ004</div>
 
-<h2>:first-letter�[���v�f���e�v�f�̃t�H���g�T�C�Y���p�����Ȃ��ꍇ������<em>(IE5.5)</em></h2>
+<h2>:first-letter擬似要素が親要素のフォントサイズを継承しない場合がある<em>(IE5.5)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>:first-letter�[���v�f�ɑ��ΒP�ʁipx�������j��p���ăt�H���g�T�C�Y���w�肷��ƁA�e�v�f�̃t�H���g�T�C�Y�𔽉f���Ȃ��B</p>
+<h3>症状</h3>
+<p>:first-letter擬似要素に相対単位（pxを除く）を用いてフォントサイズを指定すると、親要素のフォントサイズを反映しない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 p.a {
   font-size: 1.5em;
@@ -49,20 +49,20 @@ p.b:first-letter {
 <p class="a">CSS</p>
 <p class="b" style="font-size: 1.5em;">CSS</p>
 </div>
-<p>class������a��p�v�f�ł́Astyle�v�f���ŗv�f�{�̂̃X�^�C���Ƌ[���v�f�̃X�^�C����ݒ肵�Ă��܂��Bclass������b��p�v�f�ł́A�v�f�{�̂̃X�^�C��������style�����Őݒ肵�Ă��܂��B</p>
+<p>class属性がaのp要素では、style要素内で要素本体のスタイルと擬似要素のスタイルを設定しています。class属性がbのp要素では、要素本体のスタイルだけをstyle属性で設定しています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b004_1.png" alt="Moz1.0" width="136" height="161">Moz1.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b004_2.png" alt="WinIE6" width="122" height="135">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b004_1.png" alt="Moz1.0" width="136" height="161">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b004_2.png" alt="WinIE6" width="122" height="135">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>WinIE6�ł́A�v�f�{�̂̃X�^�C���Ƌ[���v�f�̃X�^�C���̗�����style�v�f��O���X�^�C���V�[�g�Ŏw�肷��΃o�O������ł��܂��B</p>
+<h3>補足</h3>
+<p>WinIE6では、要素本体のスタイルと擬似要素のスタイルの両方をstyle要素や外部スタイルシートで指定すればバグを回避できます。</p>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͐������p������܂��B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では正しく継承されます。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O004</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ004</div>
 </body>
 </html>

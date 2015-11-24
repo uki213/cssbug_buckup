@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../mozilla.html" title="Moz�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../mozilla.html" title="Moz目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Mozilla 5.0�n CSS�o�O���X�g</title>
+<title>Mozilla 5.0系 CSSバグリスト</title>
 <style type="text/css">
 <!--
 .aaa {
@@ -17,15 +17,15 @@
 </style>
 </head>
 <body>
-<h1>Mozilla 5.0�n CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../mozilla.html">Moz�ڎ�</a>�^�o�O034</div>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ034</div>
 
-<h2>class�������ݒ肳�ꂽ���������\������Ȃ�<em>(N7)</em></h2>
+<h2>class属性が設定された水平線が表示されない<em>(N7)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>hr�v�f��class�������ݒ肳��Ă���Ƃ��ɁA���������\������Ȃ��Ƃ�������B</p>
+<h3>症状</h3>
+<p>hr要素にclass属性が設定されているときに、水平線が表示されないときがある。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 .aaa {
   height: 5px;
@@ -44,38 +44,38 @@
 <tr><td><hr class="aaa"></td></tr>
 </table>
 </div>
-<p>class������ݒ肵��hr�v�f��2�����Ă��܂��B</p>
+<p>class属性を設定したhr要素を2つおいています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b034_1.png" alt="N7" width="227" height="86">N7.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b034_1.png" alt="N7" width="227" height="86">N7.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>width�v���p�e�B�ŕ���ݒ肷��ƃo�O������ł��܂��B</p>
+<h3>補足</h3>
+<p>widthプロパティで幅を設定するとバグを回避できます。</p>
 
-<h3>�C����</h3>
-<p>Moz1.0/N7.0�ł͕W���E�݊����[�h�Ƃ���hr�v�f���\������܂����B�������A���̗v�f�ECSS�w��ɉe������ĕs�����������\��������܂��B</p>
+<h3>修正状況</h3>
+<p>Moz1.0/N7.0では標準・互換モードともにhr要素が表示されました。ただし、他の要素・CSS指定に影響されて不具合が発生する可能性があります。</p>
 
-<h3>�񍐏�������</h3>
-<blockquote>CSS�g���Ă���񂾂��ǂˁB<br>
-HR��CLASS������^���Ă���Ƃ���WIDTH���w�肵�Ȃ��ƕ\������Ȃ��ꍇ���������B<br>
-�����y�[�W�ŕʂ̏ꏊ�ł͖��Ȃ��\������Ă����B<br>
+<h3>報告書き込み</h3>
+<blockquote>CSS使っているんだけどね。<br>
+HRにCLASS属性を与えているときにWIDTHを指定しないと表示されない場合があった。<br>
+同じページで別の場所では問題なく表示されていた。<br>
 <br>
 &lt;TABLE CLASS=&quot;**&quot;&gt;<br>
 &lt;TR&gt;&lt;TD&gt;&lt;HR CLASS=&quot;abc&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;<br>
-&lt;TR&gt;&lt;TD&gt;aaaaa���ʂ̕���aaaaa&lt;/TD&gt;&lt;/TR&gt;<br>
+&lt;TR&gt;&lt;TD&gt;aaaaa普通の文書aaaaa&lt;/TD&gt;&lt;/TR&gt;<br>
 &lt;TR&gt;&lt;TD&gt;&lt;HRCLASS=&quot;abc&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;<br>
 &lt;/TABLE&gt;<br>
 <br>
-CSS���ł́A<br>
+CSS内では、<br>
 .abc{HEIGHT:5PX}<br>
 <br>
-����Ȋ����ŏ��HR���\�����ꂸ�BCSS����WIDTH�F**�������ꂽ���肭�������B<br>
-6.0�`7.0���A4.7�AOpe��a�AIE�ł͖��Ȃ��B<br>
-���̃X�^�C���V�[�g�Ɋ����ꂽ�̂��ǂ����͂܂��ǋ����Ă��Ȃ��B</blockquote>
-<p>���]�ڕ����݈̂��p���Ă��܂��B</p>
+こんな感じで上のHRが表示されず。CSS内でWIDTH：**ｐｘ入れたら上手くいった。<br>
+6.0～7.0ｂ、4.7、Opeｒa、IEでは問題なし。<br>
+他のスタイルシートに干渉されたのかどうかはまだ追求していない。</blockquote>
+<p>※転載部分のみ引用しています。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../mozilla.html">Moz�ڎ�</a>�^�o�O034</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../mozilla.html">Moz目次</a>／バグ034</div>
 </body>
 </html>

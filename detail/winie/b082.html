@@ -2,42 +2,42 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O082</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ082</div>
 
-<h2>font-size�̒l��line-height�̒l���߂Â�����Δz�u�v�f�̓��e���̏�[��������<em>(IE5.5)</em></h2>
+<h2>font-sizeの値とline-heightの値を近づけた絶対配置要素の内容物の上端が消える<em>(IE5.5)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>font-size�v���p�e�B�̒l��line-height�v���p�e�B�̒l���������i�܂��͔��ɋ߂��j��Δz�u�v�f��1�s�ڂ̏�[���\������Ȃ��B</p>
+<h3>症状</h3>
+<p>font-sizeプロパティの値とline-heightプロパティの値が等しい（または非常に近い）絶対配置要素の1行目の上端が表示されない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;font-size:20px; line-height:20px; position:absolute; background:aqua;&quot;&gt;
-�P���Q&lt;/div&gt;</pre>
+￣□＿&lt;/div&gt;</pre>
 <div class="example" style="height:30px;">
-<div style="font-size:20px; line-height:20px; position:absolute; background:aqua;">�P���Q</div>
+<div style="font-size:20px; line-height:20px; position:absolute; background:aqua;">￣□＿</div>
 </div>
-<p>�A�b�p�[���C�����\������Ă��邩�m�F���Ă��������B</p>
+<p>アッパーラインが表示されているか確認してください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b082_1.png" alt="Moz1.0.1" width="104" height="44">Moz1.0.1�ł̕\���i�W�����[�h�j�j</p>
-<p><img src="img/b082_2.png" alt="WinIE6" width="91" height="40">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b082_1.png" alt="Moz1.0.1" width="104" height="44">Moz1.0.1での表示（標準モード））</p>
+<p><img src="img/b082_2.png" alt="WinIE6" width="91" height="40">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�Ꭶ�ł� <code>line-height: 1;</code> ���g�p���܂������Apx, em�Ȃǂ̒P�ʂ��g�p�����ꍇ�����l�̌��ۂ��������܂��Bline-height�v���p�e�B�Ɏw�肷��l�͂��܂菬�������Ȃ��悤�ɂ��Ă��������B</p>
+<h3>補足</h3>
+<p>例示では <code>line-height: 1;</code> を使用しましたが、px, emなどの単位を使用した場合も同様の現象が発生します。line-heightプロパティに指定する値はあまり小さくしないようにしてください。</p>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O082</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ082</div>
 </body>
 </html>

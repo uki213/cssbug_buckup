@@ -2,11 +2,11 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../macie.html" title="MacIE�ڎ�">
-<title>Internet Explorer (MacOS) CSS�o�O���X�g</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
 <style type="text/css">
 <!--
 table {
@@ -19,15 +19,15 @@ td {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (MacOS) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O054</div>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ054</div>
 
-<h2>���e���������Ȃ��Z���v�f�̘g�����אڂ���g���Əd�Ȃ�<em>(5.x)</em></h2>
+<h2>内容物を持たないセル要素の枠線が隣接する枠線と重なる<em>(5.x)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>���e���������Ȃ��Z���v�f�Ƀ{�[�_�[��\��������i<code>empty-cells:show;</code>�j�ƁA���̃Z���̘g�����אڂ���ق��̘g���Əd�Ȃ�悤�ɕ\������Ă��̃Z�����������̃Z�������傫�������Ă��܂��B</p>
+<h3>症状</h3>
+<p>内容物を持たないセル要素にボーダーを表示させる（<code>empty-cells:show;</code>）と、そのセルの枠線が隣接するほかの枠線と重なるように表示されてそのセルだけが他のセルよりも大きく見えてしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 table {
   empty-cells: show;
@@ -38,26 +38,26 @@ td {
 &lt;/style&gt;
 
 &lt;table&gt;
-&lt;tr&gt;&lt;td&gt;����̃Z��&lt;/td&gt;&lt;td&gt;�E��̃Z��&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;�����̃Z��&lt;/td&gt;&lt;td style=&quot;background:aqua;&quot;&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;左上のセル&lt;/td&gt;&lt;td&gt;右上のセル&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;左下のセル&lt;/td&gt;&lt;td style=&quot;background:aqua;&quot;&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;</pre>
 <div class="example">
 <table>
-<tr><td>����̃Z��</td><td>�E��̃Z��</td></tr>
-<tr><td>�����̃Z��</td><td style="background:aqua;"></td></tr>
+<tr><td>左上のセル</td><td>右上のセル</td></tr>
+<tr><td>左下のセル</td><td style="background:aqua;"></td></tr>
 </table>
 </div>
-<p>���ׂẴZ���̃T�C�Y�͓������͂��ł��B</p>
+<p>すべてのセルのサイズは等しいはずです。</p>
 
-<h3>�⑫</h3>
-<p>�{�[�_�[�͍L�����Ă��܂��܂����A�w�i���\�������̈�̑傫���͖{���̃Z���̑傫���Ɠ����ł��B�]���āA�w�i���\�������̈�ƃ{�[�_�[�Ƃ̊ԂɌ��Ԃ��ł��܂��B</p>
-<p>�Z�����ɉ��炩�̓��e�����������邱�Ƃł��̕s���������邱�Ƃ��ł��܂��B�Z���v�f��empty-cells�v���p�e�B�̑Ώۂɂ������ꍇ�͓��e����&amp;nbsp;�ACR�i0x0D�j�ALF�i0x0A�j�A�����^�u�i0x09�j�A1�o�C�g�󔒁i0x20�j�ō\������镶����ɂ��Ă��������B</p>
+<h3>補足</h3>
+<p>ボーダーは広がってしまいますが、背景が表示される領域の大きさは本来のセルの大きさと同じです。従って、背景が表示される領域とボーダーとの間に隙間ができます。</p>
+<p>セル内に何らかの内容物を持たせることでこの不具合を回避することができます。セル要素をempty-cellsプロパティの対象にしたい場合は内容物を&amp;nbsp;、CR（0x0D）、LF（0x0A）、水平タブ（0x09）、1バイト空白（0x20）で構成される文字列にしてください。</p>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>MacIE5.1�`5.2�ł��̕s����������邻���ł��B</li>
+<li>MacIE5.1～5.2でこの不具合が発生するそうです。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O054</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ054</div>
 </body>
 </html>

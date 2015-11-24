@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Opera CSS�o�O���X�g</title>
+<title>Opera CSSバグリスト</title>
 <style type="text/css">
 <!--
 td {
@@ -25,16 +25,16 @@ table.sample th, table.sample td {
 </style>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O063</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ063</div>
 
-<h2>CSS�ɂ��{�[�_�[�w�肪�Ȃ�collapse�{�[�_�[�̃e�[�u���ŃZ���g���\������Ȃ�<em>(7.0)</em></h2>
-<p>2003-07-19�C���B�⑫�ɒǉ��B</p>
+<h2>CSSによるボーダー指定がないcollapseボーダーのテーブルでセル枠が表示されない<em>(7.0)</em></h2>
+<p>2003-07-19修正。補足に追加。</p>
 
-<h3>�Ǐ�</h3>
-<p>CSS�Ń{�[�_�[�̃v���p�e�B���w�肹����table�v�f��border�v���p�e�B�����Řg��ݒ肵�Ă���e�[�u���ɑ΂��� <code>border-collapse: collapse;</code> ���w�肷��ƁA�e�[�u���S�̂��͂ޘg�͕\������邪�Z�����͂ޘg�͕\������Ȃ��B</p>
+<h3>症状</h3>
+<p>CSSでボーダーのプロパティを指定せずにtable要素のborderプロパティだけで枠を設定しているテーブルに対して <code>border-collapse: collapse;</code> を指定すると、テーブル全体を囲む枠は表示されるがセルを囲む枠は表示されない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;table border=&quot;2&quot; style=&quot;border-collapse:collapse; background:lime;&quot;&gt;
 &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
@@ -45,16 +45,16 @@ table.sample th, table.sample td {
 <tr><td>3</td><td>4</td></tr>
 </table>
 </div>
-<p>�e�[�u���̘g��table�v�f��border�v���p�e�B�ŕ\�������Ă��܂��B</p>
+<p>テーブルの枠はtable要素のborderプロパティで表示させています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b063_1.png" alt="WinIE6" width="91" height="85">WinIE6.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b063_2.png" alt="Op7" width="90" height="78">Opera7.11�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b063_1.png" alt="WinIE6" width="91" height="85">WinIE6.0での表示（標準モード）</p>
+<p><img src="img/b063_2.png" alt="Op7" width="90" height="78">Opera7.11での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>CSS��p���āA�e�[�u���Z���v�f�ɑ΂��ă{�[�_�[��ݒ肷�邱�Ƃł��̃o�O������ł��܂��B</p>
+<h3>補足</h3>
+<p>CSSを用いて、テーブルセル要素に対してボーダーを設定することでこのバグを回避できます。</p>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 table.sample {
   border-collapse: collapse;
@@ -75,7 +75,7 @@ table.sample th, table.sample td {
 <tr><td>3</td><td>4</td></tr>
 </table>
 </div>
-<p><ins datetime="2003-07-19T00:00:00+09:00">�܂��́Atable�v�f�J�n�^�O�� <code>rules=&quot;all&quot;</code> �𖾎����邱�Ƃł�����ł��܂��B</ins></p>
+<p><ins datetime="2003-07-19T00:00:00+09:00">または、table要素開始タグで <code>rules=&quot;all&quot;</code> を明示することでも回避できます。</ins></p>
 <pre>&lt;table border=&quot;2&quot; style=&quot;border-collapse:collapse;&quot; <em>rules=&quot;all&quot;</em>&gt;
 &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
@@ -86,14 +86,14 @@ table.sample th, table.sample td {
 <tr><td>3</td><td>4</td></tr>
 </table>
 </div>
-<p><ins datetime="2003-07-19T00:00:00+09:00">CSS2�ł́AHTML�̓���̗v�f�⑮���ȂǁACSS�ȊO�̎�i�ɂ��َ̍w��́u��������CSS�K���ɕϊ����A�����CSS�̐擪�ɒǉ�����v�ƒ�߂��Ă���̂ŁAtable�v�f��border�����i�����frame�����Arules�����j�𖳎�����Opera�̎����̓o�O�ƍl�����܂��B</ins></p>
+<p><ins datetime="2003-07-19T00:00:00+09:00">CSS2では、HTMLの特定の要素や属性など、CSS以外の手段による体裁指定は「相当するCSS規則に変換し、制作者CSSの先頭に追加する」と定められているので、table要素のborder属性（およびframe属性、rules属性）を無視するOperaの実装はバグと考えられます。</ins></p>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>Opera7.11�W�����[�h�AOpera7.11�݊����[�h�ŕs��̔������m�F���܂����B</li>
-<li>Opera6.06�ł��̕s��͔������܂���B</li>
+<li>Opera7.11標準モード、Opera7.11互換モードで不具合の発生を確認しました。</li>
+<li>Opera6.06でこの不具合は発生しません。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O063</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ063</div>
 </body>
 </html>

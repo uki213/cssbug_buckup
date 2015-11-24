@@ -2,64 +2,64 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O009</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ009</div>
 
-<h2>���E�{�[�_�[�ƃp�f�B���O��ݒu�����v�f�Ɍ㑱���镔���������<em>(5.5/6.0)</em></h2>
+<h2>左右ボーダーとパディングを設置した要素に後続する部分がずれる<em>(5.5/6.0)</em></h2>
 <ul>
-<li>2004-01-27�C���B[3-704]�̏Ǐ�������A���e�𐮗��B</li>
+<li>2004-01-27修正。[3-704]の症状を加え、内容を整理。</li>
 </ul>
 
-<h3>�Ǐ�</h3>
-<p>�Ō�̎q�v�f���񓽖��u���b�N���x���v�f�ł���v�f�̎l���Ƀp�f�B���O��ݒu���A����ɍ��܂��͉E�Ƀ{�[�_�[��ݒu����ƁA���̗v�f�Ɍ㑱����v�f�̓��e�����{�[�_�[��ݒu���������ɂ���Ă��܂��B</p>
+<h3>症状</h3>
+<p>最後の子要素が非匿名ブロックレベル要素である要素の四方にパディングを設置し、さらに左または右にボーダーを設置すると、その要素に後続する要素の内容物がボーダーを設置した方向にずれてしまう。</p>
 
-<h3>�Ꭶ�i�\�[�X�j</h3>
+<h3>例示（ソース）</h3>
 <pre>&lt;div style=&quot;border-left:1em solid blue; padding:1px;&quot;&gt;
 &lt;div&gt;div&lt;/div&gt;
 &lt;/div&gt;
-&lt;p style=&quot;border:2px solid red;&quot;&gt;�㑱�̗v�f&lt;/p&gt;</pre>
-<p>p�v�f�̓��e�����{�[�_�[�̊O�ɂ͂ݏo������悤�Ȏw��͍s���Ă��܂���B</p>
-<p>�����ۂɕ\�����������̂�<a href="#re">�y�[�W��</a>�ɂ���܂��B</p>
+&lt;p style=&quot;border:2px solid red;&quot;&gt;後続の要素&lt;/p&gt;</pre>
+<p>p要素の内容物をボーダーの外にはみ出させるような指定は行っていません。</p>
+<p>※実際に表示させたものは<a href="#re">ページ末</a>にあります。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b009_1.png" alt="Ns7.1">Netscape7.1�W�����[�h</p>
-<p><img src="img/b009_2.png" alt="WinIE6.0">WinIE6.0�W�����[�h</p>
+<p><img src="img/b009_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b009_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
 </div>
 
-<h3>�⑫</h3>
-<p>���̕s��ɂ���č��E�ɂ���Ă��镶����Ƀ����N���܂܂�Ă���A����ɂ���:hover�[���N���X�ɔw�i��font-weight, font-size�Ȃǂ̃v���p�e�B���w�肵�Ă���ꍇ�A�����N��:hover��ԂɂȂ����Ƃ��Ɏ��ӂ̕����񂪈ړ����邱�Ƃ�����܂��B�Ⴆ�΁A���̃y�[�W�̖����ɂ��郊���N�Ƀ}�E�X�|�C���^�����悹��ƁA�����ɂ͂ݏo���Ă��������񂪉E�Ɉړ�����͂��ł��B</p>
-<p>�Ǐ�Ŏ�����������1�ł���������Ȃ���΂��̕s��͔������܂���B�Ⴆ�΁A�{�[�_�[������̗v�f�ɐݒu����Ȃǂ̕��@�ŕs���������邱�Ƃ��ł��܂��B���邢�́A�O���̗v�f�ɑ΂��ĉ��{�[�_�[��ݒu���邱�Ƃł����̕s���������邱�Ƃ��ł��܂��B</p>
+<h3>補足</h3>
+<p>この不具合によって左右にずれている文字列にリンクが含まれており、さらにその:hover擬似クラスに背景やfont-weight, font-sizeなどのプロパティを指定している場合、リンクが:hover状態になったときに周辺の文字列が移動することがあります。例えば、このページの末尾にあるリンクにマウスポインタ等を乗せると、左方にはみ出していた文字列が右に移動するはずです。</p>
+<p>症状で示した条件が1つでも満たされなければこの不具合は発生しません。例えば、ボーダーを内側の要素に設置するなどの方法で不具合を回避することができます。あるいは、外側の要素に対して下ボーダーを設置することでもこの不具合を回避することができます。</p>
 <pre>&lt;div style=&quot;border-left:1em solid blue; <em>border-bottom:2px solid blue;</em> padding:1px;&quot;&gt;
 &lt;div&gt;div&lt;/div&gt;
 &lt;/div&gt;
-&lt;p style=&quot;border:2px solid red;&quot;&gt;�㑱�̗v�f&lt;/p&gt;</pre>
+&lt;p style=&quot;border:2px solid red;&quot;&gt;後続の要素&lt;/p&gt;</pre>
 <div class="example">
 <div style="border-left:1em solid blue; border-bottom:2px solid blue; padding:1px;">
 <div>div</div>
 </div>
-<p style="border:2px solid red;">�㑱�̗v�f</p>
+<p style="border:2px solid red;">後続の要素</p>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�̕W�����[�h�ƌ݊����[�h�ŕs��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</p>
 
-<h3 id="re">�Ꭶ�i���ۂ̕\���j</h3>
+<h3 id="re">例示（実際の表示）</h3>
 <div class="example">
 <div style="border-left:1em solid blue; padding:1px;">
 <div>div</div>
 </div>
-<p style="border:2px solid red;">�㑱�̗v�f</p>
+<p style="border:2px solid red;">後続の要素</p>
 </div>
 
-<p>�����e���̂͂ݏo���̓y�[�W���܂ő����̂Œ��ӂ��Ă��������B</p>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O009</div>
+<p>↓内容物のはみ出しはページ末まで続くので注意してください。</p>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ009</div>
 </body>
 </html>

@@ -2,64 +2,64 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O103</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ103</div>
 
-<h2>�A���J�[��:hover��Ԃɂ���ƌ㑱����t���[�g�̈ꕔ��������<em>(6.0)</em></h2>
-<p>2003-05-14�č쐬�B</p>
+<h2>アンカーを:hover状態にすると後続するフロートの一部が消える<em>(6.0)</em></h2>
+<p>2003-05-14再作成。</p>
 
-<h3>�Ǐ�</h3>
-<p>�ȉ��̏����ɊY������Ƃ��A�A���J�[�Ƀ}�E�X�|�C���^�����悹��:hover��Ԃɂ���ƍł��{�b�N�X�����傫���t���[�g�̂����A2�ԖڂɃ{�b�N�X�����傫���t���[�g�̍����𒴂��镔����������B</p>
+<h3>症状</h3>
+<p>以下の条件に該当するとき、アンカーにマウスポインタ等を乗せて:hover状態にすると最もボックス高が大きいフロートのうち、2番目にボックス高が大きいフロートの高さを超える部分が消える。</p>
 <ul>
-<li><a href="b102.html" title="�A���J�[��:hover��Ԃɂ���Ɛe�u���b�N�̍������ω�����">WinIE�o�O102</a>����������悤�ȓ���q�\��������A�o�O�΍���{���Ă���i<a href="b102.html" title="�A���J�[��:hover��Ԃɂ���Ɛe�u���b�N�̍������ω�����">WinIE�o�O102</a>�́u�⑫�v���Q�Ɓj�B</li>
-<li>��L�̓���q�u���b�N�̌�Ƀt���[�g�������{�b�N�X����������ł���B</li>
-<li>�����̃t���[�g�̉��ɉ����iclear�v���p�e�B��none�l�ȊO�̃{�b�N�X�Ȃǂ��j���݂��Ȃ��B</li>
-<li>�ł��O�ɂ���t���[�g�i���t���[�g(<code>float:left;</code>)����������ꍇ�͍ł�������ɒu�����t���[�g�A�E�t���[�g(<code>float:right;</code>)����������ꍇ�͍ł��E����ɒu�����t���[�g�j�̃{�b�N�X�����ł��傫���B</li>
+<li><a href="b102.html" title="アンカーを:hover状態にすると親ブロックの高さが変化する">WinIEバグ102</a>が発生するような入れ子構造があり、バグ対策を施している（<a href="b102.html" title="アンカーを:hover状態にすると親ブロックの高さが変化する">WinIEバグ102</a>の「補足」を参照）。</li>
+<li>上記の入れ子ブロックの後にフロート化したボックスが複数並んでいる。</li>
+<li>それらのフロートの下に何も（clearプロパティがnone値以外のボックスなどが）存在しない。</li>
+<li>最も前にあるフロート（左フロート(<code>float:left;</code>)が複数ある場合は最も左上方に置かれるフロート、右フロート(<code>float:right;</code>)が複数ある場合は最も右上方に置かれるフロート）のボックス高が最も大きい。</li>
 </ul>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;border:2px solid red;&quot;&gt;
 &lt;div style=&quot;background:yellow; border:2px dashed green;&quot;&gt;
 &lt;div style=&quot;margin:20px 0; border:2px ridge blue;&quot;&gt;
-&lt;a href=&quot;../winie.html&quot;&gt;WinIE�o�O&lt;/a&gt;
+&lt;a href=&quot;../winie.html&quot;&gt;WinIEバグ&lt;/a&gt;
 &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;div style=&quot;float:left; width:5em; border:2px outset fuchsia;&quot;&gt;
 left1&lt;br&gt;left1&lt;br&gt;left1&lt;br&gt;left1&lt;br&gt;left1&lt;/div&gt;
 &lt;div style=&quot;float:left; width:5em; border:2px outset fuchsia;&quot;&gt;
 left2&lt;br&gt;left2&lt;br&gt;left2&lt;/div&gt;</pre>
-<p>���ۂ̗�̓y�[�W�̍Ō�ɂ���܂��B�A���J�[�Ƀ}�E�X�|�C���^�����悹�Ĕ������m���߂Ă��������B</p>
+<p>実際の例はページの最後にあります。アンカーにマウスポインタ等を乗せて反応を確かめてください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
-<p>�}�E�X�|�C���^���悹���Ƃ��̃X�N���[���V���b�g�ł��B</p>
+<h3>スクリーンショット</h3>
+<p>マウスポインタを乗せたときのスクリーンショットです。</p>
 <div class="shot">
-<p><img src="img/b103_1.png" alt="N7" width="175" height="181">N7.02�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b103_2.png" alt="WinIE6" width="177" height="168">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b103_1.png" alt="N7" width="175" height="181">N7.02での表示（標準モード）</p>
+<p><img src="img/b103_2.png" alt="WinIE6" width="177" height="168">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�t���[�g�̌�ɁAclear�v���p�e�B��none�l�ȊO���w�肵���v�f��u�����ƂŃo�O������ł��܂��B</p>
+<h3>補足</h3>
+<p>フロートの後に、clearプロパティにnone値以外を指定した要素を置くことでバグを回避できます。</p>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>WinIE6.0�W�����[�h�ŕs��̔������m�F����܂����B</li>
-<li>WinIE5.5�AWinIE6.0�݊����[�h�ł��̕s��͔������܂���B</li>
+<li>WinIE6.0標準モードで不具合の発生が確認されました。</li>
+<li>WinIE5.5、WinIE6.0互換モードでこの不具合は発生しません。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O103</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ103</div>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <div style="border:2px solid red;">
 <div style="background:yellow; border:2px dashed green;">
 <div style="margin:20px 0; border:2px ridge blue;">
-<a href="../winie.html">WinIE�o�O</a>
+<a href="../winie.html">WinIEバグ</a>
 </div></div></div>
 <div style="float:left; width:5em; border:2px outset fuchsia;">left1<br>left1<br>left1<br>left1<br>left1</div>
 <div style="float:left; width:5em; border:2px outset fuchsia;">left2<br>left2<br>left2</div>

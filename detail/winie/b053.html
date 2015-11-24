@@ -2,23 +2,23 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O053</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ053</div>
 
-<h2>���⍂�����w�肵���v�f�ł̓{�b�N�X�T�C�Y�̎Z�o���Ƀt���[�g�����O���Ȃ�<em>(IE6)</em></h2>
+<h2>幅や高さを指定した要素ではボックスサイズの算出時にフロートを除外しない<em>(IE6)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�{���A�{�b�N�X�T�C�Y���Z�o����ۂɂ̓t���[�g�����ꂽ�q���v�f�͏��O����邪�A���⍂�����w�肳�ꂽ�v�f�̏ꍇ�̓t���[�g�����O���Ȃ��B</p>
+<h3>症状</h3>
+<p>本来、ボックスサイズを算出する際にはフロート化された子孫要素は除外されるが、幅や高さが指定された要素の場合はフロートを除外しない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;width:50px; height:100px; border:2px solid red;&quot;&gt;
 &lt;div style=&quot;float:left; width:100px; height:50px; border:2px solid blue;&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;</pre>
@@ -27,17 +27,17 @@
 <div style="float:left; width:100px; height:50px; border:2px solid blue;"></div>
 </div>
 </div>
-<p>���{�[�_�[�̃{�b�N�X�̓t���[�g�z�u�ł��B</p>
+<p>青いボーダーのボックスはフロート配置です。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b053_1.png" alt="Moz1.0" width="133" height="125">Moz1.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b053_2.png" alt="WinIE6" width="132" height="123">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b053_1.png" alt="Moz1.0" width="133" height="125">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b053_2.png" alt="WinIE6" width="132" height="123">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O053</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ053</div>
 </body>
 </html>

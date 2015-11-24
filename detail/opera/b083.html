@@ -2,11 +2,11 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
-<title>Opera CSS�o�O���X�g</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
 <style type="text/css">
 <!--
 td {
@@ -16,79 +16,79 @@ td {
 </style>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O083</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ083</div>
 
-<h2>�Œ背�C�A�E�g�\�ŗ�̕����������Ȃ�<em>(6.0/7.x)</em></h2>
+<h2>固定レイアウト表で列の幅が小さくなる<em>(6.0/7.x)</em></h2>
 <ul>
-<li>2004-06-07�C���B[4-91]�̓��e���Ǐ�ɒǉ��B</li>
+<li>2004-06-07修正。[4-91]の内容を症状に追加。</li>
 </ul>
 
-<h3>�Ǐ�</h3>
-<p>�Œ背�C�A�E�g�\�i<code>table-layout:fixed;</code>�j�ŁA�ȉ��̖�肪��������B</p>
+<h3>症状</h3>
+<p>固定レイアウト表（<code>table-layout:fixed;</code>）で、以下の問題が発生する。</p>
 <ul>
-<li>��̕���%�P�ʂ̒l�Ŏw�肵���\�ł��̍��v�l��100%�𒴂���Ƃ��A��̌���ɂ���Z���̎��ۂ̕����������Ȃ邱�Ƃ�����B�Z���̕���0�ɂȂ���e���������Ȃ��Ȃ邱�Ƃ�����B</li>
-<li>1�̕\�ɕ���%�P�ʂ̒l�Ŏw�肵����ƒ����̒l�Ŏw�肵���񂪍��݂���ꍇ�A����%�P�ʂ̒l�Ŏw�肵����̎��ۂ̕����������Ȃ邱�Ƃ�����B�Z���̕���0�ɂȂ���e���������Ȃ��Ȃ邱�Ƃ�����B</li>
-<li><ins datetime="2004-06-07T00:00:00+09:00">��̕���%�P�ʂ̒l�Ŏw�肵���Ƃ��A��̕��͕\�̕��ɑ΂���%�l�ł͂Ȃ��\�̕�����{�[�_�[�̕���Z���Ԃ̕��������������ʂɑ΂���%�l�ɂȂ�B</ins></li>
+<li>列の幅を%単位の値で指定した表でその合計値が100%を超えるとき、列の後方にあるセルの実際の幅が小さくなることがある。セルの幅が0になり内容物が見えなくなることもある。</li>
+<li>1つの表に幅を%単位の値で指定した列と長さの値で指定した列が混在する場合、幅を%単位の値で指定した列の実際の幅が小さくなることがある。セルの幅が0になり内容物が見えなくなることもある。</li>
+<li><ins datetime="2004-06-07T00:00:00+09:00">列の幅を%単位の値で指定したとき、列の幅は表の幅に対する%値ではなく表の幅からボーダーの幅やセル間の幅を差し引いた量に対する%値になる。</ins></li>
 </ul>
-<p>��Opera6�ł͗�̕���0�ɂ͂Ȃ炸�A���Ȃ��Ƃ����e����\���ł��邾���̕����m�ۂ����B</p>
+<p>※Opera6では列の幅が0にはならず、少なくとも内容物を表示できるだけの幅が確保される。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;table border=&quot;2&quot; style=&quot;width:10em; table-layout:fixed;&quot;&gt;
 &lt;tr&gt;
-&lt;td style=&quot;width:80%;&quot;&gt;A��&lt;/td&gt;
-&lt;td style=&quot;width:40%;&quot;&gt;B��&lt;/td&gt;
-&lt;td style=&quot;width:20%;&quot;&gt;C��&lt;/td&gt;
+&lt;td style=&quot;width:80%;&quot;&gt;A列&lt;/td&gt;
+&lt;td style=&quot;width:40%;&quot;&gt;B列&lt;/td&gt;
+&lt;td style=&quot;width:20%;&quot;&gt;C列&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/table&gt;
 &lt;table border=&quot;2&quot; style=&quot;width:10em; table-layout:fixed;&quot;&gt;
 &lt;tr&gt;
-&lt;td style=&quot;width:50%;&quot;&gt;A��&lt;/td&gt;
-&lt;td style=&quot;width:6em;&quot;&gt;B��&lt;/td&gt;
-&lt;td style=&quot;width:6em;&quot;&gt;C��&lt;/td&gt;
+&lt;td style=&quot;width:50%;&quot;&gt;A列&lt;/td&gt;
+&lt;td style=&quot;width:6em;&quot;&gt;B列&lt;/td&gt;
+&lt;td style=&quot;width:6em;&quot;&gt;C列&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/table&gt;</pre>
 <div class="example">
 <table border="2" style="width:10em; table-layout:fixed;">
 <tr>
-<td style="width:80%;">A��</td>
-<td style="width:40%;">B��</td>
-<td style="width:20%;">C��</td>
+<td style="width:80%;">A列</td>
+<td style="width:40%;">B列</td>
+<td style="width:20%;">C列</td>
 </tr>
 </table>
 <table border="2" style="width:10em; table-layout:fixed;">
 <tr>
-<td style="width:50%;">A��</td>
-<td style="width:6em;">B��</td>
-<td style="width:6em;">C��</td>
+<td style="width:50%;">A列</td>
+<td style="width:6em;">B列</td>
+<td style="width:6em;">C列</td>
 </tr>
 </table>
 </div>
-<p>1�Ԗڂ̕\�͗񕝂̍��v��100%�𒴂���ꍇ�A2�Ԗڂ̕\�͗񕝂̎w��l��%�P�ʂ̒l�ƒ����̒l�����݂���ꍇ�̗�ł��B</p>
+<p>1番目の表は列幅の合計が100%を超える場合、2番目の表は列幅の指定値に%単位の値と長さの値が混在する場合の例です。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b083_1.png" alt="Opera7.2">Opera7.23�W�����[�h</p>
+<p><img src="img/b083_1.png" alt="Opera7.2">Opera7.23標準モード</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�ȉ��͗Ꭶ�̊e�\�̖��_�ł��i�����ł͕��̎Z�o�ɂ����ă{�[�_�[�̕���Z���Ԃ̋����͍l���Ă��܂���j�B</p>
+<h3>補足</h3>
+<p>以下は例示の各表の問題点です（ここでは幅の算出においてボーダーの幅やセル間の距離は考えていません）。</p>
 <ul>
-<li>1�Ԗڂ̕\�͗񕝂̍��v���\�����傫���ɂ�������炸�A�\���̎w��l���ŏI�I�ȕ\�S�̂̕��Ƃ��ėp���Ă��܂��B�]���Ċe��̕��́A
+<li>1番目の表は列幅の合計が表幅より大きいにもかかわらず、表幅の指定値を最終的な表全体の幅として用いています。従って各列の幅は、
 <ul>
-<li>1��ځF�\����80%��񕝂Ƃ���</li>
-<li>2��ځF�\����40%���g�p�����������ۂ�20%�������c���Ă��Ȃ����߁A�\����20%��񕝂Ƃ���</li>
-<li>3��ځF�\���Ɏc�肪�Ȃ����ߗ񕝂�0�ɂȂ��Ă��܂�</li>
+<li>1列目：表幅の80%を列幅とする</li>
+<li>2列目：表幅の40%を使用したいが実際は20%分しか残っていないため、表幅の20%を列幅とする</li>
+<li>3列目：表幅に残りがないため列幅が0になってしまう</li>
 </ul>
-�ƂȂ�܂��B</li>
-<li>2�Ԗڂ̕\�͕\�S�̂̕���12em�ł��B�����2��ڂ̕��̎w��l��3��ڂ̕��̎w��l�̍��v�ł���A1��ڂ̕��̎w��l���l�����Ă��܂���B�Ⴆ�΁A1��ڂ̕��͕\���̎w��l��50%��5em�Ƃ���Ȃǂ̏������K�v�ƍl�����܂��B</li>
-</ul>
-
-<h3>�C����</h3>
-<ul>
-<li>Opera6.06�AOpera7.23�̕W�����[�h�ƌ݊����[�h�ŕs��̔������m�F���܂����B</li>
+となります。</li>
+<li>2番目の表は表全体の幅が12emです。これは2列目の幅の指定値と3列目の幅の指定値の合計であり、1列目の幅の指定値を考慮していません。例えば、1列目の幅は表幅の指定値の50%＝5emとするなどの処理が必要と考えられます。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O083</div>
+<h3>修正状況</h3>
+<ul>
+<li>Opera6.06、Opera7.23の標準モードと互換モードで不具合の発生を確認しました。</li>
+</ul>
+
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ083</div>
 </body>
 </html>

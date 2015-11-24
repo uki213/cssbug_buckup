@@ -2,49 +2,49 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../macie.html" title="MacIE�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (MacOS) CSS�o�O���X�g</title>
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (MacOS) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O025</div>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ025</div>
 
-<h2>�\�v�f���̐�Δz�u�v�f���\�v�f����ɂ��Ĕz�u�����<em>(IE5)</em></h2>
+<h2>表要素内の絶対配置要素が表要素を基準にして配置される<em>(IE5)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�ʏ�z�u���ꂽtable�v�f�̎q���v�f���Δz�u�i<code>position: absolute;</code>�j�ɂ���ƁA��Δz�u���ꂽ�v�f��table�v�f�̍�����W����ɂ��āitable�v�f�����Δz�u����Ă��邩�̂悤�Ɂj�z�u�����B</p>
+<h3>症状</h3>
+<p>通常配置されたtable要素の子孫要素を絶対配置（<code>position: absolute;</code>）にすると、絶対配置された要素はtable要素の左上座標を基準にして（table要素が相対配置されているかのように）配置される。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;table border=&quot;2&quot; style=&quot;position:static;&quot;&gt;
-&lt;tr&gt;&lt;td&gt;�ʏ�
-&lt;div style=&quot;position:absolute; left:3em; top:1em; background:aqua;&quot;&gt;���&lt;/div&gt;
+&lt;tr&gt;&lt;td&gt;通常
+&lt;div style=&quot;position:absolute; left:3em; top:1em; background:aqua;&quot;&gt;絶対&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;</pre>
 <div class="example">
 <table border="2" style="position:static;">
-<tr><td>�ʏ�
-<div style="position:absolute; left:3em; top:1em; background:aqua;">���</div>
+<tr><td>通常
+<div style="position:absolute; left:3em; top:1em; background:aqua;">絶対</div>
 </td></tr>
 </table>
 </div>
-<p>table�v�f��ʏ�z�u�Adiv�v�f���Δz�u�ɂ��Ă��܂��Bdiv�v�f�̓��[�g�v�f�i�y�[�W����[�j����ɂ��Ĕz�u�����͂��ł��B</p>
-<p>��table�v�f��position�v���p�e�B�̏����l��static�ł�����Aposition�v���p�e�B���w�肵�Ȃ��ꍇ�ł��ʏ�z�u����܂��B</p>
+<p>table要素を通常配置、div要素を絶対配置にしています。div要素はルート要素（ページ左上端）を基準にして配置されるはずです。</p>
+<p>※table要素のpositionプロパティの初期値はstaticですから、positionプロパティを指定しない場合でも通常配置されます。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b025_1.png" alt="WinIE6" width="82" height="135">WinIE6.0�i�W�����[�h�j�ł̕\��</p>
+<p><img src="img/b025_1.png" alt="WinIE6" width="82" height="135">WinIE6.0（標準モード）での表示</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�Ꭶ�̂悤�ɒʏ�z�u�𖾎������ꍇ�ł��o�O��������邱�Ƃ͂ł��܂���B</p>
+<h3>補足</h3>
+<p>例示のように通常配置を明示した場合でもバグを回避することはできません。</p>
 
-<h3>�C����</h3>
-<p>MacIE5�ŕs�����������͗l�B</p>
+<h3>修正状況</h3>
+<p>MacIE5で不具合が発生する模様。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O025</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ025</div>
 </body>
 </html>

@@ -2,40 +2,40 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../nn4x.html" title="NN4.x�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../nn4x.html" title="NN4.x目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Netscape Navigator 4.x CSS�o�O���X�g</title>
+<title>Netscape Navigator 4.x CSSバグリスト</title>
 </head>
 <body>
-<h1>Netscape Navigator 4.x CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../nn4x.html">NN4.x�ڎ�</a>�^�o�O001</div>
+<h1>Netscape Navigator 4.x CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ001</div>
 
-<h2>�t�H���g����2�o�C�g�������܂܂��t�H���g���w�肷��ƃX�^�C���������ɂȂ�</h2>
+<h2>フォント名に2バイト文字が含まれるフォントを指定するとスタイルが無効になる</h2>
 
-<h3>�Ǐ�</h3>
-<p>�t�H���g�t�@�~���Ɂu�l�r �o�S�V�b�N�v�ȂǁA�t�H���g����2�o�C�g�������܂ރt�H���g���w�肷��Ƃ��̃X�^�C�������������B�܂��Afont�v���p�e�B�̏ꍇ�͑S�̂����������B</p>
+<h3>症状</h3>
+<p>フォントファミリに「ＭＳ Ｐゴシック」など、フォント名に2バイト文字を含むフォントを指定するとそのスタイルが無視される。また、fontプロパティの場合は全体が無視される。</p>
 
-<h3>�Ꭶ</h3>
-<pre>&lt;div style=&quot;font: 1em '�l�r ����';&quot;&gt;������&lt;/div&gt;</pre>
+<h3>例示</h3>
+<pre>&lt;div style=&quot;font: 1em 'ＭＳ 明朝';&quot;&gt;明朝体&lt;/div&gt;</pre>
 <div class="example">
-<div style="font: 2em '�l�r ����';">������</div>
+<div style="font: 2em 'ＭＳ 明朝';">明朝体</div>
 <div style="font: 2em Verdana;">Verdana</div>
 </div>
-<p>��i�̓t�H���g�t�@�~���𖾒��́A�����T�C�Y��e�v�f�̕����T�C�Y��2�{�ɐݒ肵�Ă��܂��܂��A���i��2�o�C�g�������܂܂Ȃ��t�H���g�ŃT�C�Y2�{�Ɏw�肵�Ă��܂��B</p>
-<p>��Windows�ŗL�t�H���g���w�肵�Ă��܂��BMacOS�APC-UNIX���̊��̕��͂��������������B</p>
+<p>上段はフォントファミリを明朝体、文字サイズを親要素の文字サイズの2倍に設定していますまた、下段は2バイト文字を含まないフォントでサイズ2倍に指定しています。</p>
+<p>※Windows固有フォントを指定しています。MacOS、PC-UNIX等の環境の方はご了承ください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b001_1.png" alt="IE6" width="146" height="81">IE6.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b001_2.png" alt="NN4" width="136" height="71">NN4.78�ł̕\��</p>
+<p><img src="img/b001_1.png" alt="IE6" width="146" height="81">IE6.0での表示（標準モード）</p>
+<p><img src="img/b001_2.png" alt="NN4" width="136" height="71">NN4.78での表示</p>
 </div>
 
-<h3>�C����</h3>
-<p>NN4.78�ł͖��C���ł��B</p>
+<h3>修正状況</h3>
+<p>NN4.78では未修正です。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../nn4x.html">NN4.x�ڎ�</a>�^�o�O001</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../nn4x.html">NN4.x目次</a>／バグ001</div>
 </body>
 </html>

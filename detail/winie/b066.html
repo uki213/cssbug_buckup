@@ -2,52 +2,52 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="img/b066.css" title="��p">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="img/b066.css" title="専用">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O066</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ066</div>
 
-<h2>�O���X�^�C���V�[�g��p���镶����ۑ��ł��Ȃ�<em>(5.x/6.0)</em></h2>
+<h2>外部スタイルシートを用いる文書を保存できない<em>(5.x/6.0)</em></h2>
 <ul>
-<li>2002-10-14�C���B�����������킩��܂����B</li>
-<li>2004-02-07�C���B[3-761]�̓��e��ǉ��B</li>
+<li>2002-10-14修正。発生条件がわかりました。</li>
+<li>2004-02-07修正。[3-761]の内容を追加。</li>
 </ul>
 
-<h3>�Ǐ�</h3>
-<p>�ȉ��̏����̂����ꂩ�ɓ��Ă͂܂�Ƃ��uWeb �y�[�W�A���S�v�`���ł̕����ۑ��Ɏ��s����B</p>
+<h3>症状</h3>
+<p>以下の条件のいずれかに当てはまるとき「Web ページ、完全」形式での文書保存に失敗する。</p>
 <ul>
-<li>�O���X�^�C���V�[�g����@import��p���Ă���A�O���X�^�C���V�[�g�ƃC���|�[�g�����X�^�C���V�[�g��HTML�����Ƃ͕ʂ̃f�B���N�g���ɒu����Ă���ꍇ�B</li>
-<li>�O���X�^�C���V�[�g��HTML�����Ƃ͕ʂ̃h���C���ɒu����Ă���ꍇ�B</li>
+<li>外部スタイルシート内で@importを用いており、外部スタイルシートとインポートされるスタイルシートがHTML文書とは別のディレクトリに置かれている場合。</li>
+<li>外部スタイルシートがHTML文書とは別のドメインに置かれている場合。</li>
 </ul>
-<p>�iWinIE�̃��j���[�Łm�t�@�C���n���m���O��t���ĕۑ�...�n��I�����A�u�t�@�C���̎�ށv�ŁuWeb �y�[�W�A���S�v��I������HTML�����Ɗ֘A�t�@�C�����܂Ƃ߂ĕۑ�����Ƃ��ɔ������錻�ۂł��j</p>
+<p>（WinIEのメニューで［ファイル］→［名前を付けて保存...］を選択し、「ファイルの種類」で「Web ページ、完全」を選択してHTML文書と関連ファイルをまとめて保存するときに発生する現象です）</p>
 
-<h3>�Ꭶ</h3>
-<p>����HTML�����̃X�^�C���V�[�g�g�p�F</p>
-<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;img/b066.css&quot; title=&quot;��p&quot;&gt;</pre>
-<p>���̃y�[�W�Ŏg�p���Ă���X�^�C���V�[�g�ub066.css�v���̋L�q�i�ꕔ�j�F</p>
+<h3>例示</h3>
+<p>このHTML文書のスタイルシート使用：</p>
+<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;img/b066.css&quot; title=&quot;専用&quot;&gt;</pre>
+<p>このページで使用しているスタイルシート「b066.css」内の記述（一部）：</p>
 <pre>@import 'b066a.css';</pre>
-<p>�C���|�[�g���ꂽ�X�^�C���V�[�g�ub066a.css�v���̋L�q�F</p>
+<p>インポートされたスタイルシート「b066a.css」内の記述：</p>
 <pre>body {
   border-bottom: 2px dashed navy;
   padding-bottom: 1em;
 }</pre>
-<p>�ub066.css�v�Ɓub066a.css�v�̓T�u�f�B���N�g���uimg�v���ɂ���܂��B�C���|�[�g�����X�^�C���V�[�g���ŁAbody�v�f�̉��[�ɔj���{�[�_�[��ݒ肵�Ă��܂��B���̃y�[�W���Ǐ�Ŏ��������@�Ń��[�J���ɕۑ����Ă݂Ă��������B</p>
+<p>「b066.css」と「b066a.css」はサブディレクトリ「img」内にあります。インポートしたスタイルシート内で、body要素の下端に破線ボーダーを設定しています。このページを症状で示した方法でローカルに保存してみてください。</p>
 
-<h3>�⑫</h3>
-<p>���[�J���t�@�C����ۑ�����ꍇ�ɂ��̌��ۂ͔������܂���B</p>
-<p>�uWeb �y�[�W�AHTML �̂݁v�A�uWeb �A�[�J�C�u�A�P��̃t�@�C���v�A�u�e�L�X�g �t�@�C���v�̊e�`���ŕۑ�����ꍇ�ɂ��̌��ۂ͔������܂���B</p>
-<p>�O���X�^�C���V�[�g���ŁA@import�錾�̑O��@charset�錾�������ƃG���[�Ȃ��ۑ��ł��邱�Ƃ�����悤�ł��B�������A���̏ꍇ�ł��ۑ��ł��Ȃ����Ƃ�����悤�ł��B</p>
+<h3>補足</h3>
+<p>ローカルファイルを保存する場合にこの現象は発生しません。</p>
+<p>「Web ページ、HTML のみ」、「Web アーカイブ、単一のファイル」、「テキスト ファイル」の各形式で保存する場合にこの現象は発生しません。</p>
+<p>外部スタイルシート内で、@import宣言の前に@charset宣言をおくとエラーなく保存できることがあるようです。ただし、この場合でも保存できないこともあるようです。</p>
 <pre>@charset &quot;Shift_JIS&quot;;
 @import url(font.css);</pre>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ŕs��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0で不具合の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O066</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ066</div>
 </body>
 </html>

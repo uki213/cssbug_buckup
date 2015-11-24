@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Opera CSS�o�O���X�g</title>
+<title>Opera CSSバグリスト</title>
 <style type="text/css">
 <!--
 body {
@@ -29,17 +29,17 @@ div.scrl {
 </style>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O031</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ031</div>
 
-<h2>body�ȊO�̗v�f�̔w�i�摜���{���̈�ɑ΂��ČŒ肳��Ȃ�<em>(6.0)</em></h2>
+<h2>body以外の要素の背景画像が閲覧領域に対して固定されない<em>(6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>html, body�v�f�ȊO�̗v�f�̔w�i�摜���Œ肵���i<code>background-attachment: fixed;</code>�j�Ƃ��A�w�i�̊�ʒu���{���̈捶��[�ł͂Ȃ����Y�v�f�̍���[�ɂȂ�B</p>
+<h3>症状</h3>
+<p>html, body要素以外の要素の背景画像を固定した（<code>background-attachment: fixed;</code>）とき、背景の基準位置が閲覧領域左上端ではなく当該要素の左上端になる。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <div class="example">
-<div class="scrl">�w�i���Œ�<br>�w�i���Œ�<br>�w�i���Œ�</div>
+<div class="scrl">背景を固定<br>背景を固定<br>背景を固定</div>
 </div>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 body {
@@ -53,19 +53,19 @@ div.scrl {
 }
 &lt;/style&gt;
 
-&lt;div class=&quot;scrl&quot;&gt;�w�i���Œ�&lt;br&gt;�w�i���Œ�&lt;br&gt;�w�i���Œ�&lt;/div&gt;</pre>
-<p>body�v�f�̍��[�ɌŒ�z�u�����w�i�摜��div�v�f�S�̂ɌŒ�z�u�����w�i�摜�͂Ȃ����ĕ\�������͂��ł��B</p>
-<p>���X�N���[�������Ȃ��Ă��ςނ悤�Ɂi<a href="b030.html" title="�Œ肵���w�i�摜���X�N���[���ɂ���ď����Ă��܂�">Opera�o�O030</a>�΍�j�\�[�X�����Ɉڂ��Ă��܂��B�t���X�N���[�����[�h�Ȃǂ����p���Ă��������B</p>
+&lt;div class=&quot;scrl&quot;&gt;背景を固定&lt;br&gt;背景を固定&lt;br&gt;背景を固定&lt;/div&gt;</pre>
+<p>body要素の左端に固定配置した背景画像とdiv要素全体に固定配置した背景画像はつながって表示されるはずです。</p>
+<p>※スクロールをしなくても済むように（<a href="b030.html" title="固定した背景画像がスクロールによって消えてしまう">Operaバグ030</a>対策）ソースを下に移しています。フルスクリーンモードなども活用してください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b031_1.png" alt="Moz1.0.1" width="122" height="81">Moz1.0.1�ł̕\��</p>
-<p><img src="img/b031_2.png" alt="Op6" width="122" height="81">Opera6.05�ł̕\��</p>
+<p><img src="img/b031_1.png" alt="Moz1.0.1" width="122" height="81">Moz1.0.1での表示</p>
+<p><img src="img/b031_2.png" alt="Op6" width="122" height="81">Opera6.05での表示</p>
 </div>
 
-<h3>�C����</h3>
-<p>Opera6.05�ł͕s��̔������m�F����܂����BOpera7.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔����͊m�F����܂���ł����B</p>
+<h3>修正状況</h3>
+<p>Opera6.05では不具合の発生が確認されました。Opera7.0では標準・互換モードともに不具合の発生は確認されませんでした。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O031</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ031</div>
 </body>
 </html>

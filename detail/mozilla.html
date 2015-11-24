@@ -2,122 +2,122 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../index.html" title="�g�b�v�y�[�W">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../index.html" title="トップページ">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Mozilla 5.0�n CSS�o�O���X�g</title>
+<title>Mozilla 5.0系 CSSバグリスト</title>
 </head>
 <body>
-<h1>Mozilla 5.0�n CSS�o�O���X�g</h1>
-<div class="navi"><a href="../index.html">�g�b�v�y�[�W</a>�^Moz�ڎ�</div>
+<h1>Mozilla 5.0系 CSSバグリスト</h1>
+<div class="navi"><a href="../index.html">トップページ</a>／Moz目次</div>
 
-<p>�����ɂ�mozilla.org���J�����Ă���Gecko�iMoz�j��CSS/DOM�����̃o�O�ꗗ������܂��B�ȉ��̃��X�g���炻�ꂼ��̃o�O�̏ڍׂ����邱�Ƃ��ł��܂��B</p>
+<p>ここにはmozilla.orgが開発しているGecko（Moz）のCSS/DOM実装のバグ一覧があります。以下のリストからそれぞれのバグの詳細を見ることができます。</p>
 
-<h2>Gecko��CSS����</h2>
-<p>Mozilla 0.6�ȍ~�iNetscape6.0�ȍ~�j�ɂ́uDOCTYPE�X�C�b�`�v����������Ă��܂��BDOCTYPE�錾�ɂ��AW3C�����肵��CSS�d�l�ɏ]���u�W�����[�h�v���A�ߋ���UA�Ɏ�������Ă���CSS�d�l�ɏ]���u�݊����[�h�v�ŉ�́E�`�悪�s���܂��B</p>
+<h2>GeckoのCSS実装</h2>
+<p>Mozilla 0.6以降（Netscape6.0以降）には「DOCTYPEスイッチ」が実装されています。DOCTYPE宣言により、W3Cが策定したCSS仕様に従う「標準モード」か、過去のUAに実装されていたCSS仕様に従う「互換モード」で解析・描画が行われます。</p>
 <ul>
-<li>DOCTYPE�錾�Ȃ��F�@�݊����[�h</li>
-<li>HTML3.2�ȑO�F�@�݊����[�h</li>
-<li>HTML4 Transtional/Frameset�i�V�X�e�����ʎq�Ȃ��j�F�@�݊����[�h</li>
-<li>HTML4 Transtional/Frameset�i�V�X�e�����ʎq����j�F�@�W�����[�h</li>
-<li>HTML4 Strict�F�@�W�����[�h</li>
-<li>XHTML�F�@�W�����[�h</li>
-<li>���m��DOCTYPE�錾�F�@�W�����[�h</li>
+<li>DOCTYPE宣言なし：　互換モード</li>
+<li>HTML3.2以前：　互換モード</li>
+<li>HTML4 Transtional/Frameset（システム識別子なし）：　互換モード</li>
+<li>HTML4 Transtional/Frameset（システム識別子あり）：　標準モード</li>
+<li>HTML4 Strict：　標準モード</li>
+<li>XHTML：　標準モード</li>
+<li>未知のDOCTYPE宣言：　標準モード</li>
 </ul>
 
-<h2>�o�O���X�g</h2>
+<h2>バグリスト</h2>
 
-<h3>�m�F�ς݃o�O</h3>
+<h3>確認済みバグ</h3>
 <ul>
-<li>[1-5]<a href="mozilla/b001.html">�t�H�[���֘A�v�f��size�����ƃT�C�Y�֘A�X�^�C���̓K�p�D�揇�ʂ��s��<em>(N6)</em></a></li>
-<li>[1-5]<a href="mozilla/b002.html">�t�H�[���֘A�v�f�̃t�H���g�T�C�Y��%�l�Ŏw�肷��ƃ{�b�N�X�T�C�Y���s����ɂȂ�<em>(N6)</em></a></li>
-<li>[1-73]<a href="mozilla/b006.html">�X�N���v�g��iframe���Q�Ƃ���Ɨ������]���ɒǉ������<em>(N6)</em></a></li>
-<li>[2-4]<a href="mozilla/b008.html">li�v�f�𑊑Δz�u����ƃ��X�g�}�[�J�[��������<em>(N6)</em></a></li>
-<li>[2-7]<a href="mozilla/b009.html">�X�^�C���V�[�g�؂�ւ��@�\��p���Ă������F���؂�ւ��Ȃ�<em>(N6)</em></a></li>
-<li>[2-25]<a href="mozilla/b011.html">overflow:auto;���g�p�����v�f���̃y�[�W�������N�������Ȃ�<em>(N6)</em></a></li>
-<li>[2-134]<a href="mozilla/b013.html">�e�[�u�����ɂ���label�v�f���̕����񂪏�����<em>(N6.1)</em></a></li>
-<li>[2-142]<a href="mozilla/b014.html">�O���X�^�C���V�[�g��2�o�C�g���������������<em>(N6.1)</em></a></li>
-<li>[2-178]<a href="mozilla/b016.html">���[���������v�f���Łu�[�v�ƒ���̕������d�Ȃ�<em>(N6.1)</em></a></li>
-<li>[2-186]<a href="mozilla/b017.html">�t�H���g�ɂ����vertical-align�v���p�e�B��p�����Ƃ��̕\���ʒu���قȂ�<em>(N6.1)</em></a></li>
-<li>[2-212]<a href="mozilla/b018.html">�t���[�g�z�u�v�f�̎q�v�f���Δz�u�ɂ���Ɛe�v�f�𖳎������z�u�ɂȂ�<em>(N6.1)</em></a></li>
-<li>[2-224][3-649]<a href="mozilla/b019.html">�e�v�f���͂ݏo���悤�ɔz�u�����v�f���̃����N��t�H�[�����@�\���Ȃ�<em>(N6.x/N7.x)</em></a></li>
-<li>[2-228][3-593]<a href="mozilla/b021.html">�{���̈�̃T�C�Y�������R���e�i�u���b�N�̃T�C�Y�Ƃ��Ĉ���</a></li>
-<li>[2-257]<a href="mozilla/b026.html">���݂��Ȃ��摜�����X�g�}�[�J�[�Ɏw�肷��ƃ��X�g�}�[�J�[�����S�ɏ�����<em>(N6.2)</em></a></li>
-<li>[2-413]<a href="mozilla/b022.html">�Œ�z�u���ꂽ�{�b�N�X�̕��������T�C�Y�ύX�ɑΉ����Ȃ�<em>(Moz1.0RC3)</em></a></li>
-<li>[2-413]<a href="mozilla/b023.html">�Œ�z�u���ꂽ���X�g�A�C�e���v�f���ŕ����Ԋu��ς���Ɨv�f�S�̂�����<em>(Moz1.0RC3)</em></a></li>
-<li>[2-430]<a href="mozilla/b029.html">�C�����C���v�f�ւ̐܂�Ԃ��֎~�w�肪���Y�v�f�̊O�̃u���b�N�ɍ�p����<em>(N7.0)</em></a></li>
-<li>[2-435]<a href="mozilla/b030.html">letter-spacing���w�肵���v�f���Łu�[�v�ƒ���̕����Ƃ��d�Ȃ�<em>(N6)</em></a></li>
-<li>[2-456]<a href="mozilla/b031.html">�Œ�z�u�����{�b�N�X���������Ȃ�<em>(Moz1.0)</em></a></li>
-<li>[2-476]<a href="mozilla/b032.html">label�v�f��display�v���p�e�B�����������<em>(Moz1.0)</em></a></li>
-<li>[2-476]<a href="mozilla/b036.html">�D��V�[�g��display:none;����փV�[�g�ɂ������p�����<em>(N7)</em></a></li>
-<li>[2-490][2-617][3-199][3-762][3-830]<a href="mozilla/b035.html">�{�[���h�̂̕����񂪑O��̕�����Əd�Ȃ�<em>(N6.x/N7.x)</em></a></li>
-<li>[2-553]<a href="mozilla/b037.html">line-height�̒l�ɂ���Ă̓}�[�W�����w��ǂ���̒l�ɂȂ�Ȃ�<em>(N7)</em></a></li>
-<li>[2-675]<a href="mozilla/b041.html">�ʏ�z�u�ȊO�Ŕz�u���ꂽ�v�f�Ɍ㑱����v�f�̏�}�[�W�������������<em>(N6)</em></a></li>
-<li>[2-709]<a href="mozilla/b042.html">�݊����[�h�ł�hr�v�f�Ɏw�肵��clear�v���p�e�B�����������<em>(N7)</em></a></li>
-<li>[2-727]<a href="mozilla/b043.html">���t���[�g�ɉ�荞�񂾃t�@�C���I���R���g���[���̍������ω�����<em>(Moz1.0.2/1.2.1)</em></a></li>
-<li>[2-751]<a href="mozilla/b044.html">:first-letter�[���v�f�ɉE�}�[�W���������Ȃ�<em>(N7)</em></a></li>
-<li>[2-752]<a href="mozilla/b045.html">:first-letter�[���v�f�ɐݒ肵���X�^�C�������I�[���N���X�Ƀ}�b�`���邱�ƂŎ�����</a></li>
-<li>[2-765]<a href="mozilla/b046.html">���y�[�W����̍s��text-indent�v���p�e�B�������Ă��܂�<em>(Moz1.0.2)</em></a></li>
-<li>[2-830]<a href="mozilla/b048.html">title�������w�肵��style�v�f���X�^�C���V�[�g�؂�ւ��̑ΏۂɂȂ�<em>(N7)</em></a></li>
-<li>[2-887]<a href="mozilla/b050.html">:hover��ԂŔz�u���s���Ɠ��Y�v�f�Ǝ��͂̃��C�A�E�g���傫�������<em>(N6/N7)</em></a></li>
-<li>[2-899]<a href="mozilla/b051.html">�e�[�u�����͂ݏo���Ă����X�N���[���o�[���\������Ȃ�<em>(N7.0)</em></a></li>
-<li>[2-920][3-73]<a href="mozilla/b052.html">���Δz�u�v�f���{�b�N�X�T�C�Y���Z�o����ۂɎq���t���[�g�����O���Ȃ�<em>(N7.0)</em></a></li>
-<li>[3-33]<a href="mozilla/b053.html">�܂�Ԃ���}�������v�f���ɂ���hr�v�f�̕����������Z�o����Ȃ�<em>(N7.0)</em></a></li>
-<li>[3-130][3-131]<a href="mozilla/b054.html">hr�v�f�̃{�[�_�[���������ݒ肳��Ȃ�<em>(N7.0)</em></a></li>
-<li>[3-165][3-185]<a href="mozilla/b055.html">�A���J�[��:hover��Ԃɂ����body�v�f�Ȃǂ̃T�C�Y���ω�����<em>(N7.0)</em></a></li>
-<li>[3-196]<a href="mozilla/b056.html">collapse��Ԃ̕\�r����table�v�f�̕��𒴂��ĕ\�������<em>(N7.0)</em></a></li>
-<li>[3-223]<a href="mozilla/b058.html">overflow�ŃX�N���[���o�[���o��Ƃ��̍����v�Z���������Ȃ�<em>(N7.0)</em></a></li>
-<li>[3-228]<a href="mozilla/b059.html">�C�����C���v�f�ɋ��܂�Ă���t���[�g�����ɂ���Ēu�����<em>(N7.0)</em></a></li>
-<li>[3-230]<a href="mozilla/b060.html">�\�v�f�ł�%�l�w���left�Atop�v���p�e�B�����������<em>(N7.0)</em></a></li>
-<li>[3-304]<a href="mozilla/b062.html">�A���J�[�̗v�f��cursor:auto;���w�肷���I���J�[�\�������蓖�Ă���<em>(N7.1)</em></a></li>
-<li>[3-357]<a href="mozilla/b063.html">overflow�ւ̑Ή����s���S�ȗv�f<em>(N7.x)</em></a></li>
-<li>[3-427]<a href="mozilla/b065.html">�����t�H���g�ŕ\������������̖�����������<em>(N7.x)</em></a></li>
-<li>[3-467]<a href="mozilla/b066.html">overflow:auto/scroll;���w�肵���v�f���ŉ{���̈�̊O�ɂ��郊���N���@�\���Ȃ�<em>(N7.0)</em></a></li>
-<li>[3-653]<a href="mozilla/b068.html">���e�����󔒂���n�܂郊�X�g�A�C�e���̉摜���X�g�}�[�J�[��������<em>(N7.x)</em></a></li>
-<li>[3-683]<a href="mozilla/b069.html">������A�{�b�N�X���[��first-letter�[���v�f�̕��Ɠ������̌��Ԃ���<em>(N7.1)</em></a></li>
-<li>[3-775]<a href="mozilla/b070.html">�q�Ƀu���b�N���x���v�f���܂�ins, del�v�f���C�����C���v�f�ɂȂ�<em>(N7.x)</em></a></li>
-<li>[3-779][3-798]<a href="mozilla/b071.html">����̃X�N���v�g�����s�����hr�v�f���_�ł���<em>(N7.1)</em></a></li>
-<li>[3-820]<a href="mozilla/b072.html">padding-box, border-box��bottom, right�̎Z�o���������Ȃ�<em>(N7.x)</em></a></li>
-<li>[3-898]<a href="mozilla/b074.html">�C�����C���e�[�u���̍s�O���[�v�v�f��s�v�f�ŃX�^�C���w��𖳎������</a></li>
-<li>[3-904]<a href="mozilla/b075.html">���X�g�A�C�e���v�f���Ńt���[�g��clear�������Ȃ�</a></li>
-<li>[4-29]<a href="mozilla/b076.html">�e�v�f�̃}�[�W�����ɂ���Ă�clear�������Ȃ�</a></li>
-<li>[4-36]<a href="mozilla/b077.html">�Œ背�C�A�E�g�\��%�l�w��̗񕝂�100%�𒴂����Ȃ�</a></li>
-<li>[4-72]<a href="mozilla/b078.html">ul, ol�v�f�ȊO�Ń��X�g�}�[�J�[�̐��l�����ׂ�0�ɂȂ�</a></li>
-<li>[4-91]<a href="mozilla/b079.html">�Œ背�C�A�E�g�\��%�l�w��̗񕝂��{���̕���菬�����Ȃ�</a></li>
-<li>[4-99]<a href="mozilla/b080.html">visibility:hidden;���w�肵���v�f��:hover�������Ȃ�</a></li>
+<li>[1-5]<a href="mozilla/b001.html">フォーム関連要素のsize属性とサイズ関連スタイルの適用優先順位が不正<em>(N6)</em></a></li>
+<li>[1-5]<a href="mozilla/b002.html">フォーム関連要素のフォントサイズを%値で指定するとボックスサイズが不安定になる<em>(N6)</em></a></li>
+<li>[1-73]<a href="mozilla/b006.html">スクリプトでiframeを参照すると履歴が余分に追加される<em>(N6)</em></a></li>
+<li>[2-4]<a href="mozilla/b008.html">li要素を相対配置するとリストマーカーが消える<em>(N6)</em></a></li>
+<li>[2-7]<a href="mozilla/b009.html">スタイルシート切り替え機能を用いても文字色が切り替わらない<em>(N6)</em></a></li>
+<li>[2-25]<a href="mozilla/b011.html">overflow:auto;を使用した要素内のページ内リンクが効かない<em>(N6)</em></a></li>
+<li>[2-134]<a href="mozilla/b013.html">テーブル内にあるlabel要素内の文字列が消える<em>(N6.1)</em></a></li>
+<li>[2-142]<a href="mozilla/b014.html">外部スタイルシートで2バイト文字が無視される<em>(N6.1)</em></a></li>
+<li>[2-178]<a href="mozilla/b016.html">両端揃えした要素内で「ー」と直後の文字が重なる<em>(N6.1)</em></a></li>
+<li>[2-186]<a href="mozilla/b017.html">フォントによってvertical-alignプロパティを用いたときの表示位置が異なる<em>(N6.1)</em></a></li>
+<li>[2-212]<a href="mozilla/b018.html">フロート配置要素の子要素を絶対配置にすると親要素を無視した配置になる<em>(N6.1)</em></a></li>
+<li>[2-224][3-649]<a href="mozilla/b019.html">親要素をはみ出すように配置した要素内のリンクやフォームが機能しない<em>(N6.x/N7.x)</em></a></li>
+<li>[2-228][3-593]<a href="mozilla/b021.html">閲覧領域のサイズを初期コンテナブロックのサイズとして扱う</a></li>
+<li>[2-257]<a href="mozilla/b026.html">存在しない画像をリストマーカーに指定するとリストマーカーが完全に消える<em>(N6.2)</em></a></li>
+<li>[2-413]<a href="mozilla/b022.html">固定配置されたボックスの幅が文字サイズ変更に対応しない<em>(Moz1.0RC3)</em></a></li>
+<li>[2-413]<a href="mozilla/b023.html">固定配置されたリストアイテム要素内で文字間隔を変えると要素全体が動く<em>(Moz1.0RC3)</em></a></li>
+<li>[2-430]<a href="mozilla/b029.html">インライン要素への折り返し禁止指定が当該要素の外のブロックに作用する<em>(N7.0)</em></a></li>
+<li>[2-435]<a href="mozilla/b030.html">letter-spacingを指定した要素内で「ー」と直後の文字とが重なる<em>(N6)</em></a></li>
+<li>[2-456]<a href="mozilla/b031.html">固定配置したボックスが印刷されない<em>(Moz1.0)</em></a></li>
+<li>[2-476]<a href="mozilla/b032.html">label要素でdisplayプロパティが無視される<em>(Moz1.0)</em></a></li>
+<li>[2-476]<a href="mozilla/b036.html">優先シートのdisplay:none;が代替シートにも引き継がれる<em>(N7)</em></a></li>
+<li>[2-490][2-617][3-199][3-762][3-830]<a href="mozilla/b035.html">ボールド体の文字列が前後の文字列と重なる<em>(N6.x/N7.x)</em></a></li>
+<li>[2-553]<a href="mozilla/b037.html">line-heightの値によってはマージンが指定どおりの値にならない<em>(N7)</em></a></li>
+<li>[2-675]<a href="mozilla/b041.html">通常配置以外で配置された要素に後続する要素の上マージンが無視される<em>(N6)</em></a></li>
+<li>[2-709]<a href="mozilla/b042.html">互換モードではhr要素に指定したclearプロパティが無視される<em>(N7)</em></a></li>
+<li>[2-727]<a href="mozilla/b043.html">左フロートに回り込んだファイル選択コントロールの高さが変化する<em>(Moz1.0.2/1.2.1)</em></a></li>
+<li>[2-751]<a href="mozilla/b044.html">:first-letter擬似要素に右マージンが効かない<em>(N7)</em></a></li>
+<li>[2-752]<a href="mozilla/b045.html">:first-letter擬似要素に設定したスタイルが動的擬似クラスにマッチすることで失われる</a></li>
+<li>[2-765]<a href="mozilla/b046.html">改ページ直後の行にtext-indentプロパティが効いてしまう<em>(Moz1.0.2)</em></a></li>
+<li>[2-830]<a href="mozilla/b048.html">title属性を指定したstyle要素がスタイルシート切り替えの対象になる<em>(N7)</em></a></li>
+<li>[2-887]<a href="mozilla/b050.html">:hover状態で配置を行うと当該要素と周囲のレイアウトが大きく乱れる<em>(N6/N7)</em></a></li>
+<li>[2-899]<a href="mozilla/b051.html">テーブルがはみ出しても横スクロールバーが表示されない<em>(N7.0)</em></a></li>
+<li>[2-920][3-73]<a href="mozilla/b052.html">相対配置要素がボックスサイズを算出する際に子孫フロートを除外しない<em>(N7.0)</em></a></li>
+<li>[3-33]<a href="mozilla/b053.html">折り返しを抑制した要素内にあるhr要素の幅が正しく算出されない<em>(N7.0)</em></a></li>
+<li>[3-130][3-131]<a href="mozilla/b054.html">hr要素のボーダーが正しく設定されない<em>(N7.0)</em></a></li>
+<li>[3-165][3-185]<a href="mozilla/b055.html">アンカーを:hover状態にするとbody要素などのサイズが変化する<em>(N7.0)</em></a></li>
+<li>[3-196]<a href="mozilla/b056.html">collapse状態の表罫線がtable要素の幅を超えて表示される<em>(N7.0)</em></a></li>
+<li>[3-223]<a href="mozilla/b058.html">overflowでスクロールバーが出るときの高さ計算が正しくない<em>(N7.0)</em></a></li>
+<li>[3-228]<a href="mozilla/b059.html">インライン要素に挟まれているフロートが下にずれて置かれる<em>(N7.0)</em></a></li>
+<li>[3-230]<a href="mozilla/b060.html">表要素では%値指定のleft、topプロパティが無視される<em>(N7.0)</em></a></li>
+<li>[3-304]<a href="mozilla/b062.html">アンカーの要素にcursor:auto;を指定するとI字カーソルが割り当てられる<em>(N7.1)</em></a></li>
+<li>[3-357]<a href="mozilla/b063.html">overflowへの対応が不完全な要素<em>(N7.x)</em></a></li>
+<li>[3-427]<a href="mozilla/b065.html">等幅フォントで表示した文字列の末尾が欠ける<em>(N7.x)</em></a></li>
+<li>[3-467]<a href="mozilla/b066.html">overflow:auto/scroll;を指定した要素内で閲覧領域の外にあるリンクが機能しない<em>(N7.0)</em></a></li>
+<li>[3-653]<a href="mozilla/b068.html">内容物が空白から始まるリストアイテムの画像リストマーカーが消える<em>(N7.x)</em></a></li>
+<li>[3-683]<a href="mozilla/b069.html">印刷時、ボックス左端にfirst-letter擬似要素の幅と同じ幅の隙間が空く<em>(N7.1)</em></a></li>
+<li>[3-775]<a href="mozilla/b070.html">子にブロックレベル要素を含むins, del要素もインライン要素になる<em>(N7.x)</em></a></li>
+<li>[3-779][3-798]<a href="mozilla/b071.html">特定のスクリプトを実行するとhr要素が点滅する<em>(N7.1)</em></a></li>
+<li>[3-820]<a href="mozilla/b072.html">padding-box, border-boxでbottom, rightの算出が正しくない<em>(N7.x)</em></a></li>
+<li>[3-898]<a href="mozilla/b074.html">インラインテーブルの行グループ要素や行要素でスタイル指定を無視される</a></li>
+<li>[3-904]<a href="mozilla/b075.html">リストアイテム要素内でフロートのclearが効かない</a></li>
+<li>[4-29]<a href="mozilla/b076.html">親要素のマージン幅によってはclearが効かない</a></li>
+<li>[4-36]<a href="mozilla/b077.html">固定レイアウト表で%値指定の列幅が100%を超えられない</a></li>
+<li>[4-72]<a href="mozilla/b078.html">ul, ol要素以外でリストマーカーの数値がすべて0になる</a></li>
+<li>[4-91]<a href="mozilla/b079.html">固定レイアウト表で%値指定の列幅が本来の幅より小さくなる</a></li>
+<li>[4-99]<a href="mozilla/b080.html">visibility:hidden;を指定した要素に:hoverが効かない</a></li>
 </ul>
 
-<h3>���m�F�o�O</h3>
+<h3>未確認バグ</h3>
 <ul>
-<li>[1-40]<a href="mozilla/b003.html">body�v�f�� overflow: auto; ���w�肷��ƕ\���������<em>(N6)</em></a></li>
-<li>[1-50]<a href="mozilla/b004.html">��Δz�u�v�f���ł�-moz-box-sizing�v���p�e�B�������Ȃ�<em>(N6)</em></a></li>
-<li>[1-55]<a href="mozilla/b005.html">�\�v�f�Ɏw�肵���w�i�F�����f����Ȃ�<em>(N6)</em></a></li>
-<li>[1-55]<a href="mozilla/b007.html">POST���w�肵���ɂ��ւ�炸GET���\�b�h�ŋ�̃f�[�^�𑗂�<em>(N6)</em></a></li>
-<li>[2-17]<a href="mozilla/b010.html">list-style-type��list-style�Ń��X�g�}�[�N�������Ȃ�</a></li>
-<li>[2-47]<a href="mozilla/b012.html">font�v���p�e�B�̃t�@�~���w�肾�����p������Ȃ�<em>(Moz0.9.1)</em></a></li>
-<!--<li>[2-21]<a href="mozilla/b024.html">tbody���Z���N�^�Ɏg�p�����ꍇ�ɃX�^�C���w�肪��������邱�Ƃ�����<em>(N6)</em></a></li>-->
-<li>[2-312]<a href="mozilla/b027.html">line-height��%�l�Ŏw�肵���Ƃ��̊�������T�C�Y�ύX�����ς��Ȃ�</a></li>
-<li>[2-422]<a href="mozilla/b028.html">�I���^�O���ȗ�����p�v�f�ւ̃}�[�W���w�肪���������<em>(Moz1.0RC3)</em></a></li>
-<li>[2-482]<a href="mozilla/b034.html">class�������ݒ肳�ꂽ���������\������Ȃ�<em>(N7)</em></a></li>
-<li>[2-618]<a href="mozilla/b040.html">background�v���p�e�B�Ŏw�肵���w�i�摜���\������Ȃ�<em>(N7)</em></a></li>
-<li>[2-861]<a href="mozilla/b049.html">letter-spacing��ݒ肵���{�b�N�X��border-width�����������<em>(N7)</em></a></li>
-<li>[3-571]<a href="mozilla/b067.html">�����}�[�W���̎w�肪���f����Ȃ�<em>(W1.4)</em></a></li>
+<li>[1-40]<a href="mozilla/b003.html">body要素に overflow: auto; を指定すると表示が乱れる<em>(N6)</em></a></li>
+<li>[1-50]<a href="mozilla/b004.html">絶対配置要素内では-moz-box-sizingプロパティが効かない<em>(N6)</em></a></li>
+<li>[1-55]<a href="mozilla/b005.html">表要素に指定した背景色が反映されない<em>(N6)</em></a></li>
+<li>[1-55]<a href="mozilla/b007.html">POSTを指定したにも関わらずGETメソッドで空のデータを送る<em>(N6)</em></a></li>
+<li>[2-17]<a href="mozilla/b010.html">list-style-typeやlist-styleでリストマークを消せない</a></li>
+<li>[2-47]<a href="mozilla/b012.html">fontプロパティのファミリ指定だけが継承されない<em>(Moz0.9.1)</em></a></li>
+<!--<li>[2-21]<a href="mozilla/b024.html">tbodyをセレクタに使用した場合にスタイル指定が無視されることがある<em>(N6)</em></a></li>-->
+<li>[2-312]<a href="mozilla/b027.html">line-heightを%値で指定したときの基準が文字サイズ変更時も変わらない</a></li>
+<li>[2-422]<a href="mozilla/b028.html">終了タグを省略したp要素へのマージン指定が無視される<em>(Moz1.0RC3)</em></a></li>
+<li>[2-482]<a href="mozilla/b034.html">class属性が設定された水平線が表示されない<em>(N7)</em></a></li>
+<li>[2-618]<a href="mozilla/b040.html">backgroundプロパティで指定した背景画像が表示されない<em>(N7)</em></a></li>
+<li>[2-861]<a href="mozilla/b049.html">letter-spacingを設定したボックスでborder-widthが無視される<em>(N7)</em></a></li>
+<li>[3-571]<a href="mozilla/b067.html">負数マージンの指定が反映されない<em>(W1.4)</em></a></li>
 </ul>
 
-<h3>�d�l�ʂ�̓���</h3>
+<h3>仕様通りの動作</h3>
 <ul>
-<li>[2-117]<a href="mozilla/b025.html">body�v�f�̍����𖳎����ăX�N���[���o�[���\�������<em>(N6)</em></a></li>
-<li>[2-146]<a href="mozilla/b015.html">�����_�����O���[�h�ɂ���Đ������̍������ς��<em>(N6.1)</em></a></li>
-<li>[2-225]<a href="mozilla/b020.html">��������������Ă��Ȃ��v�f���ł�top�v���p�e�B��%�l�w�肪����<em>(N6.2)</em></a></li>
-<li>[2-469]<a href="mozilla/b033.html">�e�[�u�����ɉ摜��~���l�߂��Ȃ�<em>(N6.2)</em></a></li>
-<li>[2-586]<a href="mozilla/b038.html">z-index�ɕ��̒l���w�肵���v�f�������Ă��܂�<em>(N6)</em></a></li>
-<li>[2-795]<a href="mozilla/b047.html">��Δz�u�^�Œ�z�u�^�t���[�g��Ԃ�li�v�f�̃��X�g�}�[�J�[�������Ȃ�<em>(N7)</em></a></li>
-<li>[3-242]<a href="mozilla/b061.html">body�v�f�ւ�height�v���p�e�B%�l�w�肪���������<em>(N7.0/M1.4RC2)</em></a></li>
-<li>[3-415]<a href="mozilla/b064.html">�{���̈�̕��𒴂��镝�̃{�b�N�X�𒆉��񂹂ɂ���Ƃ��̍��[��\���ł��Ȃ�</a></li>
-<li>[3-867]<a href="mozilla/b073.html">���m�̋[���v�f�^�N���X���w�肵���Z���N�^�͕s��<em>(M1.5)</em></a></li>
+<li>[2-117]<a href="mozilla/b025.html">body要素の高さを無視してスクロールバーが表示される<em>(N6)</em></a></li>
+<li>[2-146]<a href="mozilla/b015.html">レンダリングモードによって水平線の高さが変わる<em>(N6.1)</em></a></li>
+<li>[2-225]<a href="mozilla/b020.html">高さが明示されていない要素内ではtopプロパティの%値指定が無効<em>(N6.2)</em></a></li>
+<li>[2-469]<a href="mozilla/b033.html">テーブル内に画像を敷き詰められない<em>(N6.2)</em></a></li>
+<li>[2-586]<a href="mozilla/b038.html">z-indexに負の値を指定した要素が消えてしまう<em>(N6)</em></a></li>
+<li>[2-795]<a href="mozilla/b047.html">絶対配置／固定配置／フロート状態のli要素のリストマーカーが消えない<em>(N7)</em></a></li>
+<li>[3-242]<a href="mozilla/b061.html">body要素へのheightプロパティ%値指定が無視される<em>(N7.0/M1.4RC2)</em></a></li>
+<li>[3-415]<a href="mozilla/b064.html">閲覧領域の幅を超える幅のボックスを中央寄せにするとその左端を表示できない</a></li>
+<li>[3-867]<a href="mozilla/b073.html">未知の擬似要素／クラスを指定したセレクタは不正<em>(M1.5)</em></a></li>
 </ul>
 
-<div class="navi"><a href="../index.html">�g�b�v�y�[�W</a>�^Moz�ڎ�</div>
+<div class="navi"><a href="../index.html">トップページ</a>／Moz目次</div>
 </body>
 </html>

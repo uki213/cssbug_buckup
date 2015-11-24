@@ -2,36 +2,36 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../safari.html" title="Safari�ڎ�">
-<title>Safari (KHTML) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../safari.html" title="Safari目次">
+<title>Safari (KHTML) CSSバグリスト</title>
 </head>
 <body>
-<h1>Safari (KHTML) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O010</div>
+<h1>Safari (KHTML) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ010</div>
 
-<h2>�g�p�����͂��̂Ȃ��t�H���g�ŕ����񂪕\�������<em>(S1.0)</em></h2>
+<h2>使用されるはずのないフォントで文字列が表示される<em>(S1.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>font-family�v���p�e�B�ŁA���{��Ȃǂ̑��o�C�g�����p�t�H���g�Ƃ��Ė��̂ɓ��{�ꕶ�����܂܂Ȃ��t�H���g���܂܂�Ă���ꍇ�ł��A�w�肵���t�H���g�Ƃ͈قȂ�t�H���g�ő��o�C�g�������\������邱�Ƃ�����B</p>
-<p>��Safari�́A���̂ɓ��{�ꕶ�����܂ރt�H���g��F�����܂���i<a href="b003.html" title="���̂ɓ��{�ꕶ�����܂ރt�H���g�t�@�~���̎w��𖳎�����">Safari�o�O003</a>�j�B</p>
+<h3>症状</h3>
+<p>font-familyプロパティで、日本語などの多バイト文字用フォントとして名称に日本語文字を含まないフォントが含まれている場合でも、指定したフォントとは異なるフォントで多バイト文字が表示されることがある。</p>
+<p>※Safariは、名称に日本語文字を含むフォントを認識しません（<a href="b003.html" title="名称に日本語文字を含むフォントファミリの指定を無視する">Safariバグ003</a>）。</p>
 
-<h3>�Ꭶ</h3>
-<pre>&lt;p style=&quot;font-family:Times,'���˖��� Std R','Kozuka Mincho Std',serif;&quot;&gt;
-CSS���g�p����&lt;/p&gt;
+<h3>例示</h3>
+<pre>&lt;p style=&quot;font-family:Times,'小塚明朝 Std R','Kozuka Mincho Std',serif;&quot;&gt;
+CSSを使用する&lt;/p&gt;
 &lt;p style=&quot;font-family:Arial,Osaka;&quot;&gt;
-CSS���g�p����&lt;/p&gt;</pre>
+CSSを使用する&lt;/p&gt;</pre>
 <div class="example">
-<p style="font-family:Times,'���˖��� Std R','Kozuka Mincho Std',serif;">CSS���g�p����</p>
-<p style="font-family:Arial,Osaka;">CSS���g�p����</p>
+<p style="font-family:Times,'小塚明朝 Std R','Kozuka Mincho Std',serif;">CSSを使用する</p>
+<p style="font-family:Arial,Osaka;">CSSを使用する</p>
 </div>
-<p>2�̗Ⴊ����܂��B�O�҂͓��{�ꕶ�������˖����ł͂Ȃ��q���M�m�����ŁA��҂͓��{�ꕶ����Osaka�ł͂Ȃ��q���M�m�p�S�ŕ\������邻���ł��B</p>
+<p>2つの例があります。前者は日本語文字が小塚明朝ではなくヒラギノ明朝で、後者は日本語文字がOsakaではなくヒラギノ角ゴで表示されるそうです。</p>
 
-<h3>�C����</h3>
-<p>Safari1.0�ł��̌��ۂ��������邻���ł��B</p>
+<h3>修正状況</h3>
+<p>Safari1.0でこの現象が発生するそうです。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../safari.html">Safari�ڎ�</a>�^�o�O010</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../safari.html">Safari目次</a>／バグ010</div>
 </body>
 </html>

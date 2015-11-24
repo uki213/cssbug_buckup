@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css"><!--.c01{font-weight:bold;}--></style>
 <style type="text/css"><!--.c02{font-weight:bold;}--></style>
 <style type="text/css"><!--.c03{font-weight:bold;}--></style>
@@ -45,26 +45,26 @@
 <style type="text/css"><!--.c35{font-weight:bold;}--></style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O086</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ086</div>
 
-<h2>1�̕������ł̓X�^�C���V�[�g��31�܂ł����F�����Ȃ�</h2>
-<p>2003-04-27�C���B�Ꭶ�̕��@�~�X���C���B�Ǐ�̕ύX�͂���܂���B</p>
+<h2>1つの文書内ではスタイルシートを31個までしか認識しない</h2>
+<p>2003-04-27修正。例示の文法ミスを修正。症状の変更はありません。</p>
 
-<h3>�Ǐ�</h3>
-<p>1�̕������� <code>&lt;link rel=&quot;stylesheet&quot;&gt;</code> ��style�v�f�𕡐��u���ƁA�n�߂���31�ڂ܂ł͔F������邪32�ڈȍ~�Ɏw�肵���X�^�C�������f����Ȃ��B</p>
+<h3>症状</h3>
+<p>1つの文書内に <code>&lt;link rel=&quot;stylesheet&quot;&gt;</code> やstyle要素を複数置くと、始めから31個目までは認識されるが32個目以降に指定したスタイルが反映されない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>
 &lt;style type=&quot;text/css&quot;&gt;&lt;!--.c01{font-weight:bold;}--&gt;&lt;/style&gt;
 &lt;style type=&quot;text/css&quot;&gt;&lt;!--.c02{font-weight:bold;}--&gt;&lt;/style&gt;
 &lt;style type=&quot;text/css&quot;&gt;&lt;!--.c03{font-weight:bold;}--&gt;&lt;/style&gt;
-�c�c
+……
 &lt;style type=&quot;text/css&quot;&gt;&lt;!--.c34{font-weight:bold;}--&gt;&lt;/style&gt;
 &lt;style type=&quot;text/css&quot;&gt;&lt;!--.c35{font-weight:bold;}--&gt;&lt;/style&gt;
 
 &lt;span class=&quot;c01&quot;&gt;01&lt;/span&gt;, &lt;span class=&quot;c02&quot;&gt;02&lt;/span&gt;,
-�c�c
+……
 &lt;span class=&quot;c34&quot;&gt;34&lt;/span&gt;, &lt;span class=&quot;c35&quot;&gt;35&lt;/span&gt;
 </pre>
 <div class="example">
@@ -81,24 +81,24 @@
 <span class="c31">31</span>, <span class="c32">32</span>, <span class="c33">33</span>,
 <span class="c34">34</span>, <span class="c35">35</span>
 </div>
-<p>link�v�f�ŊO���X�^�C���V�[�g��1�A���̌��style�v�f��35�̃X�^�C���V�[�g���w�肵�Ă��܂��B</p>
+<p>link要素で外部スタイルシートを1つ、その後にstyle要素で35個のスタイルシートを指定しています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b086_1.png" alt="Moz1.0.2" width="408" height="71">Moz1.0.2�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b086_2.png" alt="WinIE6" width="403" height="67">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b086_1.png" alt="Moz1.0.2" width="408" height="71">Moz1.0.2での表示（標準モード）</p>
+<p><img src="img/b086_2.png" alt="WinIE6" width="403" height="67">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
+<h3>補足</h3>
 <ul>
-<li>���̌��ۂ́AWinIE�̎d�l��̌��E�ł���Ǝv���܂��B</li>
-<li>@import��p���ăC���|�[�g���ꂽ�X�^�C���V�[�g��31�����Ɋ܂܂�܂���B�C���|�[�g�����X�^�C���V�[�g�ƍ��킹��1�Ƃ��Đ�������悤�ł��B</li>
-<li><code>&lt;link rel=&quot;stylesheet&quot;&gt;</code> ��style�v�f�𗐔��������Ȃ��Ȃ��悤�ɂ��Ă��������i1�̕�������31���u�����_�Ō����I�ł͂���܂��񂪁j�B</li>
+<li>この現象は、WinIEの仕様上の限界であると思われます。</li>
+<li>@importを用いてインポートされたスタイルシートは31個制限に含まれません。インポートしたスタイルシートと合わせて1つとして数えられるようです。</li>
+<li><code>&lt;link rel=&quot;stylesheet&quot;&gt;</code> やstyle要素を乱発しすぎないないようにしてください（1つの文書内に31個も置く時点で現実的ではありませんが）。</li>
 </ul>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O086</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ086</div>
 </body>
 </html>

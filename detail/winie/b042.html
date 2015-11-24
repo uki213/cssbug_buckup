@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 div.a {
@@ -20,16 +20,16 @@ div.a {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O042</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ042</div>
 
-<h2>�w�i�Ɋւ���w�肪print���f�B�A�ɔ��f����Ȃ�<em>(IE5.5)</em></h2>
-<p><em>2002-10-12�C���BWinIE6.0�ł��o�O���������܂����B</em></p>
+<h2>背景に関する指定がprintメディアに反映されない<em>(IE5.5)</em></h2>
+<p><em>2002-10-12修正。WinIE6.0でもバグが発生しました。</em></p>
 
-<h3>�Ǐ�</h3>
-<p>background-repeat�v���p�e�B��repeat�ȊO�̒l���w�肷��ƁA�w�i���܂������������Ȃ��B</p>
+<h3>症状</h3>
+<p>background-repeatプロパティにrepeat以外の値を指定すると、背景がまったく印刷されない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 div.a {
     background-image: url(../img/img01.png);
@@ -39,31 +39,31 @@ div.a {
 }
 &lt;/style&gt;
 
-&lt;div class=&quot;a&quot;&gt;���[�����ɔw�i�摜����&lt;br&gt;�c�c&lt;/div&gt;</pre>
+&lt;div class=&quot;a&quot;&gt;左端中央に背景画像あり&lt;br&gt;……&lt;/div&gt;</pre>
 <div class="example">
-<div class="a">���[�����ɔw�i�摜����<br>
-���[�����ɔw�i�摜����<br>
-���[�����ɔw�i�摜����<br>
-���[�����ɔw�i�摜����<br>
-���[�����ɔw�i�摜����<br></div>
+<div class="a">左端中央に背景画像あり<br>
+左端中央に背景画像あり<br>
+左端中央に背景画像あり<br>
+左端中央に背景画像あり<br>
+左端中央に背景画像あり<br></div>
 </div>
-<p>�{�b�N�X�i�w�i�����F�j�̍��[�ɔw�i�摜������܂��B</p>
-<p>�y����z�C���O�̗Ꭶ�ł́Adiv�v�f�̍������m�ۂ��邽�߂�height�v���p�e�B���w�肵�Ă������߁A�o�O���������Ă��܂����B���݂̗Ꭶ�ł́A�����̎w�肪�폜����Ă��܂��B</p>
+<p>ボックス（背景が黄色）の左端に背景画像があります。</p>
+<p>【解説】修正前の例示では、div要素の高さを確保するためにheightプロパティを指定していたため、バグが回避されていました。現在の例示では、高さの指定が削除されています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
-<p>WinIE�́u�w�i�̐F�ƃC���[�W���������v�Ƀ`�F�b�N����ꂽ��Ԃł��B</p>
+<h3>スクリーンショット</h3>
+<p>WinIEは「背景の色とイメージを印刷する」にチェックを入れた状態です。</p>
 <div class="shot">
-<p><img src="img/b042_1.png" alt="Moz1.0.1" width="191" height="113">Moz1.0.1�ł̕\���i����v���r���[�j</p>
-<p><img src="img/b042_2.png" alt="WinIE6" width="181" height="105">WinIE6.0�ł̕\���i����v���r���[�j</p>
+<p><img src="img/b042_1.png" alt="Moz1.0.1" width="191" height="113">Moz1.0.1での表示（印刷プレビュー）</p>
+<p><img src="img/b042_2.png" alt="WinIE6" width="181" height="105">WinIE6.0での表示（印刷プレビュー）</p>
 </div>
 
-<h3>�⑫</h3>
-<p><del>���ۂɂ��̃y�[�W��������Ă݂��Ƃ���AWinIE6.0�ł͔w�i�摜���������܂����B</del>WinIE6.0�ł͔w�i�摜������ɔ��f����܂���ł����B�Ȃ��A�w�i�F�͈���ɔ��f����܂����B</p>
-<p>�w�i���w�肳�ꂽ�v�f�̕��iwidth�v���p�e�B�j�܂��͍����iheight�v���p�e�B�j�𖾎�����Ɣw�i�摜���������邻���ł��B</p>
+<h3>補足</h3>
+<p><del>実際にこのページを印刷してみたところ、WinIE6.0では背景画像も印刷されました。</del>WinIE6.0では背景画像が印刷に反映されませんでした。なお、背景色は印刷に反映されました。</p>
+<p>背景が指定された要素の幅（widthプロパティ）または高さ（heightプロパティ）を明示すると背景画像が印刷されるそうです。</p>
 
-<h3>�C����</h3>
-<p><del>WinIE6.0�ł͏C������Ă���悤�ł��B</del>WinIE6.0�ł͕s��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p><del>WinIE6.0では修正されているようです。</del>WinIE6.0では不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O042</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ042</div>
 </body>
 </html>

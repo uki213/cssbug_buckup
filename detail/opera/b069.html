@@ -2,38 +2,38 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet alternate" type="text/css" href="b069.css" title="���">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet alternate" type="text/css" href="b069.css" title="代替">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Opera CSS�o�O���X�g</title>
+<title>Opera CSSバグリスト</title>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O069</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ069</div>
 
-<h2>rel=&quot;alternate stylesheet&quot; �łȂ���Α�փX�^�C���V�[�g�ɂȂ�Ȃ�<em>(7.x)</em></h2>
+<h2>rel=&quot;alternate stylesheet&quot; でなければ代替スタイルシートにならない<em>(7.x)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>link�v�f�ő�փX�^�C���V�[�g���w�肷��Ƃ��Arel�����̒l���ualternate stylesheet�v�Ǝw�肵�Ȃ���Α�փX�^�C���V�[�g�Ƃ��ĔF������Ȃ��B�܂�A�ustylesheet alternate�v�Ƃ����l���w�肵���ꍇ�͑�փX�^�C���V�[�g�Ƃ��Ĉ����Ȃ��B</p>
+<h3>症状</h3>
+<p>link要素で代替スタイルシートを指定するとき、rel属性の値を「alternate stylesheet」と指定しなければ代替スタイルシートとして認識されない。つまり、「stylesheet alternate」という値を指定した場合は代替スタイルシートとして扱われない。</p>
 
-<h3>�Ꭶ</h3>
-<pre>&lt;link rel=&quot;stylesheet alternate&quot; href=&quot;b069.css&quot; title=&quot;���&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;normal.css&quot; title=&quot;�W��&quot;&gt;</pre>
-<p>�ub069.css�v�̓��e�F</p>
+<h3>例示</h3>
+<pre>&lt;link rel=&quot;stylesheet alternate&quot; href=&quot;b069.css&quot; title=&quot;代替&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;normal.css&quot; title=&quot;標準&quot;&gt;</pre>
+<p>「b069.css」の内容：</p>
 <pre>h1 {
   color: blue;
 }</pre>
-<p>b069.css�͑�փX�^�C���V�[�g�Ƃ��Ĉ�����͂��ł��B�������AOpera7.21�ł��̕�����\������Ǝn�߂̏�Ԃł�b069.css�̓��e�������K�p����Anormal.css�̓��e�͓K�p����܂���B</p>
+<p>b069.cssは代替スタイルシートとして扱われるはずです。しかし、Opera7.21でこの文書を表示すると始めの状態ではb069.cssの内容だけが適用され、normal.cssの内容は適用されません。</p>
 
-<h3>�⑫</h3>
-<p>�Œ�X�^�C���V�[�g�܂���style�v�f���܂ޕ����́A�Œ�V�[�g�E�D��V�[�g�E��փV�[�g�Estyle�v�f�̂��ׂĂ�K�p������Ԃŕ\������܂��B����A�Œ�X�^�C���V�[�g�܂���style�v�f���܂܂Ȃ������́A�������ōŏ��Ɏw�肵���X�^�C���V�[�g������K�p������Ԃŕ\������܂��B</p>
+<h3>補足</h3>
+<p>固定スタイルシートまたはstyle要素を含む文書は、固定シート・優先シート・代替シート・style要素のすべてを適用した状態で表示されます。一方、固定スタイルシートまたはstyle要素を含まない文書は、文書内で最初に指定したスタイルシートだけを適用した状態で表示されます。</p>
 
-<h3>�C����</h3>
-<p>Opera7.21�W�����[�h�AOpera7.21�݊����[�h�ŕs��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>Opera7.21標準モード、Opera7.21互換モードで不具合の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O069</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ069</div>
 </body>
 </html>

@@ -2,12 +2,12 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 p.ex:first-letter {
@@ -20,15 +20,15 @@ li {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O080</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ080</div>
 
-<h2>�[���v�f�̌�ɑ���li�v�f�̓��e�����{�b�N�X�𖳎����ĕ\�������<em>(IE6)</em></h2>
+<h2>擬似要素の後に続くli要素の内容物がボックスを無視して表示される<em>(IE6)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�[���v�f���܂ޗv�f�̒����ul, ol�v�f�����݂���Ƃ��A�����̃��X�g�A�C�e���̓��e�����e�iul, ol�j�v�f�̃}�[�W���𖳎����ĕ\�������B�������A�ŏ��Ɍ����[���v�f���܂ޗv�f�ɑ������X�g�ł͋N����Ȃ��B</p>
+<h3>症状</h3>
+<p>擬似要素を含む要素の直後にul, ol要素が存在するとき、それらのリストアイテムの内容物が親（ul, ol）要素のマージンを無視して表示される。ただし、最初に現れる擬似要素を含む要素に続くリストでは起こらない。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 p.ex:first-letter {
   color: #ff0000;
@@ -38,44 +38,44 @@ li {
 }
 &lt;/style&gt;
 
-&lt;p class=&quot;ex&quot;&gt;�ŏ��͐ԐF&lt;/p&gt;
-&lt;ul&gt;&lt;li&gt;���X�g�A�C�e��&lt;/li&gt;&lt;/ul&gt;
-&lt;p class=&quot;ex&quot;&gt;�ŏ��͐ԐF&lt;/p&gt;
-&lt;ul&gt;&lt;li&gt;���X�g�A�C�e��&lt;/li&gt;&lt;/ul&gt;</pre>
+&lt;p class=&quot;ex&quot;&gt;最初は赤色&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;リストアイテム&lt;/li&gt;&lt;/ul&gt;
+&lt;p class=&quot;ex&quot;&gt;最初は赤色&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;リストアイテム&lt;/li&gt;&lt;/ul&gt;</pre>
 <div class="example">
-<p class="ex">�ŏ��͐ԐF</p>
-<ul><li>���X�g�A�C�e��</li></ul>
-<p class="ex">�ŏ��͐ԐF</p>
-<ul><li>���X�g�A�C�e��</li></ul>
+<p class="ex">最初は赤色</p>
+<ul><li>リストアイテム</li></ul>
+<p class="ex">最初は赤色</p>
+<ul><li>リストアイテム</li></ul>
 </div>
-<p>�{�[�_�[��ݒu���āAli�v�f�̃{�b�N�X�̏�Ԃ��킩��悤�ɂ��Ă��܂��B</p>
+<p>ボーダーを設置して、li要素のボックスの状態がわかるようにしています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b080_1.png" alt="Moz1.0.1" width="172" height="176">Moz1.0.1�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b080_2.png" alt="WinIE6" width="181" height="186">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b080_1.png" alt="Moz1.0.1" width="172" height="176">Moz1.0.1での表示（標準モード）</p>
+<p><img src="img/b080_2.png" alt="WinIE6" width="181" height="186">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>ul, ol�v�f�Ƀ{�[�_�[��ݒ肷��Ƃ��̃o�O��������邱�Ƃ��ł��܂��B�������Aborder-style��none��hidden�ɂ����ꍇ�͉���ł��܂���B</p>
-<pre>&lt;p class=&quot;ex&quot;&gt;�ŏ��͐ԐF&lt;/p&gt;
-&lt;ul&gt;&lt;li&gt;���X�g�A�C�e��&lt;/li&gt;&lt;/ul&gt;
-&lt;p class=&quot;ex&quot;&gt;�ŏ��͐ԐF&lt;/p&gt;
+<h3>補足</h3>
+<p>ul, ol要素にボーダーを設定するとこのバグを回避することができます。ただし、border-styleをnoneやhiddenにした場合は回避できません。</p>
+<pre>&lt;p class=&quot;ex&quot;&gt;最初は赤色&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;リストアイテム&lt;/li&gt;&lt;/ul&gt;
+&lt;p class=&quot;ex&quot;&gt;最初は赤色&lt;/p&gt;
 &lt;ul style=&quot;<em>border:1px solid #ff00ff;</em>&quot;&gt;
-&lt;li&gt;���X�g�A�C�e��&lt;/li&gt;&lt;/ul&gt;</pre>
+&lt;li&gt;リストアイテム&lt;/li&gt;&lt;/ul&gt;</pre>
 <div class="example">
-<p class="ex">�ŏ��͐ԐF</p>
-<ul><li>���X�g�A�C�e��</li></ul>
-<p class="ex">�ŏ��͐ԐF</p>
+<p class="ex">最初は赤色</p>
+<ul><li>リストアイテム</li></ul>
+<p class="ex">最初は赤色</p>
 <ul style="border:1px solid #ff00ff;">
-<li>���X�g�A�C�e��</li></ul>
+<li>リストアイテム</li></ul>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div style="margin-left:-50px;">&nbsp;<!-- ����div�v�f��WinIE�o�O025�΍�ibody�v�f�̊O�ɂ��郊�X�g�}�[�N��\�������邽�߁j�Ƃ��Ēu����Ă��܂� --></div>
+<div style="margin-left:-50px;">&nbsp;<!-- このdiv要素はWinIEバグ025対策（body要素の外にあるリストマークを表示させるため）として置かれています --></div>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O080</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ080</div>
 </body>
 </html>

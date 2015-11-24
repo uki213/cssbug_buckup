@@ -2,37 +2,37 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="b016.css" title="��p">
-<link rel="alternate stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="b016.css" title="専用">
+<link rel="alternate stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Opera CSS�o�O���X�g</title>
+<title>Opera CSSバグリスト</title>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O016</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ016</div>
 
-<h2>�s����@charset�̋L�q������X�^�C���V�[�g�̑S�̂����������<em>(6.0/7.0)</em></h2>
+<h2>不正な@charsetの記述があるスタイルシートの全体が無視される<em>(6.0/7.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�{���A@charset�錾���������Ȃ��L�q�̏ꍇ�͂��̕����݂̂𖳎����邱�ƂɂȂ��Ă���B������Opera�ł͕s���ȋL�q�̂���X�^�C���V�[�g�S�̂���������Ă��܂��B</p>
+<h3>症状</h3>
+<p>本来、@charset宣言が正しくない記述の場合はその部分のみを無視することになっている。しかしOperaでは不正な記述のあるスタイルシート全体が無視されてしまう。</p>
 
-<h3>�Ꭶ</h3>
-<p>���̕����ɓK�p���Ă���X�^�C���V�[�g����@charset�錾�F</p>
+<h3>例示</h3>
+<p>この文書に適用しているスタイルシート内の@charset宣言：</p>
 <pre>@charset Shift_JIS;</pre>
-<p>���̋L�q�́A�����R�[�h�����������񂪃N�H�[�e�[�V�����}�[�N�Ŋ����Ă��Ȃ����߁A���@�ᔽ�ł��B�������A���̏ꍇ�͐錾�����̃Z�~�R�����܂ł����������̂ŁA�ȍ~�̃X�^�C���w��̋L�q�͔��f�����͂��ł��B</p>
+<p>この記述は、文字コードを示す文字列がクォーテーションマークで括られていないため、文法違反です。ただし、この場合は宣言末尾のセミコロンまでが無視されるので、以降のスタイル指定の記述は反映されるはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b016_1.png" alt="Moz1.0" width="200" height="128">Moz1.0�ł̕\��</p>
-<p><img src="img/b016_2.png" alt="Op6" width="187" height="130">Opera6.05�ł̕\��</p>
+<p><img src="img/b016_1.png" alt="Moz1.0" width="200" height="128">Moz1.0での表示</p>
+<p><img src="img/b016_2.png" alt="Op6" width="187" height="130">Opera6.05での表示</p>
 </div>
 
-<h3>�C����</h3>
-<p>Opera6.05/7.0�ł͕s��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>Opera6.05/7.0では不具合の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O016</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ016</div>
 </body>
 </html>

@@ -1,10 +1,10 @@
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <script type="text/javascript">
 <!--
 function list() {
@@ -20,15 +20,15 @@ function list() {
 </script>
 </head>
 <body onload="list()">
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O146</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ146</div>
 
-<h2>���m�̗v�f�͋�v�f�Ƃ��Ĉ���</h2>
+<h2>未知の要素は空要素として扱う</h2>
 
-<h3>�Ǐ�</h3>
-<p>WinIE�́A���m�̗v�f����v�f�Ƃ��Ĉ����B�������A�J�n�^�O�ƏI���^�O�����ꂼ��ʂ̋�v�f�ɂȂ�B</p>
+<h3>症状</h3>
+<p>WinIEは、未知の要素を空要素として扱う。ただし、開始タグと終了タグがそれぞれ個別の空要素になる。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;script type=&quot;text/javascript&quot;&gt;
 function list() {
   var src = document.getElementById('source');
@@ -47,9 +47,9 @@ function list() {
 <p id="source"><foo>1</foo>2<bar>3</bar></p>
 <ol id="nodes"></ol>
 </div>
-<p>HTML�Œ�`����Ă��Ȃ��v�ffoo��bar���܂�p�v�f�̎q�m�[�h�̃��X�g��ol�v�f�ɏ����o���Ă��܂��B</p>
+<p>HTMLで定義されていない要素fooとbarを含むp要素の子ノードのリストをol要素に書き出しています。</p>
 
-<h3>���s����</h3>
+<h3>実行結果</h3>
 <p>Netscape7.1</p>
 <blockquote><ol>
 <li>FOO</li>
@@ -67,12 +67,12 @@ function list() {
 <li>/BAR</li>
 </ol></blockquote>
 
-<h3>�⑫</h3>
-<p>abbr�v�f��rb�v�f��W3C��HTML��XHTML�̊����Œ�`����Ă���v�f�ł����AWinIE�ł͖��m�̗v�f�Ƃ��Ĉ����܂��B��v�f�Ƃ��Ĉ����錋�ʁArb�v�f�ɔw�i�Ȃǂ̃X�^�C���������Ȃ����ۂ�abbr�v�f��title�����̒l���c�[���`�b�v�ŕ\������Ȃ����ۂȂǂ��������܂��B</p>
+<h3>補足</h3>
+<p>abbr要素とrb要素はW3CのHTMLやXHTMLの勧告で定義されている要素ですが、WinIEでは未知の要素として扱われます。空要素として扱われる結果、rb要素に背景などのスタイルが効かない現象やabbr要素のtitle属性の値がツールチップで表示されない現象などが発生します。</p>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ŕs��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0で不具合の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O146</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ146</div>
 </body>
 </html>

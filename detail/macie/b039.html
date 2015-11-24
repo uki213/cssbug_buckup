@@ -2,47 +2,47 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../macie.html" title="MacIE�ڎ�">
-<title>Internet Explorer (MacOS) CSS�o�O���X�g</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../macie.html" title="MacIE目次">
+<title>Internet Explorer (MacOS) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (MacOS) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O039</div>
+<h1>Internet Explorer (MacOS) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ039</div>
 
-<h2>�t���[�g��text-align:center;�w�肪�����Ȃ�<em>(5.x)</em></h2>
+<h2>フロートでtext-align:center;指定が効かない<em>(5.x)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�ŏ��̎q�v�f�������C�����C���{�b�N�X�ɂȂ��Ă���v�f���t���[�g�ɂ���ƁA <code>text-align: center;</code> �̎w�肪�����Ȃ��Ȃ�B</p>
+<h3>症状</h3>
+<p>最初の子要素が匿名インラインボックスになっている要素をフロートにすると、 <code>text-align: center;</code> の指定が効かなくなる。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;float:left; width:10em;
-  text-align:center; border:2px solid blue;&quot;&gt;����&lt;/div&gt;</pre>
+  text-align:center; border:2px solid blue;&quot;&gt;中央&lt;/div&gt;</pre>
 <div class="example">
-<div style="float:left; width:10em; text-align:center; border:2px solid blue;">����</div>
+<div style="float:left; width:10em; text-align:center; border:2px solid blue;">中央</div>
 <br style="clear:left;">
 </div>
-<p>������u�����v�̓C�����C���v�f�ɕ�܂���Ă��Ȃ��̂œ����C�����C���{�b�N�X���ݒu����܂��B</p>
+<p>文字列「中央」はインライン要素に包含されていないので匿名インラインボックスが設置されます。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b038_1.png" alt="N7" width="176" height="37">N7.02�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b038_1.png" alt="N7" width="176" height="37">N7.02での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�t���[�g�v�f�̍ŏ��̎q�v�f���C�����C���v�f�̏ꍇ�A���̃o�O�͔������܂���B</p>
+<h3>補足</h3>
+<p>フロート要素の最初の子要素がインライン要素の場合、このバグは発生しません。</p>
 <pre>&lt;div style=&quot;float:left; width:10em; text-align:center;
-  border:2px solid blue;&quot;&gt;<em>&lt;span&gt;</em>����<em>&lt;/span&gt;</em>&lt;/div&gt;</pre>
+  border:2px solid blue;&quot;&gt;<em>&lt;span&gt;</em>中央<em>&lt;/span&gt;</em>&lt;/div&gt;</pre>
 <div class="example">
-<div style="float:left; width:10em; text-align:center; border:2px solid blue;"><span>����</span></div>
+<div style="float:left; width:10em; text-align:center; border:2px solid blue;"><span>中央</span></div>
 <br style="clear:left;">
 </div>
 
-<h3>�C����</h3>
-<p>MacIE5.1�`5.2�ŕs��̔������m�F����Ă��܂��B</p>
+<h3>修正状況</h3>
+<p>MacIE5.1～5.2で不具合の発生が確認されています。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../macie.html">MacIE�ڎ�</a>�^�o�O039</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../macie.html">MacIE目次</a>／バグ039</div>
 </body>
 </html>

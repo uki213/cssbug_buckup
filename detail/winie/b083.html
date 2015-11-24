@@ -2,41 +2,41 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O083</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ083</div>
 
-<h2>�e�v�f������p�v�f�̃}�[�W�������������<em>(IE5)</em></h2>
+<h2>親要素を持つp要素のマージンが無視される<em>(IE5)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�ibody�v�f��艺�ʂ́j�e�v�f������p�v�f�̏㉺�}�[�W�������������B</p>
+<h3>症状</h3>
+<p>（body要素より下位の）親要素を持つp要素の上下マージンが無視される。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;border:2px solid blue;&quot;&gt;
-&lt;p style=&quot;margin:1.5em 0;&quot;&gt;�����}�[�W���́H&lt;/p&gt;
+&lt;p style=&quot;margin:1.5em 0;&quot;&gt;↑↓マージンは？&lt;/p&gt;
 &lt;/div&gt;</pre>
 <div class="example">
 <div style="border:2px solid blue;">
-<p style="margin:1.5em 0;">�����}�[�W���́H</p>
+<p style="margin:1.5em 0;">↑↓マージンは？</p>
 </div>
 </div>
-<p>�����{�[�_�[�ƃe�L�X�g�̊ԂɃ}�[�W����u���Ă��܂��B</p>
+<p>実線ボーダーとテキストの間にマージンを置いています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b083_1.png" alt="Moz1.0.2" width="173" height="83">Moz1.0.2�ł̕\���i�W�����[�h�j�j</p>
+<p><img src="img/b083_1.png" alt="Moz1.0.2" width="173" height="83">Moz1.0.2での表示（標準モード））</p>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂���ł����iWinIE5.5�ȏ�ł͔������Ȃ������ł��j�B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されませんでした（WinIE5.5以上では発生しないそうです）。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O083</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ083</div>
 </body>
 </html>

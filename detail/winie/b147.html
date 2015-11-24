@@ -2,11 +2,11 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 p.f {
@@ -24,18 +24,18 @@ div {
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O147</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ147</div>
 
-<h2>clear���w�肵���t���[�g�̏㉺�ɋ�s���ł���<em>(5.x/6.0)</em></h2>
+<h2>clearを指定したフロートの上下に空行ができる<em>(5.x/6.0)</em></h2>
 <ul>
-<li>2004-03-07�C���B���@��ǉ��B</li>
+<li>2004-03-07修正。回避法を追加。</li>
 </ul>
 
-<h3>�Ǐ�</h3>
-<p>�u���b�N���x���v�f�̎q�v�f��clear�v���p�e�B��p���ĉ�荞�݂�}�������t���[�g������Ƃ��A�u���b�N���x���v�f�̏㉺�ɋ�s����������ꍇ������B</p>
+<h3>症状</h3>
+<p>ブロックレベル要素の子要素にclearプロパティを用いて回り込みを抑制したフロートがあるとき、ブロックレベル要素の上下に空行が発生する場合がある。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 p.f {
   float: left;
@@ -49,50 +49,50 @@ div {
 }
 &lt;/style&gt;
 
-&lt;p class=&quot;f&quot;&gt;�t���[�g&lt;/p&gt;
-&lt;div&gt;&lt;p class=&quot;f&quot;&gt;�t���[�g&lt;/p&gt;&lt;/div&gt;
-&lt;p class=&quot;f&quot;&gt;�t���[�g&lt;/p&gt;</pre>
+&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;
+&lt;div&gt;&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;&lt;/div&gt;
+&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;</pre>
 <div>
-<p class="f">�t���[�g</p>
-<div><p class="f">�t���[�g</p></div>
-<p class="f">�t���[�g</p>
+<p class="f">フロート</p>
+<div><p class="f">フロート</p></div>
+<p class="f">フロート</p>
 </div>
-<p style="clear:left;">p�v�f���t���[�g�ɂ��Ă��܂��B�������Ap�v�f��div�v�f�ɏ㉺�}�[�W���͂���܂���B</p>
+<p style="clear:left;">p要素をフロートにしています。ただし、p要素やdiv要素に上下マージンはありません。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b147_1.png" alt="Ns7.1">Netscape7.1�W�����[�h</p>
-<p><img src="img/b147_2.png" alt="WinIE6.0">WinIE6.0�W�����[�h</p>
+<p><img src="img/b147_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b147_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�s����������Ă���v�f�̐e�v�f��li�v�f�̏ꍇ��{�[�_�[������{�b�N�X�ł���ꍇ�ɂ��̕s��͔������܂���B</p>
+<h3>補足</h3>
+<p>不具合が発生している要素の親要素がli要素の場合やボーダーがあるボックスである場合にこの不具合は発生しません。</p>
 <pre>&lt;ul&gt;&lt;li&gt;
-&lt;p class=&quot;f&quot;&gt;�t���[�g&lt;/p&gt;
-&lt;div&gt;&lt;p class=&quot;f&quot;&gt;�t���[�g&lt;/p&gt;&lt;/div&gt;
-&lt;p class=&quot;f&quot;&gt;�t���[�g&lt;/p&gt;
+&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;
+&lt;div&gt;&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;&lt;/div&gt;
+&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;
 &lt;/li&gt;&lt;/ul&gt;</pre>
 <ul><li>
-<p class="f">�t���[�g</p>
-<div><p class="f">�t���[�g</p></div>
-<p class="f">�t���[�g</p>
+<p class="f">フロート</p>
+<div><p class="f">フロート</p></div>
+<p class="f">フロート</p>
 </li></ul>
-<p style="clear:left;"><ins datetime="2004-03-07T00:00:00+09:00">�s����������Ă���v�f�̐e�v�f�ɏ�p�f�B���O���w�肷�邱�Ƃł��̕s���������邱�Ƃ��ł��܂��B</ins></p>
-<pre>&lt;p class=&quot;f&quot;&gt;�t���[�g&lt;/p&gt;
+<p style="clear:left;"><ins datetime="2004-03-07T00:00:00+09:00">不具合が発生している要素の親要素に上パディングを指定することでこの不具合を回避することができます。</ins></p>
+<pre>&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;
 &lt;div style=&quot;<em>padding-top:1px;</em>&quot;&gt;
-&lt;p class=&quot;f&quot;&gt;�t���[�g&lt;/p&gt;&lt;/div&gt;
-&lt;p class=&quot;f&quot;&gt;�t���[�g&lt;/p&gt;</pre>
+&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;&lt;/div&gt;
+&lt;p class=&quot;f&quot;&gt;フロート&lt;/p&gt;</pre>
 <div>
-<p class="f">�t���[�g</p>
-<div style="padding-top:1px;"><p class="f">�t���[�g</p></div>
-<p class="f">�t���[�g</p>
+<p class="f">フロート</p>
+<div style="padding-top:1px;"><p class="f">フロート</p></div>
+<p class="f">フロート</p>
 </div>
 
-<h3 style="clear:left;">�C����</h3>
+<h3 style="clear:left;">修正状況</h3>
 <ul>
-<li>WinIE6.0�ŕs��̔������m�F���܂����B</li>
+<li>WinIE6.0で不具合の発生を確認しました。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O147</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ147</div>
 </body>
 </html>

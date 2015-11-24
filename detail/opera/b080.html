@@ -2,11 +2,11 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
-<title>Opera CSS�o�O���X�g</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
 <style type="text/css">
 <!--
 .pr {
@@ -30,15 +30,15 @@
 </style>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O080</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ080</div>
 
-<h2>border-box��bottom�̎Z�o���������Ȃ�<em>(7.x)</em></h2>
+<h2>border-boxでbottomの算出が正しくない<em>(7.x)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�{�[�_�[�̈��p�f�B���O�̈�̕���0���傫���{�b�N�X��box-sizing�v���p�e�B�̒l��border-box�ɐݒ肵���ꍇ�Abottom�v���p�e�B�̐U�镑�����������Ȃ��B�{�b�N�X�̉��ӂ̈ʒu���A�{������ׂ��ʒu���������ɒu����Ă��܂��B</p>
+<h3>症状</h3>
+<p>ボーダー領域やパディング領域の幅が0より大きいボックスのbox-sizingプロパティの値をborder-boxに設定した場合、bottomプロパティの振る舞いが正しくない。ボックスの下辺の位置が、本来あるべき位置よりも内側に置かれてしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 .pr {
   position: relative;
@@ -73,18 +73,18 @@
 <div class="ch" style="box-sizing:border-box;">B</div>
 </div>
 </div>
-<p>box-sizing�v���p�e�B�i�����l��content-box�j�ɂ��ꂼ��̒l���w�肵���ꍇ�̔�r�ł��B���ׂĂ̏ꍇ�Őe�v�f�̔w�i�i���F�̗̈�j�͌����Ȃ��͂��ł��B</p>
+<p>box-sizingプロパティ（初期値はcontent-box）にそれぞれの値を指定した場合の比較です。すべての場合で親要素の背景（黄色の領域）は見えないはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b080_1.png" alt="Op7.2">Opera7.23�W�����[�h</p>
+<p><img src="img/b080_1.png" alt="Op7.2">Opera7.23標準モード</p>
 </div>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>Opera7.23�ŕs��̔������m�F���܂����B</li>
+<li>Opera7.23で不具合の発生を確認しました。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O080</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ080</div>
 </body>
 </html>

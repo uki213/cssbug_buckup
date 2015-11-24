@@ -2,61 +2,61 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body style="position:relative; z-index:0;">
 <div style="padding:1em; background:#f00;">
 <div style="padding:1em; background:#0f0;">
 <div style="padding:1em; background:#00f;">
-�ԁE�΁E��
+赤・緑・青
 </div>
 </div>
 </div>
 
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O162</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ162</div>
 
-<h2>body��z-index���w�肷��Ǝq���v�f�̔w�i�w�肪���������<em>(5.x/6.0)</em></h2>
+<h2>bodyにz-indexを指定すると子孫要素の背景指定が無視される<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>body�v�f��z-index�v���p�e�B���w�肵���y�[�W�ł́Abody�v�f�̑��v�f���艺�ʂ̗v�f�̔w�i�w�肪��������Abody�v�f��body�v�f�̎q�v�f�̔w�i�œh��Ԃ���Ă��܂��B</p>
+<h3>症状</h3>
+<p>body要素にz-indexプロパティを指定したページでは、body要素の孫要素やより下位の要素の背景指定が無視され、body要素やbody要素の子要素の背景で塗りつぶされてしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;body style=&quot;position:relative; z-index:0;&quot;&gt;
 &lt;div style=&quot;padding:1em; background:#f00;&quot;&gt;
 &lt;div style=&quot;padding:1em; background:#0f0;&quot;&gt;
 &lt;div style=&quot;padding:1em; background:#00f;&quot;&gt;
-�ԁE�΁E��
+赤・緑・青
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</pre>
-<p>�s���ɂ��Ꭶ�̓y�[�W�̐擪�ɂ���܂��B�ԁA���΁A�̔w�i���O�����珇�ɕ\������Ă���͂��ł��B</p>
+<p>都合により例示はページの先頭にあります。赤、黄緑、青の背景が外側から順に表示されているはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b162_1.png" alt="Ns7.1">Netscape7.1�W�����[�h</p>
-<p><img src="img/b162_2.png" alt="WinIE6.0">WinIE6.0�W�����[�h</p>
+<p><img src="img/b162_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b162_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�s��̔�������v�f��width�v���p�e�B��height�v���p�e�B���w�肷�邱�Ƃŕs���������邱�Ƃ��ł��܂��B</p>
+<h3>補足</h3>
+<p>不具合の発生する要素にwidthプロパティやheightプロパティを指定することで不具合を回避することができます。</p>
 <pre>&lt;div style=&quot;padding:1em; background:#f00; <em>width:90%;</em>&quot;&gt;
 &lt;div style=&quot;padding:1em; background:#0f0;&quot;&gt;
 &lt;div style=&quot;padding:1em; background:#00f;&quot;&gt;
-�ԁE�΁E��
+赤・緑・青
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</pre>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>WinIE6.0�̕W�����[�h�ƌ݊����[�h�ŕs��̔������m�F���܂����B</li>
+<li>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O162</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ162</div>
 </body>
 </html>

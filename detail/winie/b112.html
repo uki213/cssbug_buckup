@@ -2,24 +2,24 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O112</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ112</div>
 
-<h2>select�v�f�ł�z-index��border�Ȃǂ̃v���p�e�B�𖳎�����<em>(5.x/6.0)</em></h2>
-<p>2003-09-03�C���B�⑫���C���B</p>
+<h2>select要素ではz-indexやborderなどのプロパティを無視する<em>(5.x/6.0)</em></h2>
+<p>2003-09-03修正。補足を修正。</p>
 
-<h3>�Ǐ�</h3>
-<p>select�v�f�ł�z-index��border�ȂǁA�ق��̃t�H�[���R���g���[���v�f�Ŏg�p�\�ȃv���p�e�B�̈ꕔ�����������B</p>
+<h3>症状</h3>
+<p>select要素ではz-indexやborderなど、ほかのフォームコントロール要素で使用可能なプロパティの一部が無視される。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;position:relative;&quot;&gt;
 &lt;form style=&quot;position:relative; z-index:1;&quot;&gt;
 &lt;div&gt;
@@ -47,31 +47,31 @@
 </form>
 <div style="position:absolute; z-index:2; left:3em; top:0; width:4em; height:4em; background:aqua;">div</div>
 </div>
-<p>border�v���p�e�B��z-index�v���p�e�B�ɑ΂��鋓���̈Ⴂ���Aselect�v�f��input�v�f�ƂŔ�ׂĂ��܂��B�w�i����F��div�v�f��form�v�f�Ƃ��̎q���v�f�ł���t�H�[���R���g���[���𕢂��悤�ɕ\�������͂��ł��B</p>
+<p>borderプロパティとz-indexプロパティに対する挙動の違いを、select要素とinput要素とで比べています。背景が空色のdiv要素はform要素とその子孫要素であるフォームコントロールを覆うように表示されるはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b112_1.png" alt="N7" width="159" height="71">N7.02�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b112_2.png" alt="WinIE6" width="161" height="92">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b112_1.png" alt="N7" width="159" height="71">N7.02での表示（標準モード）</p>
+<p><img src="img/b112_2.png" alt="WinIE6" width="161" height="92">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�ȉ��ɋ�����v���p�e�B�Ȃǂ����̃o�O�ɊY�����܂��B</p>
+<h3>補足</h3>
+<p>以下に挙げるプロパティなどがこのバグに該当します。</p>
 <ul>
-<li>�{�[�_�[�֘A�̃v���p�e�B</li>
-<li>z-index�v���p�e�B</li>
-<li>text-align�v���p�e�B</li>
-<li>line-height�v���p�e�B</li>
-<li>�w�i�摜�֘A�̃v���p�e�B</li>
-<li>text-indent�v���p�e�B</li>
-<li>letter-spacing�v���p�e�B</li>
-<li><ins datetime="2003-09-03T00:00:00+09:00">�X�N���[���o�[�֘A�̃v���p�e�B�iWinIE�Ǝ��g����scrollbar-face-color�Ȃǁj</ins></li>
+<li>ボーダー関連のプロパティ</li>
+<li>z-indexプロパティ</li>
+<li>text-alignプロパティ</li>
+<li>line-heightプロパティ</li>
+<li>背景画像関連のプロパティ</li>
+<li>text-indentプロパティ</li>
+<li>letter-spacingプロパティ</li>
+<li><ins datetime="2003-09-03T00:00:00+09:00">スクロールバー関連のプロパティ（WinIE独自拡張のscrollbar-face-colorなど）</ins></li>
 </ul>
-<p>select�v�f�̃��X�g�{�b�N�X��Windows�̃R���g���[����\�����Ă���悤�ł��B���̂��߁Az-index�v���p�e�B���T�|�[�g���Ă��Ȃ��̂�WinIE�̎d�l�ł��B</p>
+<p>select要素のリストボックスはWindowsのコントロールを表示しているようです。このため、z-indexプロパティをサポートしていないのはWinIEの仕様です。</p>
 
-<h3>�C����</h3>
-<p>WinIE5.5�AWinIE6.0�W�����[�h�AWinIE6.0�݊����[�h�ł��̌��ۂ̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE5.5、WinIE6.0標準モード、WinIE6.0互換モードでこの現象の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O112</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ112</div>
 </body>
 </html>

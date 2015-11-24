@@ -2,41 +2,41 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O078</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ078</div>
 
-<h2>�������p�p�����̕�����ɍ��킹�ă{�b�N�X�̕��������I�ɏC�������<em>(IE6)</em></h2>
+<h2>長い半角英数字の文字列に合わせてボックスの幅が強制的に修正される<em>(IE6)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p><code>overflow: visible;</code> ���w�肳�ꂽ�v�f���Ƀ{�b�N�X�����͂ݏo���قǒ������p�p�������񂪊܂܂�Ă���ƁA�{�b�N�X�������̕�������܂ރT�C�Y�ɏC������Ă��܂��B</p>
+<h3>症状</h3>
+<p><code>overflow: visible;</code> が指定された要素内にボックス幅をはみ出すほど長い半角英数文字列が含まれていると、ボックス幅がその文字列を含むサイズに修正されてしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;p style=&quot;width:3em; border:2px dashed red;&quot;&gt;ABCDEabcde&lt;/p&gt;</pre>
 <div class="example">
 <p style="width:3em; border:2px dashed red;">ABCDEabcde</p>
 </div>
-<p>p�v�f�̕���3�������ɂ��Ă��܂��B�擪�ɋ󔒂�����̂́A�O���X�^�C���V�[�g�� <code>text-indent:1em;</code> ���w�肵�Ă��邽�߂ł��B</p>
+<p>p要素の幅を3文字分にしています。先頭に空白があるのは、外部スタイルシートで <code>text-indent:1em;</code> を指定しているためです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b078_1.png" alt="Moz1.0.1" width="119" height="69">Moz1.0.1�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b078_2.png" alt="WinIE6" width="122" height="33">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b078_1.png" alt="Moz1.0.1" width="119" height="69">Moz1.0.1での表示（標準モード）</p>
+<p><img src="img/b078_2.png" alt="WinIE6" width="122" height="33">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�֘A�o�O�Ƃ��āA�����܂�Ԃ��ɂ���ă{�b�N�X�̃T�C�Y���C�������o�O��<a href="b052.html" title="�{�b�N�X�T�C�Y�����e���ɍ��킹���傫���֋����I�ɒ��������">WinIE�o�O052</a>�ɂ���܂��B</p>
+<h3>補足</h3>
+<p>関連バグとして、自動折り返しによってボックスのサイズが修正されるバグが<a href="b052.html" title="ボックスサイズが内容物に合わせた大きさへ強制的に調整される">WinIEバグ052</a>にあります。</p>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O078</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ078</div>
 </body>
 </html>

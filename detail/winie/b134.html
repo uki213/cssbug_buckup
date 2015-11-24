@@ -2,27 +2,27 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O134</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ134</div>
 
-<h2>�e�Ƀ{�[�_�[��ݒu�����v�f�����v�f�̃}�[�W���ݒu���������Ȃ�<em>(5.x/6.0)</em></h2>
+<h2>親にボーダーを設置した要素を持つ要素のマージン設置が正しくない<em>(5.x/6.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�{�[�_�[���ݒu����Ă���e�v�f�����v�f��width�v���p�e�B�܂���height�v���p�e�B����̓I�Ȓl�Ŏw�肵���Ƃ��A���̗v�f�Ɏw�肵���}�[�W�����������ݒu����Ȃ��B</p>
+<h3>症状</h3>
+<p>ボーダーが設置されている親要素を持つ要素にwidthプロパティまたはheightプロパティを具体的な値で指定したとき、その要素に指定したマージンが正しく設置されない。</p>
 <ul>
-<li>WinIE6.0�W�����[�h�F��}�[�W���ƍ��}�[�W�����i�����炭�E�}�[�W�����j�ݒu���Ȃ��B���}�[�W���͐e�v�f�̉��}�[�W���ł��邩�̂悤�ɐݒu�����B</li>
-<li>WinIE6.0�݊����[�h�AWinIE5.5�F��̃}�[�W����ݒu���Ȃ��B���}�[�W���͐e�v�f�̉��}�[�W���ł��邩�̂悤�ɐݒu�����B</li>
+<li>WinIE6.0標準モード：上マージンと左マージンを（おそらく右マージンも）設置しない。下マージンは親要素の下マージンであるかのように設置される。</li>
+<li>WinIE6.0互換モード、WinIE5.5：上のマージンを設置しない。下マージンは親要素の下マージンであるかのように設置される。</li>
 </ul>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;margin-left: 3em; border:2px solid blue;&quot;&gt;
 &lt;div style=&quot;margin-left:-3em; width:50%;&quot;&gt;Top&lt;/div&gt;
 &lt;/div&gt;
@@ -33,17 +33,17 @@
 </div>
 <div>Bottom</div>
 </div>
-<p>div�v�f������q�ɂȂ��Ă��镔���ł͐e�v�f��3em�̍��}�[�W���A�q�v�f��-3em�̍��}�[�W����ݒu���Ă���̂ŁA������uTop�v�ƁuBottom�v�̏c�����̈ʒu�͂قڑ����Ă���͂��ł��B</p>
+<p>div要素が入れ子になっている部分では親要素に3emの左マージン、子要素に-3emの左マージンを設置しているので、文字列「Top」と「Bottom」の縦方向の位置はほぼ揃っているはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b134_1.png" alt="Ns7.1">Netscape7.1�W�����[�h</p>
-<p><img src="img/b134_2.png" alt="WinIE6.0">WinIE6.0�W�����[�h</p>
+<p><img src="img/b134_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b134_2.png" alt="WinIE6.0">WinIE6.0標準モード</p>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�̕W�����[�h�ƌ݊����[�h�ŕs��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0の標準モードと互換モードで不具合の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O134</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ134</div>
 </body>
 </html>

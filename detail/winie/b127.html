@@ -2,27 +2,27 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O127</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ127</div>
 
-<h2>���̎Q�Ƃŕ\�L�����������������\������Ȃ�<em>(6.0)</em></h2>
+<h2>実体参照で表記した文字が正しく表示されない<em>(6.0)</em></h2>
 <ul>
-<li>2003-11-23�C���B�Ꭶ���C���B</li>
-<li>2004-02-13�C���B�Ꭶ���C���B</li>
-<li>2004-05-17�C���B���A�B</li>
+<li>2003-11-23修正。例示を修正。</li>
+<li>2004-02-13修正。例示を修正。</li>
+<li>2004-05-17修正。復帰。</li>
 </ul>
 
-<h3>�Ǐ�</h3>
-<p>Unicode���g�p���Ȃ��ƕ\���ł��Ȃ������Ȃǂ����̎Q�Ƃŕ\�L����Ƃ��A���̕����̃f�[�^���܂ރt�H���g�����݂�����ł��������\������Ȃ��ꍇ������B</p>
+<h3>症状</h3>
+<p>Unicodeを使用しないと表現できない文字などを実体参照で表記するとき、その文字のデータを含むフォントが存在する環境でも文字が表示されない場合がある。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;ul&gt;
 &lt;li style=&quot;font-family:'Lucida Sans Unicode',sans-serif;&quot;&gt;Lucida &amp;#32083;&lt;/li&gt;
 &lt;li style=&quot;font-family:'Arial',sans-serif;&quot;&gt;Arial &amp;#32083;&lt;/li&gt;
@@ -37,17 +37,17 @@
 <li style="font-family:'Times New Roman',sans-serif;">Times &#32083;</li>
 </ul>
 </div>
-<p>font-family�v���p�e�B�Ŏw�肵�������t�H���g�ɂ͊������܂܂�Ă��Ȃ��̂ŁAsans-serif�t�H���g�i�Ⴆ�΁u�l�r �S�V�b�N�v�j�Ŋ������\�������͂��ł��BWin98�ȍ~�Ɋ܂܂��u�l�r �S�V�b�N�v��<code>&amp;#32083;</code>�ŕ\����镶���i���΂̉E�Ɂu�\�v�j�̃f�[�^�������Ă���̂ŁA�Y�����镶�����\�������͂��ł��B</p>
+<p>font-familyプロパティで指定した欧文フォントには漢字が含まれていないので、sans-serifフォント（例えば「ＭＳ ゴシック」）で漢字が表示されるはずです。Win98以降に含まれる「ＭＳ ゴシック」は<code>&amp;#32083;</code>で表される文字（糸偏の右に「圭」）のデータを持っているので、該当する文字が表示されるはずです。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b127_1.png" alt="WinIE6.0">WinIE6.0�iWindowsXP�j</p>
-<p><img src="img/b127_2.png" alt="WinIE6.0">WinIE6.0�iWindowsMe�j</p>
+<p><img src="img/b127_1.png" alt="WinIE6.0">WinIE6.0（WindowsXP）</p>
+<p><img src="img/b127_2.png" alt="WinIE6.0">WinIE6.0（WindowsMe）</p>
 </div>
 
-<h3>�⑫</h3>
-<p>Win98�ȍ~�Ɋ܂܂�Ă���u�l�r �i�o�j�S�V�b�N�v��u�l�r �i�o�j�����v�́A�⏕�����iJIS X0212�j�Œ�`����Ă��镶���̃f�[�^���܂�ł��܂��B�]���āA�t�H���g��ǉ����Ă��Ȃ���Ԃł������̕����i<code>&amp;#32083;</code>�ŕ\����镶����JIS X0212�Œ�`����Ă��܂��j�͕\���ł���͂��ł��B</p>
-<p>font-family�̎w��Ɉˑ����Ȃ��s��ł���\��������܂��B�ȉ��̗�ł�font-family�̎w��͂���܂��񂪁A����̃T�C�Y�ł̂ݎ��̎Q�Ƃ���������������ꍇ�����邻���ł��B</p>
+<h3>補足</h3>
+<p>Win98以降に含まれている「ＭＳ （Ｐ）ゴシック」や「ＭＳ （Ｐ）明朝」は、補助漢字（JIS X0212）で定義されている文字のデータを含んでいます。従って、フォントを追加していない状態でもこれらの文字（<code>&amp;#32083;</code>で表される文字もJIS X0212で定義されています）は表示できるはずです。</p>
+<p>font-familyの指定に依存しない不具合である可能性があります。以下の例ではfont-familyの指定はありませんが、特定のサイズでのみ実体参照した文字が化ける場合があるそうです。</p>
 <pre>&lt;ul&gt;
 &lt;li style=&quot;font-size:15px&quot;&gt;&amp;#x25B6;&amp;#x25B7;&amp;#x25BA; 15px&lt;/li&gt;
 &lt;li style=&quot;font-size:16px&quot;&gt;&amp;#x25B6;&amp;#x25B7;&amp;#x25BA; 16px&lt;/li&gt;
@@ -70,11 +70,11 @@
 <p><img src="img/b127_3.png" alt="Ns7.1">Netscape7.1</p>
 </div>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>WinIE��Win9x/Me�Ŏ��s�����Ƃ��ɕs����������邱�Ƃ�����܂��B</li>
+<li>WinIEをWin9x/Meで実行したときに不具合が発生することがあります。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O127</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ127</div>
 </body>
 </html>

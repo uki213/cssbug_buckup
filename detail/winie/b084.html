@@ -2,36 +2,36 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O084</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ084</div>
 
-<h2>���y�[�W����̍s��text-indent�v���p�e�B�������Ă��܂�<em>(IE6)</em></h2>
+<h2>改ページ直後の行にtext-indentプロパティが効いてしまう<em>(IE6)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>������ɂ͉��y�[�W���ꂽ����̍s�i�e�y�[�W�̐擪�s�j���A�{�b�N�X���̍ŏ��̍s�łȂ��ꍇ�ł�text-indent�v���p�e�B�̎w��ɏ]���ăC���f���g�����B</p>
+<h3>症状</h3>
+<p>印刷時には改ページされた直後の行（各ページの先頭行）が、ボックス内の最初の行でない場合でもtext-indentプロパティの指定に従ってインデントされる。</p>
 
-<h3>�Ꭶ</h3>
-<pre>&lt;p style=&quot;text-indent:2em; width:4em; border:2px solid blue;&quot;&gt;�C���f���g�c�c&lt;/p&gt;</pre>
-<p><a href="b084a.html">���؃y�[�W</a>�ɂ͏�̋L�q������܂��B���؃y�[�W���J���A����v���r���[��ʂɐ؂�ւ��āA2�y�[�W�ڂ̐擪���C���f���g����Ă��邩���m�F���Ă��������B</p>
+<h3>例示</h3>
+<pre>&lt;p style=&quot;text-indent:2em; width:4em; border:2px solid blue;&quot;&gt;インデント……&lt;/p&gt;</pre>
+<p><a href="b084a.html">検証ページ</a>には上の記述があります。検証ページを開き、印刷プレビュー画面に切り替えて、2ページ目の先頭がインデントされているかを確認してください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
-<p>����v���r���[�Ō���2�y�[�W�ڂ̐擪�����ł��B</p>
+<h3>スクリーンショット</h3>
+<p>印刷プレビューで見た2ページ目の先頭部分です。</p>
 <div class="shot">
-<p><img src="img/b084_1.png" alt="Op6" width="115" height="101">Opera6.05�ł̕\��</p>
-<p><img src="img/b084_2.png" alt="WinIE6" width="96" height="95">WinIE6.0�ł̕\��</p>
+<p><img src="img/b084_1.png" alt="Op6" width="115" height="101">Opera6.05での表示</p>
+<p><img src="img/b084_2.png" alt="WinIE6" width="96" height="95">WinIE6.0での表示</p>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�̗����ŕs��̔������m�F����܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードの両方で不具合の発生が確認されました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O084</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ084</div>
 </body>
 </html>

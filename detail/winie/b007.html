@@ -2,33 +2,33 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O007</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ007</div>
 
-<h2>�{�b�N�X����em�P�ʂŎw�肷��Ɛ��m�ɕ����Z�o���Ȃ�<em>(IE5)</em></h2>
+<h2>ボックス幅をem単位で指定すると正確に幅を算出しない<em>(IE5)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>width�v���p�e�B��em�P�ʂ̒l�Ŏw�肷��ƁA�w��ǂ���̕��ɂȂ�Ȃ����Ƃ�����B</p>
+<h3>症状</h3>
+<p>widthプロパティをem単位の値で指定すると、指定どおりの幅にならないことがある。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;margin:0; padding:0; width:15em; font:1em monospace;&quot;&gt;
-WinIE6.0����́c����܂��B&lt;/div&gt;</pre>
+WinIE6.0からは…あります。&lt;/div&gt;</pre>
 <div class="example">
-<div style="margin:0; padding:0; width:15em; font:1em monospace;">WinIE6.0����́ADOCTYPE�̋L�q�ɂ����CSS�̃����_�����O���ς��悤�ɂȂ�܂����BW3C�����ɏ��������u�W�����[�h�v�Ə]����IE�̃����_�����O���p�������u�݊����[�h�v��2��ނ̃��[�h������܂��B</div>
+<div style="margin:0; padding:0; width:15em; font:1em monospace;">WinIE6.0からは、DOCTYPEの記述によってCSSのレンダリングが変わるようになりました。W3C勧告に準拠した「標準モード」と従来のIEのレンダリングを継承した「互換モード」の2種類のモードがあります。</div>
 </div>
-<p>div�v�f��15�������̕�������Ă��܂��B</p>
+<p>div要素は15文字分の幅を取っています。</p>
 
-<h3>�⑫</h3>
-<p>1�o�C�g������2�o�C�g�����Ƃō\������镶�ł�1�o�C�g�����̃��[�h���b�v�Ȃǂ̊֌W��A�w�肵���������ǂ���ɐ܂�Ԃ���Ȃ����Ƃ�����܂��B</p>
+<h3>補足</h3>
+<p>1バイト文字と2バイト文字とで構成される文では1バイト文字のワードラップなどの関係上、指定した文字数どおりに折り返されないことがあります。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O007</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ007</div>
 </body>
 </html>

@@ -2,11 +2,11 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 <style type="text/css">
 <!--
 @media screen {
@@ -17,15 +17,15 @@
 </style>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O135</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ135</div>
 
-<h2>@media�u���b�N�̊��ʂ̑Ή��֌W�𐳂����F�����Ȃ�<em>(4.0)</em></h2>
+<h2>@mediaブロックの括弧の対応関係を正しく認識しない<em>(4.0)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>WinIE4��@media�L�[���[�h�𖳎����邪�A���̃u���b�N�̒����ʂ̑Ή��֌W�𐳂����F�������ŏ��Ɍ����������ʂ܂ł�@media�̃u���b�N�ƔF������B</p>
+<h3>症状</h3>
+<p>WinIE4は@mediaキーワードを無視するが、そのブロックの中括弧の対応関係を正しく認識せず最初に現れる閉じ中括弧までを@mediaのブロックと認識する。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 @media screen {
   div#t1 { color: blue; }
@@ -33,17 +33,17 @@
 }
 &lt;/style&gt;
 
-&lt;div id=&quot;t1&quot;&gt;�F&lt;/div&gt;
-&lt;div id=&quot;t2&quot;&gt;�F&lt;/div&gt;</pre>
+&lt;div id=&quot;t1&quot;&gt;青色&lt;/div&gt;
+&lt;div id=&quot;t2&quot;&gt;青色&lt;/div&gt;</pre>
 <div class="example">
-<div id="t1">�F1</div>
-<div id="t2">�F2</div>
+<div id="t1">青色1</div>
+<div id="t2">青色2</div>
 </div>
-<p>@media�̃u���b�N�𖳎�����ꍇ�A������div�v�f�̑O�i�F�͐F�ɂȂ�Ȃ��͂��ł��BWinIE4.0�́Adiv#t1�̃u���b�N�̏I�����������ʂ�@media�̃u���b�N���I������Ɣ��f���邽�߁Aid�������ut2�v��div�v�f�̑O�i�F�͐F�ɂȂ��Ă��܂������ł��B</p>
+<p>@mediaのブロックを無視する場合、両方のdiv要素の前景色は青色にならないはずです。WinIE4.0は、div#t1のブロックの終了を示す括弧で@mediaのブロックも終了すると判断するため、id属性が「t2」のdiv要素の前景色は青色になってしまうそうです。</p>
 
-<h3>�C����</h3>
-<p>WinIE4.0�ł��̕s����������邻���ł��B</p>
+<h3>修正状況</h3>
+<p>WinIE4.0でこの不具合が発生するそうです。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O135</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ135</div>
 </body>
 </html>

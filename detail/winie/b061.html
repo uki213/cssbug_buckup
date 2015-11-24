@@ -2,53 +2,53 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O061</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ061</div>
 
-<h2>�w�i�摜���őO�ʂɕ\�������<em>(IE6)</em></h2>
+<h2>背景画像が最前面に表示される<em>(IE6)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�w�i�摜���őO�ʂɕ\������A�����Ȃǂ��B���Ă��܂����Ƃ�����B</p>
+<h3>症状</h3>
+<p>背景画像が最前面に表示され、文字などを隠してしまうことがある。</p>
 
-<h3>�⑫</h3>
-<p>�Č��ł��܂���B</p>
+<h3>補足</h3>
+<p>再現できません。</p>
 
-<h3>�񍐏�������</h3>
-<p>�u/*CSS�A�X�^�C���V�[�g����X���b�h�y5�z */�v�����p�B</p>
-<blockquote>�����I����ŋ��k�B�ǂȂ��������Ă��������B<br>
+<h3>報告書き込み</h3>
+<p>「/*CSS、スタイルシート質問スレッド【5】 */」より引用。</p>
+<blockquote>初歩的質問で恐縮。どなたか教えてください。<br>
 body{<br>
 font:small/125%;<br>
 color:#6600cc;<br>
 background-image : url(2ch.gif);<br>
 }<br>
-���̍ہA���X�ł͂��邪�e�L�X�g�ɔw�i�悪�㏑������Ă��܂��B����̑Ώ��@���B<br>
-�㏑�����N���镔���͏㕔�E���B����IE�U�ł��B<br>
-���o�ł���ˁB����܂���B�ߋ����O�������񂾂��ǂ�����ƕ�����Ȃ��āB</blockquote>
-<blockquote>�ǂ����ł��Bfont-family���g����������������ŁA�܂Ƃߎw�����߂܂����B<br>
-�ł��Ǐ���P�����B���l�̃T�C�g�ł������Ǐ���݂����Ƃ���񂾂��ǁA�o�O�H</blockquote>
-<blockquote>�����ł����ꂠ���Bfloat�g���Ă�񂶂�Ȃ��H<br>
+この際、時々ではあるがテキストに背景画が上書きされてしまう。これの対処法を。<br>
+上書きが起こる部分は上部右側。環境はIE６です。<br>
+既出ですよね。すんません。過去ログも見たんだけどちょっと分かんなくて。</blockquote>
+<blockquote>どうもです。font-familyを使いたく無かったんで、まとめ指定をやめました。<br>
+でも症状改善せず。他人のサイトでも同じ症状をみたことあるんだけど、バグ？</blockquote>
+<blockquote>うちでもそれあるよ。float使ってるんじゃない？<br>
 <br>
-�����͑S�y�[�W�̋��ɓ����w�i����Ă�񂾂��ǁA<br>
-float�g�����y�[�W�̂݉摜���e�L�X�g�ɃJ�u���Ă�B<br>
-IE��float�Ɏキ�Ċ֌W�Ȃ��Ƃ��ɂ��s����o�邩��A<br>
-����������Ȃ񂶂�Ȃ����Ǝv���B</blockquote>
-<blockquote>���肪�Ƃ��B<br>
-�ł�f���������g���ĂȂ��񂾂�ˁB<br>
-�o�O�ɂ��Ă��͊ȈՂȃ^�O�Ȃ�ŁA������Ŏ��₳���Ē������B<br>
-�ǂ��Ȃ�ł��傤�A�����Ǐ�̕����Ă���������Ⴂ�܂��񂩁H</blockquote>
-<blockquote>���߂Ċm�F���Ă݂���A�ȑO���̌��ۂ��N�����Ă�2�y�[�W�̂����A<br>
-�Е��ł͍Č����Ȃ��Ȃ��Ă��B<br>
-float�͈ˑR�g���Ă邩�猴���͕ʂɂ���݂����ˁB�Ͽ<br>
-�V�[�g�����������炾�Ǝv���񂾂��ǁA�ǂ����ǂ������������Y�ꂿ�����B</blockquote>
+うちは全ページの隅に同じ背景入れてるんだけど、<br>
+float使ったページのみ画像がテキストにカブってる。<br>
+IEはfloatに弱くて関係ないとこにも不具合が出るから、<br>
+これもそうなんじゃないかと思う。</blockquote>
+<blockquote>ありがとう。<br>
+でもfｒｏａｔ使ってないんだよね。<br>
+バグにしてｊは簡易なタグなんで、こちらで質問させて頂いた。<br>
+どうなんでしょう、同じ症状の方っていらっっしゃいませんか？</blockquote>
+<blockquote>改めて確認してみたら、以前その現象が起こってた2ページのうち、<br>
+片方では再現しなくなってた。<br>
+floatは依然使ってるから原因は別にあるみたいね。ｽﾏｿ<br>
+シートいじったからだと思うんだけど、どこをどういじったか忘れちった。</blockquote>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O061</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ061</div>
 </body>
 </html>

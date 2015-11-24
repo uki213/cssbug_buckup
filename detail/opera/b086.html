@@ -2,11 +2,11 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
-<link rel="stylesheet" type="text/css" href="normal.css" title="�W��">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../opera.html" title="Opera�ڎ�">
-<title>Opera CSS�o�O���X�g</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="normal.css" title="標準">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../opera.html" title="Opera目次">
+<title>Opera CSSバグリスト</title>
 <style type="text/css">
 <!--
 p.test {
@@ -25,15 +25,15 @@ p.test a {
 </style>
 </head>
 <body>
-<h1>Opera CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O086</div>
+<h1>Opera CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ086</div>
 
-<h2>z-index�𕉂̐��ɂ��������N��I���ł��Ȃ�<em>(7.x)</em></h2>
+<h2>z-indexを負の数にしたリンクを選択できない<em>(7.x)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>�|�W�V���j���O�����c��v�f�������Ȃ�a�v�f��z-index�v���p�e�B�ɕ��̒l���w�肷��ƁA���̃����N���}�E�X�Ȃǂ̃N���b�N�ɂ���ĒH�邱�Ƃ��ł��Ȃ��Ȃ�B</p>
+<h3>症状</h3>
+<p>ポジショニングした祖先要素を持たないa要素のz-indexプロパティに負の値を指定すると、そのリンクをマウスなどのクリックによって辿ることができなくなる。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 p.test {
   background: yellow;
@@ -44,20 +44,20 @@ p.test a {
 }
 &lt;/style&gt;
 
-&lt;p class=&quot;test&quot;&gt;��&lt;a href=&quot;&quot;&gt;Opera�ڎ�&lt;/a&gt;��&lt;/p&gt;</pre>
+&lt;p class=&quot;test&quot;&gt;→&lt;a href=&quot;&quot;&gt;Opera目次&lt;/a&gt;←&lt;/p&gt;</pre>
 <div class="example">
-<p class="test">��<a href="../opera.html">Opera�ڎ�</a>��</p>
+<p class="test">→<a href="../opera.html">Opera目次</a>←</p>
 </div>
-<p>2�̖��̊Ԃ�a�v�f������܂����Az-index�v���p�e�B�̎w��̂���p�v�f�̔w�i�̗��ɉB��Ă��܂��B�����N���@�\���邩���m�F���Ă��������B</p>
+<p>2つの矢印の間にa要素がありますが、z-indexプロパティの指定のためp要素の背景の裏に隠れています。リンクが機能するかを確認してください。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b086_1.png" alt="Ns7.1">Netscape7.1�W�����[�h</p>
-<p><img src="img/b086_2.png" alt="Op7.5">Opera7.51�W�����[�h</p>
+<p><img src="img/b086_1.png" alt="Ns7.1">Netscape7.1標準モード</p>
+<p><img src="img/b086_2.png" alt="Op7.5">Opera7.51標準モード</p>
 </div>
 
-<h3>�⑫</h3>
-<p>�e�v�f���|�W�V���j���O���邱�ƂŁA���̕s���������邱�Ƃ��ł��܂��i�e�ȊO�̑c��v�f���|�W�V���j���O���Ă��s�������ł��܂���j�B</p>
+<h3>補足</h3>
+<p>親要素をポジショニングすることで、この不具合を回避することができます（親以外の祖先要素をポジショニングしても不具合を回避できません）。</p>
 <pre>&lt;style type=&quot;text/css&quot;&gt;
 p.test2 {
 <em>  position: relative;
@@ -70,17 +70,17 @@ p.test a {
 }
 &lt;/style&gt;
 
-&lt;p class=&quot;test2&quot;&gt;��&lt;a href=&quot;&quot;&gt;WinIE�ڎ�&lt;/a&gt;��&lt;/p&gt;</pre>
+&lt;p class=&quot;test2&quot;&gt;→&lt;a href=&quot;&quot;&gt;WinIE目次&lt;/a&gt;←&lt;/p&gt;</pre>
 <div class="example">
-<p class="test2">��<a href="../opera.html">Opera�ڎ�</a>��</p>
+<p class="test2">→<a href="../opera.html">Opera目次</a>←</p>
 </div>
 
-<h3>�C����</h3>
+<h3>修正状況</h3>
 <ul>
-<li>Opera7.51�̕W�����[�h�ƌ݊����[�h�ŕs��̔������m�F���܂����B</li>
-<li>Opera6.06�ł��̕s��͔������Ȃ��悤�ł��B</li>
+<li>Opera7.51の標準モードと互換モードで不具合の発生を確認しました。</li>
+<li>Opera6.06でこの不具合は発生しないようです。</li>
 </ul>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../opera.html">Opera�ڎ�</a>�^�o�O086</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../opera.html">Opera目次</a>／バグ086</div>
 </body>
 </html>

@@ -2,23 +2,23 @@
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="normal.css" title="Normal">
-<link rel="start" href="../../index.html" title="�g�b�v�y�[�W">
-<link rel="contents" href="../winie.html" title="WinIE�ڎ�">
+<link rel="start" href="../../index.html" title="トップページ">
+<link rel="contents" href="../winie.html" title="WinIE目次">
 <link rev="made" href="mailto:cssbug@lycos.jp">
-<title>Internet Explorer (Windows) CSS�o�O���X�g</title>
+<title>Internet Explorer (Windows) CSSバグリスト</title>
 </head>
 <body>
-<h1>Internet Explorer (Windows) CSS�o�O���X�g</h1>
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O035</div>
+<h1>Internet Explorer (Windows) CSSバグリスト</h1>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ035</div>
 
-<h2>text-align�v���p�e�B�̎w�肪�{�b�N�X�̔z�u�ɉe����^����<em>(IE5)</em></h2>
+<h2>text-alignプロパティの指定がボックスの配置に影響を与える<em>(IE5)</em></h2>
 
-<h3>�Ǐ�</h3>
-<p>text-align�v���p�e�B�̓{�b�N�X���̔z�u���K�肷����̂ł��邪�AWinIE�ł̓{�b�N�X���̂̔z�u���ύX���Ă��܂��B</p>
+<h3>症状</h3>
+<p>text-alignプロパティはボックス内の配置を規定するものであるが、WinIEではボックス自体の配置も変更してしまう。</p>
 
-<h3>�Ꭶ</h3>
+<h3>例示</h3>
 <pre>&lt;div style=&quot;text-align:center; border:2px solid red;&quot;&gt;
 &lt;table border=&quot;2&quot;&gt;
 &lt;tr&gt;&lt;td&gt;A&lt;/td&gt;&lt;/tr&gt;
@@ -31,17 +31,17 @@
 </table>
 </div>
 </div>
-<p>�e�[�u�����i�Z���j�͒��������ŕ\�������Ă��܂��B</p>
+<p>テーブル内（セル）は中央揃えで表示させています。</p>
 
-<h3>�X�N���[���V���b�g</h3>
+<h3>スクリーンショット</h3>
 <div class="shot">
-<p><img src="img/b035_1.png" alt="Moz1.0" width="237" height="49">Moz1.0�ł̕\���i�W�����[�h�j</p>
-<p><img src="img/b035_2.png" alt="WinIE6" width="244" height="52">WinIE6.0�ł̕\���i�W�����[�h�j</p>
+<p><img src="img/b035_1.png" alt="Moz1.0" width="237" height="49">Moz1.0での表示（標準モード）</p>
+<p><img src="img/b035_2.png" alt="WinIE6" width="244" height="52">WinIE6.0での表示（標準モード）</p>
 </div>
 
-<h3>�C����</h3>
-<p>WinIE6.0�ł͕W���E�݊����[�h�Ƃ��ɕs��̔������m�F���܂����B</p>
+<h3>修正状況</h3>
+<p>WinIE6.0では標準・互換モードともに不具合の発生を確認しました。</p>
 
-<div class="navi"><a href="../../index.html">�g�b�v�y�[�W</a>�^<a href="../winie.html">WinIE�ڎ�</a>�^�o�O035</div>
+<div class="navi"><a href="../../index.html">トップページ</a>／<a href="../winie.html">WinIE目次</a>／バグ035</div>
 </body>
 </html>
